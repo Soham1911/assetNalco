@@ -1,0 +1,52 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Systems.master.cs" Inherits="assetManagement.Systems" %>
+
+<!DOCTYPE html>
+<html lang="en">
+<head runat="server">
+    <meta charset="utf-8" />
+    <title>Home</title>
+    <link href="~/Content/Site.css" rel="stylesheet" />
+    <link href="favicon.ico" rel="shortcut icon" type="image/x-icon" />
+    <asp:ContentPlaceHolder runat="server" ID="HeadContent" />
+</head>
+<body>
+    <form id="Form1" runat="server">
+        <div class="page">
+            <div class="header">
+                <div class="title">
+                    <h1>NALCO Asset Management
+                    </h1>
+                </div>
+                <div class="loginDisplay">
+                    <a href="Default.aspx" style="text-decoration:none">Logout</a>
+                </div>
+                <div class="clear hideSkiplink">
+                    <asp:Menu ID="NavigationMenu" runat="server" CssClass="menu" EnableViewState="false" IncludeStyleBlock="false" Orientation="Horizontal">
+                        <Items>
+                            <asp:MenuItem NavigateUrl="#" Text="Asset">
+                                <asp:MenuItem NavigateUrl="#" Text="New Asset Entry" >
+                                <asp:MenuItem NavigateUrl="~/asset_pc.aspx" Text="PC/Laptop" />
+                                <asp:MenuItem NavigateUrl="~/asset_server" Text="Server" />
+                                <asp:MenuItem NavigateUrl="~/asset_printer.aspx" Text="Printer/Scanner" />
+                                    <asp:MenuItem NavigateUrl="~/asset_network.aspx" Text="Network Asset" />
+                            </asp:MenuItem>
+                            <asp:MenuItem NavigateUrl="~/asset_allot.aspx" Text="Asset Allotment" />
+                            <asp:MenuItem NavigateUrl="~/asset_return" Text="Asset Return" />
+                            </asp:MenuItem>                       
+                      
+                        </Items>
+                    </asp:Menu>
+                </div>
+            </div>
+            <div class="main">
+                <asp:ContentPlaceHolder ID="MainContent" runat="server" />
+            </div>
+            <div class="clear">
+            </div>
+        </div>
+        <div class="footer">
+            Devaloped & Maintained by NALCO Refinery Systems Department.
+        </div>
+    </form>
+</body>
+</html>
