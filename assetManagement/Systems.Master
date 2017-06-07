@@ -26,7 +26,7 @@
                             <asp:MenuItem NavigateUrl="#" Text="Asset">
                                 <asp:MenuItem NavigateUrl="#" Text="New Asset Entry" >
                                 <asp:MenuItem NavigateUrl="~/asset_pc.aspx" Text="PC/Laptop" />
-                                <asp:MenuItem NavigateUrl="~/asset_server" Text="Server" />
+                                <asp:MenuItem NavigateUrl="~/asset_server.aspx" Text="Server" />
                                 <asp:MenuItem NavigateUrl="~/asset_printer.aspx" Text="Printer/Scanner" />
                                     <asp:MenuItem NavigateUrl="~/asset_network.aspx" Text="Network Asset" />
                             </asp:MenuItem>

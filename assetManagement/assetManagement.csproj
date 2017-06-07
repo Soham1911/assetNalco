@@ -112,7 +112,12 @@
     <Content Include="Account\Register.aspx" />
     <Content Include="Account\RegisterExternalLogin.aspx" />
     <Content Include="AmcHolder.aspx" />
+    <Content Include="Asset_Allot.aspx" />
+    <Content Include="Asset_Printer.aspx" />
+    <Content Include="Asset_Network.aspx" />
     <Content Include="Asset_Pc.aspx" />
+    <Content Include="Asset_Return.aspx" />
+    <Content Include="Asset_Server.aspx" />
     <Content Include="Content\Site.css" />
     <Content Include="Default.aspx" />
     <Content Include="Images\accent.png" />
@@ -159,6 +164,7 @@
   <ItemGroup>
     <Compile Include="Amc.Master.cs">
       <DependentUpon>Amc.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Amc.Master.designer.cs">
       <DependentUpon>Amc.Master</DependentUpon>
@@ -207,12 +213,47 @@
       <DependentUpon>RegisterExternalLogin.aspx</DependentUpon>
     </Compile>
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Asset_Allot.aspx.cs">
+      <DependentUpon>Asset_Allot.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Asset_Allot.aspx.designer.cs">
+      <DependentUpon>Asset_Allot.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Asset_Printer.aspx.cs">
+      <DependentUpon>Asset_Printer.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Asset_Printer.aspx.designer.cs">
+      <DependentUpon>Asset_Printer.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Asset_Network.aspx.cs">
+      <DependentUpon>Asset_Network.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Asset_Network.aspx.designer.cs">
+      <DependentUpon>Asset_Network.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Asset_Pc.aspx.cs">
       <DependentUpon>Asset_Pc.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Asset_Pc.aspx.designer.cs">
       <DependentUpon>Asset_Pc.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Asset_Return.aspx.cs">
+      <DependentUpon>Asset_Return.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Asset_Return.aspx.designer.cs">
+      <DependentUpon>Asset_Return.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Asset_Server.aspx.cs">
+      <DependentUpon>Asset_Server.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Asset_Server.aspx.designer.cs">
+      <DependentUpon>Asset_Server.aspx</DependentUpon>
     </Compile>
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
@@ -234,6 +275,7 @@
     </Compile>
     <Compile Include="Site.Mobile.Master.cs">
       <DependentUpon>Site.Mobile.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Site.Mobile.Master.designer.cs">
       <DependentUpon>Site.Mobile.Master</DependentUpon>
@@ -247,6 +289,7 @@
     </Compile>
     <Compile Include="Systems.Master.cs">
       <DependentUpon>Systems.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Systems.Master.designer.cs">
       <DependentUpon>Systems.Master</DependentUpon>
@@ -260,12 +303,14 @@
     </Compile>
     <Compile Include="User.Master.cs">
       <DependentUpon>User.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="User.Master.designer.cs">
       <DependentUpon>User.Master</DependentUpon>
     </Compile>
     <Compile Include="ViewSwitcher.ascx.cs">
       <DependentUpon>ViewSwitcher.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="ViewSwitcher.ascx.designer.cs">
       <DependentUpon>ViewSwitcher.ascx</DependentUpon>

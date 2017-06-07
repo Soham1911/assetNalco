@@ -10,7 +10,7 @@
 namespace assetManagement {
     
     
-    public partial class Asset_Pc {
+    public partial class Asset_Server {
         
         /// <summary>
         /// ScriptManager1 control.
