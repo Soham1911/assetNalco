@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Configuration;
 using System.Data;
 using System.Linq;
@@ -49,7 +49,7 @@ namespace assetManagement
             dt.Columns.Add(new System.Data.DataColumn("openingDate", typeof(String)));
             dt.Columns.Add(new System.Data.DataColumn("type", typeof(String)));
 
-              while (dr.Read())
+            while (dr.Read())
             {
                 newRow = dt.NewRow();
                 newRow["call_id"] = Convert.ToString(dr["call_id"]);
@@ -59,29 +59,23 @@ namespace assetManagement
                 newRow["type"] = Convert.ToString(dr["type"]);
                 dt.Rows.Add(newRow);
 
-        }
-              if (dt.Rows.Count > 0)
-              {
-                  grid_display.Visible = true;
-                  grid_display.DataSource = dt;
-                  grid_display.DataBind();
-                  lbl_no_recs.Visible = false;
-                 
-              }
-              else
-              {
-                  grid_display.Visible = false;
-                  lbl_no_recs.Visible = true;
-              }
-              conn_asset.Close();
+            }
+            if (dt.Rows.Count > 0)
+            {
+                grid_display.Visible = true;
+                grid_display.DataSource = dt;
+                grid_display.DataBind();
+                lbl_no_recs.Visible = false;
 
-              OdbcCommand cmda = conn_asset.CreateCommand();
-              cmda.CommandText = "select name from amclogin";
-              conn_asset.Open();
-              OdbcDataAdapter adapter = new OdbcDataAdapter(cmda);
-              DataTable dta = new DataTable();
-              adapter.Fill(dta);
-              
+            }
+            else
+            {
+                grid_display.Visible = false;
+                lbl_no_recs.Visible = true;
+            }
+            conn_asset.Close();
+
+           
 
 
 
@@ -93,5 +87,47 @@ namespace assetManagement
 
 
         }
+        protected void GridView1_RowDataBound(object sender, GridViewRowEventArgs e)
+        {
+            if (e.Row.RowType == DataControlRowType.DataRow)
+            {
+                OdbcCommand cmd = conn_asset.CreateCommand();
+                cmd.CommandText = "select name,user_id from amclogin";
+                cmd.CommandType = CommandType.Text;
+                OdbcDataAdapter da = new OdbcDataAdapter(cmd);
+                DataTable dt = new DataTable();
+                da.Fill(dt);
+
+                if (dt.Rows.Count > 0)
+                {
+                    DropDownList DropDownList1 =
+                    (DropDownList)e.Row.FindControl("allottedto");
+                    DropDownList1.DataSource = dt;
+                    DropDownList1.DataTextField = "name";
+                    DropDownList1.DataValueField = "user_id";
+                    DropDownList1.DataBind();
+                }
+
+                OdbcCommand cmda = conn_asset.CreateCommand();
+                cmda.CommandText = "select name,user_id from amclogin";
+                cmda.CommandType = CommandType.Text;
+                OdbcDataAdapter da1 = new OdbcDataAdapter(cmda);
+                DataTable dt1 = new DataTable();
+                da.Fill(dt1);
+
+                if (dt1.Rows.Count > 0)
+                {
+                    DropDownList DropDownList1 =
+                    (DropDownList)e.Row.FindControl("attendedby");
+                    DropDownList1.DataSource = dt;
+                    DropDownList1.DataTextField = "name";
+                    DropDownList1.DataValueField = "user_id";
+                    DropDownList1.DataBind();
+                }
+                
+            }
+            
+        }
+
     }
-}   
+}
