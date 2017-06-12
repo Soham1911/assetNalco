@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Systems.Master" AutoEventWireup="true" CodeBehind="call.aspx.cs" Inherits="assetManagement.call" %>
+<%@ Page Title="" Language="C#" MasterPageFile="~/Systems.Master" AutoEventWireup="true" CodeBehind="call.aspx.cs" Inherits="assetManagement.call" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
 </asp:Content>
@@ -24,7 +24,7 @@
                         <asp:Label ID="lbl_no_recs" runat="server" Font-Bold="true" ForeColor="Red" Font-Size="Medium"
                             Visible="false"
                             Text="No Record available"></asp:Label>
-                        <asp:GridView ID="grid_display" runat="server"
+                        <asp:GridView ID="grid_display" runat="server" OnRowDataBound="GridView1_RowDataBound" 
                             AutoGenerateColumns="False" Width="100%"
                             Font-Size="1.11em" PageSize="7"
                             CellPadding="4" ForeColor="#333333"
@@ -76,25 +76,18 @@
                                  <asp:TemplateField HeaderText="Allotted To">
                                     <ItemTemplate>
                                         <asp:Label ID="lbl_allottedto" runat="server" Visible="True" />
-                                        <asp:DropDownList ID="allottedto"  runat="server" AppendDataBoundItems="True" AutoPostBack="True" DataTextField="id" DataValueField="id" Height="16px">
-                                           <%-- <asp:ListItem>Dupreeh</asp:ListItem>
-                                            <asp:ListItem>Glave</asp:ListItem>
-                                            <asp:ListItem>Kjaerbye</asp:ListItem>
-                                            <asp:ListItem>Device</asp:ListItem>
-                                            <asp:ListItem>Xyp9x</asp:ListItem>--%>        
+                                        <asp:DropDownList ID="allottedto"  runat="server" AppendDataBoundItems="True" AutoPostBack="false" DataTextField="id" DataValueField="id" Height="16px">
+                                                
                                              <asp:ListItem Value="0">-- Select Name--</asp:ListItem>                                                                            
                                         </asp:DropDownList>
                                     </ItemTemplate>
                                 </asp:TemplateField>
                                 <asp:TemplateField HeaderText="Attended By">
                                     <ItemTemplate>
-                                        <asp:Label ID="lbl_attendedBy" runat="server" Visible="True" />
-                                        <asp:DropDownList ID="attendedBy" runat="server">
-                                            <asp:ListItem>Dupreeh</asp:ListItem>
-                                            <asp:ListItem>Glave</asp:ListItem>
-                                            <asp:ListItem>Kjaerbye</asp:ListItem>
-                                            <asp:ListItem>Device</asp:ListItem>
-                                            <asp:ListItem>Xyp9x</asp:ListItem>                                                                                    
+                                         <asp:Label ID="lbl_attendedby" runat="server" Visible="True" />
+                                        <asp:DropDownList ID="attendedby"  runat="server" AppendDataBoundItems="True" AutoPostBack="false" DataTextField="id" DataValueField="id" Height="16px">
+                                                
+                                             <asp:ListItem Value="0">-- Select Name--</asp:ListItem>                                                                            
                                         </asp:DropDownList>
                                     </ItemTemplate>
                                 </asp:TemplateField>
