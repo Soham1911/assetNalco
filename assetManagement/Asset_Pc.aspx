@@ -1,5 +1,9 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Systems.Master" AutoEventWireup="true" CodeBehind="Asset_Pc.aspx.cs" Inherits="assetManagement.Asset_Pc" %>
 
+<%@ Register
+    Assembly="AjaxControlToolkit"
+    Namespace="AjaxControlToolkit"
+    TagPrefix="asp" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
@@ -98,7 +102,9 @@
                                     <font size="2em">      Issue Date :</font>
                                 </td>
                                 <td align="left">
-                                    <asp:TextBox ID="txt_issueDt" runat="server" ToolTip=" Issue Date " Width="230px" TextMode="Date"></asp:TextBox>
+                                    <asp:TextBox Width="230px" ID="txt_issueDate" runat="server"></asp:TextBox>
+                                    <asp:CalendarExtender ID="CalendarExtender1" runat="server"
+                                        Enabled="True" Format="yyyy/MM/dd" TargetControlID="txt_issueDate"></asp:CalendarExtender>
                                 </td>
                             </tr>
 
@@ -215,7 +221,11 @@
                                     <font size="2em">      Webcam :</font>
                                 </td>
                                 <td align="left">
-                                    <asp:TextBox ID="txt_webcam" runat="server" ToolTip=" Is Webcam available? " Width="230px"></asp:TextBox>
+                                    <asp:RadioButtonList ID="yn" runat="server" RepeatDirection="Horizontal"
+                                        RepeatLayout="Table" TextAlign="Right" Font-Bold="True" ForeColor="#18562b">
+                                        <asp:ListItem Text="Yes" Value="Yes" Selected="True" />
+                                        <asp:ListItem Text="No" Value="No" />
+                                    </asp:RadioButtonList>
                                 </td>
                             </tr>
 
@@ -233,7 +243,9 @@
                                     <font size="2em">      PO Date :</font>
                                 </td>
                                 <td align="left">
-                                    <asp:TextBox ID="txt_poDate" runat="server" ToolTip=" PO Date " Width="230px" TextMode="Date"></asp:TextBox>
+                                    <asp:TextBox Width="230px" ID="txt_poDate" runat="server"></asp:TextBox>
+                                    <asp:CalendarExtender ID="CalendarExtender2" runat="server"
+                                        Enabled="True" Format="yyyy/MM/dd" TargetControlID="txt_poDate"></asp:CalendarExtender>
                                 </td>
                             </tr>
 
@@ -261,7 +273,9 @@
                                     <font size="2em">      Installation Date :</font>
                                 </td>
                                 <td align="left">
-                                    <asp:TextBox ID="txt_intallDate" runat="server" ToolTip=" Installation Date " Width="230px" TextMode="date"></asp:TextBox>
+                                    <asp:TextBox Width="230px" ID="txt_installDate" runat="server"></asp:TextBox>
+                                    <asp:CalendarExtender ID="CalendarExtender3" runat="server"
+                                        Enabled="True" Format="yyyy/MM/dd" TargetControlID="txt_installDate"></asp:CalendarExtender>
                                 </td>
                             </tr>
 
@@ -270,7 +284,7 @@
                                     <font size="2em">      AMC Party :</font>
                                 </td>
                                 <td align="left">
-                                    <asp:TextBox ID="txt_amcParty" runat="server" ToolTip=" AMC Party " Width="230px" ></asp:TextBox>
+                                    <asp:TextBox ID="txt_amcParty" runat="server" ToolTip=" AMC Party " Width="230px"></asp:TextBox>
                                 </td>
                             </tr>
 
@@ -279,7 +293,9 @@
                                     <font size="2em">      AMC Start Date :</font>
                                 </td>
                                 <td align="left">
-                                    <asp:TextBox ID="txt_amcStart" runat="server" ToolTip=" AMC Start Date " Width="230px" TextMode="date"></asp:TextBox>
+                                    <asp:TextBox Width="230px" ID="txt_amcStart" runat="server"></asp:TextBox>
+                                    <asp:CalendarExtender ID="CalendarExtender4" runat="server"
+                                        Enabled="True" Format="yyyy/MM/dd" TargetControlID="txt_amcStart"></asp:CalendarExtender>
                                 </td>
                             </tr>
 
@@ -288,7 +304,9 @@
                                     <font size="2em">      AMC End Date :</font>
                                 </td>
                                 <td align="left">
-                                    <asp:TextBox ID="txt_amcEnd" runat="server" ToolTip=" AMC End Date " Width="230px" TextMode="date"></asp:TextBox>
+                                    <asp:TextBox Width="230px" ID="txt_amcEnd" runat="server"></asp:TextBox>
+                                    <asp:CalendarExtender ID="CalendarExtender5" runat="server"
+                                        Enabled="True" Format="yyyy/MM/dd" TargetControlID="txt_amcEnd"></asp:CalendarExtender>
                                 </td>
                             </tr>
 
@@ -297,7 +315,9 @@
                                     <font size="2em">      Warranty Start Date :</font>
                                 </td>
                                 <td align="left">
-                                    <asp:TextBox ID="txt_warStart" runat="server" ToolTip=" Warranty Start Date " Width="230px" TextMode="date"></asp:TextBox>
+                                    <asp:TextBox Width="230px" ID="txt_warStart" runat="server"></asp:TextBox>
+                                    <asp:CalendarExtender ID="CalendarExtender6" runat="server"
+                                        Enabled="True" Format="dd/MM/yyyy" TargetControlID="txt_warStart"></asp:CalendarExtender>
                                 </td>
                             </tr>
 
@@ -306,7 +326,9 @@
                                     <font size="2em">      Warranty End Date :</font>
                                 </td>
                                 <td align="left">
-                                    <asp:TextBox ID="txt_warEnd" runat="server" ToolTip=" Warranty End Date " Width="230px" TextMode="date"></asp:TextBox>
+                                    <asp:TextBox Width="230px" ID="txt_warEnd" runat="server"></asp:TextBox>
+                                    <asp:CalendarExtender ID="CalendarExtender7" runat="server"
+                                        Enabled="True" Format="yyyy/MM/dd" TargetControlID="txt_warEnd"></asp:CalendarExtender>
                                 </td>
                             </tr>
 
@@ -333,7 +355,9 @@
                                     <font size="2em">      Gatepass Registration Date :</font>
                                 </td>
                                 <td align="left">
-                                    <asp:TextBox ID="txt_gatePDate" runat="server" ToolTip=" Gatepass Registration Date " Width="230px" TextMode="date"></asp:TextBox>
+                                    <asp:TextBox Width="230px" ID="txt_gatePDate" runat="server"></asp:TextBox>
+                                    <asp:CalendarExtender ID="CalendarExtender8" runat="server"
+                                        Enabled="True" Format="yyyy/MM/dd" TargetControlID="txt_gatePDate"></asp:CalendarExtender>
                                 </td>
                             </tr>
 

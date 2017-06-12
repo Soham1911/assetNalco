@@ -118,6 +118,8 @@
     <Content Include="Asset_Pc.aspx" />
     <Content Include="Asset_Return.aspx" />
     <Content Include="Asset_Server.aspx" />
+    <Content Include="Asset_Success.aspx" />
+    <Content Include="call.aspx" />
     <Content Include="Content\Site.css" />
     <Content Include="Default.aspx" />
     <Content Include="Images\accent.png" />
@@ -145,6 +147,7 @@
     <Content Include="Scripts\jquery-ui-1.8.24.min.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Systems.aspx" />
+    <Content Include="test.aspx" />
     <Content Include="User.aspx" />
     <Content Include="ViewSwitcher.ascx" />
     <Content Include="Web.config" />
@@ -255,6 +258,20 @@
     <Compile Include="Asset_Server.aspx.designer.cs">
       <DependentUpon>Asset_Server.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Asset_Success.aspx.cs">
+      <DependentUpon>Asset_Success.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Asset_Success.aspx.designer.cs">
+      <DependentUpon>Asset_Success.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="call.aspx.cs">
+      <DependentUpon>call.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="call.aspx.designer.cs">
+      <DependentUpon>call.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -293,6 +310,13 @@
     </Compile>
     <Compile Include="Systems.Master.designer.cs">
       <DependentUpon>Systems.Master</DependentUpon>
+    </Compile>
+    <Compile Include="test.aspx.cs">
+      <DependentUpon>test.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="test.aspx.designer.cs">
+      <DependentUpon>test.aspx</DependentUpon>
     </Compile>
     <Compile Include="User.aspx.cs">
       <DependentUpon>User.aspx</DependentUpon>

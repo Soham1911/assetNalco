@@ -22,13 +22,7 @@ namespace assetManagement
         protected void btn_reg_Click(object sender, EventArgs e)
         {
             decimal poPrice=0;
-            DateTime intallDate = DateTime.Parse(txt_intallDate.Text);
-            DateTime issueDt = DateTime.Parse(txt_issueDt.Text);
-            DateTime amcStart = DateTime.Parse(txt_amcStart.Text);
-            DateTime amcEnd = DateTime.Parse(txt_amcEnd.Text);
-            DateTime warStart = DateTime.Parse(txt_warStart.Text);
-            DateTime warEnd = DateTime.Parse(txt_warEnd.Text);
-            DateTime gatePDate = DateTime.Parse(txt_gatePDate.Text);
+            
             try
             {
                 poPrice = System.Convert.ToDecimal(txt_poPrice.Text);
@@ -38,7 +32,7 @@ namespace assetManagement
               
             }
             OdbcCommand cmd = conn_asset.CreateCommand();
-            cmd.CommandText = "insert into ast_pc values('" + txt_unitCode.Text + "','" + txt_astCode.Text + "','" + txt_desc.Text + "','" + txt_make.Text + "','" + txt_model.Text + "','" + txt_categ.Text + "','" + txt_s_no.Text + "','" + txt_part_no.Text + "','" + txt_cust.Text + "','" + issueDt + "','" + txt_dept.Text + "','" + txt_location.Text + "','" + txt_subLocation.Text + "','" + txt_monSize.Text + "','" + txt_monRes.Text + "','" + txt_os.Text + "','" + txt_processor.Text + "','" + txt_ram.Text + "','" + txt_hdd.Text + "','" + txt_smps.Text + "','" + txt_graphics.Text + "','" + txt_ip.Text + "','" + txt_webcam.Text + "','" + txt_po_no.Text + "','" + txt_poDate.Text + "','" + txt_vendorCode.Text + "','" + poPrice + "','" + intallDate + "','" + txt_amcParty.Text + "','" + "Y" + "','" + amcStart + "','" + amcEnd + "','" + "Y" + "','" + warStart + "','" + warEnd + "','" + "N" + "','" + "NULL" + "','" + txt_gatePReg_no.Text + "','" + gatePDate + "','" + txt_gateP_no + "','" + txt_remarks.Text + "','" + "Y" +"')";
+            cmd.CommandText = "insert into ast_pc values('" + txt_unitCode.Text + "','" + txt_astCode.Text + "','" + txt_desc.Text + "','" + txt_make.Text + "','" + txt_model.Text + "','" + txt_categ.Text + "','" + txt_s_no.Text + "','" + txt_part_no.Text + "','" + txt_cust.Text + "','" + txt_issueDate.Text + "','" + txt_dept.Text + "','" + txt_location.Text + "','" + txt_subLocation.Text + "','" + txt_monSize.Text + "','" + txt_monRes.Text + "','" + txt_os.Text + "','" + txt_processor.Text + "','" + txt_ram.Text + "','" + txt_hdd.Text + "','" + txt_smps.Text + "','" + txt_graphics.Text + "','" + txt_ip.Text + "','" + "N" + "','" + txt_po_no.Text + "','" + txt_poDate.Text + "','" + txt_vendorCode.Text + "','" + poPrice + "','" + txt_installDate.Text + "','" + txt_amcParty.Text + "','" + "Y" + "','" + txt_amcStart.Text + "','" + txt_amcEnd.Text + "','" + "Y" + "','" + txt_warStart.Text + "','" + txt_warEnd.Text + "','" + "N" + "','" + "NULL" + "','" + txt_gatePReg_no.Text + "','" + txt_gatePDate.Text + "','" + txt_gateP_no + "','" + txt_remarks.Text + "','" + "Y" +"')";
             int check;
             conn_asset.Open();
             check = cmd.ExecuteNonQuery();

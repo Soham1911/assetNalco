@@ -112,13 +112,22 @@ namespace assetManagement {
         protected global::System.Web.UI.WebControls.TextBox txt_cust;
         
         /// <summary>
-        /// txt_issueDt control.
+        /// txt_issueDate control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txt_issueDt;
+        protected global::System.Web.UI.WebControls.TextBox txt_issueDate;
+        
+        /// <summary>
+        /// CalendarExtender1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::AjaxControlToolkit.CalendarExtender CalendarExtender1;
         
         /// <summary>
         /// txt_dept control.
@@ -229,13 +238,13 @@ namespace assetManagement {
         protected global::System.Web.UI.WebControls.TextBox txt_ip;
         
         /// <summary>
-        /// txt_webcam control.
+        /// yn control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txt_webcam;
+        protected global::System.Web.UI.WebControls.RadioButtonList yn;
         
         /// <summary>
         /// txt_po_no control.
@@ -256,6 +265,15 @@ namespace assetManagement {
         protected global::System.Web.UI.WebControls.TextBox txt_poDate;
         
         /// <summary>
+        /// CalendarExtender2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::AjaxControlToolkit.CalendarExtender CalendarExtender2;
+        
+        /// <summary>
         /// txt_poPrice control.
         /// </summary>
         /// <remarks>
@@ -274,13 +292,22 @@ namespace assetManagement {
         protected global::System.Web.UI.WebControls.TextBox txt_vendorCode;
         
         /// <summary>
-        /// txt_intallDate control.
+        /// txt_installDate control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txt_intallDate;
+        protected global::System.Web.UI.WebControls.TextBox txt_installDate;
+        
+        /// <summary>
+        /// CalendarExtender3 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::AjaxControlToolkit.CalendarExtender CalendarExtender3;
         
         /// <summary>
         /// txt_amcParty control.
@@ -301,6 +328,15 @@ namespace assetManagement {
         protected global::System.Web.UI.WebControls.TextBox txt_amcStart;
         
         /// <summary>
+        /// CalendarExtender4 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::AjaxControlToolkit.CalendarExtender CalendarExtender4;
+        
+        /// <summary>
         /// txt_amcEnd control.
         /// </summary>
         /// <remarks>
@@ -308,6 +344,15 @@ namespace assetManagement {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txt_amcEnd;
+        
+        /// <summary>
+        /// CalendarExtender5 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::AjaxControlToolkit.CalendarExtender CalendarExtender5;
         
         /// <summary>
         /// txt_warStart control.
@@ -319,6 +364,15 @@ namespace assetManagement {
         protected global::System.Web.UI.WebControls.TextBox txt_warStart;
         
         /// <summary>
+        /// CalendarExtender6 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::AjaxControlToolkit.CalendarExtender CalendarExtender6;
+        
+        /// <summary>
         /// txt_warEnd control.
         /// </summary>
         /// <remarks>
@@ -326,6 +380,15 @@ namespace assetManagement {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txt_warEnd;
+        
+        /// <summary>
+        /// CalendarExtender7 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::AjaxControlToolkit.CalendarExtender CalendarExtender7;
         
         /// <summary>
         /// txt_gatePReg_no control.
@@ -353,6 +416,15 @@ namespace assetManagement {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txt_gatePDate;
+        
+        /// <summary>
+        /// CalendarExtender8 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::AjaxControlToolkit.CalendarExtender CalendarExtender8;
         
         /// <summary>
         /// txt_remarks control.

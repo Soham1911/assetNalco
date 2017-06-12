@@ -11,33 +11,35 @@
 </head>
 <body>
     <form id="Form1" runat="server">
-    <div class="page">
-        <div class="header">
-            <div class="title">
-                <h1>
-                   NALCO Asset Management
-                </h1>
-            </div>
-            <div class="loginDisplay">
-            </div>
-            <div class="clear hideSkiplink">
-                <asp:Menu ID="NavigationMenu" runat="server" CssClass="menu" EnableViewState="false" IncludeStyleBlock="false" Orientation="Horizontal">
-                    <Items>
-                        <asp:MenuItem NavigateUrl="http://nalcorefinery/" Text="Nalcorefinery"/>                       
+        <div class="page">
+            <div class="header">
+                <div class="title">
+                    <h1>NALCO Asset Management
+                    </h1>
+                </div>
+                <div class="loginDisplay">
+                    <a href="Default.aspx" style="text-decoration:none">Logout</a>
+                </div>
+                <div class="clear hideSkiplink">
+                    <asp:Menu ID="NavigationMenu" runat="server" CssClass="menu" EnableViewState="false" IncludeStyleBlock="false" Orientation="Horizontal">
+                        <Items>
+                            <asp:MenuItem NavigateUrl="~/amcholder.aspx" Text="Home">
+                                
+                            </asp:MenuItem>                       
                       
-                    </Items>
-                </asp:Menu>
+                        </Items>
+                    </asp:Menu>
+                </div>
+            </div>
+            <div class="main">
+                <asp:ContentPlaceHolder ID="MainContent" runat="server" />
+            </div>
+            <div class="clear">
             </div>
         </div>
-        <div class="main">
-            <asp:ContentPlaceHolder ID="MainContent" runat="server"/>
+        <div class="footer">
+            Devaloped & Maintained by NALCO Refinery Systems Department.
         </div>
-        <div class="clear">
-        </div>
-    </div>
-    <div class="footer">
-        Devaloped & Maintained by NALCO Refinery Systems Department.
-    </div>
     </form>
 </body>
 </html>

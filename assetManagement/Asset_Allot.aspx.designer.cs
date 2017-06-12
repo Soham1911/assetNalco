@@ -49,22 +49,22 @@ namespace assetManagement {
         protected global::System.Web.UI.WebControls.TextBox txt_custPNO;
         
         /// <summary>
-        /// txt_issueDate control.
+        /// txt_date control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txt_issueDate;
+        protected global::System.Web.UI.WebControls.TextBox txt_date;
         
         /// <summary>
-        /// DropDownList1 control.
+        /// CalendarExtender1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropDownList1;
+        protected global::AjaxControlToolkit.CalendarExtender CalendarExtender1;
         
         /// <summary>
         /// btn_reg control.

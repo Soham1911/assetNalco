@@ -53,13 +53,13 @@ namespace assetManagement
             }
             else
             {
+                conn_asset.Close();
                 OdbcCommand cmd_asset3=conn_asset.CreateCommand();
                 cmd_asset3.CommandText="select password from amclogin where user_id='"+txt_uid.Text.Trim()+"' and password='"+txt_pass.Text.Trim()+"'";
                 conn_asset.Open();
                 OdbcDataReader dr2=cmd_asset3.ExecuteReader();
                 if(dr2.Read())
-                {
-                    conn_asset.Close();
+                {                  
                     Response.Cookies.Add(id);
                     Session["amc"] = txt_uid.Text.Trim();
                     Response.Redirect("Amcholder.aspx");
@@ -68,6 +68,7 @@ namespace assetManagement
                 {
                     lbl_error.Visible=true;
                 }
+                conn_asset.Close();
             }
         }
     }
