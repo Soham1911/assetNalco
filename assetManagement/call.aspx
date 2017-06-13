@@ -1,5 +1,6 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Systems.Master" AutoEventWireup="true" CodeBehind="call.aspx.cs" Inherits="assetManagement.call" %>
 
+
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
@@ -24,7 +25,7 @@
                         <asp:Label ID="lbl_no_recs" runat="server" Font-Bold="true" ForeColor="Red" Font-Size="Medium"
                             Visible="false"
                             Text="No Record available"></asp:Label>
-                        <asp:GridView ID="grid_display" runat="server" OnRowDataBound="GridView1_RowDataBound" 
+                        <asp:GridView ID="grid_display" runat="server" OnRowDataBound="GridView1_RowDataBound"
                             AutoGenerateColumns="False" Width="100%"
                             Font-Size="1.11em" PageSize="7"
                             CellPadding="4" ForeColor="#333333"
@@ -58,36 +59,35 @@
                                     <HeaderStyle HorizontalAlign="Center"></HeaderStyle>
                                 </asp:BoundField>
 
-                               <asp:TemplateField HeaderText="Status">
+                                <asp:TemplateField HeaderText="Status">
                                     <ItemTemplate>
-                                        <asp:Label ID="lbl_status" runat="server"  Visible="True" />
+                                        <asp:Label ID="lbl_status" runat="server" Visible="True" />
                                         <asp:DropDownList ID="callStat" runat="server">
-                                            <asp:ListItem Value="open" Text="O" />
-                                            <asp:ListItem Value="drop">D</asp:ListItem>
-                                            <asp:ListItem Value="close">C</asp:ListItem>
+                                            <asp:ListItem Value="o" Text="O" />
+                                            <asp:ListItem Value="d">D</asp:ListItem>
+                                            <asp:ListItem Value="c">C</asp:ListItem>
                                         </asp:DropDownList>
                                     </ItemTemplate>
                                 </asp:TemplateField>
                                 <asp:TemplateField HeaderText="Date of Closing">
                                     <ItemTemplate>
-                                        <asp:TextBox ID="txt_closingDate" runat="server" TextMode="date"></asp:TextBox>
-                                    </ItemTemplate>
+                                        </ItemTemplate>
                                 </asp:TemplateField>
-                                 <asp:TemplateField HeaderText="Allotted To">
+                                <asp:TemplateField HeaderText="Allotted To">
                                     <ItemTemplate>
                                         <asp:Label ID="lbl_allottedto" runat="server" Visible="True" />
-                                        <asp:DropDownList ID="allottedto"  runat="server" AppendDataBoundItems="True" AutoPostBack="false" DataTextField="id" DataValueField="id" Height="16px">
-                                                
-                                             <asp:ListItem Value="0">-- Select Name--</asp:ListItem>                                                                            
+                                        <asp:DropDownList ID="allottedto" runat="server" AppendDataBoundItems="True" AutoPostBack="false" DataTextField="id" DataValueField="id" Height="16px">
+
+                                            <asp:ListItem Value="0">-- Select Name--</asp:ListItem>
                                         </asp:DropDownList>
                                     </ItemTemplate>
                                 </asp:TemplateField>
                                 <asp:TemplateField HeaderText="Attended By">
                                     <ItemTemplate>
-                                         <asp:Label ID="lbl_attendedby" runat="server" Visible="True" />
-                                        <asp:DropDownList ID="attendedby"  runat="server" AppendDataBoundItems="True" AutoPostBack="false" DataTextField="id" DataValueField="id" Height="16px">
-                                                
-                                             <asp:ListItem Value="0">-- Select Name--</asp:ListItem>                                                                            
+                                        <asp:Label ID="lbl_attendedby" runat="server" Visible="True" />
+                                        <asp:DropDownList ID="attendedby" runat="server" AppendDataBoundItems="True" AutoPostBack="false" DataTextField="id" DataValueField="id" Height="16px">
+
+                                            <asp:ListItem Value="0">-- Select Name--</asp:ListItem>
                                         </asp:DropDownList>
                                     </ItemTemplate>
                                 </asp:TemplateField>
@@ -118,7 +118,7 @@
 
             </div>
             <br />
-            <asp:Button ID="btn_call" runat="server" Text="Save Changes" />
+            <asp:Button ID="btn_save" runat="server" Text="Save Changes" Font-Bold="True" ForeColor="#383E78" OnClick="btn_save_Click" />
             <br />
             <br />
             <br />

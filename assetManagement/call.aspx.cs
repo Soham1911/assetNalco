@@ -1,16 +1,13 @@
 ﻿using System;
-using System.Configuration;
-using System.Data;
+using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using System.Web.Security;
 using System.Web.UI;
-using System.Web.UI.HtmlControls;
 using System.Web.UI.WebControls;
-using System.Web.UI.WebControls.WebParts;
-using System.Xml.Linq;
+using System.Data;
 using System.Data.Odbc;
-using System.Data.SqlClient;
+using System.Configuration;
+using System.Net;
 
 
 
@@ -21,10 +18,12 @@ namespace assetManagement
     {
         static string connStr_asset = ConfigurationManager.ConnectionStrings["asset"].ConnectionString;
         OdbcConnection conn_asset = new OdbcConnection(connStr_asset);
-
+        string p_no = "default";
         protected void Page_Load(object sender, EventArgs e)
         {
-            BindData();
+            if (!IsPostBack)
+                BindData();
+            p_no = Session["systems"].ToString(); 
 
         }
 
@@ -75,18 +74,13 @@ namespace assetManagement
             }
             conn_asset.Close();
 
-           
 
-
-
-        }
-
-        protected void btn_cal(object sender, EventArgs e)
-        {
 
 
 
         }
+
+
         protected void GridView1_RowDataBound(object sender, GridViewRowEventArgs e)
         {
             if (e.Row.RowType == DataControlRowType.DataRow)
@@ -124,9 +118,45 @@ namespace assetManagement
                     DropDownList1.DataValueField = "user_id";
                     DropDownList1.DataBind();
                 }
-                
+
             }
-            
+
+        }
+
+        protected void btn_save_Click(object sender, EventArgs e)
+        {
+            int dr1 = 0;
+            foreach (GridViewRow item in grid_display.Rows)
+            {
+                string call_id = item.Cells[0].Text.ToString();
+                DropDownList attendedBy= (DropDownList)item.FindControl("attendedby");
+                string attendedby = attendedBy.SelectedValue.ToString();
+                DropDownList allotedTo = (DropDownList)item.FindControl("allottedto");
+                string allotedto = allotedTo.SelectedValue.ToString();
+                DropDownList callStat = (DropDownList)item.FindControl("callStat");
+                string status = callStat.SelectedValue.ToString();
+                TextBox remarks = item.FindControl("txt_remark") as TextBox;
+                TextBox txt_closingDate = item.FindControl("txt_closingDate") as TextBox;
+                string hostName = Dns.GetHostName(); // Retrive the Name of HOST
+                // Get the IP
+                string myIP = Dns.GetHostByName(hostName).AddressList[0].ToString();
+                OdbcCommand cmd = conn_asset.CreateCommand();
+                cmd.CommandText = "update ast_call set allotedTo = '" + allotedto.Trim() + "' , attendedBy = '" + attendedby.Trim() + "' , callStat = '" + status.Trim() + "' , remarks = '" + remarks.Text.Trim() + "', closingIP = '" + myIP.Trim() + "',closedBy='" + p_no.Trim() + "' where call_id = '" + call_id.Trim() + "'";
+               // cmd.CommandText = "update ast_call set remarks = '" + remarks.Text.Trim() + "' where call_id = '" + call_id + "'";
+                conn_asset.Open();
+                dr1 = cmd.ExecuteNonQuery();
+                conn_asset.Close();
+            }
+            if (dr1 == 1)
+            {
+                lbl_no_recs.Text = "Success";
+                lbl_no_recs.Visible = true;
+            }
+            else
+            {
+                lbl_no_recs.Text = "Failed";
+                lbl_no_recs.Visible = true;
+            }
         }
 
     }

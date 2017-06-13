@@ -22,9 +22,8 @@ namespace assetManagement
         }
         private void BindData()
         {
-            lbl_success.Visible = false;
             OdbcCommand cmd = conn_asset.CreateCommand();
-            cmd.CommandText = "select call_id,c.p_no as p_no,name,deptCode,location,subLoc,userDescription,contact_no from ast_call as c inner join ast_empMaster as e on c.p_no=e.p_no where callStat = 'o'";
+            cmd.CommandText = "select call_id,allotedTo,c.p_no as p_no,name,deptCode,location,subLoc,userDescription,contact_no from ast_call as c inner join ast_empMaster as e on c.p_no=e.p_no where callStat = 'o'";
             conn_asset.Open();
             OdbcDataReader dr = cmd.ExecuteReader();
 
@@ -38,7 +37,7 @@ namespace assetManagement
             dt.Columns.Add(new System.Data.DataColumn("subLoc", typeof(String)));
             dt.Columns.Add(new System.Data.DataColumn("userDescription", typeof(String)));
             dt.Columns.Add(new System.Data.DataColumn("contact_no", typeof(String)));
-
+            dt.Columns.Add(new System.Data.DataColumn("allotedTo", typeof(String)));
             while (dr.Read())
             {
                 newRow = dt.NewRow();
@@ -49,7 +48,7 @@ namespace assetManagement
                 newRow["subLoc"] = Convert.ToString(dr["subLoc"]);
                 newRow["userDescription"] = Convert.ToString(dr["userDescription"]);
                 newRow["contact_no"] = Convert.ToString(dr["contact_no"]);
-
+                newRow["allotedTo"] = Convert.ToString(dr["allotedTo"]);
                 dt.Rows.Add(newRow);
 
             }
@@ -82,10 +81,12 @@ namespace assetManagement
 
             call_id = row.Cells[1].Text.Trim();
             bool status = chkStatus.Checked;
-
+            string hostName = Dns.GetHostName(); // Retrive the Name of HOST
+            // Get the IP
+            string myIP = Dns.GetHostByName(hostName).AddressList[0].ToString();
 
             OdbcCommand cmd1 = conn_asset.CreateCommand();
-            cmd1.CommandText = "update ast_call set callStat = 'd' where call_id='" + call_id + "'";
+            cmd1.CommandText = "update ast_call set callStat = 'd' , droppingIP = '"+myIP.Trim()+"' where call_id='" + call_id + "'";
             conn_asset.Open();
             dr1 = cmd1.ExecuteNonQuery();
             conn_asset.Close();

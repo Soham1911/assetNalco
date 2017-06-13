@@ -11,7 +11,7 @@
         <div style="width: 60%;">
             <asp:Label ID="lbl_no_recs" runat="server" Font-Bold="true" ForeColor="Red" Font-Size="Medium"
                 Visible="false"
-                Text="No Record available"></asp:Label>
+                Text="*No Record available"></asp:Label>
             <asp:GridView ID="grid_display" runat="server" AutoGenerateColumns="false"
                 EditRowStyle-HorizontalAlign="Center" CellPadding="4" Visible="false"
                 ForeColor="#333333" GridLines="None" >
@@ -47,35 +47,7 @@
             </asp:GridView>
             <br />
             <br />
-            <div>
-
-                <asp:ScriptManager ID="ScriptManager2" runat="server">
-                </asp:ScriptManager>
-                <asp:UpdatePanel ID="UpdatePanel1" runat="server">
-                    <ContentTemplate>
-                        <fieldset>
-
-                            <div align="left">
-                                &nbsp; &nbsp; &nbsp;
-                                    <table>
-
-                                        <tr>
-                                            <td>
-                                                <asp:Button ID="btn_submit" runat="server" Text="Submit" Visible="true" Font-Bold="true"
-                                                    Width="129px" />
-                                            </td>
-                                            <td></td>
-                                        </tr>
-                                    </table>
-
-
-                                <asp:Label ID="lbl_success" runat="server" Text="Submitted Successfully" Visible="false" ForeColor="Green" Font-Size="Medium"></asp:Label>
-                            </div>
-                        </fieldset>
-                    </ContentTemplate>
-                </asp:UpdatePanel>
-            </div>
-
+   
         </div>
 
 
