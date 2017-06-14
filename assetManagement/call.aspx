@@ -1,5 +1,9 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Systems.Master" AutoEventWireup="true" CodeBehind="call.aspx.cs" Inherits="assetManagement.call" %>
 
+<%@ Register
+    Assembly="AjaxControlToolkit"
+    Namespace="AjaxControlToolkit"
+    TagPrefix="asp" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
 </asp:Content>
@@ -63,16 +67,19 @@
                                     <ItemTemplate>
                                         <asp:Label ID="lbl_status" runat="server" Visible="True" />
                                         <asp:DropDownList ID="callStat" runat="server">
-                                            <asp:ListItem Value="o" Text="O" />
-                                            <asp:ListItem Value="d">D</asp:ListItem>
-                                            <asp:ListItem Value="c">C</asp:ListItem>
+                                            <asp:ListItem Value="o" Text="o" />
+                                            <asp:ListItem Value="d">d</asp:ListItem>
+                                            <asp:ListItem Value="c">c</asp:ListItem>
                                         </asp:DropDownList>
                                     </ItemTemplate>
                                 </asp:TemplateField>
-                                <asp:TemplateField HeaderText="Date of Closing">
+                                <%--<asp:TemplateField HeaderText="Date of Closing">
                                     <ItemTemplate>
-                                        </ItemTemplate>
-                                </asp:TemplateField>
+                                        <asp:TextBox Width="230px" ID="txt_date" runat="server"></asp:TextBox>
+                                        <asp:CalendarExtender ID="CalendarExtender1" runat="server"
+                                            Enabled="True" Format="yyyy/MM/dd" TargetControlID="txt_date"></asp:CalendarExtender>
+                                    </ItemTemplate>
+                                </asp:TemplateField>--%>
                                 <asp:TemplateField HeaderText="Allotted To">
                                     <ItemTemplate>
                                         <asp:Label ID="lbl_allottedto" runat="server" Visible="True" />
@@ -122,7 +129,7 @@
             <br />
             <br />
             <br />
-
+            <asp:Label ID="lbl_error" runat="server" Text="Success" ForeColor="Green" Font-Bold="true" Font-Size="Large" Visible="false"></asp:Label>
         </div>
 
     </div>

@@ -23,8 +23,36 @@ namespace assetManagement
         {
             if (!IsPostBack)
                 BindData();
-            p_no = Session["systems"].ToString(); 
+            p_no = Session["systems"].ToString();
+            foreach (GridViewRow item in grid_display.Rows)
+            {
+                string call_id = item.Cells[0].Text.ToString();
+                OdbcCommand cmd = conn_asset.CreateCommand();
+                cmd.CommandText = "select * from ast_call where call_id ='"+call_id.Trim()+"'";
+                conn_asset.Open();
+                OdbcDataReader dr = cmd.ExecuteReader();
+                string call_stat = "o";
+                int flag = 0;
+                while (dr.Read())
+                {
+                    call_stat = dr["callStat"].ToString();
+                    flag = 1;
+                }
+                if(flag == 1)
+                {
+                    lbl_error.Visible = true;
+                    DropDownList callStat = (DropDownList)item.FindControl("callStat");
+                    callStat.DataTextField = call_stat.Trim();
+                }
+                else
+                {
 
+                    lbl_error.Text = "failed";
+                    lbl_error.Visible = true;
+                }
+                conn_asset.Close();
+                
+            }
         }
 
         protected void grid_display_SelectedIndexChanged(object sender, EventArgs e)
@@ -34,13 +62,15 @@ namespace assetManagement
         private void BindData()
         {
             OdbcCommand cmd = conn_asset.CreateCommand();
-            cmd.CommandText = "select call_id,p_no,astCode,openingDate,type from ast_call";
+            cmd.CommandText = "select call_id,p_no,astCode,openingDate,type,callStat from ast_call";
             conn_asset.Open();
             cmd.CommandType = CommandType.Text;
             DataTable dt = new DataTable();
+            
+            
             DataRow newRow;
             OdbcDataReader dr = cmd.ExecuteReader();
-
+           
 
             dt.Columns.Add(new System.Data.DataColumn("call_id", typeof(String)));
             dt.Columns.Add(new System.Data.DataColumn("p_no", typeof(String)));
@@ -57,7 +87,6 @@ namespace assetManagement
                 newRow["openingDate"] = Convert.ToString(dr["openingDate"]);
                 newRow["type"] = Convert.ToString(dr["type"]);
                 dt.Rows.Add(newRow);
-
             }
             if (dt.Rows.Count > 0)
             {

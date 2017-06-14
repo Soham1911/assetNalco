@@ -1,53 +1,78 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/User.Master" AutoEventWireup="true" CodeBehind="User.aspx.cs" Inherits="assetManagement.User1" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/User.Master" AutoEventWireup="true" CodeBehind="Status.aspx.cs" Inherits="assetManagement.Status" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
-
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
-
-  <div class="page" align="center">
+    <div class="page" align="center">
 
                 <div align="left">
 
 
                     <div style="width: 100%">               
-                        <asp:GridView ID="grid_display1" runat="server" 
+                        <asp:GridView ID="grid_display" runat="server" 
                             AutoGenerateColumns="False" Width="100%" 
                              Font-Size="1.11em" PageSize="7"
                             CellPadding="4" ForeColor="#333333"
                             GridLines="None" HorizontalAlign="Left" >
-                            <EditRowStyle BackColor="#999999" />
-                            <FooterStyle BackColor="#5D7B9D" Font-Bold="True" ForeColor="White" />
-                            <HeaderStyle BackColor="#5D7B9D" Font-Bold="True" ForeColor="White"
+                            <EditRowStyle BackColor="#2461BF" />
+                            <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
+                            <HeaderStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White"
                                 HorizontalAlign="Left" />
-                            <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
+                            <AlternatingRowStyle BackColor="White" />
                             <Columns>
 
-                                <asp:BoundField DataField="asset" HeaderText="Asset No."
+                                <asp:BoundField DataField="astCode" HeaderText="Asset No."
                                     ItemStyle-HorizontalAlign="Left" SortExpression="asset" HeaderStyle-HorizontalAlign="Left">
                                     <HeaderStyle HorizontalAlign="Left"></HeaderStyle>
+
+                                <ItemStyle HorizontalAlign="Left"></ItemStyle>
                                 </asp:BoundField>
   
-                                <asp:BoundField DataField="type" HeaderText="Type of Asset"
+                                <asp:BoundField DataField="category" HeaderText="Type of Asset"
                                     ItemStyle-HorizontalAlign="Left" SortExpression="type" HeaderStyle-HorizontalAlign="Left">
                                     <HeaderStyle HorizontalAlign="Left"></HeaderStyle>
+
+                                <ItemStyle HorizontalAlign="Left"></ItemStyle>
                                 </asp:BoundField>
-                                <asp:BoundField DataField="desc" HeaderText="Description"
+                                <asp:BoundField DataField="userDescription" HeaderText="Problem Description"
                                     ItemStyle-HorizontalAlign="Left" SortExpression="desc" HeaderStyle-HorizontalAlign="Center">
                                     <HeaderStyle HorizontalAlign="Left"></HeaderStyle>
+
+                                <ItemStyle HorizontalAlign="Left"></ItemStyle>
                                 </asp:BoundField>
-                                <asp:BoundField DataField="doa" HeaderText="Date of Allotment"
+                                <asp:BoundField DataField="type" HeaderText="Problem Type"
+                                    ItemStyle-HorizontalAlign="Left" SortExpression="desc" HeaderStyle-HorizontalAlign="Center">
+                                    <HeaderStyle HorizontalAlign="Left"></HeaderStyle>
+
+                                <ItemStyle HorizontalAlign="Left"></ItemStyle>
+                                </asp:BoundField>
+                                <asp:BoundField DataField="callStat" HeaderText="Call Status"
                                     ItemStyle-HorizontalAlign="Center" SortExpression="doa" HeaderStyle-HorizontalAlign="Left">
                                     <HeaderStyle HorizontalAlign="Center"></HeaderStyle>
+
+                                <ItemStyle HorizontalAlign="Center"></ItemStyle>
                                 </asp:BoundField>
+                                <asp:BoundField DataField="openingDate" HeaderText="Opening Date"
+                                    ItemStyle-HorizontalAlign="Center" SortExpression="doa" HeaderStyle-HorizontalAlign="Left">
+                                    <HeaderStyle HorizontalAlign="Center"></HeaderStyle>
+
+                                <ItemStyle HorizontalAlign="Center"></ItemStyle>
+                                </asp:BoundField>
+                                <asp:BoundField DataField="closingDate" HeaderText="Closing Date"
+                                    ItemStyle-HorizontalAlign="Center" SortExpression="doa" HeaderStyle-HorizontalAlign="Left">
+                                    <HeaderStyle HorizontalAlign="Center"></HeaderStyle>
+
+                                <ItemStyle HorizontalAlign="Center"></ItemStyle>
+                                </asp:BoundField>
+
                                
                             </Columns>
-                            <PagerStyle BackColor="#284775" ForeColor="White" HorizontalAlign="Center" />
-                            <RowStyle BackColor="#F7F6F3" ForeColor="#333333" />
-                            <SelectedRowStyle BackColor="#E2DED6" Font-Bold="True" ForeColor="#333333" />
-                            <SortedAscendingCellStyle BackColor="#E9E7E2" />
-                            <SortedAscendingHeaderStyle BackColor="#506C8C" />
-                            <SortedDescendingCellStyle BackColor="#FFFDF8" />
-                            <SortedDescendingHeaderStyle BackColor="#6F8DAE" />
+                            <PagerStyle BackColor="#2461BF" ForeColor="White" HorizontalAlign="Center" />
+                            <RowStyle BackColor="#EFF3FB" />
+                            <SelectedRowStyle BackColor="#D1DDF1" Font-Bold="True" ForeColor="#333333" />
+                            <SortedAscendingCellStyle BackColor="#F5F7FB" />
+                            <SortedAscendingHeaderStyle BackColor="#6D95E1" />
+                            <SortedDescendingCellStyle BackColor="#E9EBEF" />
+                            <SortedDescendingHeaderStyle BackColor="#4870BE" />
                         </asp:GridView>
                     </div>
 
@@ -96,7 +121,4 @@
             <br />
             <br />
 
-        
-
-    
 </asp:Content>

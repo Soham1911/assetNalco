@@ -10,16 +10,7 @@
 namespace assetManagement {
     
     
-    public partial class call {
-        
-        /// <summary>
-        /// lbl_no_recs control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbl_no_recs;
+    public partial class Status {
         
         /// <summary>
         /// grid_display control.
@@ -31,21 +22,12 @@ namespace assetManagement {
         protected global::System.Web.UI.WebControls.GridView grid_display;
         
         /// <summary>
-        /// btn_save control.
+        /// ScriptManager2 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btn_save;
-        
-        /// <summary>
-        /// lbl_error control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbl_error;
+        protected global::System.Web.UI.ScriptManager ScriptManager2;
     }
 }

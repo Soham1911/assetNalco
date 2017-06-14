@@ -76,13 +76,13 @@ namespace assetManagement {
         protected global::System.Web.UI.WebControls.TextBox txt_model;
         
         /// <summary>
-        /// txt_categ control.
+        /// category control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txt_categ;
+        protected global::System.Web.UI.WebControls.DropDownList category;
         
         /// <summary>
         /// txt_s_no control.
@@ -238,13 +238,13 @@ namespace assetManagement {
         protected global::System.Web.UI.WebControls.TextBox txt_ip;
         
         /// <summary>
-        /// yn control.
+        /// rdbtn_webcam control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButtonList yn;
+        protected global::System.Web.UI.WebControls.RadioButtonList rdbtn_webcam;
         
         /// <summary>
         /// txt_po_no control.

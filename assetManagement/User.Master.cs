@@ -4,6 +4,9 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Configuration;
+using System.Data;
+using System.Data.Odbc;
 
 namespace assetManagement
 {
@@ -25,6 +28,9 @@ namespace assetManagement
                     Session["user"] = pers_no;
                 }
             }
+
         }
+       
+        
     }
 }

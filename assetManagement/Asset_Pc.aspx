@@ -66,7 +66,13 @@
                                     <font size="2em">      Category :</font>
                                 </td>
                                 <td align="left">
-                                    <asp:TextBox ID="txt_categ" runat="server" ToolTip=" Category " Width="230px"></asp:TextBox>
+                                    <asp:DropDownList ID="category" runat="server" Width="230px">
+                                            <asp:ListItem Value="pc">PC/Laptop</asp:ListItem>
+                                            <asp:ListItem Value="nwitem">Network Item</asp:ListItem>
+                                            <asp:ListItem Value="server">Server</asp:ListItem>
+                                            <asp:ListItem Value="printer">Printer/Scanner</asp:ListItem>
+                                            <asp:ListItem Value="other">Other</asp:ListItem>
+                                        </asp:DropDownList>
                                 </td>
                             </tr>
 
@@ -221,10 +227,10 @@
                                     <font size="2em">      Webcam :</font>
                                 </td>
                                 <td align="left">
-                                    <asp:RadioButtonList ID="yn" runat="server" RepeatDirection="Horizontal"
+                                    <asp:RadioButtonList ID="rdbtn_webcam" runat="server" RepeatDirection="Horizontal"
                                         RepeatLayout="Table" TextAlign="Right" Font-Bold="True" ForeColor="#18562b">
-                                        <asp:ListItem Text="Yes" Value="Yes" Selected="True" />
-                                        <asp:ListItem Text="No" Value="No" />
+                                        <asp:ListItem Text="Yes" Value="Y" Selected="True" />
+                                        <asp:ListItem Text="No" Value="N" />
                                     </asp:RadioButtonList>
                                 </td>
                             </tr>

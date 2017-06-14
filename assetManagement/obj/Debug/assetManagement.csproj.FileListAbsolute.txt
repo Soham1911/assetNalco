@@ -29,3 +29,34 @@ c:\users\soham kadam\documents\visual studio 2013\Projects\assetManagement\asset
 c:\users\soham kadam\documents\visual studio 2013\Projects\assetManagement\assetManagement\obj\Debug\assetManagement.dll
 c:\users\soham kadam\documents\visual studio 2013\Projects\assetManagement\assetManagement\obj\Debug\assetManagement.pdb
 c:\users\soham kadam\documents\visual studio 2013\Projects\assetManagement\assetManagement\obj\Debug\assetManagement.csprojResolveAssemblyReference.cache
+C:\Users\Soham Kadam\Desktop\assetManagement\assetManagement\bin\assetManagement.dll.config
+C:\Users\Soham Kadam\Desktop\assetManagement\assetManagement\bin\assetManagement.dll
+C:\Users\Soham Kadam\Desktop\assetManagement\assetManagement\bin\assetManagement.pdb
+C:\Users\Soham Kadam\Desktop\assetManagement\assetManagement\bin\AjaxControlToolkit.dll
+C:\Users\Soham Kadam\Desktop\assetManagement\assetManagement\bin\AspNet.ScriptManager.jQuery.dll
+C:\Users\Soham Kadam\Desktop\assetManagement\assetManagement\bin\AspNet.ScriptManager.jQuery.UI.Combined.dll
+C:\Users\Soham Kadam\Desktop\assetManagement\assetManagement\bin\DotNetOpenAuth.AspNet.dll
+C:\Users\Soham Kadam\Desktop\assetManagement\assetManagement\bin\DotNetOpenAuth.Core.dll
+C:\Users\Soham Kadam\Desktop\assetManagement\assetManagement\bin\DotNetOpenAuth.OAuth.Consumer.dll
+C:\Users\Soham Kadam\Desktop\assetManagement\assetManagement\bin\DotNetOpenAuth.OAuth.dll
+C:\Users\Soham Kadam\Desktop\assetManagement\assetManagement\bin\DotNetOpenAuth.OpenId.dll
+C:\Users\Soham Kadam\Desktop\assetManagement\assetManagement\bin\DotNetOpenAuth.OpenId.RelyingParty.dll
+C:\Users\Soham Kadam\Desktop\assetManagement\assetManagement\bin\EntityFramework.dll
+C:\Users\Soham Kadam\Desktop\assetManagement\assetManagement\bin\Microsoft.AspNet.FriendlyUrls.dll
+C:\Users\Soham Kadam\Desktop\assetManagement\assetManagement\bin\Microsoft.AspNet.Membership.OpenAuth.dll
+C:\Users\Soham Kadam\Desktop\assetManagement\assetManagement\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\Soham Kadam\Desktop\assetManagement\assetManagement\bin\System.Web.Providers.dll
+C:\Users\Soham Kadam\Desktop\assetManagement\assetManagement\bin\System.Net.Http.dll
+C:\Users\Soham Kadam\Desktop\assetManagement\assetManagement\bin\EntityFramework.xml
+C:\Users\Soham Kadam\Desktop\assetManagement\assetManagement\bin\DotNetOpenAuth.Core.xml
+C:\Users\Soham Kadam\Desktop\assetManagement\assetManagement\bin\DotNetOpenAuth.OAuth.xml
+C:\Users\Soham Kadam\Desktop\assetManagement\assetManagement\bin\DotNetOpenAuth.OAuth.Consumer.xml
+C:\Users\Soham Kadam\Desktop\assetManagement\assetManagement\bin\DotNetOpenAuth.OpenId.xml
+C:\Users\Soham Kadam\Desktop\assetManagement\assetManagement\bin\DotNetOpenAuth.OpenId.RelyingParty.xml
+C:\Users\Soham Kadam\Desktop\assetManagement\assetManagement\bin\DotNetOpenAuth.AspNet.xml
+C:\Users\Soham Kadam\Desktop\assetManagement\assetManagement\bin\Microsoft.AspNet.Membership.OpenAuth.xml
+C:\Users\Soham Kadam\Desktop\assetManagement\assetManagement\bin\Microsoft.AspNet.FriendlyUrls.xml
+C:\Users\Soham Kadam\Desktop\assetManagement\assetManagement\bin\System.Net.Http.xml
+C:\Users\Soham Kadam\Desktop\assetManagement\assetManagement\obj\Debug\assetManagement.dll
+C:\Users\Soham Kadam\Desktop\assetManagement\assetManagement\obj\Debug\assetManagement.pdb
+C:\Users\Soham Kadam\Desktop\assetManagement\assetManagement\obj\Debug\assetManagement.csprojResolveAssemblyReference.cache

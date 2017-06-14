@@ -17,13 +17,19 @@ namespace assetManagement
         string p_no = "default";
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            lbl_astType.Visible = false;
+            lbl_custName.Visible = false;
+            lbl_custPNo.Visible = false;
+            lbl_dept.Visible = false;
+            lbl_error.Visible = false;
+            lbl_invalid.Visible = false;
+            lbl_location.Visible = false;
+            txt_retDate.Enabled = false;
+            btn_ret.Enabled = false;
         }
 
         protected void btn_search_Click(object sender, EventArgs e)
         {
-            lbl_error.Visible = false;
-            lbl_invalid.Visible = false;
             int flg = 0;
             //searching for asset
             OdbcCommand cmd = conn_asset.CreateCommand();
@@ -33,8 +39,7 @@ namespace assetManagement
             
             while (dr.Read())
             {
-                lbl_astCode.Text = dr["astCode"].ToString();
-                lbl_astCode.Visible = true;
+
                 lbl_astType.Text = dr["category"].ToString();
                 lbl_astType.Visible = true;
                 p_no = dr["custodian"].ToString();
@@ -58,8 +63,8 @@ namespace assetManagement
                 {
                     lbl_custName.Text = dr1["name"].ToString();
                     lbl_custName.Visible = true;
-                    lbl_error.Text = "Success";
-                    lbl_error.Visible = true;
+                    txt_retDate.Enabled = true;
+                    btn_ret.Enabled = true;
                 }
                 conn_asset.Close();
                 if(lbl_dept.Text == "systems")
@@ -67,21 +72,25 @@ namespace assetManagement
                     lbl_error.ForeColor = System.Drawing.Color.Orange;
                     lbl_error.Text = "Already in Systems";
                     lbl_error.Visible = true;
+                    txt_retDate.Enabled = false;
+                    btn_ret.Enabled = false;
                 }
             }
             else
             {
                 lbl_invalid.Text = "Invalid Asset Code";
                 lbl_invalid.Visible = true;
+                txt_retDate.Enabled = false;
+                btn_ret.Enabled = false;
             }
         }
-
+ 
         protected void btn_ret_Click(object sender, EventArgs e)
         {
             lbl_error.Visible = false;
             //update ast_pc
             OdbcCommand cmdd = conn_asset.CreateCommand();
-            cmdd.CommandText = "update ast_pc set dept='" + "systems" + "', location='" + "systems" + "', subLoc='" + "store" + "'  where astCode='" + txt_astCode.Text.Trim() + "'";
+            cmdd.CommandText = "update ast_pc set dept='" + "systems" + "', location='" + "systems" + "', subLoc='" + "store" + "',custodian='"+"systems"+"'  where astCode='" + txt_astCode.Text.Trim() + "'";
             conn_asset.Open();
             int dr4 = cmdd.ExecuteNonQuery();
             conn_asset.Close();
@@ -96,12 +105,16 @@ namespace assetManagement
                 lbl_error.ForeColor = System.Drawing.Color.Green;
                 lbl_error.Text = "Returned successfully...";
                 lbl_error.Visible = true;
-                lbl_astCode.Visible = false;
                 lbl_astType.Visible = false;
+                lbl_custName.Visible = false;
                 lbl_custPNo.Visible = false;
                 lbl_dept.Visible = false;
+                lbl_invalid.Visible = false;
                 lbl_location.Visible = false;
-                lbl_custName.Visible = false;
+                txt_retDate.Enabled = false;
+                btn_ret.Enabled = false;
+                txt_astCode.Text = "";
+                txt_retDate.Text = "";
             }
             else 
             {

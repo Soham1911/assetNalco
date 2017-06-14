@@ -58,15 +58,14 @@ namespace assetManagement
                     if (check == 1)
                     {
                         conn_asset.Close();
-                        lbl_error.ForeColor = System.Drawing.Color.Green;
-                        lbl_error.Text ="Alloted successfully...";
-                        lbl_error.Visible = true;
+                        
                     }
                     else
                     {
                         lbl_error.ForeColor = System.Drawing.Color.Red;
                         lbl_error.Text = "Failed";
                         lbl_error.Visible = true;
+                        txt_date.Text = "";
                     }
                     //get values from ast_empMaster
                     string Location = "default";
@@ -74,7 +73,7 @@ namespace assetManagement
                     string Department = "default";
                 
                     OdbcCommand cmdc = conn_asset.CreateCommand();
-                    OdbcCommand cmdd = conn_asset.CreateCommand();
+                    
                     cmdc.CommandText = "select * from ast_empMaster where p_no ='" + txt_custPNO.Text.Trim() + "'";
 
                     conn_asset.Open();
@@ -89,16 +88,35 @@ namespace assetManagement
                     }
                     conn_asset.Close();
                     //update ast_pc
-                    cmdd.CommandText = "update ast_pc set dept='" + Department + "', location='" + Location + "', subLoc='" + Sublocation + "'  where astCode='" + txt_astCode.Text.Trim() + "'";
+                    OdbcCommand cmdd = conn_asset.CreateCommand();
+                    cmdd.CommandText = "update ast_pc set dept='" + Department + "', location='" + Location + "', subLoc='" + Sublocation + "',custodian='"+txt_custPNO.Text.Trim()+"' where astCode='" + txt_astCode.Text.Trim() + "'";
                     conn_asset.Open();
                     int dr4 = cmdd.ExecuteNonQuery();
-                    conn_asset.Close();       
+                    conn_asset.Close(); 
+                    if(dr4 == 1)
+                    {
+                        lbl_error.ForeColor = System.Drawing.Color.Green;
+                        lbl_error.Text = "Alloted successfully...";
+                        lbl_error.Visible = true;
+                        txt_date.Text = "";
+                        txt_astCode.Text = "";
+                        txt_custPNO.Text = "";
+                    }
+                    else
+                    {
+                        lbl_error.Text = Department;
+                        lbl_error.Visible = true;
+                        txt_astCode.Text = "";
+                        txt_custPNO.Text = "";
+
+                    }
                 }
                 else
                 {
                     lbl_error.ForeColor = System.Drawing.Color.Orange;
                     lbl_error.Text = "Asset is not available";
                     lbl_error.Visible = true;
+                    txt_astCode.Text = "";
                 }
             }
             else
@@ -106,6 +124,7 @@ namespace assetManagement
                 lbl_error.ForeColor = System.Drawing.Color.Red;
                 lbl_error.Text = "Invalid Asset Code";
                 lbl_error.Visible = true;
+                txt_astCode.Text = "";
             }
         }
     }

@@ -120,6 +120,7 @@
     <Content Include="Asset_Server.aspx" />
     <Content Include="Asset_Success.aspx" />
     <Content Include="call.aspx" />
+    <Content Include="Complaints.aspx" />
     <Content Include="Content\Site.css" />
     <Content Include="Default.aspx" />
     <Content Include="Images\accent.png" />
@@ -146,6 +147,7 @@
     <Content Include="Scripts\jquery-ui-1.8.24.js" />
     <Content Include="Scripts\jquery-ui-1.8.24.min.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="Status.aspx" />
     <Content Include="Systems.aspx" />
     <Content Include="test.aspx" />
     <Content Include="User.aspx" />
@@ -272,6 +274,13 @@
     <Compile Include="call.aspx.designer.cs">
       <DependentUpon>call.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Complaints.aspx.cs">
+      <DependentUpon>Complaints.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Complaints.aspx.designer.cs">
+      <DependentUpon>Complaints.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -296,6 +305,13 @@
     </Compile>
     <Compile Include="Site.Mobile.Master.designer.cs">
       <DependentUpon>Site.Mobile.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Status.aspx.cs">
+      <DependentUpon>Status.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Status.aspx.designer.cs">
+      <DependentUpon>Status.aspx</DependentUpon>
     </Compile>
     <Compile Include="Systems.aspx.cs">
       <DependentUpon>Systems.aspx</DependentUpon>

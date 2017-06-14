@@ -37,14 +37,6 @@
                                 <td></td>
                                 <td></td>
                             </tr>
-                            <tr>
-                                <td align="right">
-                                    <font size="2em" style="font-weight: 700">       Asset Code :</font>
-                                </td>
-                                <td align="left">
-                                    <asp:Label ID="lbl_astCode" runat="server" Text="" Font-Bold="true" Font-Size="Large" Visible="false" style="font-size: medium"></asp:Label>
-                                </td>
-                            </tr>
 
                             <tr>
                                 <td align="right">
