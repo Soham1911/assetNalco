@@ -14,23 +14,26 @@
                 Text="*No Record available"></asp:Label>
             <asp:GridView ID="grid_display" runat="server" AutoGenerateColumns="false"
                 EditRowStyle-HorizontalAlign="Center" CellPadding="4" Visible="false"
-                ForeColor="#333333" GridLines="None" >
+                ForeColor="#333333" GridLines="None">
                 <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
                 <Columns>
-                   
-                    <asp:TemplateField>
-                        <ItemTemplate>
-                            <asp:CheckBox runat="server" id="chk_call" AutoPostBack="true" OnCheckedChanged="chk_call_CheckedChanged"/>
-                        </ItemTemplate>
-                    </asp:TemplateField>
                     <asp:BoundField DataField="call_id" HeaderText="Call ID" SortExpression="call_id" />
-                    <asp:BoundField DataField="name" HeaderText="name" SortExpression="name" />
+                    <asp:BoundField DataField="name" HeaderText="Name" SortExpression="Name" />
                     <asp:BoundField DataField="deptCode" HeaderText="Department" SortExpression="deptCode" />
                     <asp:BoundField DataField="location" HeaderText="Location" SortExpression="location" />
                     <asp:BoundField DataField="subLoc" HeaderText="Sub-Location" SortExpression="subLoc" />
                     <asp:BoundField DataField="userDescription" HeaderText="Description" SortExpression="userDescription" />
                     <asp:BoundField DataField="contact_no" HeaderText="Contact" SortExpression="contact_no" />
-                    <asp:BoundField DataField="allotedTo" HeaderText="Alloted To" SortExpression="contact_no" />
+                    <asp:TemplateField HeaderText="Status">
+                        <ItemTemplate>
+                            <asp:Label ID="lbl_status" runat="server" Visible="True" />
+                            <asp:DropDownList ID="callStat" runat="server">
+                                <asp:ListItem Value="o" Text="o" />
+                                <asp:ListItem Value="d">d</asp:ListItem>
+                            </asp:DropDownList>
+                        </ItemTemplate>
+                    </asp:TemplateField>
+
                 </Columns>
 
                 <EditRowStyle HorizontalAlign="Center" BackColor="#999999"></EditRowStyle>
@@ -47,13 +50,19 @@
             </asp:GridView>
             <br />
             <br />
-   
+
         </div>
 
+        <br />
+        <asp:Button ID="btn_save" runat="server" Text="Save Changes" Font-Bold="True" ForeColor="#383E78" OnClick="btn_save_Click" />
+        <br />
+        <br />
+        <br />
+        <asp:Label ID="lbl_error" runat="server" Text="Success" ForeColor="Green" Font-Bold="true" Font-Size="Large" Visible="false"></asp:Label>
 
         <div align="left">
         </div>
 
     </div>
-  
+
 </asp:Content>

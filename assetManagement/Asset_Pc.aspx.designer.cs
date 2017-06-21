@@ -31,13 +31,13 @@ namespace assetManagement {
         protected global::System.Web.UI.UpdatePanel UpdatePanel1;
         
         /// <summary>
-        /// txt_unitCode control.
+        /// RequiredFieldValidator1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txt_unitCode;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator1;
         
         /// <summary>
         /// txt_astCode control.
@@ -47,6 +47,24 @@ namespace assetManagement {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txt_astCode;
+        
+        /// <summary>
+        /// lbl_astCode control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbl_astCode;
+        
+        /// <summary>
+        /// txt_categ control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txt_categ;
         
         /// <summary>
         /// txt_desc control.
@@ -76,15 +94,6 @@ namespace assetManagement {
         protected global::System.Web.UI.WebControls.TextBox txt_model;
         
         /// <summary>
-        /// category control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList category;
-        
-        /// <summary>
         /// txt_s_no control.
         /// </summary>
         /// <remarks>
@@ -94,6 +103,15 @@ namespace assetManagement {
         protected global::System.Web.UI.WebControls.TextBox txt_s_no;
         
         /// <summary>
+        /// lbl_s_no control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbl_s_no;
+        
+        /// <summary>
         /// txt_part_no control.
         /// </summary>
         /// <remarks>
@@ -101,15 +119,6 @@ namespace assetManagement {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txt_part_no;
-        
-        /// <summary>
-        /// txt_cust control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txt_cust;
         
         /// <summary>
         /// txt_issueDate control.
@@ -130,33 +139,6 @@ namespace assetManagement {
         protected global::AjaxControlToolkit.CalendarExtender CalendarExtender1;
         
         /// <summary>
-        /// txt_dept control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txt_dept;
-        
-        /// <summary>
-        /// txt_location control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txt_location;
-        
-        /// <summary>
-        /// txt_subLocation control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txt_subLocation;
-        
-        /// <summary>
         /// txt_monSize control.
         /// </summary>
         /// <remarks>
@@ -166,13 +148,13 @@ namespace assetManagement {
         protected global::System.Web.UI.WebControls.TextBox txt_monSize;
         
         /// <summary>
-        /// txt_monRes control.
+        /// drp_monRes control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txt_monRes;
+        protected global::System.Web.UI.WebControls.DropDownList drp_monRes;
         
         /// <summary>
         /// txt_os control.
@@ -184,13 +166,22 @@ namespace assetManagement {
         protected global::System.Web.UI.WebControls.TextBox txt_os;
         
         /// <summary>
-        /// txt_processor control.
+        /// txt_sp control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txt_processor;
+        protected global::System.Web.UI.WebControls.TextBox txt_sp;
+        
+        /// <summary>
+        /// drp_proc control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList drp_proc;
         
         /// <summary>
         /// txt_ram control.
@@ -211,15 +202,6 @@ namespace assetManagement {
         protected global::System.Web.UI.WebControls.TextBox txt_hdd;
         
         /// <summary>
-        /// txt_smps control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txt_smps;
-        
-        /// <summary>
         /// txt_graphics control.
         /// </summary>
         /// <remarks>
@@ -238,6 +220,69 @@ namespace assetManagement {
         protected global::System.Web.UI.WebControls.TextBox txt_ip;
         
         /// <summary>
+        /// txt_keyboardMake control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txt_keyboardMake;
+        
+        /// <summary>
+        /// txt_keyboard_s_no control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txt_keyboard_s_no;
+        
+        /// <summary>
+        /// txt_mouseMake control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txt_mouseMake;
+        
+        /// <summary>
+        /// txt_mouse_s_no control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txt_mouse_s_no;
+        
+        /// <summary>
+        /// txt_ibmNotes control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txt_ibmNotes;
+        
+        /// <summary>
+        /// drp_msOffice control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList drp_msOffice;
+        
+        /// <summary>
+        /// rdbtn_antiVirus control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RadioButtonList rdbtn_antiVirus;
+        
+        /// <summary>
         /// rdbtn_webcam control.
         /// </summary>
         /// <remarks>
@@ -245,6 +290,33 @@ namespace assetManagement {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RadioButtonList rdbtn_webcam;
+        
+        /// <summary>
+        /// rdbtn_lanStat control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RadioButtonList rdbtn_lanStat;
+        
+        /// <summary>
+        /// txt_domain control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txt_domain;
+        
+        /// <summary>
+        /// txt_domainUser control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txt_domainUser;
         
         /// <summary>
         /// txt_po_no control.
@@ -310,51 +382,6 @@ namespace assetManagement {
         protected global::AjaxControlToolkit.CalendarExtender CalendarExtender3;
         
         /// <summary>
-        /// txt_amcParty control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txt_amcParty;
-        
-        /// <summary>
-        /// txt_amcStart control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txt_amcStart;
-        
-        /// <summary>
-        /// CalendarExtender4 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::AjaxControlToolkit.CalendarExtender CalendarExtender4;
-        
-        /// <summary>
-        /// txt_amcEnd control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txt_amcEnd;
-        
-        /// <summary>
-        /// CalendarExtender5 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::AjaxControlToolkit.CalendarExtender CalendarExtender5;
-        
-        /// <summary>
         /// txt_warStart control.
         /// </summary>
         /// <remarks>
@@ -389,42 +416,6 @@ namespace assetManagement {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::AjaxControlToolkit.CalendarExtender CalendarExtender7;
-        
-        /// <summary>
-        /// txt_gatePReg_no control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txt_gatePReg_no;
-        
-        /// <summary>
-        /// txt_gateP_no control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txt_gateP_no;
-        
-        /// <summary>
-        /// txt_gatePDate control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txt_gatePDate;
-        
-        /// <summary>
-        /// CalendarExtender8 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::AjaxControlToolkit.CalendarExtender CalendarExtender8;
         
         /// <summary>
         /// txt_remarks control.

@@ -26,7 +26,7 @@
                          <td >
                              
                                  
-                             <asp:DropDownList ID="Drp_1" DataTextField="astCode" runat="server">
+                             <asp:DropDownList ID="Drp_1" DataTextField="astCode" DataValueField ="astCode" runat="server">
 
                              </asp:DropDownList>
                              

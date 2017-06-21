@@ -119,13 +119,17 @@
     <Content Include="Asset_Return.aspx" />
     <Content Include="Asset_Server.aspx" />
     <Content Include="Asset_Success.aspx" />
+    <Content Include="ast_master.css" />
     <Content Include="call.aspx" />
     <Content Include="Complaints.aspx" />
     <Content Include="Content\Site.css" />
     <Content Include="Default.aspx" />
+    <Content Include="Images\09654.jpg" />
+    <Content Include="Images\09682.jpg" />
     <Content Include="Images\accent.png" />
     <Content Include="Images\bullet.png" />
     <Content Include="Images\Desert.jpg" />
+    <Content Include="Images\09652.jpg" />
     <Content Include="Images\heroAccent.png" />
     <Content Include="Images\orderedList0.png" />
     <Content Include="Images\orderedList1.png" />

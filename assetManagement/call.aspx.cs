@@ -24,35 +24,6 @@ namespace assetManagement
             if (!IsPostBack)
                 BindData();
             p_no = Session["systems"].ToString();
-            foreach (GridViewRow item in grid_display.Rows)
-            {
-                string call_id = item.Cells[0].Text.ToString();
-                OdbcCommand cmd = conn_asset.CreateCommand();
-                cmd.CommandText = "select * from ast_call where call_id ='"+call_id.Trim()+"'";
-                conn_asset.Open();
-                OdbcDataReader dr = cmd.ExecuteReader();
-                string call_stat = "o";
-                int flag = 0;
-                while (dr.Read())
-                {
-                    call_stat = dr["callStat"].ToString();
-                    flag = 1;
-                }
-                if(flag == 1)
-                {
-                    lbl_error.Visible = true;
-                    DropDownList callStat = (DropDownList)item.FindControl("callStat");
-                    callStat.DataTextField = call_stat.Trim();
-                }
-                else
-                {
-
-                    lbl_error.Text = "failed";
-                    lbl_error.Visible = true;
-                }
-                conn_asset.Close();
-                
-            }
         }
 
         protected void grid_display_SelectedIndexChanged(object sender, EventArgs e)
@@ -72,20 +43,22 @@ namespace assetManagement
             OdbcDataReader dr = cmd.ExecuteReader();
            
 
-            dt.Columns.Add(new System.Data.DataColumn("call_id", typeof(String)));
+            dt.Columns.Add(new System.Data.DataColumn("call_id", typeof(Int32)));
             dt.Columns.Add(new System.Data.DataColumn("p_no", typeof(String)));
             dt.Columns.Add(new System.Data.DataColumn("astCode", typeof(String)));
             dt.Columns.Add(new System.Data.DataColumn("openingDate", typeof(String)));
             dt.Columns.Add(new System.Data.DataColumn("type", typeof(String)));
+            dt.Columns.Add(new System.Data.DataColumn("callStat", typeof(String)));
 
             while (dr.Read())
             {
                 newRow = dt.NewRow();
-                newRow["call_id"] = Convert.ToString(dr["call_id"]);
+                newRow["call_id"] = Convert.ToInt32(dr["call_id"]);
                 newRow["p_no"] = Convert.ToString(dr["p_no"]);
                 newRow["astCode"] = Convert.ToString(dr["astCode"]);
                 newRow["openingDate"] = Convert.ToString(dr["openingDate"]);
                 newRow["type"] = Convert.ToString(dr["type"]);
+                newRow["callStat"] = Convert.ToString(dr["callStat"]);
                 dt.Rows.Add(newRow);
             }
             if (dt.Rows.Count > 0)
@@ -157,7 +130,8 @@ namespace assetManagement
             int dr1 = 0;
             foreach (GridViewRow item in grid_display.Rows)
             {
-                string call_id = item.Cells[0].Text.ToString();
+                string call_id1 = item.Cells[0].Text.ToString();
+                int call_id = Convert.ToInt32(call_id1);
                 DropDownList attendedBy= (DropDownList)item.FindControl("attendedby");
                 string attendedby = attendedBy.SelectedValue.ToString();
                 DropDownList allotedTo = (DropDownList)item.FindControl("allottedto");
@@ -165,19 +139,21 @@ namespace assetManagement
                 DropDownList callStat = (DropDownList)item.FindControl("callStat");
                 string status = callStat.SelectedValue.ToString();
                 TextBox remarks = item.FindControl("txt_remark") as TextBox;
-                TextBox txt_closingDate = item.FindControl("txt_closingDate") as TextBox;
+                string date = DateTime.Now.ToString("yyyy/MM/dd");
                 string hostName = Dns.GetHostName(); // Retrive the Name of HOST
                 // Get the IP
                 string myIP = Dns.GetHostByName(hostName).AddressList[0].ToString();
                 OdbcCommand cmd = conn_asset.CreateCommand();
-                cmd.CommandText = "update ast_call set allotedTo = '" + allotedto.Trim() + "' , attendedBy = '" + attendedby.Trim() + "' , callStat = '" + status.Trim() + "' , remarks = '" + remarks.Text.Trim() + "', closingIP = '" + myIP.Trim() + "',closedBy='" + p_no.Trim() + "' where call_id = '" + call_id.Trim() + "'";
+                cmd.CommandText = "update ast_call set allotedTo = '" + allotedto.Trim() + "' , attendedBy = '" + attendedby.Trim() + "' , callStat = '" + status.Trim() + "' , remarks = '" + remarks.Text.Trim() + "', closingIP = '" + myIP.Trim() + "',closedBy='" + p_no.Trim() + "',closingDate = '"+date+"' where call_id = '"+call_id+"'";
                // cmd.CommandText = "update ast_call set remarks = '" + remarks.Text.Trim() + "' where call_id = '" + call_id + "'";
                 conn_asset.Open();
                 dr1 = cmd.ExecuteNonQuery();
                 conn_asset.Close();
+                BindData();
             }
             if (dr1 == 1)
             {
+                lbl_no_recs.ForeColor = System.Drawing.Color.Green;
                 lbl_no_recs.Text = "Success";
                 lbl_no_recs.Visible = true;
             }

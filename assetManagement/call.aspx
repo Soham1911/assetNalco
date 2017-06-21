@@ -29,6 +29,9 @@
                         <asp:Label ID="lbl_no_recs" runat="server" Font-Bold="true" ForeColor="Red" Font-Size="Medium"
                             Visible="false"
                             Text="No Record available"></asp:Label>
+                        <div style="overflow-y:scroll">
+
+                        
                         <asp:GridView ID="grid_display" runat="server" OnRowDataBound="GridView1_RowDataBound"
                             AutoGenerateColumns="False" Width="100%"
                             Font-Size="1.11em" PageSize="7"
@@ -62,7 +65,10 @@
                                     ItemStyle-HorizontalAlign="Center" SortExpression="Call Type" HeaderStyle-HorizontalAlign="Left">
                                     <HeaderStyle HorizontalAlign="Center"></HeaderStyle>
                                 </asp:BoundField>
-
+                                <asp:BoundField DataField="callStat" HeaderText="Current Status"
+                                    ItemStyle-HorizontalAlign="Left" SortExpression="callStat" HeaderStyle-HorizontalAlign="Left">
+                                    <HeaderStyle HorizontalAlign="Center"></HeaderStyle>
+                                </asp:BoundField>
                                 <asp:TemplateField HeaderText="Status">
                                     <ItemTemplate>
                                         <asp:Label ID="lbl_status" runat="server" Visible="True" />
@@ -114,6 +120,7 @@
                             <SortedDescendingCellStyle BackColor="#FFFDF8" />
                             <SortedDescendingHeaderStyle BackColor="#6F8DAE" />
                         </asp:GridView>
+                        </div>
                     </div>
 
                 </div>

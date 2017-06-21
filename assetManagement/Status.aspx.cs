@@ -33,6 +33,7 @@ namespace assetManagement
             DataTable dt = new DataTable();
             DataRow newRow;
             OdbcDataReader dr = cmd.ExecuteReader();
+            dt.Columns.Add(new System.Data.DataColumn("call_id", typeof(Int32)));
             dt.Columns.Add(new System.Data.DataColumn("astCode", typeof(String)));
             dt.Columns.Add(new System.Data.DataColumn("category", typeof(String)));
             dt.Columns.Add(new System.Data.DataColumn("userDescription", typeof(String)));
@@ -44,6 +45,7 @@ namespace assetManagement
             while (dr.Read())
             {
                 newRow = dt.NewRow();
+                newRow["call_id"] = Convert.ToInt32(dr["call_id"]);
                 newRow["astCode"] = Convert.ToString(dr["astCode"]);
                 newRow["category"] = Convert.ToString(dr["category"]);
                 newRow["userDescription"] = Convert.ToString(dr["userDescription"]);

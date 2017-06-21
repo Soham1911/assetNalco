@@ -19,6 +19,12 @@
                                 HorizontalAlign="Left" />
                             <AlternatingRowStyle BackColor="White" />
                             <Columns>
+                                <asp:BoundField DataField="call_id" HeaderText="Call Id"
+                                    ItemStyle-HorizontalAlign="Left" SortExpression="call_id" HeaderStyle-HorizontalAlign="Left">
+                                    <HeaderStyle HorizontalAlign="Left"></HeaderStyle>
+
+                                <ItemStyle HorizontalAlign="Left"></ItemStyle>
+                                </asp:BoundField>
 
                                 <asp:BoundField DataField="astCode" HeaderText="Asset No."
                                     ItemStyle-HorizontalAlign="Left" SortExpression="asset" HeaderStyle-HorizontalAlign="Left">

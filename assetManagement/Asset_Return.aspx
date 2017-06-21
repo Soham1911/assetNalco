@@ -22,11 +22,10 @@
                                     <font size="2em" style="font-weight: 700"> Enter Asset Code :</font>
                                 </td>
                                 <td align="left">
-                                    <asp:TextBox ID="txt_astCode" runat="server" ToolTip="Asset Code" Width="230px" TextMode="Search"></asp:TextBox>
+                                    <asp:TextBox ID="txt_astCode" runat="server" ToolTip="Asset Code" Width="230px" TextMode="Search" AutoPostBack="true" OnTextChanged="txt_astCode_TextChanged"></asp:TextBox>
                                 </td>
-
-                                <td>
-                                    <asp:Button ID="btn_search" runat="server" Text="Search" Font-Bold="True" ForeColor="#383E78" OnClick="btn_search_Click" />
+                                <td align="right">
+                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="txt_astCode" ErrorMessage="*Enter asset code" ForeColor="Red"></asp:RequiredFieldValidator>
                                 </td>
                             </tr>
                             <tr>
@@ -38,47 +37,36 @@
                                 <td></td>
                             </tr>
 
-                            <tr>
-                                <td align="right">
-                                    <font size="2em" style="font-weight: 700">       Asset Type :</font>
+                           <tr>
+                                <td rowspan="5">
+                                    <asp:Image ID="img_p" runat="server" Visible="false" Width="150px" ToolTip="Custodian's Photo"/>
                                 </td>
-                                <td align="left">
-                                    <asp:Label ID="lbl_astType" runat="server" Text="" Font-Bold="true" Font-Size="Large" Visible="false" style="font-size: medium"></asp:Label>
+                                <td colspan="2" style="text-align: left">
+                                   <asp:Label ID="lbl_astType" runat="server" Font-Size="Medium" Text="Asset Type : " Visible="false" Style="font-size: small; font-weight: 700;" ForeColor="Black"></asp:Label>
+                                </td>
+                            </tr>
+                                                        <tr>
+                                <td colspan="2"  style="text-align: left">
+                                    <asp:Label ID="lbl_custPNo" runat="server" Font-Size="Medium" Text="Custodian Personal No. : " Visible="false" Style="font-size: small; font-weight: 700;" ForeColor="Black"></asp:Label>
                                 </td>
                             </tr>
                             <tr>
-                                <td align="right">
-                                    <font size="2em" style="font-weight: 700">       Custodian Personal No. :</font>
-                                </td>
-                                <td align="left">
-                                    <asp:Label ID="lbl_custPNo" runat="server" Text="" Font-Bold="true" Font-Size="Large" Visible="false" style="font-size: medium"></asp:Label>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td align="right">
-                                    <font size="2em" style="font-weight: 700">      Custodian Name :</font>
-                                </td>
-                                <td align="left">
-                                    <asp:Label ID="lbl_custName" runat="server" Text="" Font-Bold="true" Font-Size="Large" Visible="false" style="font-size: medium"></asp:Label>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td align="right">
-                                    <font size="2em" style="font-weight: 700">      Department :</font>
-                                </td>
-                                <td align="left">
-                                    <asp:Label ID="lbl_dept" runat="server" Text="" Font-Bold="true" Font-Size="Large" Visible="false" style="font-size: medium"></asp:Label>
+                                <td colspan="2" style="text-align: left">
+                                    <asp:Label ID="lbl_custName" runat="server" Font-Size="Medium" Text="Custodian Name : " Visible="false" Style="font-size: small; font-weight: 700;" ForeColor="Black"></asp:Label>
                                 </td>
                             </tr>
 
                             <tr>
-                                <td align="right">
-                                    <font size="2em" style="font-weight: 700">      Location :</font>
-                                </td>
-                                <td align="left">
-                                    <asp:Label ID="lbl_location" runat="server" Text="" Font-Bold="true" Font-Size="Large" Visible="false" style="font-size: medium"></asp:Label>
+                                <td colspan="2"  style="text-align: left">
+                                    <asp:Label ID="lbl_dept" runat="server" Font-Size="Medium" Text="Department : " Visible="false" Style="font-size: small; font-weight: 700;" ForeColor="Black"></asp:Label>
                                 </td>
                             </tr>
+                            <tr>
+                                <td colspan="2"  style="text-align: left">
+                                    <asp:Label ID="lbl_location" runat="server" Font-Size="Medium" Text="Location : " Visible="false" Style="font-size: small; font-weight: 700;" ForeColor="Black"></asp:Label>
+                                </td>
+                            </tr>
+                            
 
                             <tr>
                                 <td></td>
@@ -89,9 +77,17 @@
                                     <font size="2em">       Return Date :</font>
                                 </td>
                                 <td align="left">
-                                    <asp:TextBox Width="230px" ID="txt_retDate" runat="server"></asp:TextBox>
+                                    <asp:TextBox Width="230px" ID="txt_retDate" runat="server" AutoPostBack="true" OnTextChanged="txt_retDate_TextChanged"></asp:TextBox>
                                     <asp:CalendarExtender ID="CalendarExtender1" runat="server"
                                         Enabled="True" Format="yyyy/MM/dd" TargetControlID="txt_retDate"></asp:CalendarExtender>
+                                </td>
+                                <td>
+                                    <asp:Label ID="lbl_retDate" runat="server" Text="*Issued Date : " Font-Size="Medium" Visible="false" Style="font-size: small" ForeColor="Red"></asp:Label>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td align="center"  colspan="3">
+                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="txt_retDate" ErrorMessage="*Select Return Date" ForeColor="Red"></asp:RequiredFieldValidator>
                                 </td>
                             </tr>
                             <tr>
@@ -101,7 +97,7 @@
                             <tr>
                                 <td></td>
                                 <td>
-                                    <asp:Button ID="btn_ret" runat="server" Text="Return" Font-Bold="True" ForeColor="#383E78" OnClick="btn_ret_Click" />
+                                    <asp:Button ID="btn_ret" runat="server" Text="Return" Font-Bold="True" ForeColor="Black"  BackColor="LightSteelBlue" OnClick="btn_ret_Click" />
                                 </td>
                             </tr>
                         </table>
