@@ -15,6 +15,11 @@ namespace assetManagement
         static string connStr_asset = ConfigurationManager.ConnectionStrings["asset"].ConnectionString;
         OdbcConnection conn_asset = new OdbcConnection(connStr_asset);
         string user_id = "default", unit_cd = "";
+        int graphics = 0;
+        int hdd = 0;
+        int ram = 0;
+        string issueDate = "1900-01-01", monSize = "NA", monRes = "NA", speed = "NA", sizeOfPaper = "NA", os = "NA", servicePack = "NA", proc = "NA", cla = "NA", kbMake = "NA", kb_s_no = "NA", mouMake = "NA", mou_s_no = "NA", ibmNote = "NA", msOffice = "NA", antivirus = "N", webcam = "N", lanStat = "N", domain = "NA", domainUser = "NA",hostName = "NA";
+
         protected void Page_Load(object sender, EventArgs e)
         {
             user_id = Session["systems"].ToString();
@@ -32,38 +37,110 @@ namespace assetManagement
             btn_reg.BackColor = System.Drawing.Color.Gray;
             btn_reg.ForeColor = System.Drawing.Color.LightGray;
             btn_reg.ToolTip = "Enter the asset code";
-            txt_categ.ToolTip = "PCS : Standard PC" + "\n" + "PCA : All in one" + "\n" + "PCW : Work Station" + "\n" + "LAP : Laptop";
         }
 
         protected void btn_reg_Click(object sender, EventArgs e)
         {
             decimal poPrice = 0;
-            int graphics = 0;
-            int hdd = 0;
-            int ram = 0;
-            string monRes = drp_monRes.SelectedValue;
-            string processor = drp_proc.SelectedValue;
-            string webcam = rdbtn_webcam.SelectedValue;
-            string lanStat = rdbtn_lanStat.SelectedValue;
-            string msOffice = drp_msOffice.SelectedValue;
-            string antiVirus = rdbtn_antiVirus.SelectedValue;
-            string issueDate = txt_issueDate.Text,
-                poDate = txt_poDate.Text,
-                installDate = txt_installDate.Text,
-                warStart = Convert.ToString(DateTime.Now),
-                warEnd = Convert.ToString(DateTime.Now),
+            string category = drp_categ.SelectedValue;
+            if (category.Equals("PCS") || category.Equals("PCA") || category.Equals("PCW") || category.Equals("LAP"))
+            {
+                monRes = drp_monRes.SelectedValue;
+                proc = drp_proc.SelectedValue.ToUpper();
+                webcam = rdbtn_webcam.SelectedValue;
+                lanStat = rdbtn_lanStat.SelectedValue;
+                msOffice = drp_msOffice.SelectedValue;
+                antivirus = rdbtn_antiVirus.SelectedValue;
+                issueDate = txt_issueDate.Text;
+                monSize = txt_monSize.Text.Trim();
+                os = txt_os.Text.Trim().ToUpper();
+                servicePack = txt_sp.Text.Trim().ToUpper();
+                kbMake = txt_keyboardMake.Text.Trim().ToUpper();
+                kb_s_no = txt_keyboard_s_no.Text.Trim().ToUpper();
+                mouMake = txt_mouseMake.Text.Trim().ToUpper();
+                mou_s_no = txt_mouse_s_no.Text.Trim().ToUpper();
+                ibmNote = txt_ibmNotes.Text.Trim().ToUpper();
+                domain = txt_domain.Text.Trim().ToUpper();
+                domainUser = txt_domainUser.Text.Trim().ToUpper();
+                hostName = txt_hostName.Text.Trim().ToUpper();
+                try
+                {
+                    if (txt_graphics.Text.Trim() != null && txt_graphics.Text.Trim() != "")
+                        graphics = Convert.ToInt32(txt_graphics.Text.Trim());
+                    if (txt_hdd.Text.Trim() != null && txt_hdd.Text.Trim() != "")
+                        hdd = Convert.ToInt32(txt_hdd.Text.Trim());
+                    if (txt_ram.Text.Trim() != null && txt_ram.Text.Trim() != "")
+                        ram = Convert.ToInt32(txt_ram.Text.Trim());
+                }
+                catch (System.FormatException excp)
+                {
+                    lbl_error.Visible = true;
+                    lbl_error.Text = "Graphics card , HDD , RAM should be integer value.";
+                    lbl_error.ForeColor = System.Drawing.Color.Red;
+                }
+            }
+            else if (category.Equals("SRV"))
+            {
+                monRes = drp_monRes.SelectedValue;
+                proc = txt_srvProc.Text.Trim().ToUpper();
+                cla = txt_cla.Text.Trim();
+                webcam = rdbtn_webcam.SelectedValue;
+                lanStat = rdbtn_lanStat.SelectedValue;
+                msOffice = drp_msOffice.SelectedValue;
+                antivirus = rdbtn_antiVirus.SelectedValue;
+                monSize = txt_monSize.Text.Trim();
+                os = txt_os.Text.Trim().ToUpper();
+                servicePack = txt_sp.Text.Trim().ToUpper();
+                kbMake = txt_keyboardMake.Text.Trim().ToUpper();
+                kb_s_no = txt_keyboard_s_no.Text.Trim().ToUpper();
+                mouMake = txt_mouseMake.Text.Trim().ToUpper();
+                mou_s_no = txt_mouse_s_no.Text.Trim().ToUpper();
+                ibmNote = txt_ibmNotes.Text.Trim().ToUpper();
+                domain = txt_domain.Text.Trim().ToUpper();
+                domainUser = txt_domainUser.Text.Trim().ToUpper();
+                hostName = txt_hostName.Text.Trim().ToUpper();
+                try
+                {
+                    if (txt_graphics.Text.Trim() != null && txt_graphics.Text.Trim() != "")
+                        graphics = Convert.ToInt32(txt_graphics.Text.Trim());
+                    if (txt_hdd.Text.Trim() != null && txt_hdd.Text.Trim() != "")
+                        hdd = Convert.ToInt32(txt_hdd.Text.Trim());
+                    if (txt_ram.Text.Trim() != null && txt_ram.Text.Trim() != "")
+                        ram = Convert.ToInt32(txt_ram.Text.Trim());
+                }
+                catch (System.FormatException excp)
+                {
+                    lbl_error.Visible = true;
+                    lbl_error.Text = "Graphics card , HDD , RAM should be integer value.";
+                    lbl_error.ForeColor = System.Drawing.Color.Red;
+                }
+            }
+            else if (category.Equals("SCS") || category.Equals("SCA") || category.Equals("DMP") || category.Equals("MLJ") || category.Equals("CLJ") || category.Equals("CIJ") || category.Equals("MIJ") || category.Equals("MLM") || category.Equals("CLM") || category.Equals("MLH") || category.Equals("CLH") || category.Equals("LPR"))
+            {
+                speed = txt_speed.Text.Trim();
+                sizeOfPaper = txt_sizeOfPaper.Text.Trim();
+            }
+            string poDate = "1900-01-01",
+                installDate = "1900-01-01",
+                warStart = "1900-01-01",
+                warEnd = "1900-01-01",
                 warStat = "Y";
-            warStart = txt_warStart.Text;
-            warEnd = txt_warEnd.Text;
+            if (txt_warStart.Text.Trim() != null && txt_warStart.Text.Trim() != "")
+                warStart = txt_warStart.Text;
+            if (txt_warEnd.Text.Trim() != null && txt_warEnd.Text.Trim() != "")
+                warEnd = txt_warEnd.Text;
+            if (txt_installDate.Text.Trim() != null && txt_installDate.Text.Trim() != "")
+                installDate = txt_installDate.Text;
+            if (txt_poDate.Text.Trim() != null && txt_poDate.Text.Trim() != "")
+                poDate = txt_poDate.Text;
             try
             {
-                poPrice = System.Convert.ToDecimal(txt_poPrice.Text);
-                graphics = Convert.ToInt32(txt_graphics.Text);
-                hdd = Convert.ToInt32(txt_hdd.Text);
-                ram = Convert.ToInt32(txt_ram.Text);
+                if(txt_poPrice.Text.Trim() != null && txt_poPrice.Text.Trim() != "")
+                    poPrice = System.Convert.ToDecimal(txt_poPrice.Text.Trim());
                 DateTime today = DateTime.Now;
                 DateTime warStart1 = Convert.ToDateTime(warStart);
                 DateTime warEnd1 = Convert.ToDateTime(warEnd);
+                string categ = drp_categ.SelectedValue;
                 if (today > warStart1 && today < warEnd1)
                 {
                     warStat = "Y";
@@ -73,7 +150,7 @@ namespace assetManagement
                     warStat = "N";
                 }
                 OdbcCommand cmd = conn_asset.CreateCommand();
-                cmd.CommandText = "insert into ast_master(unit,astCode,description,make,model,category,ast_s_no,part_no,custodian,issueDate,dept,location,subLoc1,subLoc2,monitor_size,monitor_res,os,service_pack,processor,ram,hdd,graphics,ip,keyboardMake,keyboard_s_no,mouseMake,mouse_s_no,msOffice,antiVirus,ibmNotes,webcam,lanStat,domain,domainUser,po_no,poDate,vendorCode,poPrice,installation,warrantyStat,warrantyStart,warrantyEnd,remarks,availability) values('" + unit_cd + "','" + txt_astCode.Text.Trim().ToUpper() + "','" + txt_desc.Text.Trim().ToUpper() + "','" + txt_make.Text.Trim().ToUpper() + "','" + txt_model.Text.Trim().ToUpper() + "','" + txt_categ.Text.Trim() + "','" + txt_s_no.Text.Trim().ToUpper() + "','" + txt_part_no.Text.Trim().ToUpper() + "','" + "SYSTEMS" + "','" + issueDate + "','" + "SYSTEMS" + "','" + "SYSTEMS STORE" + "','" + "SYSTEMS STORE" + "','" + "SYSTEMS STORE" + "','" + txt_monSize.Text + "','" + monRes + "','" + txt_os.Text.Trim().ToUpper() + "','" + txt_sp.Text.Trim().ToUpper() + "','" + processor + "','" + ram + "','" + hdd + "','" + graphics + "','" + txt_ip.Text.Trim() + "','" + txt_keyboardMake.Text.Trim().ToUpper() + "','" + txt_keyboard_s_no.Text.Trim().ToUpper() + "','" + txt_mouseMake.Text.Trim().ToUpper() + "','" + txt_mouse_s_no.Text.Trim().ToUpper() + "','" + msOffice + "','" + antiVirus + "','" + txt_ibmNotes.Text.Trim() + "','" + webcam + "','" + lanStat + "','" + txt_domain.Text.Trim().ToUpper() + "','" + txt_domainUser.Text.Trim().ToUpper() + "','" + txt_po_no.Text + "','" + poDate + "','" + txt_vendorCode.Text.Trim().ToUpper() + "','" + poPrice + "','" + installDate + "','" + warStat + "','" + warStart + "','" + warEnd + "','" + txt_remarks.Text + "','Y')";
+                cmd.CommandText = "insert into ast_master(unit,astCode,description,make,model,category,ast_s_no,part_no,custodian,issueDate,dept,location,subLoc1,subLoc2,monitor_size,monitor_res,os,service_pack,processor,cla,speed,sizeOfPaper,ram,hdd,graphics,ip,keyboardMake,keyboard_s_no,mouseMake,mouse_s_no,msOffice,antiVirus,ibmNotes,webcam,lanStat,domain,domainUser,hostName,po_no,poDate,vendorCode,poPrice,installation,warrantyStat,warrantyStart,warrantyEnd,remarks,availability) values('" + unit_cd + "','" + txt_astCode.Text.Trim().ToUpper() + "','" + txt_desc.Text.Trim().ToUpper() + "','" + txt_make.Text.Trim().ToUpper() + "','" + txt_model.Text.Trim().ToUpper() + "','" + categ + "','" + txt_s_no.Text.Trim().ToUpper() + "','" + txt_part_no.Text.Trim().ToUpper() + "','" + "SYSTEMS" + "','" + issueDate + "','" + "SYSTEMS" + "','" + "SYSTEMS STORE" + "','" + "SYSTEMS STORE" + "','" + "SYSTEMS STORE" + "','" + monSize + "','" + monRes + "','" + os + "','" + servicePack + "','" + proc + "','" + cla + "','" + speed + "','" + sizeOfPaper + "','" + ram + "','" + hdd + "','" + graphics + "','" + txt_ip.Text.Trim() + "','" + kbMake + "','" + kb_s_no + "','" + mouMake + "','" + mou_s_no + "','" + msOffice + "','" + antivirus + "','" + ibmNote + "','" + webcam + "','" + lanStat + "','" + domain + "','" + domainUser + "','" + hostName + "','" + txt_po_no.Text + "','" + poDate + "','" + txt_vendorCode.Text.Trim().ToUpper() + "','" + poPrice + "','" + installDate + "','" + warStat + "','" + warStart + "','" + warEnd + "','" + txt_remarks.Text + "','Y')";
                 int check;
                 conn_asset.Open();
                 check = cmd.ExecuteNonQuery();
@@ -100,41 +177,56 @@ namespace assetManagement
                     lbl_error.Visible = true;
                 }
             }
-            catch(System.FormatException exc)
+            catch (System.FormatException exc)
             {
                 lbl_error.Visible = true;
-                lbl_error.Text = "Graphics card , HDD , RAM should be integer value.";
+                lbl_error.Text = "Wrong format is used ";
                 lbl_error.ForeColor = System.Drawing.Color.Red;
             }
-            
-            
+
+
         }
 
         protected void txt_astCode_TextChanged(object sender, EventArgs e)
         {
             lbl_error.Visible = false;
-            OdbcCommand cmda = conn_asset.CreateCommand();
-            cmda.CommandText = "select astCode from ast_master where astCode = '" + txt_astCode.Text.Trim().ToUpper() + "'";
-            conn_asset.Open();
-            OdbcDataReader dr = cmda.ExecuteReader();
-            if (dr.Read())
+            if(txt_astCode.Text != null && txt_astCode.Text != "" && txt_astCode.Text.Length != 11)
             {
-                lbl_astCode.Visible = true;
+                //check : astCode should contain 11 characters
                 btn_reg.Enabled = false;
                 btn_reg.BackColor = System.Drawing.Color.Gray;
                 btn_reg.ForeColor = System.Drawing.Color.LightGray;
-                btn_reg.ToolTip = "Can not register with same asset code";
+                btn_reg.ToolTip = "Asset Code has 11 characters";
+                lbl_astCodeLen.Visible = true;
+
             }
             else
             {
-                lbl_astCode.Visible = false;
-                btn_reg.Enabled = true;
-                btn_reg.BackColor = System.Drawing.Color.LightSteelBlue;
-                btn_reg.ForeColor = System.Drawing.Color.Black;
-                lbl_error.Visible = false;
-                btn_reg.ToolTip = "Click to register";
+                lbl_astCodeLen.Visible = false;
+                OdbcCommand cmda = conn_asset.CreateCommand();
+                cmda.CommandText = "select astCode from ast_master where astCode = '" + txt_astCode.Text.Trim().ToUpper() + "'";
+                conn_asset.Open();
+                OdbcDataReader dr = cmda.ExecuteReader();
+                if (dr.Read())
+                {
+                    lbl_astCode.Visible = true;
+                    btn_reg.Enabled = false;
+                    btn_reg.BackColor = System.Drawing.Color.Gray;
+                    btn_reg.ForeColor = System.Drawing.Color.LightGray;
+                    btn_reg.ToolTip = "Can not register with same asset code";
+                }
+                else
+                {
+                    lbl_astCode.Visible = false;
+                    btn_reg.Enabled = true;
+                    btn_reg.BackColor = System.Drawing.Color.LightSteelBlue;
+                    btn_reg.ForeColor = System.Drawing.Color.Black;
+                    lbl_error.Visible = false;
+                    btn_reg.ToolTip = "Click to register";
+                }
+                conn_asset.Close();
             }
-            conn_asset.Close();
+            
         }
 
         protected void txt_s_no_TextChanged(object sender, EventArgs e)
@@ -162,6 +254,286 @@ namespace assetManagement
                 btn_reg.ToolTip = "Click to register";
             }
             conn_asset.Close();
+        }
+
+        protected void drp_categ_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string categ = drp_categ.SelectedValue;
+            if (categ.Equals("PCS") || categ.Equals("PCA") || categ.Equals("PCW") || categ.Equals("LAP"))
+            {
+                //pc/laptop
+                lbl_sizeOfPaper.Visible = false;
+                txt_sizeOfPaper.Visible = false;
+                lbl_speed.Visible = false;
+                txt_speed.Visible = false;
+                txt_srvProc.Visible = false;
+                lbl_cla.Visible = false;
+                txt_cla.Visible = false;
+                lbl_isuueDate.Visible = true;
+                txt_issueDate.Visible = true;
+                lbl_monSize.Visible = true;
+                txt_monSize.Visible = true;
+                lbl_monRes.Visible = true;
+                drp_monRes.Visible = true;
+                lbl_os.Visible = true;
+                txt_os.Visible = true;
+                lbl_sp.Visible = true;
+                txt_sp.Visible = true;
+                lbl_proc.Visible = true;
+                drp_proc.Visible = true;
+                lbl_ram.Visible = true;
+                txt_ram.Visible = true;
+                lbl_hdd.Visible = true;
+                txt_hdd.Visible = true;
+                lbl_graphics.Visible = true;
+                txt_graphics.Visible = true;
+                lbl_ip.Visible = true;
+                txt_ip.Visible = true;
+                lbl_keyboardMake.Visible = true;
+                txt_keyboardMake.Visible = true;
+                lbl_keyboard_s_no.Visible = true;
+                txt_keyboard_s_no.Visible = true;
+                lbl_mouseMake.Visible = true;
+                txt_mouseMake.Visible = true;
+                lbl_mouse_s_no.Visible = true;
+                txt_mouse_s_no.Visible = true;
+                lbl_ibmNotes.Visible = true;
+                txt_ibmNotes.Visible = true;
+                lbl_msOffice.Visible = true;
+                drp_msOffice.Visible = true;
+                lbl_antiVirus.Visible = true;
+                rdbtn_antiVirus.Visible = true;
+                lbl_webcam.Visible = true;
+                rdbtn_webcam.Visible = true;
+                lbl_lanStat.Visible = true;
+                rdbtn_lanStat.Visible = true;
+                lbl_domain.Visible = true;
+                txt_domain.Visible = true;
+                lbl_domainUser.Visible = true;
+                txt_domainUser.Visible = true;
+                lbl_hostName.Visible = true;
+                txt_hostName.Visible = true;
+            }
+            else if (categ.Equals("SRV"))
+            {
+                //server
+                lbl_sizeOfPaper.Visible = false;
+                txt_sizeOfPaper.Visible = false;
+                lbl_speed.Visible = false;
+                txt_speed.Visible = false;
+                drp_proc.Visible = false;
+                lbl_isuueDate.Visible = false;
+                txt_issueDate.Visible = false;
+                lbl_monSize.Visible = true;
+                txt_monSize.Visible = true;
+                lbl_monRes.Visible = true;
+                drp_monRes.Visible = true;
+                lbl_os.Visible = true;
+                txt_os.Visible = true;
+                lbl_sp.Visible = true;
+                txt_sp.Visible = true;
+                lbl_proc.Visible = true;
+                txt_srvProc.Visible = true;
+                lbl_cla.Visible = true;
+                txt_cla.Visible = true;
+                lbl_ram.Visible = true;
+                txt_ram.Visible = true;
+                lbl_hdd.Visible = true;
+                txt_hdd.Visible = true;
+                lbl_graphics.Visible = true;
+                txt_graphics.Visible = true;
+                lbl_ip.Visible = true;
+                txt_ip.Visible = true;
+                lbl_keyboardMake.Visible = true;
+                txt_keyboardMake.Visible = true;
+                lbl_keyboard_s_no.Visible = true;
+                txt_keyboard_s_no.Visible = true;
+                lbl_mouseMake.Visible = true;
+                txt_mouseMake.Visible = true;
+                lbl_mouse_s_no.Visible = true;
+                txt_mouse_s_no.Visible = true;
+                lbl_ibmNotes.Visible = true;
+                txt_ibmNotes.Visible = true;
+                lbl_msOffice.Visible = true;
+                drp_msOffice.Visible = true;
+                lbl_antiVirus.Visible = true;
+                rdbtn_antiVirus.Visible = true;
+                lbl_webcam.Visible = true;
+                rdbtn_webcam.Visible = true;
+                lbl_lanStat.Visible = true;
+                rdbtn_lanStat.Visible = true;
+                lbl_domain.Visible = true;
+                txt_domain.Visible = true;
+                lbl_domainUser.Visible = true;
+                txt_domainUser.Visible = true;
+                lbl_hostName.Visible = true;
+                txt_hostName.Visible = true;
+            }
+            else if (categ.Equals("SCS") || categ.Equals("SCA") || categ.Equals("DMP") || categ.Equals("MLJ") || categ.Equals("CLJ") || categ.Equals("CIJ") || categ.Equals("MIJ") || categ.Equals("MLM") || categ.Equals("CLM") || categ.Equals("MLH") || categ.Equals("CLH") || categ.Equals("LPR"))
+            {
+                //printer/scanner
+                lbl_isuueDate.Visible = true;
+                txt_issueDate.Visible = true;
+                lbl_monSize.Visible = false;
+                txt_monSize.Visible = false;
+                lbl_monRes.Visible = false;
+                drp_monRes.Visible = false;
+                lbl_os.Visible = false;
+                txt_os.Visible = false;
+                lbl_sp.Visible = false;
+                txt_sp.Visible = false;
+                lbl_proc.Visible = false;
+                drp_proc.Visible = false;
+                txt_srvProc.Visible = false;
+                lbl_cla.Visible = false;
+                txt_cla.Visible = false;
+                lbl_ram.Visible = false;
+                txt_ram.Visible = false;
+                lbl_hdd.Visible = false;
+                txt_hdd.Visible = false;
+                lbl_graphics.Visible = false;
+                txt_graphics.Visible = false;
+                lbl_ip.Visible = false;
+                txt_ip.Visible = false;
+                lbl_keyboardMake.Visible = false;
+                txt_keyboardMake.Visible = false;
+                lbl_keyboard_s_no.Visible = false;
+                txt_keyboard_s_no.Visible = false;
+                lbl_mouseMake.Visible = false;
+                txt_mouseMake.Visible = false;
+                lbl_mouse_s_no.Visible = false;
+                txt_mouse_s_no.Visible = false;
+                lbl_ibmNotes.Visible = false;
+                txt_ibmNotes.Visible = false;
+                lbl_msOffice.Visible = false;
+                drp_msOffice.Visible = false;
+                lbl_antiVirus.Visible = false;
+                rdbtn_antiVirus.Visible = false;
+                lbl_webcam.Visible = false;
+                rdbtn_webcam.Visible = false;
+                lbl_lanStat.Visible = false;
+                rdbtn_lanStat.Visible = false;
+                lbl_domain.Visible = false;
+                txt_domain.Visible = false;
+                lbl_domainUser.Visible = false;
+                txt_domainUser.Visible = false;
+                lbl_sizeOfPaper.Visible = true;
+                txt_sizeOfPaper.Visible = true;
+                lbl_hostName.Visible = false;
+                txt_hostName.Visible = false;
+                lbl_speed.Visible = true;
+                txt_speed.Visible = true;
+            }
+            else if (categ.Equals("CSW") || categ.Equals("RTR") || categ.Equals("FWL") || categ.Equals("SFS") || categ.Equals("DSW") || categ.Equals("ESW") || categ.Equals("WBR"))
+            {
+                //network items
+                lbl_sizeOfPaper.Visible = false;
+                txt_sizeOfPaper.Visible = false;
+                lbl_speed.Visible = false;
+                txt_speed.Visible = false;
+                lbl_isuueDate.Visible = true;
+                txt_issueDate.Visible = true;
+                lbl_monSize.Visible = false;
+                txt_monSize.Visible = false;
+                lbl_monRes.Visible = false;
+                drp_monRes.Visible = false;
+                lbl_os.Visible = false;
+                txt_os.Visible = false;
+                lbl_sp.Visible = false;
+                txt_sp.Visible = false;
+                lbl_proc.Visible = false;
+                drp_proc.Visible = false;
+                txt_srvProc.Visible = false;
+                lbl_cla.Visible = false;
+                txt_cla.Visible = false;
+                lbl_ram.Visible = false;
+                txt_ram.Visible = false;
+                lbl_hdd.Visible = false;
+                txt_hdd.Visible = false;
+                lbl_graphics.Visible = false;
+                txt_graphics.Visible = false;
+                lbl_ip.Visible = false;
+                txt_ip.Visible = false;
+                lbl_keyboardMake.Visible = false;
+                txt_keyboardMake.Visible = false;
+                lbl_keyboard_s_no.Visible = false;
+                txt_keyboard_s_no.Visible = false;
+                lbl_mouseMake.Visible = false;
+                txt_mouseMake.Visible = false;
+                lbl_mouse_s_no.Visible = false;
+                txt_mouse_s_no.Visible = false;
+                lbl_ibmNotes.Visible = false;
+                txt_ibmNotes.Visible = false;
+                lbl_msOffice.Visible = false;
+                drp_msOffice.Visible = false;
+                lbl_antiVirus.Visible = false;
+                rdbtn_antiVirus.Visible = false;
+                lbl_webcam.Visible = false;
+                rdbtn_webcam.Visible = false;
+                lbl_lanStat.Visible = false;
+                rdbtn_lanStat.Visible = false;
+                lbl_domain.Visible = false;
+                txt_domain.Visible = false;
+                lbl_domainUser.Visible = false;
+                txt_domainUser.Visible = false;
+                lbl_hostName.Visible = false;
+                txt_hostName.Visible = false;
+            }
+            else
+            {
+                //others
+                lbl_sizeOfPaper.Visible = false;
+                txt_sizeOfPaper.Visible = false;
+                lbl_speed.Visible = false;
+                txt_speed.Visible = false;
+                lbl_isuueDate.Visible = true;
+                txt_issueDate.Visible = true;
+                lbl_monSize.Visible = false;
+                txt_monSize.Visible = false;
+                lbl_monRes.Visible = false;
+                drp_monRes.Visible = false;
+                lbl_os.Visible = false;
+                txt_os.Visible = false;
+                lbl_sp.Visible = false;
+                txt_sp.Visible = false;
+                lbl_proc.Visible = false;
+                drp_proc.Visible = false;
+                txt_srvProc.Visible = false;
+                lbl_cla.Visible = false;
+                txt_cla.Visible = false;
+                lbl_ram.Visible = false;
+                txt_ram.Visible = false;
+                lbl_hdd.Visible = false;
+                txt_hdd.Visible = false;
+                lbl_graphics.Visible = false;
+                txt_graphics.Visible = false;
+                lbl_ip.Visible = false;
+                txt_ip.Visible = false;
+                lbl_keyboardMake.Visible = false;
+                txt_keyboardMake.Visible = false;
+                lbl_keyboard_s_no.Visible = false;
+                txt_keyboard_s_no.Visible = false;
+                lbl_mouseMake.Visible = false;
+                txt_mouseMake.Visible = false;
+                lbl_mouse_s_no.Visible = false;
+                txt_mouse_s_no.Visible = false;
+                lbl_ibmNotes.Visible = false;
+                txt_ibmNotes.Visible = false;
+                lbl_msOffice.Visible = false;
+                drp_msOffice.Visible = false;
+                lbl_antiVirus.Visible = false;
+                rdbtn_antiVirus.Visible = false;
+                lbl_webcam.Visible = false;
+                rdbtn_webcam.Visible = false;
+                lbl_lanStat.Visible = false;
+                rdbtn_lanStat.Visible = false;
+                lbl_domain.Visible = false;
+                txt_domain.Visible = false;
+                lbl_domainUser.Visible = false;
+                txt_domainUser.Visible = false;
+                lbl_hostName.Visible = false;
+                txt_hostName.Visible = false;
+            }
         }
     }
 }

@@ -22,13 +22,14 @@ namespace assetManagement
         private void StatusShow()
         {
             string p_no;
-
+            DateTime date = DateTime.Now.AddYears(-1);
+            
             p_no = Session["user"].ToString();
 
             conn_asset.Open();
             OdbcCommand cmd = conn_asset.CreateCommand();
-            cmd.CommandText = "select * from ast_call where p_no='" + p_no + "'";
-
+            cmd.CommandText = "select * from ast_call where  p_no='" + p_no + "' order by callStat desc";
+            DateTime.Now.AddYears(-1);
             OdbcDataAdapter da = new OdbcDataAdapter();
             DataTable dt = new DataTable();
             DataRow newRow;
@@ -57,6 +58,22 @@ namespace assetManagement
 
             }
 
+            
+            OdbcCommand cmd1 = conn_asset.CreateCommand();
+            cmd1.CommandText = "select category from ast_master where custodian ='" + p_no + "'";
+            
+            
+            DataRow newRow1;
+            OdbcDataReader dr1 = cmd1.ExecuteReader();
+            dt.Columns.Add(new System.Data.DataColumn("cat", typeof(String)));
+
+            while (dr.Read())
+            {
+                newRow1 = dt.NewRow();
+                newRow1["cat"] = Convert.ToString(dr1["category"]);
+                dt.Rows.Add(newRow1);
+            }
+
             if (dt.Rows.Count > 0)
             {
                 grid_display.Visible = true;
@@ -68,7 +85,7 @@ namespace assetManagement
             {
                 grid_display.Visible = false;
             }
-
+            conn_asset.Close();
         }
     }
 }

@@ -20,7 +20,9 @@ namespace assetManagement
         {
             userID = Session["amc"].ToString();
             lbl_error.Visible = false;
-
+            btn_save.Enabled = false;
+            btn_save.BackColor = System.Drawing.Color.Gray;
+            btn_save.ForeColor = System.Drawing.Color.LightGray;
             if (!IsPostBack)
                 BindData();
             
@@ -28,7 +30,7 @@ namespace assetManagement
         private void BindData()
         {
             OdbcCommand cmd = conn_asset.CreateCommand();
-            cmd.CommandText = "select call_id,c.p_no as p_no,name,deptCode,location,subLoc1,userDescription,contact_no from ast_call as c inner join ast_empMaster as e on c.p_no=e.p_no where callStat = 'O' and allotedTo = '"+userID+"' order by openingDate";
+            cmd.CommandText = "select call_id,c.p_no as p_no,name,deptCode,location,userDescription,contact_no from ast_call as c inner join ast_empMaster as e on c.p_no=e.p_no where callStat = 'O' and allotedTo = '"+userID+"' order by openingDate";
             conn_asset.Open();
             OdbcDataReader dr = cmd.ExecuteReader();
 
@@ -39,7 +41,6 @@ namespace assetManagement
             dt.Columns.Add(new System.Data.DataColumn("name", typeof(String)));
             dt.Columns.Add(new System.Data.DataColumn("deptCode", typeof(String)));
             dt.Columns.Add(new System.Data.DataColumn("location", typeof(String)));
-            dt.Columns.Add(new System.Data.DataColumn("subLoc", typeof(String)));
             dt.Columns.Add(new System.Data.DataColumn("userDescription", typeof(String)));
             dt.Columns.Add(new System.Data.DataColumn("contact_no", typeof(String)));
             while (dr.Read())
@@ -49,7 +50,6 @@ namespace assetManagement
                 newRow["name"] = Convert.ToString(dr["name"]);
                 newRow["deptCode"] = Convert.ToString(dr["deptCode"]);
                 newRow["location"] = Convert.ToString(dr["location"]);
-                newRow["subLoc"] = Convert.ToString(dr["subLoc1"]);
                 newRow["userDescription"] = Convert.ToString(dr["userDescription"]);
                 newRow["contact_no"] = Convert.ToString(dr["contact_no"]);
                 dt.Rows.Add(newRow);
@@ -109,6 +109,13 @@ namespace assetManagement
                 lbl_error.Text = "Failed";
                 lbl_error.Visible = true;
             }
+        }
+
+        protected void callStat_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            btn_save.Enabled = true;
+            btn_save.BackColor = System.Drawing.Color.LightSteelBlue;
+            btn_save.ForeColor = System.Drawing.Color.Black;
         }
     }
 }

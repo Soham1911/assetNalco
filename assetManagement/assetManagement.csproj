@@ -112,18 +112,21 @@
     <Content Include="Account\Register.aspx" />
     <Content Include="Account\RegisterExternalLogin.aspx" />
     <Content Include="AmcHolder.aspx" />
-    <Content Include="Asset_Allot.aspx" />
-    <Content Include="Asset_Printer.aspx" />
-    <Content Include="Asset_Network.aspx" />
+    <Content Include="AMC_Entry.aspx" />
+    <Content Include="amc_reg.aspx" />
+    <Content Include="AMC_Return.aspx" />
+    <Content Include="Asset_AllotNonUser.aspx" />
+    <Content Include="Asset_AllotUser.aspx" />
+    <Content Include="asset_edit.aspx" />
     <Content Include="Asset_Pc.aspx" />
     <Content Include="Asset_Return.aspx" />
-    <Content Include="Asset_Server.aspx" />
-    <Content Include="Asset_Success.aspx" />
     <Content Include="ast_master.css" />
+    <Content Include="BuyBack.aspx" />
     <Content Include="call.aspx" />
     <Content Include="Complaints.aspx" />
     <Content Include="Content\Site.css" />
     <Content Include="Default.aspx" />
+    <Content Include="Fdbck.aspx" />
     <Content Include="Images\09654.jpg" />
     <Content Include="Images\09682.jpg" />
     <Content Include="Images\accent.png" />
@@ -185,6 +188,27 @@
     <Compile Include="AmcHolder.aspx.designer.cs">
       <DependentUpon>AmcHolder.aspx</DependentUpon>
     </Compile>
+    <Compile Include="AMC_Entry.aspx.cs">
+      <DependentUpon>AMC_Entry.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AMC_Entry.aspx.designer.cs">
+      <DependentUpon>AMC_Entry.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="amc_reg.aspx.cs">
+      <DependentUpon>amc_reg.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="amc_reg.aspx.designer.cs">
+      <DependentUpon>amc_reg.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AMC_Return.aspx.cs">
+      <DependentUpon>AMC_Return.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AMC_Return.aspx.designer.cs">
+      <DependentUpon>AMC_Return.aspx</DependentUpon>
+    </Compile>
     <Compile Include="App_Start\AuthConfig.cs" />
     <Compile Include="Account\Login.aspx.cs">
       <DependentUpon>Login.aspx</DependentUpon>
@@ -222,26 +246,26 @@
       <DependentUpon>RegisterExternalLogin.aspx</DependentUpon>
     </Compile>
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="Asset_Allot.aspx.cs">
-      <DependentUpon>Asset_Allot.aspx</DependentUpon>
+    <Compile Include="Asset_AllotNonUser.aspx.cs">
+      <DependentUpon>Asset_AllotNonUser.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Asset_Allot.aspx.designer.cs">
-      <DependentUpon>Asset_Allot.aspx</DependentUpon>
+    <Compile Include="Asset_AllotNonUser.aspx.designer.cs">
+      <DependentUpon>Asset_AllotNonUser.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Asset_Printer.aspx.cs">
-      <DependentUpon>Asset_Printer.aspx</DependentUpon>
+    <Compile Include="Asset_AllotUser.aspx.cs">
+      <DependentUpon>Asset_AllotUser.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Asset_Printer.aspx.designer.cs">
-      <DependentUpon>Asset_Printer.aspx</DependentUpon>
+    <Compile Include="Asset_AllotUser.aspx.designer.cs">
+      <DependentUpon>Asset_AllotUser.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Asset_Network.aspx.cs">
-      <DependentUpon>Asset_Network.aspx</DependentUpon>
+    <Compile Include="asset_edit.aspx.cs">
+      <DependentUpon>asset_edit.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Asset_Network.aspx.designer.cs">
-      <DependentUpon>Asset_Network.aspx</DependentUpon>
+    <Compile Include="asset_edit.aspx.designer.cs">
+      <DependentUpon>asset_edit.aspx</DependentUpon>
     </Compile>
     <Compile Include="Asset_Pc.aspx.cs">
       <DependentUpon>Asset_Pc.aspx</DependentUpon>
@@ -257,19 +281,12 @@
     <Compile Include="Asset_Return.aspx.designer.cs">
       <DependentUpon>Asset_Return.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Asset_Server.aspx.cs">
-      <DependentUpon>Asset_Server.aspx</DependentUpon>
+    <Compile Include="BuyBack.aspx.cs">
+      <DependentUpon>BuyBack.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Asset_Server.aspx.designer.cs">
-      <DependentUpon>Asset_Server.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Asset_Success.aspx.cs">
-      <DependentUpon>Asset_Success.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Asset_Success.aspx.designer.cs">
-      <DependentUpon>Asset_Success.aspx</DependentUpon>
+    <Compile Include="BuyBack.aspx.designer.cs">
+      <DependentUpon>BuyBack.aspx</DependentUpon>
     </Compile>
     <Compile Include="call.aspx.cs">
       <DependentUpon>call.aspx</DependentUpon>
@@ -291,6 +308,13 @@
     </Compile>
     <Compile Include="Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Fdbck.aspx.cs">
+      <DependentUpon>Fdbck.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Fdbck.aspx.designer.cs">
+      <DependentUpon>Fdbck.aspx</DependentUpon>
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>

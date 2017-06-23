@@ -57,7 +57,7 @@ namespace assetManagement
             int dr4 = cmdd.ExecuteNonQuery();
             conn_asset.Close();
             OdbcCommand cmdf = conn_asset.CreateCommand();
-            cmdf.CommandText = "insert into ast_cust_history values('" + txt_astCode.Text.Trim().ToUpper() + "','" + p_no + "','" + txt_retDate.Text + "' , '','','" + unitCode + "')";
+            cmdf.CommandText = "insert into ast_cust_history values('" + "SYSTEMS" + "','" + p_no + "','" + txt_retDate.Text + "' , '','','" + unitCode + "')";
             conn_asset.Open();
             int dr6 = cmdf.ExecuteNonQuery();
             conn_asset.Close();
@@ -166,7 +166,7 @@ namespace assetManagement
 
         protected void txt_retDate_TextChanged(object sender, EventArgs e)
         {
-             //checking fro return date
+             //checking for return date
             lbl_retDate.Visible = false;
             lbl_astType.Visible = true;
             lbl_custName.Visible = true;

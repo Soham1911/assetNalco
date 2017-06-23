@@ -20,51 +20,51 @@
                             <AlternatingRowStyle BackColor="White" />
                             <Columns>
                                 <asp:BoundField DataField="call_id" HeaderText="Call Id"
-                                    ItemStyle-HorizontalAlign="Left" SortExpression="call_id" HeaderStyle-HorizontalAlign="Left">
-                                    <HeaderStyle HorizontalAlign="Left"></HeaderStyle>
+                                    ItemStyle-HorizontalAlign="Center" SortExpression="call_id" HeaderStyle-HorizontalAlign="Left">
+                                    <HeaderStyle HorizontalAlign="Center"></HeaderStyle>
 
-                                <ItemStyle HorizontalAlign="Left"></ItemStyle>
+                                <ItemStyle HorizontalAlign="Center"></ItemStyle>
                                 </asp:BoundField>
 
                                 <asp:BoundField DataField="astCode" HeaderText="Asset No."
-                                    ItemStyle-HorizontalAlign="Left" SortExpression="asset" HeaderStyle-HorizontalAlign="Left">
-                                    <HeaderStyle HorizontalAlign="Left"></HeaderStyle>
+                                    ItemStyle-HorizontalAlign="Center" SortExpression="asset" HeaderStyle-HorizontalAlign="Center">
+                                    <HeaderStyle HorizontalAlign="Center"></HeaderStyle>
 
-                                <ItemStyle HorizontalAlign="Left"></ItemStyle>
+                                <ItemStyle HorizontalAlign="Center"></ItemStyle>
                                 </asp:BoundField>
   
-                                <asp:BoundField DataField="category" HeaderText="Type of Asset"
-                                    ItemStyle-HorizontalAlign="Left" SortExpression="type" HeaderStyle-HorizontalAlign="Left">
-                                    <HeaderStyle HorizontalAlign="Left"></HeaderStyle>
+                                <asp:BoundField DataField="cat" HeaderText="Type of Asset"
+                                    ItemStyle-HorizontalAlign="Center" SortExpression="type" HeaderStyle-HorizontalAlign="Center">
+                                    <HeaderStyle HorizontalAlign="Center"></HeaderStyle>
 
-                                <ItemStyle HorizontalAlign="Left"></ItemStyle>
+                                <ItemStyle HorizontalAlign="Center"></ItemStyle>
                                 </asp:BoundField>
                                 <asp:BoundField DataField="userDescription" HeaderText="Problem Description"
-                                    ItemStyle-HorizontalAlign="Left" SortExpression="desc" HeaderStyle-HorizontalAlign="Center">
-                                    <HeaderStyle HorizontalAlign="Left"></HeaderStyle>
+                                    ItemStyle-HorizontalAlign="Center" SortExpression="desc" HeaderStyle-HorizontalAlign="Center">
+                                    <HeaderStyle HorizontalAlign="Center"></HeaderStyle>
 
-                                <ItemStyle HorizontalAlign="Left"></ItemStyle>
+                                <ItemStyle HorizontalAlign="Center"></ItemStyle>
                                 </asp:BoundField>
-                                <asp:BoundField DataField="type" HeaderText="Problem Type"
-                                    ItemStyle-HorizontalAlign="Left" SortExpression="desc" HeaderStyle-HorizontalAlign="Center">
-                                    <HeaderStyle HorizontalAlign="Left"></HeaderStyle>
+                                <asp:BoundField DataField="category" HeaderText="Problem Type"
+                                    ItemStyle-HorizontalAlign="Center" SortExpression="desc" HeaderStyle-HorizontalAlign="Center">
+                                    <HeaderStyle HorizontalAlign="Center"></HeaderStyle>
 
-                                <ItemStyle HorizontalAlign="Left"></ItemStyle>
+                                <ItemStyle HorizontalAlign="Center"></ItemStyle>
                                 </asp:BoundField>
                                 <asp:BoundField DataField="callStat" HeaderText="Call Status"
-                                    ItemStyle-HorizontalAlign="Center" SortExpression="doa" HeaderStyle-HorizontalAlign="Left">
+                                    ItemStyle-HorizontalAlign="Center" SortExpression="doa" HeaderStyle-HorizontalAlign="Center">
                                     <HeaderStyle HorizontalAlign="Center"></HeaderStyle>
 
                                 <ItemStyle HorizontalAlign="Center"></ItemStyle>
                                 </asp:BoundField>
-                                <asp:BoundField DataField="openingDate" HeaderText="Opening Date"
-                                    ItemStyle-HorizontalAlign="Center" SortExpression="doa" HeaderStyle-HorizontalAlign="Left">
+                                <asp:BoundField DataField="openingDate" HeaderText="Opening Date" 
+                                    ItemStyle-HorizontalAlign="Center" SortExpression="doa" HeaderStyle-HorizontalAlign="Center">
                                     <HeaderStyle HorizontalAlign="Center"></HeaderStyle>
 
                                 <ItemStyle HorizontalAlign="Center"></ItemStyle>
                                 </asp:BoundField>
-                                <asp:BoundField DataField="closingDate" HeaderText="Closing Date"
-                                    ItemStyle-HorizontalAlign="Center" SortExpression="doa" HeaderStyle-HorizontalAlign="Left">
+                                <asp:BoundField DataField="closingDate" HeaderText="Closing Date" 
+                                    ItemStyle-HorizontalAlign="Center" SortExpression="doa" HeaderStyle-HorizontalAlign="Center">
                                     <HeaderStyle HorizontalAlign="Center"></HeaderStyle>
 
                                 <ItemStyle HorizontalAlign="Center"></ItemStyle>

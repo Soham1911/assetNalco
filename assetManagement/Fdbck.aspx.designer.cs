@@ -10,7 +10,7 @@
 namespace assetManagement {
     
     
-    public partial class Complaints {
+    public partial class Fdbck {
         
         /// <summary>
         /// ScriptManager1 control.
@@ -40,13 +40,13 @@ namespace assetManagement {
         protected global::System.Web.UI.WebControls.Label Label;
         
         /// <summary>
-        /// lbl_astCode control.
+        /// lbl_callid control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbl_astCode;
+        protected global::System.Web.UI.WebControls.Label lbl_callid;
         
         /// <summary>
         /// Drp_1 control.
@@ -58,58 +58,13 @@ namespace assetManagement {
         protected global::System.Web.UI.WebControls.DropDownList Drp_1;
         
         /// <summary>
-        /// lbl_type control.
+        /// lbl_remark control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbl_type;
-        
-        /// <summary>
-        /// rdbtn_type control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButtonList rdbtn_type;
-        
-        /// <summary>
-        /// RequiredFieldValidator1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator1;
-        
-        /// <summary>
-        /// Label1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label1;
-        
-        /// <summary>
-        /// Drp_2 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList Drp_2;
-        
-        /// <summary>
-        /// lbl_desc control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbl_desc;
+        protected global::System.Web.UI.WebControls.Label lbl_remark;
         
         /// <summary>
         /// txt_desc control.

@@ -1,5 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Systems.Master" AutoEventWireup="true" CodeBehind="Asset_Pc.aspx.cs" Inherits="assetManagement.Asset_Pc" %>
-
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Systems.Master" AutoEventWireup="true" CodeBehind="asset_edit.aspx.cs" Inherits="assetManagement.asset_edit" %>
 <%@ Register
     Assembly="AjaxControlToolkit"
     Namespace="AjaxControlToolkit"
@@ -19,53 +18,11 @@
             <asp:UpdatePanel ID="UpdatePanel1" runat="server">
                 <ContentTemplate>
                     <fieldset>
-                        <legend>Asset Registration</legend>
+                        <legend>Edit Asset</legend>
 
 
                         <table>
-                            <tr>
-                                <td align="right">
-                                    <font size="2em">      Category :</font>
-                                </td>
-                                <td align="left" class="auto-style1">
-                                    <asp:DropDownList ID="drp_categ" runat="server" Width="230px" AutoPostBack="true" OnSelectedIndexChanged="drp_categ_SelectedIndexChanged">
-                                        <asp:ListItem Value="PCS">PCS : Standard PC</asp:ListItem>
-                                        <asp:ListItem Value="PCA">PCA : All In One</asp:ListItem>
-                                        <asp:ListItem Value="PCW">PCW : Work Station</asp:ListItem>
-                                        <asp:ListItem Value="LAP">LAP : Laptop</asp:ListItem>
-                                        <asp:ListItem Value="SRV">SRV : Server</asp:ListItem>
-                                        <asp:ListItem Value="SCS">SCS : Standard Scanner</asp:ListItem>
-                                        <asp:ListItem Value="SCA">SCA : Scanner with ADF(Auto Document Field)</asp:ListItem>
-                                        <asp:ListItem Value="DMP">DMP : Dot Matrix Printer</asp:ListItem>
-                                        <asp:ListItem Value="MLJ">MLJ : Mono Laser Jet Printer</asp:ListItem>
-                                        <asp:ListItem Value="CLJ">CLJ : Colour Laser Jet Printer</asp:ListItem>
-                                        <asp:ListItem Value="CIJ">CIJ : Colour Ink Jet Printer</asp:ListItem>
-                                        <asp:ListItem Value="MIJ">MIJ : Mono Ink Jet Printer</asp:ListItem>
-                                        <asp:ListItem Value="MLM">MLM : Mono Laser Multi Function Printer</asp:ListItem>
-                                        <asp:ListItem Value="CLM">CLM : Colour Laser Multi Function Printer</asp:ListItem>
-                                        <asp:ListItem Value="MLH">MLH : Mono Laser High Speed Printer</asp:ListItem>
-                                        <asp:ListItem Value="CLH">CLH : Colour Laser High Speed Printer</asp:ListItem>
-                                        <asp:ListItem Value="PRJ">PRJ : Projector</asp:ListItem>
-                                        <asp:ListItem Value="WCM">WCM : Webcam</asp:ListItem>
-                                        <asp:ListItem Value="TAB">TAB : Tablet</asp:ListItem>
-                                        <asp:ListItem Value="LPR">LPR : Label Printer</asp:ListItem>
-                                        <asp:ListItem Value="BRD">BRD : Biometric Reader</asp:ListItem>
-                                        <asp:ListItem Value="CSW">CSW : Core Switch</asp:ListItem>
-                                        <asp:ListItem Value="RTR">RTR : Router</asp:ListItem>
-                                        <asp:ListItem Value="FWL">FWL : Firewall Switch</asp:ListItem>
-                                        <asp:ListItem Value="SFS">SFS : Server Form Switch</asp:ListItem>
-                                        <asp:ListItem Value="DSW">DSW : Distribution Switch</asp:ListItem>
-                                        <asp:ListItem Value="ESW">ESW : Edge Switch</asp:ListItem>
-                                        <asp:ListItem Value="WBR">WBR : Wireless Bridge</asp:ListItem>
-
-                                    </asp:DropDownList>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td colspan="3">
-                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="txt_astCode" ErrorMessage="*Enter asset code" ForeColor="Red"></asp:RequiredFieldValidator>
-                                </td>
-                            </tr>
+                   
                             <tr>
                                 <td align="right">
                                     <font size="2em">       Asset Code :</font>
@@ -74,9 +31,10 @@
                                     <asp:TextBox ID="txt_astCode" runat="server" ToolTip=" Asset Code " Width="230px" AutoPostBack="true" OnTextChanged="txt_astCode_TextChanged"></asp:TextBox>
                                 </td>
                                 <td>
-                                    <asp:Label ID="lbl_astCode" runat="server" Text="*Already registered" Font-Size="Medium" Visible="false" Style="font-size: small" ForeColor="Red"></asp:Label>
                                     <asp:Label ID="lbl_astCodeLen" runat="server" Text="*Asset code must has 11 characters" Font-Size="Medium" Visible="false" Style="font-size: small" ForeColor="Red"></asp:Label>
-                               </td>
+                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="txt_astCode" ErrorMessage="*Enter asset code" ForeColor="Red"></asp:RequiredFieldValidator>
+                                     <asp:Label ID="lbl_astCode" runat="server" Text="*Invalid Asset Code" Font-Size="Medium" Visible="false" Style="font-size: small" ForeColor="Red"></asp:Label>
+                              </td>
                             </tr>
 
                             <tr>
@@ -110,10 +68,9 @@
                                     <font size="2em">      Serial no. :</font>
                                 </td>
                                 <td align="left" class="auto-style1">
-                                    <asp:TextBox ID="txt_s_no" runat="server" ToolTip=" Serial no. " Width="230px" AutoPostBack="true" OnTextChanged="txt_s_no_TextChanged"></asp:TextBox>
+                                    <asp:TextBox ID="txt_s_no" runat="server" ToolTip=" Serial no. " Width="230px" Enabled="false"></asp:TextBox>
                                 </td>
                                 <td>
-                                    <asp:Label ID="lbl_s_no" runat="server" Text="*Already registered" Font-Size="Medium" Visible="false" Style="font-size: small" ForeColor="Red"></asp:Label>
                                 </td>
                             </tr>
 
@@ -148,19 +105,23 @@
                             <tr>
                                 <td align="right">
                                     <asp:Label ID="lbl_monSize" runat="server" Text="Monitor Size :" Font-Size="small"></asp:Label>
-                                    <asp:Label ID="lbl_sizeOfPaper" runat="server" Text="Size of Paper :" Font-Size="small" Visible="false"></asp:Label>
 
                                 </td>
                                 <td align="left" class="auto-style1">
                                     <asp:TextBox ID="txt_monSize" runat="server" ToolTip=" Monitor Size(in inches) " Width="230px"></asp:TextBox>
-                                    <asp:TextBox ID="txt_sizeOfPaper" runat="server" ToolTip=" Size of Paper " Width="230px" Visible="false"></asp:TextBox>
                                 </td>
                             </tr>
-
+                             <tr>
+                                <td align="right">
+                                    <asp:Label ID="lbl_sizeOfPaper" runat="server" Text="Size of Paper :" Font-Size="small"></asp:Label>
+                                </td>
+                                <td align="left" class="auto-style1">
+                                    <asp:TextBox ID="txt_sizeOfPaper" runat="server" ToolTip=" Size of Paper " Width="230px"></asp:TextBox>
+                                </td>
+                            </tr>
                             <tr>
                                 <td align="right">
                                     <asp:Label ID="lbl_monRes" runat="server" Text="Monitor Resolution :" Font-Size="small"></asp:Label>
-                                    <asp:Label ID="lbl_speed" runat="server" Text="Speed :" Font-Size="small" Visible="false"></asp:Label>
                                 </td>
                                 <td align="left" class="auto-style1">
                                     <asp:DropDownList ID="drp_monRes" runat="server" Width="230px">
@@ -173,10 +134,16 @@
                                         <asp:ListItem Value="WXGA+">1440*900</asp:ListItem>
                                         <asp:ListItem Value="XGA">1024*768</asp:ListItem>
                                     </asp:DropDownList>
-                                    <asp:TextBox ID="txt_speed" runat="server" ToolTip=" Speed of Printing " Width="230px" Visible="false"></asp:TextBox>
                                </td>
                             </tr>
-
+                            <tr>
+                                <td align="right">
+                                    <asp:Label ID="lbl_speed" runat="server" Text="Speed :" Font-Size="small"></asp:Label>
+                                </td>
+                                <td align="left" class="auto-style1">
+                                    <asp:TextBox ID="txt_speed" runat="server" ToolTip=" Speed of Printing " Width="230px"></asp:TextBox>
+                                </td>
+                            </tr>
                             <tr>
                                 <td align="right">
                                     <asp:Label ID="lbl_os" runat="server" Text="Operating System :" Font-Size="small"></asp:Label>
@@ -205,16 +172,23 @@
                                         <asp:ListItem Value="Intel Platium">Intel Platium</asp:ListItem>
                                         <asp:ListItem Value="Intel Celeron">Intel Celeron</asp:ListItem>
                                         <asp:ListItem Value="Intel Itom">Intel Itom</asp:ListItem>
+                                        <asp:ListItem Value="Other">Other</asp:ListItem>
                                     </asp:DropDownList>
-                                    <asp:TextBox ID="txt_srvProc" runat="server" ToolTip=" Server Processor " Width="230px" Visible="false"></asp:TextBox>
                                 </td>
                             </tr>
                             <tr>
                                 <td align="right">
-                                    <asp:Label ID="lbl_cla" runat="server" Text="Client Access No.:" Font-Size="small" Visible="false"></asp:Label>
                                 </td>
                                 <td align="left" class="auto-style1">
-                                    <asp:TextBox ID="txt_cla" runat="server" ToolTip=" Client Access Number " Width="230px" TextMode="Number" Visible="false"></asp:TextBox>
+                                    <asp:TextBox ID="txt_srvProc" runat="server" ToolTip=" Server Processor " Width="230px"></asp:TextBox>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td align="right">
+                                    <asp:Label ID="lbl_cla" runat="server" Text="Client Access No.:" Font-Size="small"></asp:Label>
+                                </td>
+                                <td align="left" class="auto-style1">
+                                    <asp:TextBox ID="txt_cla" runat="server" ToolTip=" Client Access Number " Width="230px" TextMode="Number"></asp:TextBox>
                                 </td>
                             </tr>
                             <tr>
@@ -364,79 +338,7 @@
                                     <asp:TextBox ID="txt_hostName" runat="server" ToolTip=" Host Name " Width="230px"></asp:TextBox>
                                 </td>
                             </tr>
-                            <tr>
-                                <td align="right">
-                                    <font size="2em">      PO no. :</font>
-                                </td>
-                                <td align="left" class="auto-style1">
-                                    <asp:TextBox ID="txt_po_no" runat="server" ToolTip=" PO number " Width="230px"></asp:TextBox>
-                                </td>
-                            </tr>
-
-                            <tr>
-                                <td align="right">
-                                    <font size="2em">      PO Date :</font>
-                                </td>
-                                <td align="left" class="auto-style1">
-                                    <asp:TextBox Width="230px" ID="txt_poDate" runat="server"></asp:TextBox>
-                                    <asp:CalendarExtender ID="CalendarExtender2" runat="server"
-                                        Enabled="True" Format="yyyy/MM/dd" TargetControlID="txt_poDate"></asp:CalendarExtender>
-                                </td>
-                            </tr>
-
-
-                            <tr>
-                                <td align="right">
-                                    <font size="2em">      PO Price :</font>
-                                </td>
-                                <td align="left" class="auto-style1">
-                                    <asp:TextBox ID="txt_poPrice" runat="server" ToolTip=" PO Price " Width="230px"></asp:TextBox>
-                                </td>
-                            </tr>
-
-                            <tr>
-                                <td align="right">
-                                    <font size="2em">      Vendor Code :</font>
-                                </td>
-                                <td align="left" class="auto-style1">
-                                    <asp:TextBox ID="txt_vendorCode" runat="server" ToolTip=" Vendor Code " Width="230px"></asp:TextBox>
-                                </td>
-                            </tr>
-
-                            <tr>
-                                <td align="right">
-                                    <font size="2em">      Installation Date :</font>
-                                </td>
-                                <td align="left" class="auto-style1">
-                                    <asp:TextBox Width="230px" ID="txt_installDate" runat="server"></asp:TextBox>
-                                    <asp:CalendarExtender ID="CalendarExtender3" runat="server"
-                                        Enabled="True" Format="yyyy/MM/dd" TargetControlID="txt_installDate"></asp:CalendarExtender>
-                                </td>
-                            </tr>
-
-
-                            <tr>
-                                <td align="right">
-                                    <font size="2em">      Warranty Start Date :</font>
-                                </td>
-                                <td align="left" class="auto-style1">
-                                    <asp:TextBox Width="230px" ID="txt_warStart" runat="server"></asp:TextBox>
-                                    <asp:CalendarExtender ID="CalendarExtender6" runat="server"
-                                        Enabled="True" Format="yyyy/MM/dd" TargetControlID="txt_warStart"></asp:CalendarExtender>
-                                </td>
-                            </tr>
-
-                            <tr>
-                                <td align="right">
-                                    <font size="2em">      Warranty End Date :</font>
-                                </td>
-                                <td align="left" class="auto-style1">
-                                    <asp:TextBox Width="230px" ID="txt_warEnd" runat="server"></asp:TextBox>
-                                    <asp:CalendarExtender ID="CalendarExtender7" runat="server"
-                                        Enabled="True" Format="yyyy/MM/dd" TargetControlID="txt_warEnd"></asp:CalendarExtender>
-                                </td>
-                            </tr>
-
+                            
 
 
                             <tr>
@@ -461,8 +363,8 @@
                             </tr>
                             <tr>
                                 <td></td>
-                                <td class="auto-style1">
-                                    <asp:Button ID="btn_reg" runat="server" Text="Register" Font-Bold="True" ForeColor="Black" OnClick="btn_reg_Click" BackColor="LightSteelBlue" />
+                                <td align="center" class="auto-style1">
+                                    <asp:Button ID="btn_reg" runat="server" Text="Save Changes" Font-Bold="True" ForeColor="Black" OnClick="btn_reg_Click" BackColor="LightSteelBlue" />
                                 </td>
                             </tr>
                         </table>
@@ -481,4 +383,5 @@
         </div>
 
     </div>
+
 </asp:Content>

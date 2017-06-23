@@ -21,15 +21,14 @@
                     <asp:BoundField DataField="name" HeaderText="Name" SortExpression="Name" />
                     <asp:BoundField DataField="deptCode" HeaderText="Department" SortExpression="deptCode" />
                     <asp:BoundField DataField="location" HeaderText="Location" SortExpression="location" />
-                    <asp:BoundField DataField="subLoc" HeaderText="Sub-Location" SortExpression="subLoc" />
                     <asp:BoundField DataField="userDescription" HeaderText="Description" SortExpression="userDescription" />
                     <asp:BoundField DataField="contact_no" HeaderText="Contact" SortExpression="contact_no" />
                     <asp:TemplateField HeaderText="Status">
                         <ItemTemplate>
                             <asp:Label ID="lbl_status" runat="server" Visible="True" />
-                            <asp:DropDownList ID="callStat" runat="server">
-                                <asp:ListItem Value="o" Text="o" />
-                                <asp:ListItem Value="d">d</asp:ListItem>
+                            <asp:DropDownList ID="callStat" runat="server" AutoPostBack="true" OnSelectedIndexChanged="callStat_SelectedIndexChanged">
+                                <asp:ListItem Value="O" Text="Open" />
+                                <asp:ListItem Value="D">Close</asp:ListItem>
                             </asp:DropDownList>
                         </ItemTemplate>
                     </asp:TemplateField>
@@ -54,7 +53,7 @@
         </div>
 
         <br />
-        <asp:Button ID="btn_save" runat="server" Text="Save Changes" Font-Bold="True" ForeColor="#383E78" OnClick="btn_save_Click" />
+        <asp:Button ID="btn_save" runat="server" Text="Save Changes" Font-Bold="True" ForeColor="Black" OnClick="btn_save_Click" BackColor="LightSteelBlue" />
         <br />
         <br />
         <br />

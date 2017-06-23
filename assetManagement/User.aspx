@@ -23,17 +23,21 @@
                             <Columns>
 
                                 <asp:BoundField DataField="asset" HeaderText="Asset No."
-                                    ItemStyle-HorizontalAlign="Left" SortExpression="asset" HeaderStyle-HorizontalAlign="Left">
-                                    <HeaderStyle HorizontalAlign="Left"></HeaderStyle>
+                                    ItemStyle-HorizontalAlign="Center" SortExpression="asset" HeaderStyle-HorizontalAlign="Left">
+                                    <HeaderStyle HorizontalAlign="Center"></HeaderStyle>
                                 </asp:BoundField>
   
                                 <asp:BoundField DataField="type" HeaderText="Type of Asset"
-                                    ItemStyle-HorizontalAlign="Left" SortExpression="type" HeaderStyle-HorizontalAlign="Left">
-                                    <HeaderStyle HorizontalAlign="Left"></HeaderStyle>
+                                    ItemStyle-HorizontalAlign="Center" SortExpression="type" HeaderStyle-HorizontalAlign="Left">
+                                    <HeaderStyle HorizontalAlign="Center"></HeaderStyle>
+                                </asp:BoundField>
+                                <asp:BoundField DataField="model" HeaderText="Model"
+                                    ItemStyle-HorizontalAlign="Center" SortExpression="type" HeaderStyle-HorizontalAlign="Left">
+                                    <HeaderStyle HorizontalAlign="Center"></HeaderStyle>
                                 </asp:BoundField>
                                 <asp:BoundField DataField="desc" HeaderText="Description"
-                                    ItemStyle-HorizontalAlign="Left" SortExpression="desc" HeaderStyle-HorizontalAlign="Center">
-                                    <HeaderStyle HorizontalAlign="Left"></HeaderStyle>
+                                    ItemStyle-HorizontalAlign="Center" SortExpression="desc" HeaderStyle-HorizontalAlign="Center">
+                                    <HeaderStyle HorizontalAlign="Center"></HeaderStyle>
                                 </asp:BoundField>
                                 <asp:BoundField DataField="doa" HeaderText="Date of Allotment"
                                     ItemStyle-HorizontalAlign="Center" SortExpression="doa" HeaderStyle-HorizontalAlign="Left">

@@ -25,18 +25,25 @@
                 <div class="clear hideSkiplink">
                     <asp:Menu ID="NavigationMenu" runat="server" CssClass="menu" EnableViewState="false" IncludeStyleBlock="false" Orientation="Horizontal">
                         <Items>
+                            <asp:MenuItem NavigateUrl="~/systems.aspx" Text="Home" />
                             <asp:MenuItem NavigateUrl="#" Text="Asset">
-                                <asp:MenuItem NavigateUrl="#" Text="New Asset Entry">
-                                    <asp:MenuItem NavigateUrl="~/asset_pc.aspx" Text="PC/Laptop" />
-                                    <asp:MenuItem NavigateUrl="~/asset_server.aspx" Text="Server" />
-                                    <asp:MenuItem NavigateUrl="~/asset_printer.aspx" Text="Printer/Scanner" />
-                                    <asp:MenuItem NavigateUrl="~/asset_network.aspx" Text="Network Asset" />
+                                <asp:MenuItem NavigateUrl="~/asset_pc.aspx" Text="New Asset Entry">
+                                
                                 </asp:MenuItem>
-                                <asp:MenuItem NavigateUrl="~/asset_allot.aspx" Text="Asset Allotment" />
+                                <asp:MenuItem NavigateUrl="#" Text="Asset Allotment" >
+                                    <asp:MenuItem NavigateUrl ="~/asset_allotUser.aspx" Text="Users" />
+                                    <asp:MenuItem NavigateUrl ="~/asset_allotNonUser.aspx" Text="Non Users" />
+                                    </asp:MenuItem>
                                 <asp:MenuItem NavigateUrl="~/asset_return.aspx" Text="Asset Return" />
-
+                                <asp:MenuItem NavigateUrl="~/asset_edit.aspx" Text="Asset Edit" />
                             </asp:MenuItem>
                             <asp:MenuItem NavigateUrl="~/call.aspx" Text="Complaint" />
+                            <asp:MenuItem NavigateUrl="#" Text="AMC" >
+                                <asp:MenuItem NavigateUrl="~/amc_reg.aspx" Text="AMC User Registration" />
+                                <asp:MenuItem NavigateUrl="~/amc_entry.aspx" Text="AMC Entry" />
+                                <asp:MenuItem NavigateUrl="~/amc_return.aspx" Text="AMC Return" />
+                            </asp:MenuItem>
+                            <asp:MenuItem NavigateUrl="~/buyback.aspx" Text="Buy Back" />
                         </Items>
                     </asp:Menu>
                 </div>

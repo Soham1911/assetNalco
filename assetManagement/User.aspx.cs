@@ -29,7 +29,7 @@ namespace assetManagement
             
             conn_asset.Open();
             OdbcCommand cmd = conn_asset.CreateCommand();
-            cmd.CommandText = "select * from ast_pc where custodian='" + pers_no + "'";
+            cmd.CommandText = "select * from ast_master where custodian='" + pers_no + "'";
 
             OdbcDataAdapter da = new OdbcDataAdapter();
             DataTable dt = new DataTable();
@@ -40,15 +40,17 @@ namespace assetManagement
             dt.Columns.Add(new System.Data.DataColumn("type", typeof(String)));
             dt.Columns.Add(new System.Data.DataColumn("desc", typeof(String)));
             dt.Columns.Add(new System.Data.DataColumn("doa", typeof(String)));
+            dt.Columns.Add(new System.Data.DataColumn("model", typeof(String)));
 
 
             while (dr.Read())
             {
                 newRow = dt.NewRow();
                 newRow["asset"] = Convert.ToString(dr["astCode"]);
-                newRow["type"] = Convert.ToString(dr["model"]);
+                newRow["type"] = Convert.ToString(dr["category"]);
                 newRow["desc"] = Convert.ToString(dr["description"]);
                 newRow["doa"] = Convert.ToString(dr["issueDate"]);
+                newRow["model"] = Convert.ToString(dr["model"]);
                 dt.Rows.Add(newRow);
 
             }
