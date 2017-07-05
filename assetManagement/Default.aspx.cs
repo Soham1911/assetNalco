@@ -21,8 +21,6 @@ namespace assetManagement
 
         protected void btn_login_Click(object sender, EventArgs e)
         {
-            //lbl_error.Text = "hello";
-            //lbl_error.Visible = true;
             HttpCookie id = new HttpCookie("id");
             id.Value = txt_uid.Text.Trim();
             id.Expires = DateTime.Now.AddHours(1);
@@ -66,7 +64,23 @@ namespace assetManagement
                 }
                 else
                 {
-                    lbl_error.Visible=true;
+                    //not working
+                    conn_asset.Close();
+                    OdbcCommand cmd_asset4= conn_asset.CreateCommand();
+                    cmd_asset4.CommandText = "select password from ast_alliedUserLogin where username='" + txt_uid.Text.Trim() + "' and password='" + txt_pass.Text.Trim() + "'";
+                    conn_asset.Open();
+                    OdbcDataReader dr4 = cmd_asset4.ExecuteReader();
+                    if (dr4.Read())
+                    {
+                        Response.Cookies.Add(id);
+                        Session["user"] = txt_uid.Text.Trim();
+                        Response.Redirect("User.aspx");
+                    }
+                    else
+                    {
+                        lbl_error.Visible = true;
+                    }
+                    
                 }
                 conn_asset.Close();
             }

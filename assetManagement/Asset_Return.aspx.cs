@@ -16,7 +16,6 @@ namespace assetManagement
         OdbcConnection conn_asset = new OdbcConnection(connStr_asset);
         string p_no = "default";
         string ast = "default";
-        //string retDate2 = Convert.ToString(DateTime.Now);
         protected void Page_Load(object sender, EventArgs e)
         {
             lbl_astType.Visible = false;
@@ -41,7 +40,6 @@ namespace assetManagement
            
             //update ast_master
             OdbcCommand cmd = conn_asset.CreateCommand();
-            //cmd.CommandText = "select * from ast_pc where astCode='" + txt_astCode.Text.Trim() + "' UNION select astCode from ast_server where astCode='" + txt_astCode.Text.Trim() + "' UNION select astCode from ast_nwitem where astCode='" + txt_astCode.Text.Trim() + "'  UNION select astCode from ast_printer where astCode='" + txt_astCode.Text.Trim() + "' UNION select astCode from ast_other where astCode='" + txt_astCode.Text.Trim() + "'";
             cmd.CommandText = "select * from ast_master where astCode='" + txt_astCode.Text.Trim().ToUpper() + "'";
             conn_asset.Open();
             OdbcDataReader dr = cmd.ExecuteReader();
@@ -52,17 +50,26 @@ namespace assetManagement
             }
             conn_asset.Close();
             OdbcCommand cmdd = conn_asset.CreateCommand();
-            cmdd.CommandText = "update ast_master set dept='" + "SYSTEMS" + "', location='" + "SYSTEMS" + "', subLoc1='" + "SYSTEMS STORE" + "', subLoc2='" + "SYSTEMS STORE" + "',custodian='" + "SYSTEMS" + "'  where astCode='" + txt_astCode.Text.Trim().ToUpper() + "'";
+            cmdd.CommandText = "update ast_master set dept='" + "SYSTEMS" + "', location='" + "SYSTEMS" + "', subLoc1='" + "SYSTEMS STORE" + "', subLoc2='" + "SYSTEMS STORE" + "',custodian='" + "SYSTEMS" + "',issueDate = '"+txt_retDate.Text+"'  where astCode='" + txt_astCode.Text.Trim().ToUpper() + "'";
             conn_asset.Open();
             int dr4 = cmdd.ExecuteNonQuery();
             conn_asset.Close();
-            OdbcCommand cmdf = conn_asset.CreateCommand();
-            cmdf.CommandText = "insert into ast_cust_history values('" + "SYSTEMS" + "','" + p_no + "','" + txt_retDate.Text + "' , '','','" + unitCode + "')";
-            conn_asset.Open();
-            int dr6 = cmdf.ExecuteNonQuery();
-            conn_asset.Close();
+            
             if(dr4 == 1)
             {
+                //Update custHistory
+                OdbcCommand cmde = conn_asset.CreateCommand();
+                cmde.CommandText = "update ast_cust_history set toDate='" + txt_retDate.Text + "' where astCode='" + txt_astCode.Text.Trim().ToUpper() + "' and toDate = '1900-01-01'";
+                conn_asset.Open();
+                int dr5 = cmde.ExecuteNonQuery();
+                conn_asset.Close();
+                //Inserting new entry in ast_cust_history
+                OdbcCommand cmdf = conn_asset.CreateCommand();
+                cmdf.CommandText = "insert into ast_cust_history values('" + txt_astCode.Text.Trim().ToUpper() + "','" + "SYSTEMS" + "','" + txt_retDate.Text + "' , '1900-01-01','1900-01-01','" + unitCode + "')";
+                conn_asset.Open();
+                int dr6 = cmdf.ExecuteNonQuery();
+                conn_asset.Close();
+
                 lbl_error.ForeColor = System.Drawing.Color.Green;
                 lbl_error.Text = "Returned successfully...";
                 lbl_error.Visible = true;
@@ -84,6 +91,8 @@ namespace assetManagement
                 lbl_custName.Text = "Custodian's Name : ";
                 lbl_dept.Text = "Department : ";
                 lbl_location.Text = "Location : ";
+
+                
             }
             else 
             {
@@ -174,22 +183,23 @@ namespace assetManagement
             lbl_dept.Visible = true;
             lbl_location.Visible = true;
             img_p.Visible = true;
+            lbl_retDate.Text = "Issued Date : ";
             string retDate = Convert.ToString(DateTime.Now);
             retDate = txt_retDate.Text;
             DateTime retDate1 = Convert.ToDateTime(retDate);
             OdbcCommand cmdch = conn_asset.CreateCommand();
-            cmdch.CommandText = "select fromDate from ast_cust_history where astCode = '" + txt_astCode.Text.Trim().ToUpper() + "' and custodian_p_no = '"+p_no+"' and toDate = '1900-01-01' ";
+            cmdch.CommandText = "select issueDate from ast_master where astCode = '" + txt_astCode.Text.Trim().ToUpper() + "'";
             conn_asset.Open();
             OdbcDataReader dr = cmdch.ExecuteReader();
             DateTime fromDate = DateTime.Now;
             while(dr.Read())
             {
-                fromDate = Convert.ToDateTime(dr["fromDate"]);
+                fromDate = Convert.ToDateTime(dr["issueDate"]);
             }
             conn_asset.Close();
             if(fromDate > retDate1)
             {
-                lbl_retDate.Text += Convert.ToString(fromDate);
+                lbl_retDate.Text += fromDate.ToString("yyyy/MM/dd");
                 lbl_retDate.Visible = true;
                 txt_retDate.Text = "";
                 txt_retDate.Enabled = true;
@@ -202,12 +212,7 @@ namespace assetManagement
                 btn_ret.BackColor = System.Drawing.Color.LightSteelBlue;
                 btn_ret.ForeColor = System.Drawing.Color.Black;
                 //retDate2 = txt_retDate.Text;
-                //Update custHistory
-                OdbcCommand cmde = conn_asset.CreateCommand();
-                cmde.CommandText = "update ast_cust_history set toDate='" + txt_retDate.Text + "' where astCode='" + txt_astCode.Text.Trim().ToUpper() + "' and toDate = '1900-01-01'";
-                conn_asset.Open();
-                int dr5 = cmde.ExecuteNonQuery();
-                conn_asset.Close();
+                
 
                 lbl_error.Visible = true;
             }

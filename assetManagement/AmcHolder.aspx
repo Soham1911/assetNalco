@@ -11,7 +11,7 @@
         <div style="width: 60%;">
             <asp:Label ID="lbl_no_recs" runat="server" Font-Bold="true" ForeColor="Red" Font-Size="Medium"
                 Visible="false"
-                Text="*No Record available"></asp:Label>
+                Text="*No Record Available"></asp:Label>
             <asp:GridView ID="grid_display" runat="server" AutoGenerateColumns="false"
                 EditRowStyle-HorizontalAlign="Center" CellPadding="4" Visible="false"
                 ForeColor="#333333" GridLines="None">

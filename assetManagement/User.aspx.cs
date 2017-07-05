@@ -23,13 +23,14 @@ namespace assetManagement
 
         private void AssetShow()
         {
-            string pers_no;
-            
+            string pers_no ;
+
             pers_no = Session["user"].ToString();
+           
             
             conn_asset.Open();
             OdbcCommand cmd = conn_asset.CreateCommand();
-            cmd.CommandText = "select * from ast_master where custodian='" + pers_no + "'";
+            cmd.CommandText = "select * from ast_master where custodian='" + pers_no.Trim() + "'";
 
             OdbcDataAdapter da = new OdbcDataAdapter();
             DataTable dt = new DataTable();
@@ -49,7 +50,8 @@ namespace assetManagement
                 newRow["asset"] = Convert.ToString(dr["astCode"]);
                 newRow["type"] = Convert.ToString(dr["category"]);
                 newRow["desc"] = Convert.ToString(dr["description"]);
-                newRow["doa"] = Convert.ToString(dr["issueDate"]);
+                DateTime issdt = Convert.ToDateTime(dr["issueDate"]);
+                newRow["doa"] = issdt.ToString("yyyy/MM/dd");
                 newRow["model"] = Convert.ToString(dr["model"]);
                 dt.Rows.Add(newRow);
 

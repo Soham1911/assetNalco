@@ -111,18 +111,25 @@
     <Content Include="Account\OpenAuthProviders.ascx" />
     <Content Include="Account\Register.aspx" />
     <Content Include="Account\RegisterExternalLogin.aspx" />
+    <Content Include="Allied_Sections.aspx" />
+    <Content Include="Allied_AddUser.aspx" />
+    <Content Include="Allied_RemoveUser.aspx" />
     <Content Include="AmcHolder.aspx" />
     <Content Include="AMC_Entry.aspx" />
-    <Content Include="amc_reg.aspx" />
-    <Content Include="AMC_Return.aspx" />
-    <Content Include="Asset_AllotNonUser.aspx" />
-    <Content Include="Asset_AllotUser.aspx" />
+    <Content Include="AMC_AddUser.aspx" />
+    <Content Include="AMC_Remove.aspx" />
+    <Content Include="Asset_AllotNonEmp.aspx" />
+    <Content Include="Asset_AllotEmp.aspx" />
     <Content Include="asset_edit.aspx" />
-    <Content Include="Asset_Pc.aspx" />
+    <Content Include="Asset_Entry.aspx" />
     <Content Include="Asset_Return.aspx" />
     <Content Include="ast_master.css" />
     <Content Include="BuyBack.aspx" />
     <Content Include="call.aspx" />
+    <Content Include="call_close.aspx" />
+    <Content Include="call_draft.aspx" />
+    <Content Include="call_hist.aspx" />
+    <Content Include="call_open.aspx" />
     <Content Include="Complaints.aspx" />
     <Content Include="Content\Site.css" />
     <Content Include="Default.aspx" />
@@ -146,18 +153,24 @@
     <Content Include="Images\orderedList9.png" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
+    <Content Include="Images\SYSTEMS.jpg" />
     <Content Include="packages.config" />
     <Content Include="Amc.Master" />
     <None Include="Scripts\jquery-1.8.2.intellisense.js" />
+    <Content Include="rep_.bback.aspx" />
+    <Content Include="rep_assets.aspx" />
     <Content Include="Scripts\jquery-1.8.2.js" />
     <Content Include="Scripts\jquery-1.8.2.min.js" />
     <Content Include="Scripts\jquery-ui-1.8.24.js" />
     <Content Include="Scripts\jquery-ui-1.8.24.min.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Status.aspx" />
+    <Content Include="Sublocation.aspx" />
     <Content Include="Systems.aspx" />
     <Content Include="test.aspx" />
     <Content Include="User.aspx" />
+    <Content Include="Vendor_Add.aspx" />
+    <Content Include="Vendor_Remove.aspx" />
     <Content Include="ViewSwitcher.ascx" />
     <Content Include="Web.config" />
   </ItemGroup>
@@ -174,6 +187,27 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Allied_Sections.aspx.cs">
+      <DependentUpon>Allied_Sections.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Allied_Sections.aspx.designer.cs">
+      <DependentUpon>Allied_Sections.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Allied_AddUser.aspx.cs">
+      <DependentUpon>Allied_AddUser.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Allied_AddUser.aspx.designer.cs">
+      <DependentUpon>Allied_AddUser.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Allied_RemoveUser.aspx.cs">
+      <DependentUpon>Allied_RemoveUser.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Allied_RemoveUser.aspx.designer.cs">
+      <DependentUpon>Allied_RemoveUser.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Amc.Master.cs">
       <DependentUpon>Amc.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -195,19 +229,19 @@
     <Compile Include="AMC_Entry.aspx.designer.cs">
       <DependentUpon>AMC_Entry.aspx</DependentUpon>
     </Compile>
-    <Compile Include="amc_reg.aspx.cs">
-      <DependentUpon>amc_reg.aspx</DependentUpon>
+    <Compile Include="AMC_AddUser.aspx.cs">
+      <DependentUpon>AMC_AddUser.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="amc_reg.aspx.designer.cs">
-      <DependentUpon>amc_reg.aspx</DependentUpon>
+    <Compile Include="AMC_AddUser.aspx.designer.cs">
+      <DependentUpon>AMC_AddUser.aspx</DependentUpon>
     </Compile>
-    <Compile Include="AMC_Return.aspx.cs">
-      <DependentUpon>AMC_Return.aspx</DependentUpon>
+    <Compile Include="AMC_Remove.aspx.cs">
+      <DependentUpon>AMC_Remove.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="AMC_Return.aspx.designer.cs">
-      <DependentUpon>AMC_Return.aspx</DependentUpon>
+    <Compile Include="AMC_Remove.aspx.designer.cs">
+      <DependentUpon>AMC_Remove.aspx</DependentUpon>
     </Compile>
     <Compile Include="App_Start\AuthConfig.cs" />
     <Compile Include="Account\Login.aspx.cs">
@@ -246,19 +280,19 @@
       <DependentUpon>RegisterExternalLogin.aspx</DependentUpon>
     </Compile>
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="Asset_AllotNonUser.aspx.cs">
-      <DependentUpon>Asset_AllotNonUser.aspx</DependentUpon>
+    <Compile Include="Asset_AllotNonEmp.aspx.cs">
+      <DependentUpon>Asset_AllotNonEmp.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Asset_AllotNonUser.aspx.designer.cs">
-      <DependentUpon>Asset_AllotNonUser.aspx</DependentUpon>
+    <Compile Include="Asset_AllotNonEmp.aspx.designer.cs">
+      <DependentUpon>Asset_AllotNonEmp.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Asset_AllotUser.aspx.cs">
-      <DependentUpon>Asset_AllotUser.aspx</DependentUpon>
+    <Compile Include="Asset_AllotEmp.aspx.cs">
+      <DependentUpon>Asset_AllotEmp.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Asset_AllotUser.aspx.designer.cs">
-      <DependentUpon>Asset_AllotUser.aspx</DependentUpon>
+    <Compile Include="Asset_AllotEmp.aspx.designer.cs">
+      <DependentUpon>Asset_AllotEmp.aspx</DependentUpon>
     </Compile>
     <Compile Include="asset_edit.aspx.cs">
       <DependentUpon>asset_edit.aspx</DependentUpon>
@@ -267,12 +301,12 @@
     <Compile Include="asset_edit.aspx.designer.cs">
       <DependentUpon>asset_edit.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Asset_Pc.aspx.cs">
-      <DependentUpon>Asset_Pc.aspx</DependentUpon>
+    <Compile Include="Asset_Entry.aspx.cs">
+      <DependentUpon>Asset_Entry.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Asset_Pc.aspx.designer.cs">
-      <DependentUpon>Asset_Pc.aspx</DependentUpon>
+    <Compile Include="Asset_Entry.aspx.designer.cs">
+      <DependentUpon>Asset_Entry.aspx</DependentUpon>
     </Compile>
     <Compile Include="Asset_Return.aspx.cs">
       <DependentUpon>Asset_Return.aspx</DependentUpon>
@@ -294,6 +328,34 @@
     </Compile>
     <Compile Include="call.aspx.designer.cs">
       <DependentUpon>call.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="call_close.aspx.cs">
+      <DependentUpon>call_close.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="call_close.aspx.designer.cs">
+      <DependentUpon>call_close.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="call_draft.aspx.cs">
+      <DependentUpon>call_draft.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="call_draft.aspx.designer.cs">
+      <DependentUpon>call_draft.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="call_hist.aspx.cs">
+      <DependentUpon>call_hist.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="call_hist.aspx.designer.cs">
+      <DependentUpon>call_hist.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="call_open.aspx.cs">
+      <DependentUpon>call_open.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="call_open.aspx.designer.cs">
+      <DependentUpon>call_open.aspx</DependentUpon>
     </Compile>
     <Compile Include="Complaints.aspx.cs">
       <DependentUpon>Complaints.aspx</DependentUpon>
@@ -320,6 +382,20 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="rep_.bback.aspx.cs">
+      <DependentUpon>rep_.bback.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="rep_.bback.aspx.designer.cs">
+      <DependentUpon>rep_.bback.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="rep_assets.aspx.cs">
+      <DependentUpon>rep_assets.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="rep_assets.aspx.designer.cs">
+      <DependentUpon>rep_assets.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Site.Master.cs">
       <DependentUpon>Site.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -340,6 +416,13 @@
     </Compile>
     <Compile Include="Status.aspx.designer.cs">
       <DependentUpon>Status.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Sublocation.aspx.cs">
+      <DependentUpon>Sublocation.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Sublocation.aspx.designer.cs">
+      <DependentUpon>Sublocation.aspx</DependentUpon>
     </Compile>
     <Compile Include="Systems.aspx.cs">
       <DependentUpon>Systems.aspx</DependentUpon>
@@ -375,6 +458,20 @@
     </Compile>
     <Compile Include="User.Master.designer.cs">
       <DependentUpon>User.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Vendor_Add.aspx.cs">
+      <DependentUpon>Vendor_Add.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Vendor_Add.aspx.designer.cs">
+      <DependentUpon>Vendor_Add.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Vendor_Remove.aspx.cs">
+      <DependentUpon>Vendor_Remove.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Vendor_Remove.aspx.designer.cs">
+      <DependentUpon>Vendor_Remove.aspx</DependentUpon>
     </Compile>
     <Compile Include="ViewSwitcher.ascx.cs">
       <DependentUpon>ViewSwitcher.ascx</DependentUpon>

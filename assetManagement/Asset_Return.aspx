@@ -39,7 +39,7 @@
 
                            <tr>
                                 <td rowspan="5">
-                                    <asp:Image ID="img_p" runat="server" Visible="false" Width="150px" ToolTip="Custodian's Photo"/>
+                                    <asp:Image ID="img_p" runat="server" Visible="false" Width="100px" ToolTip="Custodian's Photo"/>
                                 </td>
                                 <td colspan="2" style="text-align: left">
                                    <asp:Label ID="lbl_astType" runat="server" Font-Size="Medium" Text="Asset Type : " Visible="false" Style="font-size: small; font-weight: 700;" ForeColor="Black"></asp:Label>
