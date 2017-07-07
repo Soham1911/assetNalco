@@ -43,6 +43,7 @@ namespace assetManagement
                     drp_quart.Items.Insert(i, new ListItem(b));
                     dqsDate = dqsDate.AddMonths(3);
                     dqeDate = dqsDate.AddMonths(3).AddDays(-1);
+                    
                 }
 
 
@@ -85,7 +86,7 @@ namespace assetManagement
             else
             {
                 lbl_no_recs.ForeColor = System.Drawing.Color.Red;
-                lbl_no_recs.Text = "No Assets Available";
+                lbl_no_recs.Text = "Assets have not been Released Yet";
                 lbl_no_recs.Visible = true;
             }
             OdbcCommand cmde = conn_asset.CreateCommand();
@@ -155,9 +156,78 @@ namespace assetManagement
             }
             else
             {
-                lbl_no_recs.ForeColor = System.Drawing.Color.Red;
-                lbl_no_recs.Text = "No Assets Available";
-                lbl_no_recs.Visible = true;
+                
+                OdbcCommand cmdq = conn_asset.CreateCommand();
+                cmdq.CommandText = "select astCode,amc_mon,unit from ast_pc where amcParty='"+ txt_amcparty.Text.Trim() +"' ";
+                conn_asset.Open();
+                cmdq.CommandType = CommandType.Text;
+                DataTable dt = new DataTable();
+                
+
+                DataRow newRow;
+                OdbcDataReader dr = cmdq.ExecuteReader();
+                
+                dt.Columns.Add(new System.Data.DataColumn("astCode", typeof(String)));
+                dt.Columns.Add(new System.Data.DataColumn("amc_mon", typeof(String)));
+                dt.Columns.Add(new System.Data.DataColumn("unit", typeof(String)));
+                while (dr.Read())
+                {
+                       
+                    newRow = dt.NewRow();
+                    newRow["astCode"] = Convert.ToString(dr["astCode"]);
+                    newRow["amc_mon"] = Convert.ToString(dr["amc_mon"]);
+                    newRow["unit"] = Convert.ToString(dr["unit"]);
+
+                    dt.Rows.Add(newRow);
+                }
+                conn_asset.Close();
+                foreach(DataRow it in dt.Rows)
+                {
+                    string mon = it["amc_mon"].ToString();
+                    int dr2;
+                    if(mon=="1")
+                    {
+                        
+                        OdbcCommand cmdw = conn_asset.CreateCommand();
+                        cmdw.CommandText = "insert into ast_pm (astCode,unitCode,month,scheduledDate,lockStat,compStat) values ('" + it["astCode"] + "','" + it["unit"] + "','"+ mon + "','"+ dsDate.ToString() +"','R','N')";
+                        conn_asset.Open();
+                        cmdw.ExecuteNonQuery();
+                        conn_asset.Close();
+                        lbl_no_recs.ForeColor = System.Drawing.Color.Green;
+                        lbl_no_recs.Text = "Assets have been Released";
+                        lbl_no_recs.Visible = true;
+                    }
+                    else if (mon == "2")
+                    {
+
+                        OdbcCommand cmdw = conn_asset.CreateCommand();
+                        cmdw.CommandText = "insert into ast_pm (astCode,unitCode,month,scheduledDate,lockStat,compStat) values ('" + it["astCode"] + "','" + it["unit"] + "','" + mon + "','" + dsDate.AddMonths(1).ToString() + "','R','N')";
+                        conn_asset.Open();
+                        cmdw.ExecuteNonQuery();
+                        conn_asset.Close();
+                        lbl_no_recs.ForeColor = System.Drawing.Color.Green;
+                        lbl_no_recs.Text = "Assets have been Released";
+                        lbl_no_recs.Visible = true;
+                    }
+                    else if (mon == "3")
+                    {
+
+                        OdbcCommand cmdw = conn_asset.CreateCommand();
+                        cmdw.CommandText = "insert into ast_pm (astCode,unitCode,month,scheduledDate,lockStat,compStat) values ('" + it["astCode"] + "','" + it["unit"] + "','" + mon + "','" + dsDate.AddMonths(2).ToString() + "','R','N')";
+                        conn_asset.Open();
+                        cmdw.ExecuteNonQuery();
+                        conn_asset.Close();
+                        lbl_no_recs.ForeColor = System.Drawing.Color.Green;
+                        lbl_no_recs.Text = "Assets have been Released";
+                        lbl_no_recs.Visible = true;
+                    }
+
+                    
+                }
+ 
+                //lbl_no_recs.ForeColor = System.Drawing.Color.Red;
+                //lbl_no_recs.Text = "No Assets Available";
+                //lbl_no_recs.Visible = true;
             }
 
             OdbcCommand cmde = conn_asset.CreateCommand();

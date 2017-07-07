@@ -58,18 +58,18 @@
         <table>
             <tr>
                 <td>
-                    <asp:Label ID="lbl_1" runat="server" Text="Assets Pending:" Visible="false" align="right"/>
+                    <asp:Label ID="lbl_1" runat="server" Font-Bold="true" Text="Assets Pending:" Visible="false" align="right"/>
                 </td>
                 <td>
-                    <asp:Label ID="l1" runat="server" Visible="false" align="right"/>
+                    <asp:Label ID="l1" runat="server" Font-Bold="true" Visible="false" align="right"/>
                 </td>
             </tr>
             <tr>
                 <td>
-                    <asp:Label ID="lbl_2" runat="server" Text="Assets Completed:" Visible="false" align="right"/>
+                    <asp:Label ID="lbl_2" runat="server" Font-Bold="true" Text="Assets Completed:" Visible="false" align="right"/>
                 </td>
                 <td>
-                    <asp:Label ID="l2" runat="server" Visible="false" align="right"/>
+                    <asp:Label ID="l2" runat="server" Font-Bold="true" Visible="false" align="right"/>
                 </td>
             </tr>
         </table>

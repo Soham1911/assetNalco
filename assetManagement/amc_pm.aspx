@@ -39,7 +39,7 @@
             <tr>
                 <td></td>
                 <td>
-                    <asp:Button ID="btn_sub" runat="server" Text="Submit" align="left" OnClick="btn_sub_Click" Width="67px" />
+                    <asp:Button ID="btn_sub" runat="server" Text="Submit" align="left" OnClick="btn_sub_Click" Width="79px" Height="30px" />
                 </td>
             </tr>
         </table>
