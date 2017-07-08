@@ -99,22 +99,20 @@
                             <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
                             <Columns>
                                 <%--<asp:CommandField SelectText="Go to PM" ShowSelectButton="true" ButtonType="button" />--%>
+                                <asp:TemplateField HeaderText="">
+                                    <ItemTemplate>
+                                        <asp:Button ID="btn_print" Text="Print " runat="server" OnClick="btn_print_Click" />
+                                    </ItemTemplate>
+                                </asp:TemplateField>
+
                                 <asp:TemplateField HeaderText="Select Asset">
                                     <ItemTemplate>
                                         <asp:Button ID="btn_sel" Text="Go to PM" runat="server" CommandName="Select" OnClick="btn_sel_Click" />
                                     </ItemTemplate>
                                 </asp:TemplateField>
 
-                                <asp:TemplateField HeaderText="Change Status">
-                                    <ItemTemplate>
-                                        <asp:Label ID="lbl_status" runat="server" Visible="True" />
-                                        <asp:DropDownList ID="drp_stat" runat="server">
-                                            <asp:ListItem Value="o" Text="o" />
-                                            <asp:ListItem Value="d">d</asp:ListItem>
-
-                                        </asp:DropDownList>
-                                    </ItemTemplate>
-                                </asp:TemplateField>
+                                
+                                    
                                 <asp:BoundField DataField="astCode" HeaderText="Asset Code"
                                     ItemStyle-HorizontalAlign="Left" SortExpression="Asset Code" HeaderStyle-HorizontalAlign="Left">
                                     <HeaderStyle HorizontalAlign="Left"></HeaderStyle>

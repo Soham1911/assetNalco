@@ -184,12 +184,12 @@ namespace assetManagement
                 foreach(DataRow it in dt.Rows)
                 {
                     string mon = it["amc_mon"].ToString();
-                    int dr2;
+                    
                     if(mon=="1")
                     {
                         
                         OdbcCommand cmdw = conn_asset.CreateCommand();
-                        cmdw.CommandText = "insert into ast_pm (astCode,unitCode,month,scheduledDate,lockStat,compStat) values ('" + it["astCode"] + "','" + it["unit"] + "','"+ mon + "','"+ dsDate.ToString() +"','R','N')";
+                        cmdw.CommandText = "insert into ast_pm (astCode,unitCode,month,scheduledDate,lockStat,compStat,actualDate) values ('" + it["astCode"] + "','" + it["unit"] + "','"+ mon + "','"+ dsDate.ToString() +"','R','N','1900-01-01')";
                         conn_asset.Open();
                         cmdw.ExecuteNonQuery();
                         conn_asset.Close();
@@ -201,7 +201,7 @@ namespace assetManagement
                     {
 
                         OdbcCommand cmdw = conn_asset.CreateCommand();
-                        cmdw.CommandText = "insert into ast_pm (astCode,unitCode,month,scheduledDate,lockStat,compStat) values ('" + it["astCode"] + "','" + it["unit"] + "','" + mon + "','" + dsDate.AddMonths(1).ToString() + "','R','N')";
+                        cmdw.CommandText = "insert into ast_pm (astCode,unitCode,month,scheduledDate,lockStat,compStat,actualDate) values ('" + it["astCode"] + "','" + it["unit"] + "','" + mon + "','" + dsDate.AddMonths(1).ToString() + "','R','N','1900-01-01')";
                         conn_asset.Open();
                         cmdw.ExecuteNonQuery();
                         conn_asset.Close();
@@ -213,7 +213,7 @@ namespace assetManagement
                     {
 
                         OdbcCommand cmdw = conn_asset.CreateCommand();
-                        cmdw.CommandText = "insert into ast_pm (astCode,unitCode,month,scheduledDate,lockStat,compStat) values ('" + it["astCode"] + "','" + it["unit"] + "','" + mon + "','" + dsDate.AddMonths(2).ToString() + "','R','N')";
+                        cmdw.CommandText = "insert into ast_pm (astCode,unitCode,month,scheduledDate,lockStat,compStat,actualDate) values ('" + it["astCode"] + "','" + it["unit"] + "','" + mon + "','" + dsDate.AddMonths(2).ToString() + "','R','N','1900-01-01')";
                         conn_asset.Open();
                         cmdw.ExecuteNonQuery();
                         conn_asset.Close();

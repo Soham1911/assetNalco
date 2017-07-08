@@ -88,6 +88,7 @@ namespace assetManagement
         protected void btn_reg_Click(object sender, EventArgs e)
         {
             string category = drp_categ.SelectedValue;
+			//pc/laptop
             if (category.Equals("PCS") || category.Equals("PCA") || category.Equals("PCW") || category.Equals("LAP"))
             {
                 monRes = drp_monRes.SelectedValue;
@@ -124,6 +125,7 @@ namespace assetManagement
                     lbl_error.ForeColor = System.Drawing.Color.Red;
                 }
             }
+			//server
             else if (category.Equals("SRV"))
             {
                 monRes = drp_monRes.SelectedValue;
@@ -160,6 +162,7 @@ namespace assetManagement
                     lbl_error.ForeColor = System.Drawing.Color.Red;
                 }
             }
+			//printer/scanner
             else if (category.Equals("SCS") || category.Equals("SCA") || category.Equals("DMP") || category.Equals("MLJ") || category.Equals("CLJ") || category.Equals("CIJ") || category.Equals("MIJ") || category.Equals("MLM") || category.Equals("CLM") || category.Equals("MLH") || category.Equals("CLH") || category.Equals("LPR"))
             {
                 speed = txt_speed.Text.Trim();

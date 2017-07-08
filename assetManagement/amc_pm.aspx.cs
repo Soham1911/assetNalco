@@ -17,6 +17,7 @@ namespace assetManagement
         OdbcConnection conn_asset = new OdbcConnection(connStr_asset);
         public static DateTime dsDate;
         public static DateTime deDate;
+        public static string category;
         protected void Page_Load(object sender, EventArgs e)
         {
 
@@ -212,9 +213,7 @@ namespace assetManagement
                 string sDate = item.Cells[4].Text.ToString();
                 DateTime dDate = Convert.ToDateTime(sDate);
 
-                DropDownList drp_stat = (DropDownList)item.FindControl("drp_stat");
-                string stat = drp_stat.SelectedValue.ToString();
-
+                
                 OdbcCommand cmda = conn_asset.CreateCommand();
                 cmda.CommandText = "select lockStat from ast_pm where astCode='" + astCode + "' and scheduledDate='"+ dDate+"'";
                 conn_asset.Open();
@@ -254,9 +253,58 @@ namespace assetManagement
             GridViewRow gr = (GridViewRow)btn.NamingContainer;
             
             Session["astCode"] = gr.Cells[2].Text.Trim();
+            string acode = Session["astCode"].ToString();
+            Session["scheduledDate"] = gr.Cells[4].Text.Trim();
+            
+            OdbcCommand cmdee = conn_asset.CreateCommand();
+            cmdee.CommandText = "select category from ast_master where astCode='"+acode+"' ";
+            conn_asset.Open();
+            OdbcDataReader drr = cmdee.ExecuteReader();
+            while(drr.Read())
+            {
+                category=drr["category"].ToString();
+                if (category.Equals("PCS") || category.Equals("PCA") || category.Equals("PCW") || category.Equals("LAP"))
+                    Response.Redirect("~/amc_pc.aspx");
+                else if (category.Equals("DMP") || category.Equals("MLJ") || category.Equals("CLJ") || category.Equals("CIJ") || category.Equals("MIJ") || category.Equals("MLM") || category.Equals("CLM") || category.Equals("MLH") || category.Equals("CLH") || category.Equals("LPR"))
+                    Response.Redirect("~/amc_printer.aspx");
+                
+                    //Response.Redirect("~/amc_network.aspx");
+                else if (category.Equals("SCS") || category.Equals("SCA"))
+                    Response.Redirect("~/amc_scanner.aspx");
+                else
+                {
+                    Response.Redirect("~/amc_network.aspx");
+                }
 
-            Response.Redirect("~/amc_pc.aspx");
 
+            }
+            
+
+
+        }
+
+        protected void btn_print_Click(object sender, EventArgs e)
+        {
+            if (category.Equals("PCS") || category.Equals("PCA") || category.Equals("PCW") || category.Equals("LAP"))
+            {
+                Response.Redirect("~/Print/pc.aspx");
+            }
+            else if (category.Equals("DMP") || category.Equals("MLJ") || category.Equals("CLJ") || category.Equals("CIJ") || category.Equals("MIJ") || category.Equals("MLM") || category.Equals("CLM") || category.Equals("MLH") || category.Equals("CLH") || category.Equals("LPR"))
+            {
+                Response.Redirect("~/Print/printer");
+            }
+            else if(category.Equals("SCS") || category.Equals("SCA") )
+            {
+                Response.Redirect("~/Print/scanner");
+            }
+            else if (category.Equals("SRV"))
+            {
+                Response.Redirect("~/Print/server");
+            }
+            else
+            {
+                Response.Redirect("~/Print/network");
+            }
         }
 
         
