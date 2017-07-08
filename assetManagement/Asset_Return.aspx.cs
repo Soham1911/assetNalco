@@ -50,7 +50,7 @@ namespace assetManagement
             }
             conn_asset.Close();
             OdbcCommand cmdd = conn_asset.CreateCommand();
-            cmdd.CommandText = "update ast_master set dept='" + "SYSTEMS" + "', location='" + "SYSTEMS" + "', subLoc1='" + "SYSTEMS STORE" + "', subLoc2='" + "SYSTEMS STORE" + "',custodian='" + "SYSTEMS" + "',issueDate = '"+txt_retDate.Text+"'  where astCode='" + txt_astCode.Text.Trim().ToUpper() + "'";
+            cmdd.CommandText = "update ast_master set dept='" + "SYSTEMS" + "', location='" + "SYSTEMS" + "', subLoc1='" + "SYSTEMS STORE" + "', subLoc2='" + "SYSTEMS STORE" + "',custodian='" + "SYSTEMS" + "',presentUser = 'SYSTEMS' issueDate = '"+txt_retDate.Text+"'  where astCode='" + txt_astCode.Text.Trim().ToUpper() + "'";
             conn_asset.Open();
             int dr4 = cmdd.ExecuteNonQuery();
             conn_asset.Close();
@@ -137,21 +137,7 @@ namespace assetManagement
             if (flg == 1)
             {
                 conn_asset.Close();
-                OdbcCommand cmda = conn_asset.CreateCommand();
-                cmda.CommandText = "select * from ast_empMaster where p_no='" + p_no.Trim().ToUpper() + "'";
-                conn_asset.Open();
-                OdbcDataReader dr1 = cmda.ExecuteReader();
-                while (dr1.Read())
-                {
-                    lbl_custName.Text += dr1["name"].ToString();
-                    lbl_custName.Visible = true;
-                    txt_retDate.Enabled = true;
-                    btn_ret.Enabled = true;
-                    btn_ret.BackColor = System.Drawing.Color.LightSteelBlue;
-                    btn_ret.ForeColor = System.Drawing.Color.Black;
-                }
-                conn_asset.Close();
-                if (lbl_dept.Text == "SYSTEMS")
+                if (p_no.Trim().ToUpper().Equals("SYSTEMS"))
                 {
                     lbl_error.ForeColor = System.Drawing.Color.Orange;
                     lbl_error.Text = "Already in Systems";
@@ -161,6 +147,44 @@ namespace assetManagement
                     btn_ret.BackColor = System.Drawing.Color.Gray;
                     btn_ret.ForeColor = System.Drawing.Color.LightGray;
                 }
+                else
+                {
+                    OdbcCommand cmda = conn_asset.CreateCommand();
+                    cmda.CommandText = "select * from ast_empMaster where p_no='" + p_no.Trim().ToUpper() + "'";
+                    conn_asset.Open();
+                    OdbcDataReader dr1 = cmda.ExecuteReader();
+                    int flag = 0;
+                    while (dr1.Read())
+                    {
+                        lbl_custName.Text += dr1["name"].ToString();
+                        lbl_custName.Visible = true;
+                        txt_retDate.Enabled = true;
+                        btn_ret.Enabled = true;
+                        btn_ret.BackColor = System.Drawing.Color.LightSteelBlue;
+                        btn_ret.ForeColor = System.Drawing.Color.Black;
+                        flag = 1;
+                    }
+                    if(flag == 0)
+                    {
+                        conn_asset.Close();
+                        OdbcCommand cmdb = conn_asset.CreateCommand();
+                        cmdb.CommandText = "select * from ast_alliedUserLogin where username = '" + p_no.Trim().ToUpper() + "'";
+                        conn_asset.Open();
+                        OdbcDataReader drb = cmdb.ExecuteReader();
+                        while (drb.Read())
+                        {
+                            lbl_custName.Text += drb["name"].ToString();
+                            lbl_custName.Visible = true;
+                            txt_retDate.Enabled = true;
+                            btn_ret.Enabled = true;
+                            btn_ret.BackColor = System.Drawing.Color.LightSteelBlue;
+                            btn_ret.ForeColor = System.Drawing.Color.Black;
+                        }
+                    }
+                    conn_asset.Close();
+                }
+                
+                
             }
             else
             {

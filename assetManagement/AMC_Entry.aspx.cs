@@ -20,7 +20,7 @@ namespace assetManagement
             OdbcCommand cmda = conn_asset.CreateCommand();
 
 
-            cmda.CommandText = "select * from ast_vendorMaster";
+            cmda.CommandText = "select vendorName,av.vendorCode as vendorCode from ast_vendorMaster av join ast_amcVendor aav on av.vendorCode=aav.amcParty";
             OdbcDataAdapter da = new OdbcDataAdapter(cmda);
             DataTable dt = new DataTable();
 
@@ -48,17 +48,72 @@ namespace assetManagement
         protected void btn_reg_Click(object sender, EventArgs e)
         {
             OdbcCommand cmd = conn_asset.CreateCommand();
-            cmd.CommandText = "update ast_master set amcParty = '"+drp_amcParty.SelectedValue+"' , amcStart = '"+txt_amcStart.Text+"' , amcStat = 'Y' where po_no = '"+txt_po_no.Text.Trim()+"' or astCode = '"+txt_assetCode.Text.Trim().ToUpper()+"'";
+            cmd.CommandText = "update ast_master set amcParty = '" + drp_amcParty.SelectedValue + "' , amcStart = '" + txt_amcStart.Text + "' , amcEnd = '" + txt_amcEnd.Text + "',  amcStat = 'Y' where po_no = '" + txt_po_no.Text.Trim() + "' or astCode = '" + txt_assetCode.Text.Trim().ToUpper() + "'";
             int check1;
             conn_asset.Open();
             check1 = cmd.ExecuteNonQuery();
             conn_asset.Close();
-            OdbcCommand cmd1 = conn_asset.CreateCommand();
-            cmd1.CommandText = "update ast_amcMaster set amcParty = '" + drp_amcParty.SelectedValue + "' , startDate = '" + txt_amcStart.Text + "' ,endDate = '1900-01-01' where po_no = '" + txt_po_no.Text.Trim() + "' or astCode = '" + txt_assetCode.Text.Trim().ToUpper() + "'";
-            int check2;
-            conn_asset.Open();
-            check2 = cmd1.ExecuteNonQuery();
-            conn_asset.Close();
+
+            if(drp_sel.SelectedValue.Equals("po_no"))
+            {
+                /////
+                OdbcCommand cmd2 = conn_asset.CreateCommand();
+                cmd2.CommandText = "select astCode from ast_master where po_no = '" + txt_po_no.Text.Trim().ToUpper() + "'";
+                conn_asset.Open();
+                OdbcDataReader dr = cmd2.ExecuteReader();
+
+                DataTable dt = new DataTable();
+                DataRow newRow;
+
+                dt.Columns.Add(new System.Data.DataColumn("astCode", typeof(String)));
+                dt.Columns.Add(new System.Data.DataColumn("po_no", typeof(String)));
+                dt.Columns.Add(new System.Data.DataColumn("amcParty", typeof(String)));
+                dt.Columns.Add(new System.Data.DataColumn("startDate", typeof(String)));
+                dt.Columns.Add(new System.Data.DataColumn("endDate", typeof(String)));
+
+                while (dr.Read())
+                {
+                    newRow = dt.NewRow();
+                    newRow["astCode"] = Convert.ToString(dr["astCode"]);
+                    newRow["po_no"] = txt_po_no.Text.Trim().ToUpper();
+                    newRow["amcParty"] = drp_amcParty.SelectedValue;
+                    newRow["startDate"] = txt_amcStart.Text;
+                    newRow["endDate"] = txt_amcEnd.Text;
+                    dt.Rows.Add(newRow);
+                }
+                conn_asset.Close();
+
+                foreach (DataRow it in dt.Rows)
+                {
+                    OdbcCommand cmd1 = conn_asset.CreateCommand();
+                    cmd1.CommandText = "insert into ast_amcMaster values('" + it["astCode"] + "','" + it["po_no"] + "','" + it["amcParty"] + "','" + it["startDate"] + "','" + it["endDate"] + "','','1900-01-01')";
+                    int check2;
+                    conn_asset.Open();
+                    check2 = cmd1.ExecuteNonQuery();
+                    conn_asset.Close();
+                }
+                /////
+            }
+            else
+            {
+                OdbcCommand cmd3 = conn_asset.CreateCommand();
+                cmd3.CommandText = "select po_no from ast_master where astCode = '" + txt_assetCode.Text.Trim().ToUpper() + "'";
+                conn_asset.Open();
+                OdbcDataReader dr3 = cmd3.ExecuteReader();
+                string po_no = "default";
+                if (dr3.Read())
+                {
+                    po_no = dr3["po_no"].ToString();  
+                }
+
+                OdbcCommand cmd2 = conn_asset.CreateCommand();
+                cmd2.CommandText = "insert into ast_amcMaster values('" + txt_assetCode.Text.Trim().ToUpper() + "','" + po_no + "','" + drp_amcParty.SelectedValue + "','" + txt_amcStart.Text + "','" + txt_amcEnd.Text + "','','1900-01-01')";
+                int check2;
+                conn_asset.Open();
+                check2 = cmd2.ExecuteNonQuery();
+                conn_asset.Close();
+            }
+            
             if(check1 == 1)
             {
                 lbl_error.ForeColor = System.Drawing.Color.Green;

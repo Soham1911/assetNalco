@@ -598,6 +598,24 @@ namespace assetManagement {
         protected global::System.Web.UI.WebControls.DropDownList drp_msOffice;
         
         /// <summary>
+        /// lbl_msOfficeVer control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbl_msOfficeVer;
+        
+        /// <summary>
+        /// txt_msOfficeVer control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txt_msOfficeVer;
+        
+        /// <summary>
         /// lbl_antiVirus control.
         /// </summary>
         /// <remarks>
@@ -614,6 +632,24 @@ namespace assetManagement {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RadioButtonList rdbtn_antiVirus;
+        
+        /// <summary>
+        /// lbl_antiV control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbl_antiV;
+        
+        /// <summary>
+        /// txt_antiV control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txt_antiV;
         
         /// <summary>
         /// lbl_webcam control.

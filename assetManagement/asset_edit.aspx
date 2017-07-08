@@ -33,7 +33,7 @@
                                 <td>
                                     <asp:Label ID="lbl_astCodeLen" runat="server" Text="*Asset code must has 11 characters" Font-Size="Medium" Visible="false" Style="font-size: small" ForeColor="Red"></asp:Label>
                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="txt_astCode" ErrorMessage="*Enter asset code" ForeColor="Red"></asp:RequiredFieldValidator>
-                                     <asp:Label ID="lbl_astCode" runat="server" Text="*Invalid Asset Code" Font-Size="Medium" Visible="false" Style="font-size: small" ForeColor="Red"></asp:Label>
+                                    <asp:Label ID="lbl_astCode" runat="server" Text="*Invalid Asset Code" Font-Size="Medium" Visible="false" Style="font-size: small" ForeColor="Red"></asp:Label>
                               </td>
                             </tr>
 
@@ -88,6 +88,32 @@
                                 </td>
                                 <td align="left" class="auto-style1">
                                     <asp:TextBox ID="txt_ip" runat="server" ToolTip=" IP Address " Width="230px" Text="10.20."></asp:TextBox>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td align="right">
+                                    <asp:Label ID="lbl_loc" runat="server" Text="Location :" Font-Size="small"></asp:Label>
+                                </td>
+                                <td align="left" class="auto-style1">
+                                    <asp:TextBox ID="txt_loc" runat="server" ToolTip=" Location " Width="230px" AutoPostBack="true" OnTextChanged="txt_loc_TextChanged"></asp:TextBox>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td align="right">
+                                    <asp:Label ID="lbl_subLoc1" runat="server" Text="Sub-Location 1 :" Font-Size="small"></asp:Label>
+                                </td>
+                                <td align="left" class="auto-style1">
+                                    <asp:DropDownList ID="drp_subLoc" runat="server" Width="230px">
+                                        
+                                    </asp:DropDownList>
+                               </td>
+                            </tr>
+                            <tr>
+                                <td align="right">
+                                    <asp:Label ID="lbl_subLoc2" runat="server" Text="Sub-Location 2 :" Font-Size="small"></asp:Label>
+                                </td>
+                                <td align="left" class="auto-style1">
+                                    <asp:TextBox ID="txt_subLoc2" runat="server" ToolTip=" Sub-Location 2 " Width="230px"></asp:TextBox>
                                 </td>
                             </tr>
                             <tr>

@@ -60,7 +60,18 @@
                                     <font size="2em" style="font-weight: 700"> Location :</font>
                                 </td>
                                 <td align="left">
-                                    <asp:TextBox ID="txt_location" runat="server" ToolTip="Location" Width="230px" ></asp:TextBox>
+                                    <asp:DropDownList ID="drp_loc" runat="server" ToolTip="Select Location" Width="230px" AutoPostBack="true" OnSelectedIndexChanged="drp_loc_SelectedIndexChanged" DataValueField="locationCode" DataTextField="locationName">
+                                    </asp:DropDownList>
+                                </td>
+                                
+                            </tr>
+                            <tr>
+                                <td align="right">
+                                    <font size="2em" style="font-weight: 700">Sub Location :</font>
+                                </td>
+                                <td align="left">
+                                    <asp:DropDownList ID="drp_subLoc" runat="server" ToolTip="Select Sub Location" Width="230px" DataValueField="subLocCode" DataTextField="subLocName">
+                                    </asp:DropDownList>
                                 </td>
                                 
                             </tr>

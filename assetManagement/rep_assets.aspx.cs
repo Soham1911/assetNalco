@@ -18,14 +18,29 @@ namespace assetManagement
         OdbcConnection conn_asset = new OdbcConnection(connStr_asset);
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (!Page.IsPostBack)
+            {
+                //adding values to drp_type
 
+                OdbcCommand cmdb = conn_asset.CreateCommand();
+                cmdb.CommandText = "select * from ast_typeMaster";
+                OdbcDataAdapter da = new OdbcDataAdapter(cmdb);
+                DataTable dt = new DataTable();
+
+                da.Fill(dt);
+                dt.Columns.Add(new DataColumn("category", System.Type.GetType("System.String"), "type + ' : ' + desc"));
+                drp_type.DataSource = dt;
+                drp_type.DataValueField = "type";
+                drp_type.DataTextField = "category";
+                drp_type.DataBind();
+            }
         }
 
         private void BindData()
         {
             string by = drp_by.SelectedItem.Text;
             string val = txt_val.Text.Trim();
-
+            string drp_val = drp_type.SelectedValue;
             if (by == "Asset Code")
             {
 
@@ -128,7 +143,7 @@ namespace assetManagement
             {
 
                 OdbcCommand cmd = conn_asset.CreateCommand();
-                cmd.CommandText = "select astCode,description,custodian,issueDate from ast_master where category='"+val+"' order by issueDate desc";
+                cmd.CommandText = "select astCode,description,custodian,issueDate from ast_master where category='"+drp_val+"' order by issueDate desc";
                 conn_asset.Open();
                 cmd.CommandType = CommandType.Text;
                 DataTable dt = new DataTable();
@@ -213,9 +228,31 @@ namespace assetManagement
             Response.Cache.SetCacheability(HttpCacheability.NoCache);
             Response.ContentType = "application/vnd.ms-excel";
             Response.AddHeader("Content-Disposition", "attachment;filename=" + FileName);
-            grid_pno.GridLines = GridLines.Both;
-            grid_pno.HeaderStyle.Font.Bold = true;
-            grid_pno.RenderControl(htmltextwrtter);
+            if (grid_pno.Visible == true)
+            {
+                grid_pno.GridLines = GridLines.Both;
+                grid_pno.HeaderStyle.Font.Bold = true;
+                grid_pno.RenderControl(htmltextwrtter);
+            }
+            else if (grid_astcode.Visible == true)
+            {
+                grid_astcode.GridLines = GridLines.Both;
+                grid_astcode.HeaderStyle.Font.Bold = true;
+                grid_astcode.RenderControl(htmltextwrtter);
+            }
+            else if (grid_all.Visible == true)
+            {
+                grid_all.GridLines = GridLines.Both;
+                grid_all.HeaderStyle.Font.Bold = true;
+                grid_all.RenderControl(htmltextwrtter);
+            }
+            else if (grid_type.Visible == true)
+            {
+                grid_type.GridLines = GridLines.Both;
+                grid_type.HeaderStyle.Font.Bold = true;
+                grid_type.RenderControl(htmltextwrtter);
+            }
+            
             Response.Write(strwritter.ToString());
             Response.End();
 

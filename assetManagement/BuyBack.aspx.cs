@@ -24,24 +24,79 @@ namespace assetManagement
             lbl_no_recs.Visible = false;
             lbl_poDate.Text = "PO Date : ";
             lbl_poDate.Visible = false;
+
         }
 
 
 
         protected void btn_reg_Click(object sender, EventArgs e)
-        {
+        { 
+            if (drp_sel.SelectedValue.Equals("po_no"))
+            {
+                /////
+                OdbcCommand cmd2 = conn_asset.CreateCommand();
+                cmd2.CommandText = "select * from ast_master where po_no = '" + txt_po_no.Text.Trim().ToUpper() + "'";
+                conn_asset.Open();
+                OdbcDataReader dr = cmd2.ExecuteReader();
+
+                DataTable dt = new DataTable();
+                DataRow newRow;
+
+                dt.Columns.Add(new System.Data.DataColumn("astCode", typeof(String)));
+                dt.Columns.Add(new System.Data.DataColumn("installDate", typeof(String)));
+                dt.Columns.Add(new System.Data.DataColumn("poDate", typeof(String)));
+                dt.Columns.Add(new System.Data.DataColumn("buybackDate", typeof(String)));
+
+                while (dr.Read())
+                {
+                    newRow = dt.NewRow();
+                    newRow["astCode"] = Convert.ToString(dr["astCode"]);
+                    newRow["installDate"] = Convert.ToString(dr["installation"]);
+                    newRow["poDate"] = Convert.ToString(dr["poDate"]);
+                    newRow["buybackDate"] = txt_date.Text;
+                    dt.Rows.Add(newRow);
+                }
+                conn_asset.Close();
+
+                foreach (DataRow it in dt.Rows)
+                {
+                    OdbcCommand cmd1 = conn_asset.CreateCommand();
+                    cmd1.CommandText = "insert into ast_history values('" + it["astCode"] + "','" + it["installDate"] + "','" + it["poDate"] + "','" + it["buybackDate"] + "')";
+                    int check2;
+                    conn_asset.Open();
+                    check2 = cmd1.ExecuteNonQuery();
+                    conn_asset.Close();
+                }
+                /////
+            }
+            else
+            {
+                OdbcCommand cmd3 = conn_asset.CreateCommand();
+                cmd3.CommandText = "select * from ast_master where astCode = '" + txt_assetCode.Text.Trim().ToUpper() + "'";
+                conn_asset.Open();
+                OdbcDataReader dr3 = cmd3.ExecuteReader();
+                string po_date = "1900-01-01",installation="1900-01-01";
+                if (dr3.Read())
+                {
+                    po_date= Convert.ToDateTime(dr3["poDate"]).ToString("yyyy/MM/dd");
+                    installation = Convert.ToDateTime(dr3["installation"]).ToString("yyyy/MM/dd");
+                }
+
+                OdbcCommand cmd2 = conn_asset.CreateCommand();
+                cmd2.CommandText = "insert into ast_history values('" + txt_assetCode.Text.Trim().ToUpper() + "','" + installation + "','" + po_date + "','" + txt_date.Text + "')";
+                int check2;
+                conn_asset.Open();
+                check2 = cmd2.ExecuteNonQuery();
+                conn_asset.Close();
+            }
+
             OdbcCommand cmd = conn_asset.CreateCommand();
-            cmd.CommandText = "update ast_master set buybackDate = '" + txt_date.Text + "' , buybackStat = 'Y' where po_no = '" + txt_po_no.Text.Trim() + "' or astCode = '" + txt_assetCode.Text.Trim().ToUpper() + "'";
+            cmd.CommandText = "delete from ast_master where astCode = '" + txt_assetCode.Text.Trim().ToUpper() + "' or po_no = '" + txt_po_no.Text.Trim().ToUpper() + "'";
             int check1;
             conn_asset.Open();
             check1 = cmd.ExecuteNonQuery();
             conn_asset.Close();
-            OdbcCommand cmd1 = conn_asset.CreateCommand();
-            cmd1.CommandText = "update ast_amcMaster endDate = '" + txt_date.Text + "', where (po_no = '" + txt_po_no.Text.Trim() + "' or astCode = '" + txt_assetCode.Text.Trim().ToUpper() + "') and endDate = '1900-01-01'";
-            int check2;
-            conn_asset.Open();
-            check2 = cmd1.ExecuteNonQuery();
-            conn_asset.Close();
+
             if (check1 == 1)
             {
                 lbl_error.ForeColor = System.Drawing.Color.Green;
@@ -55,14 +110,18 @@ namespace assetManagement
                 lbl_error.ForeColor = System.Drawing.Color.Red;
                 lbl_error.Text = "Failed to remove";
                 lbl_error.Visible = true;
+                txt_assetCode.Text = "";
+                txt_po_no.Text = "";
             }
+
         }
 
         protected void txt_po_no_TextChanged(object sender, EventArgs e)
         {
 
-            txt_assetCode.Text = "";
+
             //searching by po no.
+            txt_assetCode.Text = "";
             int total = 0;
             lbl_poDate.Text = "PO Date : ";
             OdbcCommand cmda = conn_asset.CreateCommand();

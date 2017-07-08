@@ -29,7 +29,7 @@
                                     <font size="2em" style="font-weight: 700"> Location :</font>
                                 </td>
                                 <td align="left">
-                                    <asp:DropDownList ID="drp_sec" runat="server" ToolTip="Select Location" Width="230px" AutoPostBack="true" OnSelectedIndexChanged="drp_sec_SelectedIndexChanged" DataValueField="sectionCode" DataTextField="sectionName">
+                                    <asp:DropDownList ID="drp_sec" runat="server" ToolTip="Select Location" Width="230px" AutoPostBack="true" OnSelectedIndexChanged="drp_sec_SelectedIndexChanged" DataValueField="locationCode" DataTextField="locationName">
                                     </asp:DropDownList>
                                 </td>
                             </tr>

@@ -19,8 +19,12 @@ namespace assetManagement
         int ram = 0;
         protected void Page_Load(object sender, EventArgs e)
         {
-            lbl_astCode.Visible = false;
-            lbl_astCodeLen.Visible = false;
+            if(!IsPostBack)
+            {
+                lbl_astCode.Visible = false;
+                lbl_astCodeLen.Visible = false;
+            }
+            
         }
         protected void txt_astCode_TextChanged(object sender, EventArgs e)
         {
@@ -87,6 +91,8 @@ namespace assetManagement
                         txt_domainUser.Text = Convert.ToString(dr1["domainUser"]);
                         txt_hostName.Text = Convert.ToString(dr1["hostName"]);
                         txt_remarks.Text = Convert.ToString(dr1["remarks"]);
+                        txt_loc.Text = Convert.ToString(dr1["location"]);
+                        
                         flag = 1;
                     }
                     if(flag == 1)
@@ -96,15 +102,13 @@ namespace assetManagement
                         btn_reg.ForeColor = System.Drawing.Color.Black;
                         lbl_error.ForeColor = System.Drawing.Color.Green;
                         conn_asset.Close();
-                        lbl_error.Text = "Edited successfully...";
+                        lbl_error.Text = "";
                         lbl_error.Visible = true;
-                        txt_astCode.Text = "";
+                        add_drp_loc();
                     }
                     else
                     {
-                        lbl_error.ForeColor = System.Drawing.Color.Red;
-                        lbl_error.Text = "Failed to edit";
-                        lbl_error.Visible = true;
+                 
                         conn_asset.Close();
                     }
                 }
@@ -116,11 +120,29 @@ namespace assetManagement
                     btn_reg.BackColor = System.Drawing.Color.Gray;
                     btn_reg.ForeColor = System.Drawing.Color.LightGray;
                     btn_reg.ToolTip = "Check the asset code";
+                    clear_all();
                 }
                 
             }
 
         }
+        
+        public void add_drp_loc()
+        {
+            //adding values to drp_subLoc
+
+            OdbcCommand cmde = conn_asset.CreateCommand();
+            cmde.CommandText = "select * from ast_subLocMaster where location = '" + txt_loc.Text.Trim().ToUpper() + "'";
+            OdbcDataAdapter da = new OdbcDataAdapter(cmde);
+            DataTable dt = new DataTable();
+
+            da.Fill(dt);
+            drp_subLoc.DataSource = dt;
+            drp_subLoc.DataValueField = "subLocCode";
+            drp_subLoc.DataTextField = "subLocName";
+            drp_subLoc.DataBind();
+        }
+
         protected void btn_reg_Click(object sender, EventArgs e)
         {
             string processor = "NA";
@@ -148,8 +170,8 @@ namespace assetManagement
                 lbl_error.Text = "Graphics card , HDD , RAM should be integer value.";
                 lbl_error.ForeColor = System.Drawing.Color.Red;
             }
-            
-            cmd.CommandText = "update ast_master set description = '" + txt_desc.Text.Trim().ToUpper() + "' , make = '" + txt_make.Text.Trim().ToUpper() + "',model = '" + txt_model.Text.Trim().ToUpper() + "',part_no = '" + txt_part_no.Text.Trim().ToUpper() + "',ip = '" + txt_ip.Text.Trim() + "',monitor_size = '" + txt_monSize.Text.Trim() + "',monitor_res = '" + drp_monRes.SelectedValue + "',sizeOfPaper = '" + txt_sizeOfPaper.Text.Trim().ToUpper() + "',speed = '" + txt_speed.Text.Trim().ToUpper() + "',os = '" + txt_os.Text.Trim().ToUpper() + "',service_pack = '" + txt_sp.Text.Trim().ToUpper() + "',processor = '" + processor + "',cla = '" + txt_cla.Text.Trim().ToUpper() + "',ram = '" + ram + "',hdd = '" + hdd + "',graphics = '" + graphics + "',keyboardMake = '" + txt_keyboardMake.Text.Trim().ToUpper() + "',keyboard_s_no = '" + txt_keyboard_s_no.Text.Trim().ToUpper() + "',mouseMake = '" + txt_mouseMake.Text.Trim().ToUpper() + "',mouse_s_no = '" + txt_mouse_s_no.Text.Trim().ToUpper() + "',ibmNotes = '" + txt_ibmNotes.Text.Trim().ToUpper() + "',msOffice = '" + drp_msOffice.SelectedValue + "',antiVirus = '" + rdbtn_antiVirus.SelectedValue + "',webcam = '" + rdbtn_webcam.SelectedValue + "',lanStat = '" + rdbtn_lanStat.SelectedValue + "',domain = '" + txt_domain.Text.Trim().ToUpper() + "',domainUser = '" + txt_domainUser.Text.Trim().ToUpper() + "',hostName = '" + txt_hostName.Text.Trim().ToUpper() + "',remarks = '" + txt_remarks.Text.Trim().ToUpper() + "'   where astCode = '" + txt_astCode.Text.Trim().ToUpper() + "'";
+
+            cmd.CommandText = "update ast_master set description = '" + txt_desc.Text.Trim().ToUpper() + "' , make = '" + txt_make.Text.Trim().ToUpper() + "',model = '" + txt_model.Text.Trim().ToUpper() + "',part_no = '" + txt_part_no.Text.Trim().ToUpper() + "',ip = '" + txt_ip.Text.Trim() + "',location = '"+txt_loc.Text.Trim().ToUpper()+"',subLoc1 = '" + drp_subLoc.SelectedValue + "',subLoc2 = '" + txt_subLoc2.Text.Trim() + "',monitor_size = '" + txt_monSize.Text.Trim() + "',monitor_res = '" + drp_monRes.SelectedValue + "',sizeOfPaper = '" + txt_sizeOfPaper.Text.Trim().ToUpper() + "',speed = '" + txt_speed.Text.Trim().ToUpper() + "',os = '" + txt_os.Text.Trim().ToUpper() + "',service_pack = '" + txt_sp.Text.Trim().ToUpper() + "',processor = '" + processor + "',cla = '" + txt_cla.Text.Trim().ToUpper() + "',ram = '" + ram + "',hdd = '" + hdd + "',graphics = '" + graphics + "',keyboardMake = '" + txt_keyboardMake.Text.Trim().ToUpper() + "',keyboard_s_no = '" + txt_keyboard_s_no.Text.Trim().ToUpper() + "',mouseMake = '" + txt_mouseMake.Text.Trim().ToUpper() + "',mouse_s_no = '" + txt_mouse_s_no.Text.Trim().ToUpper() + "',ibmNotes = '" + txt_ibmNotes.Text.Trim().ToUpper() + "',msOffice = '" + drp_msOffice.SelectedValue + "',antiVirus = '" + rdbtn_antiVirus.SelectedValue + "',webcam = '" + rdbtn_webcam.SelectedValue + "',lanStat = '" + rdbtn_lanStat.SelectedValue + "',domain = '" + txt_domain.Text.Trim().ToUpper() + "',domainUser = '" + txt_domainUser.Text.Trim().ToUpper() + "',hostName = '" + txt_hostName.Text.Trim().ToUpper() + "',remarks = '" + txt_remarks.Text.Trim().ToUpper() + "'   where astCode = '" + txt_astCode.Text.Trim().ToUpper() + "'";
             int check1;
             conn_asset.Open();
             check1 = cmd.ExecuteNonQuery();
@@ -166,6 +188,16 @@ namespace assetManagement
                 lbl_error.Text = "Failed to save changes";
                 lbl_error.Visible = true;
             }
+        }
+
+        protected void txt_loc_TextChanged(object sender, EventArgs e)
+        {
+            add_drp_loc();
+        }
+
+        public void clear_all()
+        {
+
         }
     }
 }

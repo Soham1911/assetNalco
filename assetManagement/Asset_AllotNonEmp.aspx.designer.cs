@@ -85,6 +85,15 @@ namespace assetManagement {
         protected global::System.Web.UI.WebControls.Label lbl_oldName;
         
         /// <summary>
+        /// lbl_oldSec control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbl_oldSec;
+        
+        /// <summary>
         /// lbl_oldLoc control.
         /// </summary>
         /// <remarks>

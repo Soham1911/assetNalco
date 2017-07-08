@@ -52,6 +52,11 @@
                                    <asp:Label ID="lbl_oldName" runat="server" Font-Size="Medium" Text="Name : " Visible="false" Style="font-size: small; font-weight: 700;" ForeColor="Black"></asp:Label>
                                 </td>
                             </tr>
+                             <tr>
+                                <td colspan="2"  style="text-align: left">
+                                    <asp:Label ID="lbl_oldSec" runat="server" Font-Size="Medium" Text="Section : " Visible="false" Style="font-size: small; font-weight: 700;" ForeColor="Black"></asp:Label>
+                                </td>
+                            </tr>
                             <tr>
                                 <td colspan="2"  style="text-align: left">
                                     <asp:Label ID="lbl_oldLoc" runat="server" Font-Size="Medium" Text="Location : " Visible="false" Style="font-size: small; font-weight: 700;" ForeColor="Black"></asp:Label>
