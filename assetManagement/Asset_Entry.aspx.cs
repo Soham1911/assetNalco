@@ -20,7 +20,7 @@ namespace assetManagement
         int graphics = 0;
         int hdd = 0;
         int ram = 0;
-        string issueDate = "1900-01-01", monSize = "NA", monRes = "NA", speed = "NA", sizeOfPaper = "NA", os = "NA", servicePack = "NA", proc = "NA", cla = "NA", kbMake = "NA", kb_s_no = "NA", mouMake = "NA", mou_s_no = "NA", ibmNote = "NA", msOffice = "NA", antivirus = "N", webcam = "N", lanStat = "N", domain = "NA", domainUser = "NA",hostName = "NA";
+        string issueDate = "1900-01-01", monSize = "NA", monRes = "NA", speed = "NA", sizeOfPaper = "NA", os = "NA", servicePack = "NA", proc = "NA", cla = "NA", kbMake = "NA", kb_s_no = "NA", mouMake = "NA", mou_s_no = "NA", ibmNote = "NA", msOffice = "NA", antivirus = "N", webcam = "N", lanStat = "N", domain = "NA", domainUser = "NA",hostName = "NA",msOfficeVer = "NA",type="NA";
         decimal poPrice = 0;
 
         public void disableButton()
@@ -64,10 +64,10 @@ namespace assetManagement
                  DataTable dt = new DataTable();
 
                  da.Fill(dt);
-                 dt.Columns.Add(new DataColumn("category", System.Type.GetType("System.String"), "type + ' : ' + desc"));
+                 dt.Columns.Add(new DataColumn("categoryDetail", System.Type.GetType("System.String"), "category + ' : ' + desc"));
                  drp_categ.DataSource = dt;
-                 drp_categ.DataValueField = "type";
-                 drp_categ.DataTextField = "category";
+                 drp_categ.DataValueField = "category";
+                 drp_categ.DataTextField = "categoryDetail";
                  drp_categ.DataBind();
 
                  //adding values to drp_monRes
@@ -81,6 +81,9 @@ namespace assetManagement
                  drp_monRes.DataValueField = "Code";
                  drp_monRes.DataTextField = "Resolution";
                  drp_monRes.DataBind();
+
+                 txt_msOfficeVer.Enabled = false;
+                 txt_antiV.Enabled = false;
              }
             
         }
@@ -88,7 +91,19 @@ namespace assetManagement
         protected void btn_reg_Click(object sender, EventArgs e)
         {
             string category = drp_categ.SelectedValue;
+<<<<<<< HEAD
 			//pc/laptop
+=======
+            OdbcCommand cmda = conn_asset.CreateCommand();
+            cmda.CommandText = "select type from ast_typeMaster where category = '" + category + "'";
+            conn_asset.Open();
+            OdbcDataReader dr = cmda.ExecuteReader();
+            while (dr.Read())
+            {
+                type = dr["type"].ToString();
+            }
+            conn_asset.Close();
+>>>>>>> cf6b9ed0e363b41a626379d7d613461d15a38319
             if (category.Equals("PCS") || category.Equals("PCA") || category.Equals("PCW") || category.Equals("LAP"))
             {
                 monRes = drp_monRes.SelectedValue;
@@ -96,7 +111,8 @@ namespace assetManagement
                 webcam = rdbtn_webcam.SelectedValue;
                 lanStat = rdbtn_lanStat.SelectedValue;
                 msOffice = drp_msOffice.SelectedValue;
-                antivirus = rdbtn_antiVirus.SelectedValue;
+                msOfficeVer = txt_msOfficeVer.Text.Trim().ToUpper();
+                antivirus = txt_antiV.Text.Trim().ToUpper();
                 issueDate = txt_issueDate.Text;
                 monSize = txt_monSize.Text.Trim();
                 os = txt_os.Text.Trim().ToUpper();
@@ -134,7 +150,8 @@ namespace assetManagement
                 webcam = rdbtn_webcam.SelectedValue;
                 lanStat = rdbtn_lanStat.SelectedValue;
                 msOffice = drp_msOffice.SelectedValue;
-                antivirus = rdbtn_antiVirus.SelectedValue;
+                msOfficeVer = txt_msOfficeVer.Text.Trim().ToUpper();
+                antivirus = txt_antiV.Text.Trim().ToUpper();
                 monSize = txt_monSize.Text.Trim();
                 os = txt_os.Text.Trim().ToUpper();
                 servicePack = txt_sp.Text.Trim().ToUpper();
@@ -162,8 +179,12 @@ namespace assetManagement
                     lbl_error.ForeColor = System.Drawing.Color.Red;
                 }
             }
+<<<<<<< HEAD
 			//printer/scanner
             else if (category.Equals("SCS") || category.Equals("SCA") || category.Equals("DMP") || category.Equals("MLJ") || category.Equals("CLJ") || category.Equals("CIJ") || category.Equals("MIJ") || category.Equals("MLM") || category.Equals("CLM") || category.Equals("MLH") || category.Equals("CLH") || category.Equals("LPR"))
+=======
+            else if (category.Equals("SCS") || category.Equals("SCA") || category.Equals("DMP") || category.Equals("MLJ") || category.Equals("CLJ") || category.Equals("CIJ") || category.Equals("MIJ") || category.Equals("MLM") || category.Equals("CLM") || category.Equals("MLH") || category.Equals("CLH") || category.Equals("LPR") || category.Equals("PLT"))
+>>>>>>> cf6b9ed0e363b41a626379d7d613461d15a38319
             {
                 speed = txt_speed.Text.Trim();
                 sizeOfPaper = txt_sizeOfPaper.Text.Trim();
@@ -200,7 +221,7 @@ namespace assetManagement
                 }
                 //inserting into ast_master
                 OdbcCommand cmd = conn_asset.CreateCommand();
-                cmd.CommandText = "insert into ast_master(unit,astCode,description,make,model,category,ast_s_no,part_no,custodian,issueDate,dept,location,subLoc1,subLoc2,monitor_size,monitor_res,os,service_pack,processor,cla,speed,sizeOfPaper,ram,hdd,graphics,ip,keyboardMake,keyboard_s_no,mouseMake,mouse_s_no,msOffice,antiVirus,ibmNotes,webcam,lanStat,domain,domainUser,hostName,po_no,poDate,vendorCode,poPrice,installation,warrantyStat,warrantyStart,warrantyEnd,remarks,availability) values('" + unit_cd + "','" + txt_astCode.Text.Trim().ToUpper() + "','" + txt_desc.Text.Trim().ToUpper() + "','" + txt_make.Text.Trim().ToUpper() + "','" + txt_model.Text.Trim().ToUpper() + "','" + categ + "','" + txt_s_no.Text.Trim().ToUpper() + "','" + txt_part_no.Text.Trim().ToUpper() + "','" + "SYSTEMS" + "','" + issueDate + "','" + "SYSTEMS" + "','" + "SYSTEMS STORE" + "','" + "SYSTEMS STORE" + "','" + "SYSTEMS STORE" + "','" + monSize + "','" + monRes + "','" + os + "','" + servicePack + "','" + proc + "','" + cla + "','" + speed + "','" + sizeOfPaper + "','" + ram + "','" + hdd + "','" + graphics + "','" + txt_ip.Text.Trim() + "','" + kbMake + "','" + kb_s_no + "','" + mouMake + "','" + mou_s_no + "','" + msOffice + "','" + antivirus + "','" + ibmNote + "','" + webcam + "','" + lanStat + "','" + domain + "','" + domainUser + "','" + hostName + "','" + txt_po_no.Text + "','" + poDate + "','" + txt_vendorCode.Text.Trim().ToUpper() + "','" + poPrice + "','" + installDate + "','" + warStat + "','" + warStart + "','" + warEnd + "','" + txt_remarks.Text + "','Y')";
+                cmd.CommandText = "insert into ast_master(unit,astCode,description,make,model,category,ast_s_no,part_no,custodian,issueDate,dept,location,subLoc1,subLoc2,monitor_size,monitor_res,os,service_pack,processor,cla,speed,sizeOfPaper,ram,hdd,graphics,ip,keyboardMake,keyboard_s_no,mouseMake,mouse_s_no,msOffice,ibmNotes,webcam,lanStat,domain,domainUser,hostName,po_no,poDate,vendorCode,poPrice,installation,warrantyStat,warrantyStart,warrantyEnd,remarks,availability,type,msOfficeVer,antiVirus,presentUser) values('" + unit_cd + "','" + txt_astCode.Text.Trim().ToUpper() + "','" + txt_desc.Text.Trim().ToUpper() + "','" + txt_make.Text.Trim().ToUpper() + "','" + txt_model.Text.Trim().ToUpper() + "','" + categ + "','" + txt_s_no.Text.Trim().ToUpper() + "','" + txt_part_no.Text.Trim().ToUpper() + "','" + "SYSTEMS" + "','" + issueDate + "','" + "SYSTEMS" + "','" + "SYSTEMS STORE" + "','" + "SYSTEMS STORE" + "','" + "SYSTEMS STORE" + "','" + monSize + "','" + monRes + "','" + os + "','" + servicePack + "','" + proc + "','" + cla + "','" + speed + "','" + sizeOfPaper + "','" + ram + "','" + hdd + "','" + graphics + "','" + txt_ip.Text.Trim() + "','" + kbMake + "','" + kb_s_no + "','" + mouMake + "','" + mou_s_no + "','" + msOffice + "','" + ibmNote + "','" + webcam + "','" + lanStat + "','" + domain + "','" + domainUser + "','" + hostName + "','" + txt_po_no.Text + "','" + poDate + "','" + txt_vendorCode.Text.Trim().ToUpper() + "','" + poPrice + "','" + installDate + "','" + warStat + "','" + warStart + "','" + warEnd + "','" + txt_remarks.Text + "','Y','" + type + "','" + msOfficeVer + "','" + antivirus + "','" + "SYSTEMS" + "')";
                 int check;
                 conn_asset.Open();
                 check = cmd.ExecuteNonQuery();
@@ -215,11 +236,11 @@ namespace assetManagement
                     lbl_error.ForeColor = System.Drawing.Color.Green;
                     conn_asset.Close();
                     //inserting into ast_amcMaster
-                    OdbcCommand cmd2 = conn_asset.CreateCommand();
-                    cmd2.CommandText = "insert into ast_amcMaster(astCode,po_no) values('"+ txt_astCode.Text.Trim().ToUpper() +"','"+txt_po_no.Text.Trim().ToUpper()+"')";
-                    conn_asset.Open();
-                    int check2 = cmd2.ExecuteNonQuery();
-                    conn_asset.Close();
+                    //OdbcCommand cmd2 = conn_asset.CreateCommand();
+                    //cmd2.CommandText = "insert into ast_amcMaster(astCode,po_no) values('"+ txt_astCode.Text.Trim().ToUpper() +"','"+txt_po_no.Text.Trim().ToUpper()+"')";
+                    //conn_asset.Open();
+                    //int check2 = cmd2.ExecuteNonQuery();
+                    //conn_asset.Close();
                     lbl_error.Text = "Registered successfully...";
                     lbl_error.Visible = true;
                     txt_astCode.Text = "";
@@ -351,8 +372,12 @@ namespace assetManagement
                 txt_ibmNotes.Visible = true;
                 lbl_msOffice.Visible = true;
                 drp_msOffice.Visible = true;
+                lbl_msOfficeVer.Visible = true;
+                txt_msOfficeVer.Visible = true;
                 lbl_antiVirus.Visible = true;
                 rdbtn_antiVirus.Visible = true;
+                lbl_antiV.Visible = true;
+                txt_antiV.Visible = true;
                 lbl_webcam.Visible = true;
                 rdbtn_webcam.Visible = true;
                 lbl_lanStat.Visible = true;
@@ -406,8 +431,12 @@ namespace assetManagement
                 txt_ibmNotes.Visible = true;
                 lbl_msOffice.Visible = true;
                 drp_msOffice.Visible = true;
+                lbl_msOfficeVer.Visible = true;
+                txt_msOfficeVer.Visible = true;
                 lbl_antiVirus.Visible = true;
                 rdbtn_antiVirus.Visible = true;
+                lbl_antiV.Visible = true;
+                txt_antiV.Visible = true;
                 lbl_webcam.Visible = true;
                 rdbtn_webcam.Visible = true;
                 lbl_lanStat.Visible = true;
@@ -419,7 +448,7 @@ namespace assetManagement
                 lbl_hostName.Visible = true;
                 txt_hostName.Visible = true;
             }
-            else if (categ.Equals("SCS") || categ.Equals("SCA") || categ.Equals("DMP") || categ.Equals("MLJ") || categ.Equals("CLJ") || categ.Equals("CIJ") || categ.Equals("MIJ") || categ.Equals("MLM") || categ.Equals("CLM") || categ.Equals("MLH") || categ.Equals("CLH") || categ.Equals("LPR"))
+            else if (categ.Equals("SCS") || categ.Equals("SCA") || categ.Equals("DMP") || categ.Equals("MLJ") || categ.Equals("CLJ") || categ.Equals("CIJ") || categ.Equals("MIJ") || categ.Equals("MLM") || categ.Equals("CLM") || categ.Equals("MLH") || categ.Equals("CLH") || categ.Equals("LPR") || categ.Equals("PLT"))
             {
                 //printer/scanner
                 lbl_isuueDate.Visible = true;
@@ -457,8 +486,12 @@ namespace assetManagement
                 txt_ibmNotes.Visible = false;
                 lbl_msOffice.Visible = false;
                 drp_msOffice.Visible = false;
+                lbl_msOfficeVer.Visible = false;
+                txt_msOfficeVer.Visible = false;
+                lbl_antiV.Visible = false;
                 lbl_antiVirus.Visible = false;
                 rdbtn_antiVirus.Visible = false;
+                txt_antiV.Visible = false;
                 lbl_webcam.Visible = false;
                 rdbtn_webcam.Visible = false;
                 lbl_lanStat.Visible = false;
@@ -516,8 +549,12 @@ namespace assetManagement
                 txt_ibmNotes.Visible = false;
                 lbl_msOffice.Visible = false;
                 drp_msOffice.Visible = false;
+                lbl_msOfficeVer.Visible = false;
+                txt_msOfficeVer.Visible = false;
+                lbl_antiV.Visible = false;
                 lbl_antiVirus.Visible = false;
                 rdbtn_antiVirus.Visible = false;
+                txt_antiV.Visible = false;
                 lbl_webcam.Visible = false;
                 rdbtn_webcam.Visible = false;
                 lbl_lanStat.Visible = false;
@@ -571,8 +608,12 @@ namespace assetManagement
                 txt_ibmNotes.Visible = false;
                 lbl_msOffice.Visible = false;
                 drp_msOffice.Visible = false;
+                lbl_msOfficeVer.Visible = false;
+                txt_msOfficeVer.Visible = false;
+                lbl_antiV.Visible = false;
                 lbl_antiVirus.Visible = false;
                 rdbtn_antiVirus.Visible = false;
+                txt_antiV.Visible = false;
                 lbl_webcam.Visible = false;
                 rdbtn_webcam.Visible = false;
                 lbl_lanStat.Visible = false;
@@ -583,6 +624,34 @@ namespace assetManagement
                 txt_domainUser.Visible = false;
                 lbl_hostName.Visible = false;
                 txt_hostName.Visible = false;
+            }
+        }
+
+        protected void rdbtn_antiVirus_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if(rdbtn_antiVirus.SelectedValue.Equals("Y"))
+            {
+                txt_antiV.Text = "";
+                txt_antiV.Enabled = true;
+            }
+            else
+            {
+                txt_antiV.Text = "NA";
+                txt_antiV.Enabled = false;
+            }
+        }
+
+        protected void drp_msOffice_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (!drp_msOffice.SelectedValue.Equals("NA"))
+            {
+                txt_msOfficeVer.Text = "";
+                txt_msOfficeVer.Enabled = true;
+            }
+            else
+            {
+                txt_msOfficeVer.Text = "NA";
+                txt_msOfficeVer.Enabled = false;
             }
         }
     }

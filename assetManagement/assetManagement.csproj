@@ -115,6 +115,8 @@
     <Content Include="Allied_AddUser.aspx" />
     <Content Include="Allied_RemoveUser.aspx" />
     <Content Include="AmcHolder.aspx" />
+    <Content Include="AMC_Change.aspx" />
+    <Content Include="AMC_Create.aspx" />
     <Content Include="AMC_Entry.aspx" />
     <Content Include="AMC_AddUser.aspx" />
     <Content Include="AMC_Remove.aspx" />
@@ -123,7 +125,8 @@
     <Content Include="asset_edit.aspx" />
     <Content Include="Asset_Entry.aspx" />
     <Content Include="Asset_Return.aspx" />
-    <Content Include="ast_master.css" />
+    <Content Include="bill.aspx" />
+    <Content Include="bill_print.aspx" />
     <Content Include="BuyBack.aspx" />
     <Content Include="call.aspx" />
     <Content Include="call_close.aspx" />
@@ -170,7 +173,6 @@
     <Content Include="test.aspx" />
     <Content Include="User.aspx" />
     <Content Include="Vendor_Add.aspx" />
-    <Content Include="Vendor_Remove.aspx" />
     <Content Include="ViewSwitcher.ascx" />
     <Content Include="Web.config" />
   </ItemGroup>
@@ -221,6 +223,20 @@
     </Compile>
     <Compile Include="AmcHolder.aspx.designer.cs">
       <DependentUpon>AmcHolder.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AMC_Change.aspx.cs">
+      <DependentUpon>AMC_Change.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AMC_Change.aspx.designer.cs">
+      <DependentUpon>AMC_Change.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AMC_Create.aspx.cs">
+      <DependentUpon>AMC_Create.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AMC_Create.aspx.designer.cs">
+      <DependentUpon>AMC_Create.aspx</DependentUpon>
     </Compile>
     <Compile Include="AMC_Entry.aspx.cs">
       <DependentUpon>AMC_Entry.aspx</DependentUpon>
@@ -314,6 +330,20 @@
     </Compile>
     <Compile Include="Asset_Return.aspx.designer.cs">
       <DependentUpon>Asset_Return.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="bill.aspx.cs">
+      <DependentUpon>bill.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="bill.aspx.designer.cs">
+      <DependentUpon>bill.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="bill_print.aspx.cs">
+      <DependentUpon>bill_print.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="bill_print.aspx.designer.cs">
+      <DependentUpon>bill_print.aspx</DependentUpon>
     </Compile>
     <Compile Include="BuyBack.aspx.cs">
       <DependentUpon>BuyBack.aspx</DependentUpon>
@@ -465,13 +495,6 @@
     </Compile>
     <Compile Include="Vendor_Add.aspx.designer.cs">
       <DependentUpon>Vendor_Add.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Vendor_Remove.aspx.cs">
-      <DependentUpon>Vendor_Remove.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Vendor_Remove.aspx.designer.cs">
-      <DependentUpon>Vendor_Remove.aspx</DependentUpon>
     </Compile>
     <Compile Include="ViewSwitcher.ascx.cs">
       <DependentUpon>ViewSwitcher.ascx</DependentUpon>

@@ -340,7 +340,8 @@
                                 </td>
 
                                 <td align="left" class="auto-style1">
-                                    <asp:DropDownList ID="drp_msOffice" runat="server" Width="230px">
+                                    <asp:DropDownList ID="drp_msOffice" runat="server" Width="230px" AutoPostBack="true" OnSelectedIndexChanged="drp_msOffice_SelectedIndexChanged">
+                                        <asp:ListItem Value="NA">Select</asp:ListItem>
                                         <asp:ListItem Value="2003">2003</asp:ListItem>
                                         <asp:ListItem Value="2007">2007</asp:ListItem>
                                         <asp:ListItem Value="2010">2010</asp:ListItem>
@@ -353,14 +354,30 @@
                             </tr>
                             <tr>
                                 <td align="right">
+                                    <asp:Label ID="lbl_msOfficeVer" runat="server" Text="MS Office Version :" Font-Size="small"></asp:Label>
+                                </td>
+                                <td align="left" class="auto-style1">
+                                    <asp:TextBox ID="txt_msOfficeVer" runat="server" ToolTip=" MS Office Version" Width="230px" Text="NA" Enabled="false"></asp:TextBox>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td align="right">
                                     <asp:Label ID="lbl_antiVirus" runat="server" Text="Antivirus :" Font-Size="small"></asp:Label>
                                 </td>
                                 <td align="left" class="auto-style1">
                                     <asp:RadioButtonList ID="rdbtn_antiVirus" runat="server" RepeatDirection="Horizontal"
-                                        RepeatLayout="Table" TextAlign="Right" Font-Bold="True" ForeColor="#18562b">
+                                        RepeatLayout="Table" TextAlign="Right" Font-Bold="True" ForeColor="#18562b" AutoPostBack="true" OnSelectedIndexChanged="rdbtn_antiVirus_SelectedIndexChanged">
                                         <asp:ListItem Text="Yes" Value="Y" />
                                         <asp:ListItem Text="No" Value="N" Selected="True" />
                                     </asp:RadioButtonList>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td align="right">
+                                    <asp:Label ID="lbl_antiV" runat="server" Text="Antivirus :" Font-Size="small"></asp:Label>
+                                </td>
+                                <td align="left" class="auto-style1">
+                                    <asp:TextBox ID="txt_antiV" runat="server" ToolTip="Antivirus Details" Width="230px" Text="NA" Enabled="false"></asp:TextBox>
                                 </td>
                             </tr>
                             <tr>

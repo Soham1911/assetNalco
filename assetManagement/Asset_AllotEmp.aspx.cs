@@ -139,7 +139,7 @@ namespace assetManagement
                     conn_asset.Close();
                     //update ast_master
                     OdbcCommand cmdd = conn_asset.CreateCommand();
-                    cmdd.CommandText = "update ast_master set dept='" + Department.Trim().ToUpper() + "', location='" + Location.Trim().ToUpper() + "',custodian='" + txt_custPNO.Text.Trim().ToUpper() + "',issueDate = '" + issueDate + "' where astCode='" + txt_astCode.Text.Trim().ToUpper() + "'";
+                    cmdd.CommandText = "update ast_master set dept='" + Department.Trim().ToUpper() + "', location='" + Location.Trim().ToUpper() + "',custodian='" + txt_custPNO.Text.Trim().ToUpper() + "',presentUser ='" + txt_custPNO.Text.Trim().ToUpper() + "', issueDate = '" + issueDate + "' where astCode='" + txt_astCode.Text.Trim().ToUpper() + "'";
                     conn_asset.Open();
                     int dr4 = cmdd.ExecuteNonQuery();
                     conn_asset.Close();
@@ -244,15 +244,44 @@ namespace assetManagement
                     }
                     if (flag == 0)
                     {
-                        lbl_name.Visible = false;
-                        lbl_dept.Visible = false;
-                        lbl_location.Visible = false;
-                        lbl_contact.Visible = false;
-                        img_p.Visible = false;
-                        lbl_oldName.Text = "Name : ";
-                        lbl_oldDept.Text = "Department : ";
-                        lbl_oldLoc.Text = "Location : ";
-                        lbl_oldContact.Text = "Contact No. : ";
+                        conn_asset.Close();
+                        OdbcCommand cmdh = conn_asset.CreateCommand();
+                        cmdh.CommandText = "select * from ast_alliedUserLogin au join ast_alliedMaster am on au.sectionCode = am.sectionCode where username = '" + custodian + "'";
+                        conn_asset.Open();
+                        OdbcDataReader drh = cmdh.ExecuteReader();
+                        int flag1 = 0;
+                        while (drh.Read())
+                        {
+                            lbl_oldName.Text += drh["name"].ToString();
+                            lbl_oldLoc.Text += drh["location"].ToString();
+                            lbl_oldContact.Text += drh["contact"].ToString();
+                            lbl_oldDept.Text += drh["sectionName"];
+                            img_old.ImageUrl = "~/Images/" + custodian + ".jpg";
+
+                            flag1 = 1;
+                        }
+                        if (flag1 == 0)
+                        {
+                            lbl_name.Visible = false;
+                            lbl_dept.Visible = false;
+                            lbl_location.Visible = false;
+                            lbl_contact.Visible = false;
+                            img_p.Visible = false;
+                            lbl_oldName.Text = "Name : ";
+                            lbl_oldDept.Text = "Department : ";
+                            lbl_oldLoc.Text = "Location : ";
+                            lbl_oldContact.Text = "Contact No. : ";
+                        }
+                        else
+                        {
+                            lbl_oldName.Visible = true;
+                            lbl_oldDept.Visible = true;
+                            lbl_oldLoc.Visible = true;
+                            lbl_oldContact.Visible = true;
+                            img_old.ImageUrl = "~/Images/" + custodian + ".jpg";
+                            img_old.Visible = true;
+                        }
+                        
                     }
                     else
                     {

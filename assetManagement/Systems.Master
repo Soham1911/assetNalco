@@ -27,44 +27,43 @@
                         <Items>
                             <asp:MenuItem NavigateUrl="~/systems.aspx" Text="Home" />
                             <asp:MenuItem NavigateUrl="#" Text="Asset">
-                                <asp:MenuItem NavigateUrl="~/asset_entry.aspx" Text="New Asset Entry">
-                                
+                                <asp:MenuItem NavigateUrl="~/asset_entry.aspx" Text="New Asset Entry"></asp:MenuItem>
+                                <asp:MenuItem NavigateUrl="#" Text="Asset Allotment">
+                                    <asp:MenuItem NavigateUrl="~/asset_allotEmp.aspx" Text="Employee" />
+                                    <asp:MenuItem NavigateUrl="~/asset_allotNonEmp.aspx" Text="Non Employee" />
                                 </asp:MenuItem>
-                                <asp:MenuItem NavigateUrl="#" Text="Asset Allotment" >
-                                    <asp:MenuItem NavigateUrl ="~/asset_allotEmp.aspx" Text="Employee" />
-                                    <asp:MenuItem NavigateUrl ="~/asset_allotNonEmp.aspx" Text="Non Employee" />
-                                    </asp:MenuItem>
                                 <asp:MenuItem NavigateUrl="~/asset_return.aspx" Text="Asset Return" />
                                 <asp:MenuItem NavigateUrl="~/asset_edit.aspx" Text="Asset Edit" />
                             </asp:MenuItem>
-                            
-                            <asp:MenuItem NavigateUrl="#" Text="Complaint" >
+
+                            <asp:MenuItem NavigateUrl="#" Text="Complaint">
                                 <asp:MenuItem NavigateUrl="~/call_open.aspx" Text="Open Calls" />
                                 <asp:MenuItem NavigateUrl="~/call_draft.aspx" Text="Call Closed by FE" />
                                 <asp:MenuItem NavigateUrl="~/call_close.aspx" Text="Close Calls" />
                                 <asp:MenuItem NavigateUrl="~/call_hist.aspx" Text="Closed Calls History" />
                             </asp:MenuItem>
-                             
-                            <asp:MenuItem NavigateUrl="#" Text="Generate Report" >
+
+                            <asp:MenuItem NavigateUrl="#" Text="Generate Report">
                                 <asp:MenuItem NavigateUrl="~/rep_assets.aspx" Text="Asset Report" />
                                 <asp:MenuItem NavigateUrl="~/rep_.bback.aspx" Text="Buyback Report" />
                             </asp:MenuItem>
-                            <asp:MenuItem NavigateUrl="#" Text="AMC" >
-                                <asp:MenuItem NavigateUrl="~/amc_addUser.aspx" Text="Add User" />
-                                <asp:MenuItem NavigateUrl="~/amc_entry.aspx" Text="AMC Entry" />
-                                <asp:MenuItem NavigateUrl="~/amc_remove.aspx" Text="AMC Remove" />
+                            <asp:MenuItem NavigateUrl="#" Text="AMC">
+                                <asp:MenuItem NavigateUrl="~/amc_addUser.aspx" Text="Create AMC Party" />
+                                <asp:MenuItem NavigateUrl="~/amc_change.aspx" Text="Change AMC Party/Duration" />
+                                <asp:MenuItem NavigateUrl="~/amc_addUser.aspx" Text="Create User" />
+                                <asp:MenuItem NavigateUrl="~/amc_entry.aspx" Text="Add Asset To AMC" />
+                                <asp:MenuItem NavigateUrl="~/amc_remove.aspx" Text="Remove Asset from AMC" />
+
                             </asp:MenuItem>
-                            <asp:MenuItem NavigateUrl="#" Text="Vendor" >
-                                <asp:MenuItem NavigateUrl="~/vendor_add.aspx" Text="Add Vendor" />
-                                <asp:MenuItem NavigateUrl="~/vendor_remove.aspx" Text="Remove Vendor" />
-                            </asp:MenuItem>
+                            <asp:MenuItem NavigateUrl="~/vendor_add.aspx" Text="Vendor" />
                             <asp:MenuItem NavigateUrl="~/buyback.aspx" Text="Buy Back" />
-                            <asp:MenuItem NavigateUrl="#" Text="Allied Services" >
+                            <asp:MenuItem NavigateUrl="#" Text="Allied Services">
                                 <asp:MenuItem NavigateUrl="~/allied_sections.aspx" Text="Sections" />
                                 <asp:MenuItem NavigateUrl="~/allied_addUser.aspx" Text="Add User" />
                                 <asp:MenuItem NavigateUrl="~/allied_removeUser.aspx" Text="Remove User" />
                             </asp:MenuItem>
                             <asp:MenuItem NavigateUrl="~/sublocation.aspx" Text="Sub Location" />
+                            <asp:MenuItem NavigateUrl="~/bill.aspx" Text="Bill" />
                         </Items>
                     </asp:Menu>
                 </div>

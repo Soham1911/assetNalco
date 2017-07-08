@@ -87,9 +87,10 @@ namespace assetManagement
                 //get values from ast_alliedUserLogin
                 string Location = "default";
                 string issueDate = txt_date.Text;
+                string department = "non employee";
                 OdbcCommand cmdc = conn_asset.CreateCommand();
 
-                cmdc.CommandText = "select * from ast_alliedUserLogin where username ='" + drp_uname.SelectedValue + "'";
+                cmdc.CommandText = "select * from ast_alliedUserLogin au join ast_alliedMaster am on au.sectionCode = am.sectionCode where username ='" + drp_uname.SelectedValue + "'";
 
                 conn_asset.Open();
                 OdbcDataReader dr5 = cmdc.ExecuteReader();
@@ -97,13 +98,14 @@ namespace assetManagement
                 while (dr5.Read())
                 {
                     Location = dr5["location"].ToString();
+                    department = dr5["sectionName"].ToString();
                     break;
                 }
                 conn_asset.Close();
 
                 //update ast_master
                 OdbcCommand cmdd = conn_asset.CreateCommand();
-                cmdd.CommandText = "update ast_master set dept='non employee', location='" + Location.Trim().ToUpper() + "',custodian='" + drp_uname.SelectedValue + "',issueDate = '" + issueDate + "' where astCode='" + txt_astCode.Text.Trim().ToUpper() + "'";
+                cmdd.CommandText = "update ast_master set dept='"+department.Trim().ToUpper()+"', location='" + Location.Trim().ToUpper() + "',custodian='" + drp_uname.SelectedValue + "',presentUser='" + drp_sec.SelectedValue + "',issueDate = '" + issueDate + "' where astCode='" + txt_astCode.Text.Trim().ToUpper() + "'";
                 conn_asset.Open();
                 int dr4 = cmdd.ExecuteNonQuery();
                 conn_asset.Close();
@@ -191,6 +193,7 @@ namespace assetManagement
             lbl_oldLoc.Visible = true;
             lbl_oldContact.Visible = true;
             lbl_alreadyAllotted.Visible = true;
+            lbl_oldSec.Visible = true;
             img_old.Visible = true;
         }
         public void hide_oldInfo()
@@ -199,9 +202,11 @@ namespace assetManagement
             lbl_oldName.Visible = false;
             lbl_oldLoc.Visible = false;
             lbl_oldContact.Visible = false;
+            lbl_oldSec.Visible = false;
             lbl_oldName.Text = "Name : ";
             lbl_oldLoc.Text = "Location : ";
             lbl_oldContact.Text = "Contact No. : ";
+            lbl_oldSec.Text = "Section :";
             lbl_alreadyAllotted.Text = "! WARNING : ASSET IS ALREADY ALLOTTED TO ";
             lbl_alreadyAllotted.Visible = false;
             img_old.Visible = false;
@@ -295,13 +300,38 @@ namespace assetManagement
                         lbl_oldName.Text += drg["name"].ToString();
                         lbl_oldLoc.Text += drg["location"].ToString();
                         lbl_oldContact.Text += drg["contact_no"].ToString();
+                        lbl_oldSec.Text = "Department : " + drg["deptCode"];
                         img_old.ImageUrl = "~/Images/" + custodian + ".jpg";
              
                         flag = 1;
                     }
+                    conn_asset.Close();
                     if (flag == 0)
                     {
-                        hide_oldInfo();
+                        OdbcCommand cmdh = conn_asset.CreateCommand();
+                        cmdh.CommandText = "select * from ast_alliedUserLogin au join ast_alliedMaster am on au.sectionCode = am.sectionCode where username = '" + custodian + "'";
+                        conn_asset.Open();
+                        OdbcDataReader drh = cmdh.ExecuteReader();
+                        int flag1 = 0;
+                        while (drh.Read())
+                        {
+                            lbl_oldName.Text += drh["name"].ToString();
+                            lbl_oldLoc.Text += drh["location"].ToString();
+                            lbl_oldContact.Text += drh["contact"].ToString();
+                            lbl_oldSec.Text += drh["sectionName"];
+                            img_old.ImageUrl = "~/Images/" + custodian + ".jpg";
+
+                            flag1 = 1;
+                        }
+                        if(flag1 == 0)
+                        {
+                            hide_oldInfo();
+                        }
+                        else
+                        {
+                            display_oldInfo();
+                        }
+                        
                     }
                     else
                     {

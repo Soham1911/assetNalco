@@ -177,9 +177,25 @@ namespace assetManagement
             Response.Cache.SetCacheability(HttpCacheability.NoCache);
             Response.ContentType = "application/vnd.ms-excel";
             Response.AddHeader("Content-Disposition", "attachment;filename=" + FileName);
-            grid_pno.GridLines = GridLines.Both;
-            grid_pno.HeaderStyle.Font.Bold = true;
-            grid_pno.RenderControl(htmltextwrtter);
+            if(grid_pno.Visible == true)
+            {
+                grid_pno.GridLines = GridLines.Both;
+                grid_pno.HeaderStyle.Font.Bold = true;
+                grid_pno.RenderControl(htmltextwrtter);
+            }
+            else if(grid_astcode.Visible == true)
+            {
+                grid_astcode.GridLines = GridLines.Both;
+                grid_astcode.HeaderStyle.Font.Bold = true;
+                grid_astcode.RenderControl(htmltextwrtter);
+            }
+            else if(grid_all.Visible == true)
+            {
+                grid_all.GridLines = GridLines.Both;
+                grid_all.HeaderStyle.Font.Bold = true;
+                grid_all.RenderControl(htmltextwrtter);
+            }
+            
             Response.Write(strwritter.ToString());
             Response.End();
 

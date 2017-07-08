@@ -10,132 +10,114 @@
 namespace assetManagement {
     
     
-    public partial class Allied_AddUser {
+    public partial class bill_print {
         
         /// <summary>
-        /// ScriptManager1 control.
+        /// form1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.ScriptManager ScriptManager1;
+        protected global::System.Web.UI.HtmlControls.HtmlForm form1;
         
         /// <summary>
-        /// UpdatePanel1 control.
+        /// pnl1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.UpdatePanel UpdatePanel1;
+        protected global::System.Web.UI.WebControls.Panel pnl1;
         
         /// <summary>
-        /// drp_sec control.
+        /// lbl_check control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList drp_sec;
+        protected global::System.Web.UI.WebControls.Label lbl_check;
         
         /// <summary>
-        /// txt_uname control.
+        /// lbl_proposedBill control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txt_uname;
+        protected global::System.Web.UI.WebControls.Label lbl_proposedBill;
         
         /// <summary>
-        /// lbl_uname control.
+        /// lbl_pmPenalty control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbl_uname;
+        protected global::System.Web.UI.WebControls.Label lbl_pmPenalty;
         
         /// <summary>
-        /// RequiredFieldValidator1 control.
+        /// lbl_downtimePenalty control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator1;
+        protected global::System.Web.UI.WebControls.Label lbl_downtimePenalty;
         
         /// <summary>
-        /// txt_name control.
+        /// lbl_totalPenalty control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txt_name;
+        protected global::System.Web.UI.WebControls.Label lbl_totalPenalty;
         
         /// <summary>
-        /// RequiredFieldValidator2 control.
+        /// lbl_10 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator2;
+        protected global::System.Web.UI.WebControls.Label lbl_10;
         
         /// <summary>
-        /// drp_loc control.
+        /// lbl_finalBill control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList drp_loc;
+        protected global::System.Web.UI.WebControls.Label lbl_finalBill;
         
         /// <summary>
-        /// drp_subLoc control.
+        /// lbl_fromDate control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList drp_subLoc;
+        protected global::System.Web.UI.WebControls.Label lbl_fromDate;
         
         /// <summary>
-        /// txt_contact control.
+        /// lbl_toDate control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txt_contact;
+        protected global::System.Web.UI.WebControls.Label lbl_toDate;
         
         /// <summary>
-        /// txt_desc control.
+        /// grid_pmPenalty control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txt_desc;
-        
-        /// <summary>
-        /// btn_reg control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btn_reg;
-        
-        /// <summary>
-        /// lbl_error control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbl_error;
+        protected global::System.Web.UI.WebControls.GridView grid_pmPenalty;
     }
 }

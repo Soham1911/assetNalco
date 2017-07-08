@@ -19,7 +19,7 @@
             <asp:UpdatePanel ID="UpdatePanel1" runat="server">
                 <ContentTemplate>
                     <fieldset>
-                        <legend>AMC Remove</legend>
+                        <legend>Remove Asset(s) From AMC</legend>
 
                         <table>
                             <tr>
@@ -133,6 +133,19 @@
                                 </td>
                                 <td>
                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ControlToValidate="txt_amcEnd" ErrorMessage="*Select Ending Date" ForeColor="Red"></asp:RequiredFieldValidator>
+                                </td>
+                            </tr>
+                             <tr>
+                                <td align="right">
+                                    <font size="2em">      AMC End Date :</font>
+                                </td>
+                                <td align="left" class="auto-style1">
+                                    <asp:TextBox Width="230px" ID="TextBox1" runat="server"></asp:TextBox>
+                                    <asp:CalendarExtender ID="CalendarExtender1" runat="server"
+                                        Enabled="True" Format="yyyy/MM/dd" TargetControlID="txt_amcEnd"></asp:CalendarExtender>
+                                </td>
+                                <td>
+                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" ControlToValidate="txt_amcEnd" ErrorMessage="*Select Ending Date" ForeColor="Red"></asp:RequiredFieldValidator>
                                 </td>
                             </tr>
                             <tr>

@@ -31,13 +31,49 @@ namespace assetManagement {
         protected global::System.Web.UI.UpdatePanel UpdatePanel1;
         
         /// <summary>
-        /// txt_sap_vendorCode control.
+        /// btn_add control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txt_sap_vendorCode;
+        protected global::System.Web.UI.WebControls.Button btn_add;
+        
+        /// <summary>
+        /// btn_remove control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btn_remove;
+        
+        /// <summary>
+        /// btn_view control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btn_view;
+        
+        /// <summary>
+        /// lbl_addTitle control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbl_addTitle;
+        
+        /// <summary>
+        /// lbl_removeTitle control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbl_removeTitle;
         
         /// <summary>
         /// lbl_sap_vendorCode control.
@@ -49,22 +85,22 @@ namespace assetManagement {
         protected global::System.Web.UI.WebControls.Label lbl_sap_vendorCode;
         
         /// <summary>
-        /// RequiredFieldValidator2 control.
+        /// txt_sap_vendorCode control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator2;
+        protected global::System.Web.UI.WebControls.TextBox txt_sap_vendorCode;
         
         /// <summary>
-        /// txt_vendorCode control.
+        /// lbl_sap_vendorCodeError control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txt_vendorCode;
+        protected global::System.Web.UI.WebControls.Label lbl_sap_vendorCodeError;
         
         /// <summary>
         /// lbl_vendorCode control.
@@ -76,22 +112,22 @@ namespace assetManagement {
         protected global::System.Web.UI.WebControls.Label lbl_vendorCode;
         
         /// <summary>
-        /// RequiredFieldValidator1 control.
+        /// txt_vendorCode control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator1;
+        protected global::System.Web.UI.WebControls.TextBox txt_vendorCode;
         
         /// <summary>
-        /// txt_vendorName control.
+        /// lbl_vendorCodeError control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txt_vendorName;
+        protected global::System.Web.UI.WebControls.Label lbl_vendorCodeError;
         
         /// <summary>
         /// lbl_vendorName control.
@@ -103,13 +139,31 @@ namespace assetManagement {
         protected global::System.Web.UI.WebControls.Label lbl_vendorName;
         
         /// <summary>
-        /// RequiredFieldValidator4 control.
+        /// txt_vendorName control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator4;
+        protected global::System.Web.UI.WebControls.TextBox txt_vendorName;
+        
+        /// <summary>
+        /// lbl_vendorNameError control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbl_vendorNameError;
+        
+        /// <summary>
+        /// lbl_vendorDesc control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbl_vendorDesc;
         
         /// <summary>
         /// txt_vendorDesc control.
@@ -121,13 +175,13 @@ namespace assetManagement {
         protected global::System.Web.UI.WebControls.TextBox txt_vendorDesc;
         
         /// <summary>
-        /// RequiredFieldValidator5 control.
+        /// lbl_date control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator5;
+        protected global::System.Web.UI.WebControls.Label lbl_date;
         
         /// <summary>
         /// txt_date control.
@@ -139,31 +193,58 @@ namespace assetManagement {
         protected global::System.Web.UI.WebControls.TextBox txt_date;
         
         /// <summary>
-        /// CalendarExtender7 control.
+        /// CalendarExtender1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::AjaxControlToolkit.CalendarExtender CalendarExtender7;
+        protected global::AjaxControlToolkit.CalendarExtender CalendarExtender1;
         
         /// <summary>
-        /// RequiredFieldValidator3 control.
+        /// btn_submit control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator3;
+        protected global::System.Web.UI.WebControls.Button btn_submit;
         
         /// <summary>
-        /// btn_reg control.
+        /// lbl_gridTitle control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btn_reg;
+        protected global::System.Web.UI.WebControls.Label lbl_gridTitle;
+        
+        /// <summary>
+        /// grid_display control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView grid_display;
+        
+        /// <summary>
+        /// grid_remove control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView grid_remove;
+        
+        /// <summary>
+        /// btn_submitRemove control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btn_submitRemove;
         
         /// <summary>
         /// lbl_error control.
