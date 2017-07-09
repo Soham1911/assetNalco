@@ -22,6 +22,15 @@ namespace assetManagement.Print {
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
         
         /// <summary>
+        /// Image1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Image Image1;
+        
+        /// <summary>
         /// lbl_amcparty control.
         /// </summary>
         /// <remarks>
@@ -121,13 +130,13 @@ namespace assetManagement.Print {
         protected global::System.Web.UI.WebControls.Label lbl_type;
         
         /// <summary>
-        /// txt_type control.
+        /// txt_category control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label txt_type;
+        protected global::System.Web.UI.WebControls.Label txt_category;
         
         /// <summary>
         /// lbl_ip control.
@@ -175,13 +184,13 @@ namespace assetManagement.Print {
         protected global::System.Web.UI.WebControls.Label lbl_custodian;
         
         /// <summary>
-        /// txt_custodian control.
+        /// txt_name control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label txt_custodian;
+        protected global::System.Web.UI.WebControls.Label txt_name;
         
         /// <summary>
         /// lbl_pno control.
@@ -254,60 +263,6 @@ namespace assetManagement.Print {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label txt_sno;
-        
-        /// <summary>
-        /// lbl_mmake control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbl_mmake;
-        
-        /// <summary>
-        /// txt_mmake control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label txt_mmake;
-        
-        /// <summary>
-        /// lbl_mmodel control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbl_mmodel;
-        
-        /// <summary>
-        /// txt_mmodel control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label txt_mmodel;
-        
-        /// <summary>
-        /// lbl_msno control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbl_msno;
-        
-        /// <summary>
-        /// txt_msno control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label txt_msno;
         
         /// <summary>
         /// lbl_os control.

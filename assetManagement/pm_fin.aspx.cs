@@ -9,9 +9,10 @@ using System.Data.Odbc;
 using System.Configuration;
 using System.Net;
 using System.Text;
+
 namespace assetManagement
 {
-    public partial class amc_pm : System.Web.UI.Page
+    public partial class pm_fin : System.Web.UI.Page
     {
         static string connStr_asset = ConfigurationManager.ConnectionStrings["asset"].ConnectionString;
         OdbcConnection conn_asset = new OdbcConnection(connStr_asset);
@@ -20,8 +21,6 @@ namespace assetManagement
         static string category;
         protected void Page_Load(object sender, EventArgs e)
         {
-
-
             if (!Page.IsPostBack)
             {
 
@@ -52,11 +51,6 @@ namespace assetManagement
             }
         }
 
-        protected void grid_display_RowCommand(object sender, GridViewCommandEventArgs e)
-        {
-
-        }
-
         protected void drp_quart_SelectedIndexChanged(object sender, EventArgs e)
         {
             drp_quart.Items[0].Attributes["disabled"] = "disabled";
@@ -78,48 +72,48 @@ namespace assetManagement
 
             dsDate = Convert.ToDateTime(sDate);
             deDate = Convert.ToDateTime(eDate);
-            OdbcCommand cmde = conn_asset.CreateCommand();
-            cmde.CommandText = "select lockStat from ast_pm where scheduledDate>='" + dsDate + "' and scheduledDate<='" + deDate + "'";
+            //OdbcCommand cmde = conn_asset.CreateCommand();
+            //cmde.CommandText = "select lockStat from ast_pm where scheduledDate>='" + dsDate + "' and scheduledDate<='" + deDate + "'";
 
-            conn_asset.Open();
-            OdbcDataReader dre = cmde.ExecuteReader();
+            //conn_asset.Open();
+            //OdbcDataReader dre = cmde.ExecuteReader();
 
-            if (dre.Read())
-            {
-                while (dre.Read())
-                {
-                    if (dre["lockStat"].ToString().Equals("R"))
-                    {
+            //if (dre.Read())
+            //{
+            //    while (dre.Read())
+            //    {
+            //        if (dre["lockStat"].ToString().Equals("R") || dre["lockStat"].ToString().Equals("L"))
+            //        {
 
-                        lbl_lock.Visible = false;
-                        lbl_month.Visible = true;
-                        drp_mon.Visible = true;
-                        btn_sub.Enabled = true;
-                        
-                            //drp_mon.Items.Insert(0, new ListItem("----Select Month----"));
-                            //drp_mon.Items[0].Selected = true;
-                            drp_mon.Items[0].Attributes["disabled"] = "disabled";
+            //            lbl_lock.Visible = false;
+            //            lbl_month.Visible = true;
+            //            drp_mon.Visible = true;
+            //            btn_sub.Enabled = true;
 
-                        
-                    }
-                    else
-                    {
-                        lbl_lock.Visible = true;
-                        lbl_month.Visible = false;
-                        drp_mon.Visible = false;
-                        btn_sub.Enabled = false;
-                    }
-                }
-                
-            }
-            else
-            {
-                lbl_lock.Visible = true;
-                lbl_month.Visible = false;
-                drp_mon.Visible = false;
-                btn_sub.Enabled = false;
-            }
-            conn_asset.Close();
+            //            //drp_mon.Items.Insert(0, new ListItem("----Select Month----"));
+            //            //drp_mon.Items[0].Selected = true;
+            //            drp_mon.Items[0].Attributes["disabled"] = "disabled";
+
+
+            //        }
+            //        else
+            //        {
+            //            lbl_lock.Visible = true;
+            //            lbl_month.Visible = false;
+            //            drp_mon.Visible = false;
+            //            btn_sub.Enabled = false;
+            //        }
+            //    }
+
+            //}
+            //else
+            //{
+            //    lbl_lock.Visible = true;
+            //    lbl_month.Visible = false;
+            //    drp_mon.Visible = false;
+            //    btn_sub.Enabled = false;
+            //}
+            //conn_asset.Close();
             OdbcCommand cmdee = conn_asset.CreateCommand();
             cmdee.CommandText = "select count(*) as c,compStat from ast_pm where scheduledDate>='" + dsDate + "' and scheduledDate<='" + deDate + "' group by compStat";
             conn_asset.Open();
@@ -149,29 +143,19 @@ namespace assetManagement
             l1.Text = pcnt;
             l2.Text = ccnt;
 
-
         }
 
         protected void btn_sub_Click(object sender, EventArgs e)
         {
             BindData();
-
-            
         }
+
         private void BindData()
         {
             string mon = drp_mon.SelectedValue;
+
             OdbcCommand cmd = conn_asset.CreateCommand();
-            if (mon == "1" || mon == "2" || mon == "3")
-            {
-                
-                cmd.CommandText = "select p.astCode,p.scheduledDate,a.custodian,a.description,a.location,a.subLoc from ast_pm p inner join ast_pc a on a.astCode=p.astCode where month='" + mon + "' and scheduledDate>='" + dsDate + "' and scheduledDate<='" + deDate + "' ";
-                
-            }
-            else
-            {
-                cmd.CommandText = "select p.astCode,p.scheduledDate,a.custodian,a.description,a.location,a.subLoc from ast_pm p inner join ast_pc a on a.astCode=p.astCode where scheduledDate>='" + dsDate + "' and scheduledDate<='" + deDate + "' ";
-            }
+            cmd.CommandText = "select p.astCode,p.scheduledDate,a.custodian,a.description,a.location,a.subLoc from ast_pm p inner join ast_pc a on a.astCode=p.astCode where month='" + mon + "' and scheduledDate>='" + dsDate + "' and scheduledDate<='" + deDate + "' and lockStat='F'";
             conn_asset.Open();
             cmd.CommandType = CommandType.Text;
             DataTable dt = new DataTable();
@@ -186,7 +170,7 @@ namespace assetManagement
             dt.Columns.Add(new System.Data.DataColumn("custodian", typeof(String)));
             dt.Columns.Add(new System.Data.DataColumn("location", typeof(String)));
             dt.Columns.Add(new System.Data.DataColumn("subLoc", typeof(String)));
-            
+
             while (dr.Read())
             {
                 newRow = dt.NewRow();
@@ -214,81 +198,23 @@ namespace assetManagement
             }
             conn_asset.Close();
 
-             
+
             foreach (GridViewRow item in grid_display.Rows)
             {
                 string astCode = item.Cells[2].Text.ToString();
                 string sDate = item.Cells[4].Text.ToString();
                 DateTime dDate = Convert.ToDateTime(sDate);
 
-                
+                DropDownList stat = (DropDownList)item.FindControl("stat");
+                string status = stat.SelectedValue.ToString();
+
                 OdbcCommand cmda = conn_asset.CreateCommand();
-                cmda.CommandText = "select lockStat from ast_pm where astCode='" + astCode + "' and scheduledDate='"+ dDate+"'";
+                cmda.CommandText = "update ast_pm set compStat='" + status + "' where astCode='" + astCode + "' and scheduledDate>='" + dsDate + "' and scheduledDate<='" + deDate + "'";
                 conn_asset.Open();
-                cmda.CommandType = CommandType.Text;
-                OdbcDataReader dra = cmda.ExecuteReader();
-                string lstat = "";
-                while(dra.Read())
-                {
-                    
-                     lstat = dra["lockStat"].ToString();
-                }
+                cmda.ExecuteNonQuery();
                 conn_asset.Close();
-                if(lstat.Equals("L"))
-                {
-                    Button btn_s = (Button)item.FindControl("btn_sel");
-                    btn_s.Enabled = false;
-                    btn_s.Text = "Locked";
-                    item.Enabled = false;
-                }
-                else
-                {
-                    Button btn_s = (Button)item.FindControl("btn_sel");
-                    btn_s.Enabled = true;
-
-                }
-            }
-        }
-
-        
-
-        protected void btn_sel_Click(object sender, EventArgs e)
-        {
-            
-            Button btn = (Button)sender;
-
-            
-            GridViewRow gr = (GridViewRow)btn.NamingContainer;
-            
-            Session["astCode"] = gr.Cells[2].Text.Trim();
-            string acode = Session["astCode"].ToString();
-            Session["scheduledDate"] = gr.Cells[4].Text.Trim();
-            
-            OdbcCommand cmdee = conn_asset.CreateCommand();
-            cmdee.CommandText = "select category from ast_master where astCode='"+acode+"' ";
-            conn_asset.Open();
-            OdbcDataReader drr = cmdee.ExecuteReader();
-            while(drr.Read())
-            {
-                category=drr["category"].ToString();
-                if (category.Equals("PCS") || category.Equals("PCA") || category.Equals("PCW") || category.Equals("LAP"))
-                    Response.Redirect("~/amc_pc.aspx");
-                else if (category.Equals("DMP") || category.Equals("MLJ") || category.Equals("CLJ") || category.Equals("CIJ") || category.Equals("MIJ") || category.Equals("MLM") || category.Equals("CLM") || category.Equals("MLH") || category.Equals("CLH") || category.Equals("LPR"))
-                    Response.Redirect("~/amc_printer.aspx");
-                
-                    //Response.Redirect("~/amc_network.aspx");
-                else if (category.Equals("SCS") || category.Equals("SCA"))
-                    Response.Redirect("~/amc_scanner.aspx");
-                else
-                {
-                    Response.Redirect("~/amc_network.aspx");
-                }
-
 
             }
-            
-
-
         }
 
         protected void btn_print_Click(object sender, EventArgs e)
@@ -301,7 +227,7 @@ namespace assetManagement
             {
                 Response.Redirect("~/Print/printer");
             }
-            else if(category.Equals("SCS") || category.Equals("SCA") )
+            else if (category.Equals("SCS") || category.Equals("SCA"))
             {
                 Response.Redirect("~/Print/scanner");
             }
@@ -315,10 +241,10 @@ namespace assetManagement
             }
         }
 
-        
-    
-        
 
-        
+        protected void btn_save_Click(object sender, EventArgs e)
+        {
+            BindData();
+        }
     }
 }

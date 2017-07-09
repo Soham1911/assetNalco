@@ -29,6 +29,10 @@
 </head>
 <body>
     <form id="form1" runat="server">
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <asp:Image ID="Image1" runat="server" align="center" ImageAlign="Middle" ImageUrl="~/Images/nalcologo.gif" Height="49px" style="margin-left: 0px" Width="309px"/>
+        <br />
+        <br />
         <font size="5em"><strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;NATIONAL ALUMINIUM COMPANY</strong></font>
         <font size="4em"><strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;UNIT:1200</strong></font>
         <br />
@@ -84,9 +88,9 @@
                 </tr>
                 <tr>
                     <td class="auto-style24">
-                        <asp:Label ID="lbl_type" runat="server" Text="Type" align="right" />
+                        <asp:Label ID="lbl_type" runat="server" Text="Category" align="right" />
                         <td class="auto-style1" />
-                        <asp:Label ID="txt_type" runat="server" align="left" Enabled="false" />
+                        <asp:Label ID="txt_category" runat="server" align="left" Enabled="False" />
                         <td>
                             <asp:Label ID="lbl_ip" runat="server" Text="IP Address" align="right" />
                         </td>
@@ -107,9 +111,9 @@
 
                 <tr>
                     <td class="auto-style24">
-                        <asp:Label ID="lbl_custodian" runat="server" Text="Custodian" align="right" />
+                        <asp:Label ID="lbl_custodian" runat="server" Text="Custodian Name" align="right" />
                         <td class="auto-style1" />
-                        <asp:Label ID="txt_custodian" runat="server" align="left" Enabled="false" />
+                        <asp:Label ID="txt_name" runat="server" align="left" Enabled="False" />
                         <td>
                             <asp:Label ID="lbl_pno" runat="server" Text="Personal No." align="right" />
                         </td>
@@ -146,7 +150,7 @@
                     </td>
                 </tr>
 
-                <tr>
+                <%--<tr>
                     <td class="auto-style24">
                         <asp:Label ID="lbl_mmake" runat="server" Text="Monitor Make" align="right" /></td>
                         <td class="auto-style1" />
@@ -165,7 +169,7 @@
                             <asp:Label ID="txt_msno" runat="server" Enabled="false"></asp:Label>
 
                         </td>
-                </tr>
+                </tr>--%>
 
                 <tr>
                     <td class="auto-style24">
@@ -189,7 +193,7 @@
     <p>
         <strong>PREVENTIVE MAINTENANCE ACTIVITIES</strong>
     </p>
-    <table>
+    <table align="center">
         <tr>
             <td class="auto-style4">CD/DVD Cleaning</td>
             <td class="auto-style2">Mouse Cleaning and Checking</td>
