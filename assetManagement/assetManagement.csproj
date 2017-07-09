@@ -119,7 +119,12 @@
     <Content Include="AMC_Create.aspx" />
     <Content Include="AMC_Entry.aspx" />
     <Content Include="AMC_AddUser.aspx" />
+    <Content Include="amc_network.aspx" />
+    <Content Include="amc_pc.aspx" />
+    <Content Include="amc_pm.aspx" />
+    <Content Include="amc_printer.aspx" />
     <Content Include="AMC_Remove.aspx" />
+    <Content Include="amc_scanner.aspx" />
     <Content Include="Asset_AllotNonEmp.aspx" />
     <Content Include="Asset_AllotEmp.aspx" />
     <Content Include="asset_edit.aspx" />
@@ -137,6 +142,8 @@
     <Content Include="Content\Site.css" />
     <Content Include="Default.aspx" />
     <Content Include="Fdbck.aspx" />
+    <Content Include="Images\09632.jpg" />
+    <Content Include="Images\09642.jpg" />
     <Content Include="Images\09654.jpg" />
     <Content Include="Images\09682.jpg" />
     <Content Include="Images\accent.png" />
@@ -144,6 +151,7 @@
     <Content Include="Images\Desert.jpg" />
     <Content Include="Images\09652.jpg" />
     <Content Include="Images\heroAccent.png" />
+    <Content Include="Images\nalcologo.gif" />
     <Content Include="Images\orderedList0.png" />
     <Content Include="Images\orderedList1.png" />
     <Content Include="Images\orderedList2.png" />
@@ -160,6 +168,15 @@
     <Content Include="packages.config" />
     <Content Include="Amc.Master" />
     <None Include="Scripts\jquery-1.8.2.intellisense.js" />
+    <Content Include="pm_done.aspx" />
+    <Content Include="pm_fin.aspx" />
+    <Content Include="pm_notFin.aspx" />
+    <Content Include="pm_rel.aspx" />
+    <Content Include="Print\network.aspx" />
+    <Content Include="Print\pc.aspx" />
+    <Content Include="Print\printer.aspx" />
+    <Content Include="Print\scanner.aspx" />
+    <Content Include="Print\server.aspx" />
     <Content Include="rep_.bback.aspx" />
     <Content Include="rep_assets.aspx" />
     <Content Include="Scripts\jquery-1.8.2.js" />
@@ -252,12 +269,47 @@
     <Compile Include="AMC_AddUser.aspx.designer.cs">
       <DependentUpon>AMC_AddUser.aspx</DependentUpon>
     </Compile>
+    <Compile Include="amc_network.aspx.cs">
+      <DependentUpon>amc_network.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="amc_network.aspx.designer.cs">
+      <DependentUpon>amc_network.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="amc_pc.aspx.cs">
+      <DependentUpon>amc_pc.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="amc_pc.aspx.designer.cs">
+      <DependentUpon>amc_pc.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="amc_pm.aspx.cs">
+      <DependentUpon>amc_pm.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="amc_pm.aspx.designer.cs">
+      <DependentUpon>amc_pm.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="amc_printer.aspx.cs">
+      <DependentUpon>amc_printer.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="amc_printer.aspx.designer.cs">
+      <DependentUpon>amc_printer.aspx</DependentUpon>
+    </Compile>
     <Compile Include="AMC_Remove.aspx.cs">
       <DependentUpon>AMC_Remove.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="AMC_Remove.aspx.designer.cs">
       <DependentUpon>AMC_Remove.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="amc_scanner.aspx.cs">
+      <DependentUpon>amc_scanner.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="amc_scanner.aspx.designer.cs">
+      <DependentUpon>amc_scanner.aspx</DependentUpon>
     </Compile>
     <Compile Include="App_Start\AuthConfig.cs" />
     <Compile Include="Account\Login.aspx.cs">
@@ -410,6 +462,69 @@
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="pm_done.aspx.cs">
+      <DependentUpon>pm_done.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pm_done.aspx.designer.cs">
+      <DependentUpon>pm_done.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="pm_fin.aspx.cs">
+      <DependentUpon>pm_fin.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pm_fin.aspx.designer.cs">
+      <DependentUpon>pm_fin.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="pm_notFin.aspx.cs">
+      <DependentUpon>pm_notFin.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pm_notFin.aspx.designer.cs">
+      <DependentUpon>pm_notFin.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="pm_rel.aspx.cs">
+      <DependentUpon>pm_rel.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pm_rel.aspx.designer.cs">
+      <DependentUpon>pm_rel.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Print\network.aspx.cs">
+      <DependentUpon>network.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Print\network.aspx.designer.cs">
+      <DependentUpon>network.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Print\pc.aspx.cs">
+      <DependentUpon>pc.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Print\pc.aspx.designer.cs">
+      <DependentUpon>pc.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Print\printer.aspx.cs">
+      <DependentUpon>printer.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Print\printer.aspx.designer.cs">
+      <DependentUpon>printer.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Print\scanner.aspx.cs">
+      <DependentUpon>scanner.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Print\scanner.aspx.designer.cs">
+      <DependentUpon>scanner.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Print\server.aspx.cs">
+      <DependentUpon>server.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Print\server.aspx.designer.cs">
+      <DependentUpon>server.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="rep_.bback.aspx.cs">

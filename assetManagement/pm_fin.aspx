@@ -88,7 +88,7 @@
                         <asp:Label ID="lbl_no_recs" runat="server" Font-Bold="true" ForeColor="Red" Font-Size="Larger"
                             Visible="false"
                             Text=""></asp:Label>
-                        <asp:GridView ID="grid_display" runat="server" OnRowCommand="grid_display_RowCommand"
+                        <asp:GridView ID="grid_display" runat="server" 
                             AutoGenerateColumns="False" Width="100%" Font-Size="1.11em" PageSize="7"
                             CellPadding="4" ForeColor="#333333"
                             GridLines="None" HorizontalAlign="Left">

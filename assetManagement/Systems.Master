@@ -43,10 +43,6 @@
                                 <asp:MenuItem NavigateUrl="~/call_hist.aspx" Text="Closed Calls History" />
                             </asp:MenuItem>
 
-                            <asp:MenuItem NavigateUrl="#" Text="Generate Report">
-                                <asp:MenuItem NavigateUrl="~/rep_assets.aspx" Text="Asset Report" />
-                                <asp:MenuItem NavigateUrl="~/rep_.bback.aspx" Text="Buyback Report" />
-                            </asp:MenuItem>
                             <asp:MenuItem NavigateUrl="#" Text="AMC">
                                 <asp:MenuItem NavigateUrl="~/amc_addUser.aspx" Text="Create AMC Party" />
                                 <asp:MenuItem NavigateUrl="~/amc_change.aspx" Text="Change AMC Party/Duration" />
@@ -63,6 +59,18 @@
                                 <asp:MenuItem NavigateUrl="~/allied_removeUser.aspx" Text="Remove User" />
                             </asp:MenuItem>
                             <asp:MenuItem NavigateUrl="~/sublocation.aspx" Text="Sub Location" />
+                            <asp:MenuItem NavigateUrl="#" Text="Generate Report">
+                                <asp:MenuItem NavigateUrl="~/rep_assets.aspx" Text="Asset Report" />
+                                <asp:MenuItem NavigateUrl="~/rep_bback.aspx" Text="Breakdown Report" />
+                            </asp:MenuItem>
+                            <asp:MenuItem NavigateUrl="#" Text="Preventive Maintenance">
+                                <asp:MenuItem NavigateUrl="~/pm_rel.aspx" Text="Lock/Release Quarter" />
+                                <asp:MenuItem NavigateUrl="#" Text="PM Status">
+                                    <asp:MenuItem NavigateUrl="~/pm_notFin.aspx" Text="Unfinished Assets" />
+                                    <asp:MenuItem NavigateUrl="~/pm_done.aspx" Text="Done by FE Assets" />
+                                    <asp:MenuItem NavigateUrl="~/pm_fin.aspx" Text="Finished Assets" />
+                                </asp:MenuItem>
+                            </asp:MenuItem>
                             <asp:MenuItem NavigateUrl="~/bill.aspx" Text="Bill" />
                         </Items>
                     </asp:Menu>

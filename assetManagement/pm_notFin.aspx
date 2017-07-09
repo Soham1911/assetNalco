@@ -87,8 +87,8 @@
                         <br />
                         <asp:Label ID="lbl_no_recs" runat="server" Font-Bold="true" ForeColor="Red" Font-Size="Larger"
                             Visible="false"
-                            Text=""></asp:Label>
-                        <asp:GridView ID="grid_display" runat="server" OnRowCommand="grid_display_RowCommand"
+                            Text="done"></asp:Label>
+                        <asp:GridView ID="grid_display" runat="server"
                             AutoGenerateColumns="False" Width="100%" Font-Size="1.11em" PageSize="7"
                             CellPadding="4" ForeColor="#333333"
                             GridLines="None" HorizontalAlign="Left">
@@ -143,7 +143,7 @@
                                     ItemStyle-HorizontalAlign="Left" SortExpression="Location" HeaderStyle-HorizontalAlign="Left">
                                     <HeaderStyle HorizontalAlign="Left"></HeaderStyle>
                                 </asp:BoundField>
-                                <asp:BoundField DataField="subLoc" HeaderText="Sub Location"
+                                <asp:BoundField DataField="subLoc1" HeaderText="Sub Location"
                                     ItemStyle-HorizontalAlign="Left" SortExpression="contact" HeaderStyle-HorizontalAlign="Left">
                                     <HeaderStyle HorizontalAlign="Left"></HeaderStyle>
                                 </asp:BoundField>
@@ -159,7 +159,7 @@
                             <SortedDescendingHeaderStyle BackColor="#6F8DAE" />
                         </asp:GridView>
                     </div>
-
+                    <asp:Button ID="btn_save" runat="server" Text="Save" OnClick="btn_save_Click" Height="40px" Width="81px"/>
                 </div>
             </div>
         </div>

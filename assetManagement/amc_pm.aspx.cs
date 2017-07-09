@@ -165,12 +165,12 @@ namespace assetManagement
             if (mon == "1" || mon == "2" || mon == "3")
             {
                 
-                cmd.CommandText = "select p.astCode,p.scheduledDate,a.custodian,a.description,a.location,a.subLoc from ast_pm p inner join ast_pc a on a.astCode=p.astCode where month='" + mon + "' and scheduledDate>='" + dsDate + "' and scheduledDate<='" + deDate + "' ";
+                cmd.CommandText = "select p.astCode,p.scheduledDate,a.custodian,a.description,a.location,a.subLoc from ast_pm p inner join ast_master a on a.astCode=p.astCode where month='" + mon + "' and scheduledDate>='" + dsDate + "' and scheduledDate<='" + deDate + "' ";
                 
             }
             else
             {
-                cmd.CommandText = "select p.astCode,p.scheduledDate,a.custodian,a.description,a.location,a.subLoc from ast_pm p inner join ast_pc a on a.astCode=p.astCode where scheduledDate>='" + dsDate + "' and scheduledDate<='" + deDate + "' ";
+                cmd.CommandText = "select p.astCode,p.scheduledDate,a.custodian,a.description,a.location,a.subLoc from ast_pm p inner join ast_master a on a.astCode=p.astCode where scheduledDate>='" + dsDate + "' and scheduledDate<='" + deDate + "' ";
             }
             conn_asset.Open();
             cmd.CommandType = CommandType.Text;

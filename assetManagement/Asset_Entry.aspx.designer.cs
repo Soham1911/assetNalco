@@ -166,13 +166,13 @@ namespace assetManagement {
         protected global::System.Web.UI.WebControls.TextBox txt_poPrice;
         
         /// <summary>
-        /// txt_vendorCode control.
+        /// drp_vendor control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txt_vendorCode;
+        protected global::System.Web.UI.WebControls.DropDownList drp_vendor;
         
         /// <summary>
         /// txt_installDate control.

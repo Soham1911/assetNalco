@@ -10,7 +10,7 @@
                     <asp:Label ID="lbl_amcparty" runat="server" Text="AMC Party" align="right"></asp:Label>
                 </td>
                 <td>
-                    <asp:TextBox ID="txt_amcparty" runat="server" Text="HITACHI" Enabled="false" align="left"></asp:TextBox>
+                    <asp:TextBox ID="txt_amcparty" runat="server" Text="" Enabled="false" align="left"></asp:TextBox>
                 </td>
             </tr>
             <tr>
@@ -18,7 +18,7 @@
                     <asp:Label ID="lbl_startDate" runat="server" Text="Start Date" align="right"></asp:Label>
                 </td>
                 <td>
-                    <asp:TextBox ID="txt_start" runat="server" Text="2017-01-01" Enabled="false" align="left"></asp:TextBox>
+                    <asp:TextBox ID="txt_start" runat="server" Text="" Enabled="false" align="left"></asp:TextBox>
                 </td>
             </tr>
             <tr>
@@ -26,7 +26,7 @@
                     <asp:Label ID="lbl_endDate" runat="server" Text="End Date" align="right"></asp:Label>
                 </td>
                 <td>
-                    <asp:TextBox ID="txt_endDate" runat="server" Text="2019-12-31" Enabled="false" align="left"></asp:TextBox>
+                    <asp:TextBox ID="txt_endDate" runat="server" Text="" Enabled="false" align="left"></asp:TextBox>
                 </td>
             </tr>
             <tr>

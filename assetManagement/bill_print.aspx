@@ -15,6 +15,7 @@
 
         function print_report() {
             window.print();
+            window.location.href = 'Systems.aspx';
         }
 
    </script>
@@ -105,13 +106,12 @@
                                     EditRowStyle-HorizontalAlign="Center" CellPadding="4" Visible="true"
                                     ForeColor="Black" GridLines="None" HorizontalAlign="Center" Width="230px" BorderWidth="1px">
                                     <Columns>
-                                        <asp:BoundField DataField="astDesc" HeaderText="Asset Desc" SortExpression="astDesc" />
-                                        <asp:BoundField DataField="type" HeaderText="Category" SortExpression="type" />
-                                        <asp:BoundField DataField="pmSchCount" HeaderText="Sch Count" SortExpression="pmSchCount" />
-                                        <asp:BoundField DataField="atndCount" HeaderText="Atnd Count" SortExpression="atndCount" />
-                                        <asp:BoundField DataField="notAttended" HeaderText="Not Attended" SortExpression="notAttended" />
-                                        <asp:BoundField DataField="pmPenalty" HeaderText="PM Penalty" SortExpression="pmPenalty" />
-                                        <asp:BoundField DataField="pmTotalPenalty" HeaderText="Total PM Penalty" SortExpression="pmTotalPenalty" />
+                                        <asp:BoundField DataField="typ" HeaderText="Category" SortExpression="typ" />
+                                        <asp:BoundField DataField="ttl" HeaderText="Sch Count" SortExpression="ttl" />
+                                        <asp:BoundField DataField="fc" HeaderText="Atnd Count" SortExpression="fc" />
+                                        <asp:BoundField DataField="nc" HeaderText="Not Attended" SortExpression="nc" />
+                                        <asp:BoundField DataField="pnlt" HeaderText="PM Penalty" SortExpression="pnlt" />
+                                        <asp:BoundField DataField="totalPenalty" HeaderText="Total PM Penalty" SortExpression="totalPenalty" />
                                     </Columns>
 
                                     <EditRowStyle HorizontalAlign="Center" BackColor="White" BorderWidth="1px"></EditRowStyle>

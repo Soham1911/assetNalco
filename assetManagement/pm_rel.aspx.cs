@@ -24,6 +24,33 @@ namespace assetManagement
             if (!Page.IsPostBack)
             {
 
+                OdbcCommand cmd = conn_asset.CreateCommand();
+                cmd.CommandText = "select count(*),amcParty from ast_master where amcStat = 'Y' group by amcParty order by count(*) desc";
+                conn_asset.Open();
+                OdbcDataReader dr = cmd.ExecuteReader();
+                string amcMax = "default";
+                while (dr.Read())
+                {
+                    amcMax = dr["amcParty"].ToString();
+                    break;
+                }
+                conn_asset.Close();
+                txt_amcparty.Text = amcMax;
+                DateTime stDate = Convert.ToDateTime("1900-01-01");
+                DateTime enDate = Convert.ToDateTime("1900-01-01");
+                OdbcCommand cmda = conn_asset.CreateCommand();
+                cmda.CommandText = "select amcStart,amcEnd from ast_master where amcParty = '" + amcMax + "'";
+                conn_asset.Open();
+                OdbcDataReader dr1 = cmda.ExecuteReader();
+                while (dr1.Read())
+                {
+                    stDate = Convert.ToDateTime(dr1["amcStart"]);
+                    enDate = Convert.ToDateTime(dr1["amcEnd"]);
+                    break;
+                }
+                conn_asset.Close();
+                txt_start.Text = stDate.ToString("yyyy/MM/dd");
+                txt_endDate.Text = enDate.ToString("yyyy/MM/dd");
 
                 DateTime sDate = Convert.ToDateTime(txt_start.Text);
                 DateTime eDate = Convert.ToDateTime(txt_endDate.Text);
@@ -46,7 +73,7 @@ namespace assetManagement
                     
                 }
 
-
+                
             }
         }
 
@@ -72,7 +99,7 @@ namespace assetManagement
             DateTime dsDate = Convert.ToDateTime(sDate);
             DateTime deDate = Convert.ToDateTime(eDate);
             OdbcCommand cmd = conn_asset.CreateCommand();
-            cmd.CommandText = "update ast_pm set lockStat='L' where scheduledDate>='" + dsDate + "' and scheduledDate<='" + deDate + "'";
+            cmd.CommandText = "update ast_pm set lockStat='L' where scheduledDate>='" + sDate + "' and scheduledDate<='" + eDate + "'";
             conn_asset.Open();
             dr1 = cmd.ExecuteNonQuery();
             conn_asset.Close();
@@ -90,7 +117,7 @@ namespace assetManagement
                 lbl_no_recs.Visible = true;
             }
             OdbcCommand cmde = conn_asset.CreateCommand();
-            cmde.CommandText = "select count(*) as c,compStat from ast_pm where scheduledDate>='" + dsDate + "' and scheduledDate<='" + deDate + "' group by compStat";
+            cmde.CommandText = "select count(*) as c,compStat from ast_pm where scheduledDate>='" + sDate + "' and scheduledDate<='" + eDate + "' group by compStat";
             conn_asset.Open();
             OdbcDataReader drr = cmde.ExecuteReader();
             string pcnt = "0";
@@ -143,7 +170,7 @@ namespace assetManagement
             DateTime dsDate = Convert.ToDateTime(sDate);
             DateTime deDate = Convert.ToDateTime(eDate);
             OdbcCommand cmd = conn_asset.CreateCommand();
-            cmd.CommandText = "update ast_pm set lockStat='R' where scheduledDate>='" + dsDate + "' and scheduledDate<='" + deDate + "'";
+            cmd.CommandText = "update ast_pm set lockStat='R' where scheduledDate>='" + sDate + "' and scheduledDate<='" + eDate + "'";
             conn_asset.Open();
             dr1 = cmd.ExecuteNonQuery();
             conn_asset.Close();
@@ -158,7 +185,7 @@ namespace assetManagement
             {
                 
                 OdbcCommand cmdq = conn_asset.CreateCommand();
-                cmdq.CommandText = "select astCode,amc_mon,unit from ast_pc where amcParty='"+ txt_amcparty.Text.Trim() +"' ";
+                cmdq.CommandText = "select astCode,amc_mon,unit,type from ast_master where amcParty='"+ txt_amcparty.Text.Trim() +"' ";
                 conn_asset.Open();
                 cmdq.CommandType = CommandType.Text;
                 DataTable dt = new DataTable();
@@ -170,6 +197,7 @@ namespace assetManagement
                 dt.Columns.Add(new System.Data.DataColumn("astCode", typeof(String)));
                 dt.Columns.Add(new System.Data.DataColumn("amc_mon", typeof(String)));
                 dt.Columns.Add(new System.Data.DataColumn("unit", typeof(String)));
+                dt.Columns.Add(new System.Data.DataColumn("type", typeof(String)));
                 while (dr.Read())
                 {
                        
@@ -177,7 +205,7 @@ namespace assetManagement
                     newRow["astCode"] = Convert.ToString(dr["astCode"]);
                     newRow["amc_mon"] = Convert.ToString(dr["amc_mon"]);
                     newRow["unit"] = Convert.ToString(dr["unit"]);
-
+                    newRow["type"] = Convert.ToString(dr["type"]);
                     dt.Rows.Add(newRow);
                 }
                 conn_asset.Close();
@@ -189,7 +217,7 @@ namespace assetManagement
                     {
                         
                         OdbcCommand cmdw = conn_asset.CreateCommand();
-                        cmdw.CommandText = "insert into ast_pm (astCode,unitCode,month,scheduledDate,lockStat,compStat,actualDate) values ('" + it["astCode"] + "','" + it["unit"] + "','"+ mon + "','"+ dsDate.ToString() +"','R','N','1900-01-01')";
+                        cmdw.CommandText = "insert into ast_pm (astCode,unitCode,month,scheduledDate,lockStat,compStat,actualDate,quarterStartDate,quarterEndDate,billStat,type) values ('" + it["astCode"] + "','" + it["unit"] + "','" + mon + "','" + dsDate.ToString("yyyy/MM/dd") + "','R','N','1900-01-01','" + dsDate.ToString("yyyy/MM/dd") + "','" + deDate.ToString("yyyy/MM/dd") + "','N','" + it["type"] + "')";
                         conn_asset.Open();
                         cmdw.ExecuteNonQuery();
                         conn_asset.Close();
@@ -201,7 +229,7 @@ namespace assetManagement
                     {
 
                         OdbcCommand cmdw = conn_asset.CreateCommand();
-                        cmdw.CommandText = "insert into ast_pm (astCode,unitCode,month,scheduledDate,lockStat,compStat,actualDate) values ('" + it["astCode"] + "','" + it["unit"] + "','" + mon + "','" + dsDate.AddMonths(1).ToString() + "','R','N','1900-01-01')";
+                        cmdw.CommandText = "insert into ast_pm (astCode,unitCode,month,scheduledDate,lockStat,compStat,actualDate,quarterStartDate,quarterEndDate,billStat,type) values ('" + it["astCode"] + "','" + it["unit"] + "','" + mon + "','" + dsDate.ToString("yyyy/MM/dd") + "','R','N','1900-01-01','" + dsDate.ToString("yyyy/MM/dd") + "','" + deDate.ToString("yyyy/MM/dd") + "','N','" + it["type"] + "')";
                         conn_asset.Open();
                         cmdw.ExecuteNonQuery();
                         conn_asset.Close();
@@ -213,7 +241,7 @@ namespace assetManagement
                     {
 
                         OdbcCommand cmdw = conn_asset.CreateCommand();
-                        cmdw.CommandText = "insert into ast_pm (astCode,unitCode,month,scheduledDate,lockStat,compStat,actualDate) values ('" + it["astCode"] + "','" + it["unit"] + "','" + mon + "','" + dsDate.AddMonths(2).ToString() + "','R','N','1900-01-01')";
+                        cmdw.CommandText = "insert into ast_pm (astCode,unitCode,month,scheduledDate,lockStat,compStat,actualDate,quarterStartDate,quarterEndDate,billStat,type) values ('" + it["astCode"] + "','" + it["unit"] + "','" + mon + "','" + dsDate.ToString("yyyy/MM/dd") + "','R','N','1900-01-01','" + dsDate.ToString("yyyy/MM/dd") + "','" + deDate.ToString("yyyy/MM/dd") + "','N','" + it["type"] + "')";
                         conn_asset.Open();
                         cmdw.ExecuteNonQuery();
                         conn_asset.Close();
@@ -231,7 +259,7 @@ namespace assetManagement
             }
 
             OdbcCommand cmde = conn_asset.CreateCommand();
-            cmde.CommandText = "select count(*) as c,compStat from ast_pm where scheduledDate>='" + dsDate + "' and scheduledDate<='" + deDate + "' group by compStat";
+            cmde.CommandText = "select count(*) as c,compStat from ast_pm where scheduledDate>='" + sDate + "' and scheduledDate<='" + eDate + "' group by compStat";
             conn_asset.Open();
             OdbcDataReader drr = cmde.ExecuteReader();
             string pcnt = "0";

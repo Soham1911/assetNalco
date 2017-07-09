@@ -30,24 +30,24 @@ namespace assetManagement
             OdbcDataReader dr=cmd_asset1.ExecuteReader();
             if(dr.Read())
             {
-                conn_asset.Close();
-                OdbcCommand cmd_asset2=conn_asset.CreateCommand();
-                cmd_asset2.CommandText="select access_flg from substr_log_access where pers_no='"+txt_uid.Text.Trim()+"' and access_flg='Y'";
-                conn_asset.Open();
-                    OdbcDataReader dr1=cmd_asset2.ExecuteReader();
-                if(dr1.Read())
-                {
-                    conn_asset.Close();
-                    Response.Cookies.Add(id);
-                    Session["systems"] = txt_uid.Text.Trim();
-                    Response.Redirect("Systems.aspx");
-                }
-                else
-                {
-                    Response.Cookies.Add(id);
-                    Session["user"] = txt_uid.Text.Trim();
-                    Response.Redirect("User.aspx");
-                }
+                //conn_asset.Close();
+                //OdbcCommand cmd_asset2=conn_asset.CreateCommand();
+                //cmd_asset2.CommandText="select access_flg from substr_log_access sa join empMaster em on sa.pers_no = em.p_no where sa.pers_no = '"+txt_uid.Text.Trim()+"' and deptCode = '006'";
+                //conn_asset.Open();
+                //    OdbcDataReader dr1=cmd_asset2.ExecuteReader();
+                //if(dr1.Read())
+                //{
+                //    conn_asset.Close();
+                //    Response.Cookies.Add(id);
+                //    Session["systems"] = txt_uid.Text.Trim();
+                //    Response.Redirect("Systems.aspx");
+                ////}
+                //else
+                //{
+                Response.Cookies.Add(id);
+                Session["user"] = txt_uid.Text.Trim();
+                Response.Redirect("User.aspx");
+                //}
             }
             else
             {
@@ -78,7 +78,23 @@ namespace assetManagement
                     }
                     else
                     {
-                        lbl_error.Visible = true;
+                        conn_asset.Close();
+                        OdbcCommand cmd_asset2 = conn_asset.CreateCommand();
+                        cmd_asset2.CommandText = "select * from app_login where p_no = '" + txt_uid.Text.Trim() + "' and password = '" + txt_pass.Text.Trim() + "' and app = 'AM' and access = 'A'";
+                        conn_asset.Open();
+                        OdbcDataReader dr1 = cmd_asset2.ExecuteReader();
+                        if (dr1.Read())
+                        {
+                            conn_asset.Close();
+                            Response.Cookies.Add(id);
+                            Session["systems"] = txt_uid.Text.Trim();
+                            Response.Redirect("Systems.aspx");
+                        }
+                        else
+                        {
+                            lbl_error.Visible = true;
+                        }
+                        
                     }
                     
                 }

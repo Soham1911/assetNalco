@@ -18,51 +18,96 @@ namespace assetManagement
         static string connStr_asset = ConfigurationManager.ConnectionStrings["asset"].ConnectionString;
         OdbcConnection conn_asset = new OdbcConnection(connStr_asset);
 
-        static decimal proposedBill,pmPenalty,downtimePenalty,finalBill;
         static DateTime fromDate,toDate;
         static string amcMax;
         //Initialize all variables
         public void initVar()
         {
-            proposedBill = 0;
-            pmPenalty = 0;
-            downtimePenalty = 0;
             fromDate = Convert.ToDateTime("1900-01-01");
             toDate = Convert.ToDateTime("1900-01-01");
         }
 
         //PM Penalty calculation
-        public void penaltyCalc()
+        public decimal penaltyCalc()
         {
+            string m = drp_quarter.SelectedItem.Text;
+            string sDate = "";
+            string eDate = "";
+            for (int i = 0; i <= 9; i++)
+            {
+                sDate += m[i];
+                eDate += m[i + 14];
+            }
+
+            fromDate = Convert.ToDateTime(sDate);
+            toDate = Convert.ToDateTime(eDate);
+
+            decimal pmPenalty = 0;
             OdbcCommand cmd = conn_asset.CreateCommand();
-            cmd.CommandText = "select count(*) as quantity,pmPenalty from ast_pmPenalty pm join ast_penaltyMaster pn on pm.type=pn.type group by pm.type";
+            //cmd.CommandText = "select count(*) as quantity,type from ast_pmPenalty where quarterStartDate = '"+fromDate.ToString("yyyy/MM/dd")+"' group by type";
+            cmd.CommandText = "select type from ast_pmPenalty where quarterStartDate = '" + fromDate.ToString("yyyy/MM/dd") + "'";
+
             conn_asset.Open();
             OdbcDataReader dr = cmd.ExecuteReader();
+            DataTable dt = new DataTable();
+            DataRow newRow;
+
+            //dt.Columns.Add(new System.Data.DataColumn("quantity", typeof(Int32)));
+            dt.Columns.Add(new System.Data.DataColumn("type", typeof(String)));
+          
             while(dr.Read())
             {
-                if(fromDate.Equals(fromDate.ToString()))
-                {
-                    pmPenalty += Convert.ToDecimal(dr["pmPenalty"]) * Convert.ToDecimal(dr["quantity"]);
-                }
+                newRow = dt.NewRow();
+                //newRow["quantity"] = Convert.ToInt32(dr["quantity"]);
+                newRow["type"] = Convert.ToString(dr["type"]);            
+                dt.Rows.Add(newRow);
             }
             conn_asset.Close();
+
+            foreach (DataRow it in dt.Rows)
+            {
+                OdbcCommand cmd1 = conn_asset.CreateCommand();
+                cmd1.CommandText = "select pmPenalty from ast_penaltyMaster where type = '" + it["type"]+"'";
+                conn_asset.Open();
+                OdbcDataReader dr1 = cmd1.ExecuteReader();
+                while(dr1.Read())
+                {
+                    //pmPenalty += Convert.ToDecimal(it["quantity"]) * Convert.ToDecimal(dr1["pmPenalty"]);
+                    pmPenalty += Convert.ToDecimal(dr1["pmPenalty"]);
+
+                }
+                conn_asset.Close();
+            }
+            return pmPenalty;
         }
 
         //Proposed Bill calculation
-        public void proposedBillCalc()
+        public decimal proposedBillCalc()
         {
+            string m = drp_quarter.SelectedItem.Text;
+            string sDate = "";
+            string eDate = "";
+            for (int i = 0; i <= 9; i++)
+            {
+                sDate += m[i];
+                eDate += m[i + 14];
+            }
+
+            fromDate = Convert.ToDateTime(sDate);
+            toDate = Convert.ToDateTime(eDate);
+
+            decimal proposedBill = 0;
             OdbcCommand cmd = conn_asset.CreateCommand();
-            cmd.CommandText = "select sum(poPrice) as total from ast_pm pm join ast_master am on pm.astCode = am.astCode where pm.quarterStartDate = '" + fromDate + "'";
+            cmd.CommandText = "select sum(poPrice) as total from ast_pm pm join ast_master am on pm.astCode = am.astCode where pm.quarterStartDate = '" + fromDate.ToString("yyyy/MM/dd") + "'";
             conn_asset.Open();
             OdbcDataReader dr = cmd.ExecuteReader();
+
             while (dr.Read())
             {
-                if (fromDate.Equals(fromDate.ToString()))
-                {
                     proposedBill = Convert.ToDecimal(dr["total"]) * Convert.ToDecimal(0.0319);
-                }
             }
             conn_asset.Close();
+            return proposedBill;
         }
 
         protected void Page_Load(object sender, EventArgs e)
@@ -83,7 +128,7 @@ namespace assetManagement
             cmd.CommandText = "select count(*),amcParty from ast_master where amcStat = 'Y' group by amcParty order by count(*) desc";
             conn_asset.Open();
             OdbcDataReader dr = cmd.ExecuteReader();
-            string amcMax = "default";
+            
             while(dr.Read())
             {
                 amcMax = dr["amcParty"].ToString();
@@ -202,7 +247,7 @@ namespace assetManagement
             conn_asset.Close();
             //////Add new Entries
             OdbcCommand cmd3 = conn_asset.CreateCommand();
-            cmd3.CommandText = "select * from ast_pm ap join ast_master am on ap.astCode = am.astCode where quarterStartDate = '" + fromDate.ToString("yyyy/MM/dd") + "' where compStat = 'N'";
+            cmd3.CommandText = "select ap.astCode as astCode1,am.type,amcParty from ast_pm ap join ast_master am on ap.astCode = am.astCode where quarterStartDate = '" + fromDate.ToString("yyyy/MM/dd") + "' and compStat = 'N'";
             conn_asset.Open();
             OdbcDataReader dr3 = cmd3.ExecuteReader();
 
@@ -211,18 +256,18 @@ namespace assetManagement
 
             dt.Columns.Add(new System.Data.DataColumn("amcParty", typeof(String)));
             dt.Columns.Add(new System.Data.DataColumn("type", typeof(String)));
-            dt.Columns.Add(new System.Data.DataColumn("asCode", typeof(String)));
-            dt.Columns.Add(new System.Data.DataColumn("startDate", typeof(String)));
-            dt.Columns.Add(new System.Data.DataColumn("endDate", typeof(String)));
+            dt.Columns.Add(new System.Data.DataColumn("astCode", typeof(String)));
+            dt.Columns.Add(new System.Data.DataColumn("quarterStartDate", typeof(DateTime)));
+            dt.Columns.Add(new System.Data.DataColumn("quarterEndDate", typeof(DateTime)));
 
             while (dr3.Read())
             {
                 newRow = dt.NewRow();
-                newRow["astCode"] = Convert.ToString(dr3["astCode"]);
+                newRow["astCode"] = Convert.ToString(dr3["astCode1"]);
                 newRow["type"] = Convert.ToString(dr3["type"]);
                 newRow["amcParty"] = Convert.ToString(dr3["amcParty"]);
-                newRow["startDate"] = fromDate.ToString("yyyy/MM/dd");
-                newRow["endDate"] = toDate.ToString("yyyy/MM/dd");
+                newRow["quarterStartDate"] = fromDate;
+                newRow["quarterEndDate"] = toDate;
                 dt.Rows.Add(newRow);
             }
             conn_asset.Close();
@@ -230,7 +275,7 @@ namespace assetManagement
             foreach (DataRow it in dt.Rows)
             {
                 OdbcCommand cmd1 = conn_asset.CreateCommand();
-                cmd1.CommandText = "insert into ast_amcMaster values('" + it["astCode"] + "','" + it["po_no"] + "','" + it["amcParty"] + "','" + it["startDate"] + "','" + it["endDate"] + "','','1900-01-01')";
+                cmd1.CommandText = "insert into ast_pmPenalty values('" + it["quarterStartDate"] + "','" + it["quarterEndDate"] + "','" + it["astCode"] + "','" + it["type"] + "','" + it["amcParty"] + "')";
                 int check2;
                 conn_asset.Open();
                 check2 = cmd1.ExecuteNonQuery();
@@ -253,13 +298,13 @@ namespace assetManagement
             {
                 conn_asset.Close();
                 OdbcCommand cmd1 = conn_asset.CreateCommand();
-                cmd1.CommandText = "select * from ast_pm where lockStat = 'L' and quarterStartDate = '" + fromDate.ToString("yyyy/MM/dd") + "'";
+                cmd1.CommandText = "select * from ast_pm where lockStat = 'R' and quarterStartDate = '" + fromDate.ToString("yyyy/MM/dd") + "'";
                 conn_asset.Open();
                 OdbcDataReader dr1 = cmd1.ExecuteReader();
                 if(dr1.Read())
                 {
                     lbl_error.ForeColor = System.Drawing.Color.Red;
-                    lbl_error.Text = "Quarter is locked";
+                    lbl_error.Text = "Quarter is not locked yet";
                     lbl_error.Visible = true;
                 }
                 else
@@ -275,16 +320,29 @@ namespace assetManagement
 
         protected void btn_genBill_Click(object sender, EventArgs e)
         {
-            penaltyCalc();
-            proposedBillCalc();
+            decimal pmPenalty = penaltyCalc();
+            decimal proposedBill = proposedBillCalc();
+            decimal downtimePenalty = 0;
+            decimal finalBill = 0;
+            
             decimal totalPenalty = (pmPenalty + downtimePenalty) < (Convert.ToDecimal(0.1) * proposedBill) ? (pmPenalty + downtimePenalty) : (Convert.ToDecimal(0.1) * proposedBill);
+            
             finalBill = proposedBill - totalPenalty;
-            OdbcCommand cmdb = conn_asset.CreateCommand();
-            cmdb.CommandText = "update ast_bill set proposedBill = '" + proposedBill + "' ,pmPenalty = '" + pmPenalty + "',downtimePenalty = '" + downtimePenalty + "',finalBill = '" + finalBill + "' where quarterStartDate = '" + fromDate.ToString("yyyy/MM/dd") + "'";
+            //////Delete Existing entries
+            OdbcCommand cmd2 = conn_asset.CreateCommand();
+            cmd2.CommandText = "delete from ast_bill where quarterStartDate = '" + fromDate.ToString("yyyy/MM/dd") + "' ";
+            int check1;
             conn_asset.Open();
-            int check;
-            check = cmdb.ExecuteNonQuery();
+            check1 = cmd2.ExecuteNonQuery();
             conn_asset.Close();
+            //////Add new Entries
+            OdbcCommand cmd3 = conn_asset.CreateCommand();
+            cmd3.CommandText = "insert into ast_bill values('" + fromDate.ToString("yyyy/MM/dd") + "','" + toDate.ToString("yyyy/MM/dd") + "','" + proposedBill + "' ,'" + pmPenalty + "','" + downtimePenalty + "' ,'" + finalBill + "','" + amcMax + "'   )";
+            int check3;
+            conn_asset.Open();
+            check3 = cmd3.ExecuteNonQuery();
+            conn_asset.Close();
+
             string m = drp_quarter.SelectedItem.Text;
             string sDate = "";
             string eDate = "";

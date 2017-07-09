@@ -23,7 +23,8 @@ namespace assetManagement
         {
             date = Convert.ToDateTime(Session["qStart"].ToString());
             lbl_check.Text = date.ToString("yyyy/MM/dd");
-            show_billDetails();      
+            show_billDetails();
+            BindDataPm();
         }
 
         //Show Bill Details
@@ -50,27 +51,30 @@ namespace assetManagement
         public void BindDataPm()
         {
             OdbcCommand cmd = conn_asset.CreateCommand();
-            cmd.CommandText = "select * from ast_pmPenalty pm join ast_master am on am.astCode = pm.astCode where quarterStartDate = '" + lbl_fromDate.Text + "'";
+
+            cmd.CommandText = "select distinct pma.type as typ,pma.pmPenalty as pnlt,x.total as ttl,x.nCount as nc,x.fCount as fc,(x.nCount * pma.pmPenalty) as totalPenalty from ast_penaltyMaster pma,(select p.type tp,count(*) total,sum(case when compStat = 'N' then 1 else 0 end) nCount,sum(case when compStat = 'F' then 1 else 0 end) fCount from ast_pm p join ast_penaltyMaster pm on pm.type=p.type where p.quarterStartDate = '" + lbl_fromDate.Text + "' group by p.type) x where pma.type = x.tp";
             conn_asset.Open();
             OdbcDataReader dr = cmd.ExecuteReader();
 
             DataTable dt = new DataTable();
             DataRow newRow;
 
-            dt.Columns.Add(new System.Data.DataColumn("category", typeof(String)));
-            dt.Columns.Add(new System.Data.DataColumn("type", typeof(String)));
-            dt.Columns.Add(new System.Data.DataColumn("pmPenalty", typeof(String)));
-            dt.Columns.Add(new System.Data.DataColumn("downtimePenalty", typeof(String)));
-            dt.Columns.Add(new System.Data.DataColumn("finalBill", typeof(String)));
+            dt.Columns.Add(new System.Data.DataColumn("typ", typeof(String)));
+            dt.Columns.Add(new System.Data.DataColumn("pnlt", typeof(String)));
+            dt.Columns.Add(new System.Data.DataColumn("ttl", typeof(String)));
+            dt.Columns.Add(new System.Data.DataColumn("nc", typeof(String)));
+            dt.Columns.Add(new System.Data.DataColumn("fc", typeof(String)));
+            dt.Columns.Add(new System.Data.DataColumn("totalPenalty", typeof(String)));
 
             while (dr.Read())
             {
                 newRow = dt.NewRow();
-                newRow["amcParty"] = Convert.ToString(dr["amcParty"]);
-                newRow["proposedBill"] = Convert.ToString(dr["proposedBill"]);
-                newRow["pmPenalty"] = Convert.ToString(dr["pmPenalty"]);
-                newRow["downtimePenalty"] = Convert.ToString(dr["downtimePenalty"]);
-                newRow["finalBill"] = Convert.ToString(dr["finalBill"]);
+                newRow["typ"] = Convert.ToString(dr["typ"]);
+                newRow["pnlt"] = Convert.ToString(dr["pnlt"]);
+                newRow["ttl"] = Convert.ToString(dr["ttl"]);
+                newRow["nc"] = Convert.ToString(dr["nc"]);
+                newRow["fc"] = Convert.ToString(dr["fc"]);
+                newRow["totalPenalty"] = Convert.ToString(dr["totalPenalty"]);
                 dt.Rows.Add(newRow);
             }
 
@@ -78,17 +82,13 @@ namespace assetManagement
             {
                 grid_pmPenalty.DataSource = dt;
                 grid_pmPenalty.DataBind();
+                grid_pmPenalty.Visible = true;
             }
             else
             {
                 grid_pmPenalty.Visible = false;
             }
             conn_asset.Close();
-        }
-
-        protected void btn_pdf_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }

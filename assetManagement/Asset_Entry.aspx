@@ -129,11 +129,14 @@
 
                             <tr>
                                 <td align="right">
-                                    <font size="2em">      Vendor Code :</font>
+                                    <font size="2em"> Vendor :</font>
                                 </td>
-                                <td align="left" class="auto-style1">
-                                    <asp:TextBox ID="txt_vendorCode" runat="server" ToolTip=" Vendor Code " Width="230px"></asp:TextBox>
+                                <td align="left">
+                                    <asp:DropDownList ID="drp_vendor" runat="server" ToolTip="Select Vendor" Width="230px" DataValueField="vendorCode" DataTextField="vendorName">
+
+                                    </asp:DropDownList>
                                 </td>
+                                
                             </tr>
 
                             <tr>

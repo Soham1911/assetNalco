@@ -25,11 +25,34 @@ namespace assetManagement
             {
 
 
-                DateTime sDate = Convert.ToDateTime("2017-01-01");
-                DateTime eDate = Convert.ToDateTime("2019-12-31");
+                OdbcCommand cmd = conn_asset.CreateCommand();
+                cmd.CommandText = "select count(*),amcParty from ast_master where amcStat = 'Y' group by amcParty order by count(*) desc";
+                conn_asset.Open();
+                OdbcDataReader dr = cmd.ExecuteReader();
+                string amcMax = "default";
+                while (dr.Read())
+                {
+                    amcMax = dr["amcParty"].ToString();
+                    break;
+                }
+                conn_asset.Close();
+                DateTime stDate = Convert.ToDateTime("1900-01-01");
+                DateTime enDate = Convert.ToDateTime("1900-01-01");
+                OdbcCommand cmda = conn_asset.CreateCommand();
+                cmda.CommandText = "select amcStart,amcEnd from ast_master where amcParty = '" + amcMax + "'";
+                conn_asset.Open();
+                OdbcDataReader dr1 = cmda.ExecuteReader();
+                while (dr1.Read())
+                {
+                    stDate = Convert.ToDateTime(dr1["amcStart"]);
+                    enDate = Convert.ToDateTime(dr1["amcEnd"]);
+                    break;
+                }
+                conn_asset.Close();
 
-                DateTime dqsDate = sDate;
-                DateTime dqeDate = sDate.AddMonths(3).AddDays(-1);
+
+                DateTime dqsDate = stDate;
+                DateTime dqeDate = stDate.AddMonths(3).AddDays(-1);
                 drp_quart.Items.Insert(0, new ListItem("----Select Quarter----"));
                 drp_quart.Items[0].Selected = true;
                 drp_quart.Items[0].Attributes["disabled"] = "disabled";
@@ -115,7 +138,7 @@ namespace assetManagement
             //}
             //conn_asset.Close();
             OdbcCommand cmdee = conn_asset.CreateCommand();
-            cmdee.CommandText = "select count(*) as c,compStat from ast_pm where scheduledDate>='" + dsDate + "' and scheduledDate<='" + deDate + "' group by compStat";
+            cmdee.CommandText = "select count(*) as c,compStat from ast_pm where scheduledDate>='" + dsDate.ToString("yyyy/MM/dd") + "' and scheduledDate<='" + deDate.ToString("yyyy/MM/dd") + "' group by compStat";
             conn_asset.Open();
             OdbcDataReader drr = cmdee.ExecuteReader();
             string pcnt = "0";
@@ -155,7 +178,7 @@ namespace assetManagement
             string mon = drp_mon.SelectedValue;
 
             OdbcCommand cmd = conn_asset.CreateCommand();
-            cmd.CommandText = "select p.astCode,p.scheduledDate,a.custodian,a.description,a.location,a.subLoc from ast_pm p inner join ast_pc a on a.astCode=p.astCode where month='" + mon + "' and scheduledDate>='" + dsDate + "' and scheduledDate<='" + deDate + "' and lockStat='F'";
+            cmd.CommandText = "select p.astCode,p.scheduledDate,a.custodian,a.description,a.location,a.subLoc from ast_pm p inner join ast_master a on a.astCode=p.astCode where month='" + mon + "' and scheduledDate>='" + dsDate.ToString("yyyy/MM/dd") + "' and scheduledDate<='" + deDate.ToString("yyyy/MM/dd") + "' and lockStat='F'";
             conn_asset.Open();
             cmd.CommandType = CommandType.Text;
             DataTable dt = new DataTable();
@@ -209,7 +232,7 @@ namespace assetManagement
                 string status = stat.SelectedValue.ToString();
 
                 OdbcCommand cmda = conn_asset.CreateCommand();
-                cmda.CommandText = "update ast_pm set compStat='" + status + "' where astCode='" + astCode + "' and scheduledDate>='" + dsDate + "' and scheduledDate<='" + deDate + "'";
+                cmda.CommandText = "update ast_pm set compStat='" + status + "' where astCode='" + astCode + "' and scheduledDate>='" + dsDate.ToString("yyyy/MM/dd") + "' and scheduledDate<='" + deDate.ToString("yyyy/MM/dd") + "'";
                 conn_asset.Open();
                 cmda.ExecuteNonQuery();
                 conn_asset.Close();
