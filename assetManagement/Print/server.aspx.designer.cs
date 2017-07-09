@@ -7,19 +7,19 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace assetManagement {
+namespace assetManagement.Print {
     
     
-    public partial class amc_scanner {
+    public partial class server {
         
         /// <summary>
-        /// ScriptManager1 control.
+        /// form1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.ScriptManager ScriptManager1;
+        protected global::System.Web.UI.HtmlControls.HtmlForm form1;
         
         /// <summary>
         /// lbl_amcparty control.
@@ -37,7 +37,7 @@ namespace assetManagement {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txt_amcparty;
+        protected global::System.Web.UI.WebControls.Label txt_amcparty;
         
         /// <summary>
         /// lbl_dept control.
@@ -55,7 +55,7 @@ namespace assetManagement {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txt_dept;
+        protected global::System.Web.UI.WebControls.Label txt_dept;
         
         /// <summary>
         /// lbl_astCode control.
@@ -73,7 +73,7 @@ namespace assetManagement {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txt_astCode;
+        protected global::System.Web.UI.WebControls.Label txt_astCode;
         
         /// <summary>
         /// lbl_scheduledDate control.
@@ -91,7 +91,7 @@ namespace assetManagement {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txt_scheduledDate;
+        protected global::System.Web.UI.WebControls.Label txt_scheduledDate;
         
         /// <summary>
         /// lbl_prevDate control.
@@ -109,7 +109,7 @@ namespace assetManagement {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txt_prevDate;
+        protected global::System.Web.UI.WebControls.Label txt_prevDate;
         
         /// <summary>
         /// lbl_type control.
@@ -121,13 +121,31 @@ namespace assetManagement {
         protected global::System.Web.UI.WebControls.Label lbl_type;
         
         /// <summary>
-        /// txt_category control.
+        /// txt_type control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txt_category;
+        protected global::System.Web.UI.WebControls.Label txt_type;
+        
+        /// <summary>
+        /// lbl_ip control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbl_ip;
+        
+        /// <summary>
+        /// txt_ip control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label txt_ip;
         
         /// <summary>
         /// lbl_actDate control.
@@ -145,16 +163,7 @@ namespace assetManagement {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txt_actDate;
-        
-        /// <summary>
-        /// CalendarExtender2 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::AjaxControlToolkit.CalendarExtender CalendarExtender2;
+        protected global::System.Web.UI.WebControls.Label txt_actDate;
         
         /// <summary>
         /// lbl_custodian control.
@@ -166,13 +175,13 @@ namespace assetManagement {
         protected global::System.Web.UI.WebControls.Label lbl_custodian;
         
         /// <summary>
-        /// txt_name control.
+        /// txt_custodian control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txt_name;
+        protected global::System.Web.UI.WebControls.Label txt_custodian;
         
         /// <summary>
         /// lbl_pno control.
@@ -190,7 +199,7 @@ namespace assetManagement {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txt_pno;
+        protected global::System.Web.UI.WebControls.Label txt_pno;
         
         /// <summary>
         /// lbl_make control.
@@ -208,7 +217,7 @@ namespace assetManagement {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txt_make;
+        protected global::System.Web.UI.WebControls.Label txt_make;
         
         /// <summary>
         /// lbl_model control.
@@ -226,7 +235,7 @@ namespace assetManagement {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txt_model;
+        protected global::System.Web.UI.WebControls.Label txt_model;
         
         /// <summary>
         /// lbl_sno control.
@@ -244,141 +253,222 @@ namespace assetManagement {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txt_sno;
+        protected global::System.Web.UI.WebControls.Label txt_sno;
         
         /// <summary>
-        /// lbl_desc control.
+        /// lbl_mmake control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbl_desc;
+        protected global::System.Web.UI.WebControls.Label lbl_mmake;
         
         /// <summary>
-        /// txt_desc control.
+        /// txt_mmake control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txt_desc;
+        protected global::System.Web.UI.WebControls.Label txt_mmake;
         
         /// <summary>
-        /// Label1 control.
+        /// lbl_mmodel control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label1;
+        protected global::System.Web.UI.WebControls.Label lbl_mmodel;
         
         /// <summary>
-        /// RadioButtonList0 control.
+        /// txt_mmodel control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButtonList RadioButtonList0;
+        protected global::System.Web.UI.WebControls.Label txt_mmodel;
         
         /// <summary>
-        /// Label4 control.
+        /// lbl_msno control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label4;
+        protected global::System.Web.UI.WebControls.Label lbl_msno;
         
         /// <summary>
-        /// RadioButtonList3 control.
+        /// txt_msno control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButtonList RadioButtonList3;
+        protected global::System.Web.UI.WebControls.Label txt_msno;
         
         /// <summary>
-        /// Label9 control.
+        /// lbl_os control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label9;
+        protected global::System.Web.UI.WebControls.Label lbl_os;
         
         /// <summary>
-        /// TextBox1 control.
+        /// txt_os control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox1;
+        protected global::System.Web.UI.WebControls.Label txt_os;
         
         /// <summary>
-        /// Label10 control.
+        /// lbl_office control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label10;
+        protected global::System.Web.UI.WebControls.Label lbl_office;
         
         /// <summary>
-        /// TextBox2 control.
+        /// txt_office control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox2;
+        protected global::System.Web.UI.WebControls.Label txt_office;
         
         /// <summary>
-        /// Label14 control.
+        /// txt_cd control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label14;
+        protected global::System.Web.UI.WebControls.Label txt_cd;
         
         /// <summary>
-        /// RadioButtonList10 control.
+        /// txt_mouse control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButtonList RadioButtonList10;
+        protected global::System.Web.UI.WebControls.Label txt_mouse;
         
         /// <summary>
-        /// Label12 control.
+        /// txt_mon control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label12;
+        protected global::System.Web.UI.WebControls.Label txt_mon;
         
         /// <summary>
-        /// TextBox4 control.
+        /// txt_key control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox4;
+        protected global::System.Web.UI.WebControls.Label txt_key;
         
         /// <summary>
-        /// btn_sub control.
+        /// txt_volt control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btn_sub;
+        protected global::System.Web.UI.WebControls.Label txt_volt;
+        
+        /// <summary>
+        /// txt_en control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label txt_en;
+        
+        /// <summary>
+        /// txt_hdd control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label txt_hdd;
+        
+        /// <summary>
+        /// txt_ops control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label txt_ops;
+        
+        /// <summary>
+        /// txt_antiv control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label txt_antiv;
+        
+        /// <summary>
+        /// txt_conn control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label txt_conn;
+        
+        /// <summary>
+        /// txt_ad control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label txt_ad;
+        
+        /// <summary>
+        /// txt_power control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label txt_power;
+        
+        /// <summary>
+        /// txt_post control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label txt_post;
+        
+        /// <summary>
+        /// txt_rem control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label txt_rem;
     }
 }

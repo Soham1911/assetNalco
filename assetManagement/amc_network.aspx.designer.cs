@@ -112,22 +112,22 @@ namespace assetManagement {
         protected global::System.Web.UI.WebControls.TextBox txt_prevDate;
         
         /// <summary>
-        /// lbl_type control.
+        /// lbl_category control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbl_type;
+        protected global::System.Web.UI.WebControls.Label lbl_category;
         
         /// <summary>
-        /// txt_type control.
+        /// txt_category control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txt_type;
+        protected global::System.Web.UI.WebControls.TextBox txt_category;
         
         /// <summary>
         /// lbl_actDate control.
@@ -166,13 +166,13 @@ namespace assetManagement {
         protected global::System.Web.UI.WebControls.Label lbl_custodian;
         
         /// <summary>
-        /// txt_custodian control.
+        /// txt_name control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txt_custodian;
+        protected global::System.Web.UI.WebControls.TextBox txt_name;
         
         /// <summary>
         /// lbl_pno control.

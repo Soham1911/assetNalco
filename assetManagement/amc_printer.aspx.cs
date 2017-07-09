@@ -93,7 +93,7 @@ namespace assetManagement
             
                 
                 OdbcCommand cmd = conn_asset.CreateCommand();
-                cmd.CommandText = "update ast_pm set compStat='D', set line='" + line + "',set EtoN='" + en + "',et post_check='" + postpm + "',set engRemark='" + remark + "',set actualDate='" + actDate + "' where astCode='" + astCode + "' and scheduledDate='" + scheduledDate + "' ";
+                cmd.CommandText = "update ast_pm set compStat='D', set line='" + line + "',set EtoN='" + en + "',post_check='" + postpm + "',set engRemark='" + remark + "',set actualDate='" + actDate + "',set conn_check='" + conn + "',set pr_clean='" + clean + "',set shaft_oil='" + oil + "',set head_clean='" + head + "',set genSelf_rep='" + genself + "',set rep_check='"+selftest+"' where astCode='" + astCode + "' and scheduledDate='" + scheduledDate + "' ";
                 conn_asset.Open();
                 cmd.ExecuteNonQuery();
                 conn_asset.Close();

@@ -92,18 +92,6 @@
         .auto-style38 {
             width: 183px;
         }
-        .auto-style39 {
-            width: 183px;
-            height: 33px;
-        }
-        .auto-style40 {
-            width: 152px;
-            height: 33px;
-        }
-        .auto-style41 {
-            width: 304px;
-            height: 33px;
-        }
         </style>
 
 
@@ -113,7 +101,7 @@
     </asp:ScriptManager>
 
     <div>
-        <font size="6em" color="indigo"><strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; PRINTER</strong></font></div>
+        <font size="6em" color="indigo"><strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; SCANNER</strong></font></div>
     <table>
         <tr>
             <td />
@@ -159,9 +147,9 @@
         </tr>
         <tr>
             <td class="auto-style34">
-                <asp:Label ID="lbl_type" runat="server" Text="Type" align="right" />
+                <asp:Label ID="lbl_type" runat="server" Text="Category" align="right" />
             <td class="auto-style35" />
-            <asp:TextBox ID="txt_type" runat="server" align="left" Enabled="false" />
+            <asp:TextBox ID="txt_category" runat="server" align="left" Enabled="false" />
             <td class="auto-style36">
                 &nbsp;</td>
             <td class="auto-style37">
@@ -182,9 +170,9 @@
 
         <tr>
             <td class="auto-style24">
-                <asp:Label ID="lbl_custodian" runat="server" Text="Custodian" align="right" />
+                <asp:Label ID="lbl_custodian" runat="server" Text="Custodian Name" align="right" />
             <td class="auto-style23" />
-            <asp:TextBox ID="txt_custodian" runat="server" align="left" Enabled="false" />
+            <asp:TextBox ID="txt_name" runat="server" align="left" Enabled="false" />
             <td>
                 <asp:Label ID="lbl_pno" runat="server" Text="Personal No." align="right" />
             </td>
