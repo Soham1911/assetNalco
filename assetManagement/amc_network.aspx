@@ -289,7 +289,7 @@
             </td>
             <td class="auto-style6">
                 <asp:RadioButtonList ID="RadioButtonList10" runat="server" RepeatDirection="Horizontal"
-                    RepeatLayout="Table" TextAlign="Right" Font-Bold="True" ForeColor="#18562b" OnSelectedIndexChanged="RadioButtonList10_SelectedIndexChanged" style="margin-left: 8px">
+                    RepeatLayout="Table" TextAlign="Right" Font-Bold="True" ForeColor="#18562b" style="margin-left: 8px">
                     <asp:ListItem Text="Yes" Value="Y" />
                     <asp:ListItem Text="No" Value="N" Selected="True" />
                 </asp:RadioButtonList>

@@ -55,13 +55,8 @@
 
         <div align="center">
 
-            <table>
-                <tr>
-                    <td />
-                    <td class="auto-style1" />
-                    <td />
-                </tr>
-                <tr>
+            <table border="1">
+               
                     <td class="auto-style25">
                         <asp:Label ID="lbl_amcparty" runat="server" Text="AMC Party" align="right" />
                     </td>
@@ -222,7 +217,7 @@
     <p>
         <strong>PREVENTIVE MAINTENANCE ACTIVITIES</strong>
     </p>
-    <table align="center">
+    <table align="center" border="1">
         <tr>
             <td class="auto-style4">CD/DVD Cleaning</td>
             <td class="auto-style2">Mouse Cleaning and Checking</td>

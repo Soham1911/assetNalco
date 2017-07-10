@@ -21,24 +21,25 @@ namespace assetManagement.Print
         {
             astCode = Session["astCode"].ToString();
             txt_astCode.Text = astCode;
-            schDate = Session["scheduleDate"].ToString();
+            schDate = Convert.ToDateTime(Session["scheduledDate"]).ToString("yyyy/MM/dd");
             DateTime scheduledDate = Convert.ToDateTime(schDate);
+            txt_scheduledDate.Text = schDate;
 
             OdbcCommand cmdq = conn_asset.CreateCommand();
-            cmdq.CommandText = "select actualDate from ast_pm where astCode='" + astCode + "' order by actDate desc";
+            cmdq.CommandText = "select actualDate from ast_pm where astCode='" + astCode + "' order by actualDate desc";
             conn_asset.Open();
             OdbcDataReader drq = cmdq.ExecuteReader();
             string pDate = "";
             while (drq.Read())
             {
-                pDate = drq["actDate"].ToString();
+                pDate = drq["actualDate"].ToString();
                 break;
             }
             conn_asset.Close();
 
 
             OdbcCommand cmd = conn_asset.CreateCommand();
-            cmd.CommandText = "select p.pr_clean,p.shaft_oil,p.head_clean,p.genSelf_rep,p.rep_check,a.amcParty,d.deptName,a.category,a.custodian,e.name,a.make,a.model,a.ast_s_no,p.conn_check,p.line,p.EtoN,p.post_check,p.engRemark from ast_master a inner join ast_pm p on a.astCode=p.astCode inner join ast_deptMaster d on d.deptCode=a.dept inner join ast_empMaster e on e.p_no=a.custodian where astCode='" + astCode + "' and scheduledDate='" + scheduledDate + "'";
+            cmd.CommandText = "select p.pr_clean,p.shaft_oil,p.head_clean,p.genSelf_rep,p.rep_check,a.amcParty,d.deptName,a.category,a.custodian,e.name,a.make,a.model,a.ast_s_no,p.conn_check,p.line,p.EtoN,p.post_check,p.engRemark from ast_master a inner join ast_pm p on a.astCode=p.astCode inner join ast_deptMaster d on d.deptCode=a.dept inner join ast_empMaster e on e.p_no=a.custodian where p.astCode='" + astCode + "' and p.scheduledDate='" + txt_scheduledDate.Text + "'";
             conn_asset.Open();
             OdbcDataReader dr = cmd.ExecuteReader();
             while (dr.Read())

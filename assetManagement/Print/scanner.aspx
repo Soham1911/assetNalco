@@ -36,7 +36,7 @@
 
                          </strong></font><div align="center">
 
-            <table>
+            <table border="1">
                 <tr>
                     <td />
                     <td class="auto-style1" />
@@ -155,7 +155,7 @@
     <p>
         <strong>PREVENTIVE MAINTENANCE ACTIVITIES</strong>
     </p>
-    <table align="center">
+    <table align="center" border="1">
         <tr>
             <td class="auto-style4">Scanner Cleaning</td>
             

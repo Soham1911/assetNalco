@@ -242,25 +242,45 @@ namespace assetManagement
 
         protected void btn_print_Click(object sender, EventArgs e)
         {
-            if (category.Equals("PCS") || category.Equals("PCA") || category.Equals("PCW") || category.Equals("LAP"))
+            Button btn = (Button)sender;
+            GridViewRow gr = (GridViewRow)btn.NamingContainer;
+
+            Session["astCode"] = gr.Cells[2].Text.Trim();
+            Session["scheduledDate"] = Convert.ToDateTime(gr.Cells[4].Text).ToString("yyyy/MM/dd");
+
+
+            string acode = gr.Cells[2].Text.Trim();
+
+
+            OdbcCommand cmdee = conn_asset.CreateCommand();
+            cmdee.CommandText = "select category from ast_master where astCode='" + acode + "' ";
+            conn_asset.Open();
+            OdbcDataReader drr = cmdee.ExecuteReader();
+
+
+            while (drr.Read())
             {
-                Response.Redirect("~/Print/pc.aspx");
-            }
-            else if (category.Equals("DMP") || category.Equals("MLJ") || category.Equals("CLJ") || category.Equals("CIJ") || category.Equals("MIJ") || category.Equals("MLM") || category.Equals("CLM") || category.Equals("MLH") || category.Equals("CLH") || category.Equals("LPR"))
-            {
-                Response.Redirect("~/Print/printer");
-            }
-            else if (category.Equals("SCS") || category.Equals("SCA"))
-            {
-                Response.Redirect("~/Print/scanner");
-            }
-            else if (category.Equals("SRV"))
-            {
-                Response.Redirect("~/Print/server");
-            }
-            else
-            {
-                Response.Redirect("~/Print/network");
+                category = drr["category"].ToString();
+                if (category.Equals("PCS") || category.Equals("PCA") || category.Equals("PCW") || category.Equals("LAP"))
+                {
+                    Response.Redirect("~/Print/pc.aspx");
+                }
+                else if (category.Equals("DMP") || category.Equals("MLJ") || category.Equals("CLJ") || category.Equals("CIJ") || category.Equals("MIJ") || category.Equals("MLM") || category.Equals("CLM") || category.Equals("MLH") || category.Equals("CLH") || category.Equals("LPR"))
+                {
+                    Response.Redirect("~/Print/printer");
+                }
+                else if (category.Equals("SCS") || category.Equals("SCA"))
+                {
+                    Response.Redirect("~/Print/scanner");
+                }
+                else if (category.Equals("SRV"))
+                {
+                    Response.Redirect("~/Print/server");
+                }
+                else
+                {
+                    Response.Redirect("~/Print/network");
+                }
             }
         }
 

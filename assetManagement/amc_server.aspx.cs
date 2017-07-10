@@ -12,7 +12,7 @@ using System.Text;
 
 namespace assetManagement
 {
-    public partial class amc_pc : System.Web.UI.Page
+    public partial class amc_server : System.Web.UI.Page
     {
         static string connStr_asset = ConfigurationManager.ConnectionStrings["asset"].ConnectionString;
         OdbcConnection conn_asset = new OdbcConnection(connStr_asset);
@@ -37,35 +37,35 @@ namespace assetManagement
                 break;
             }
             conn_asset.Close();
-            
+
 
             OdbcCommand cmd = conn_asset.CreateCommand();
-            cmd.CommandText = "select a.amcParty,d.deptName,a.category,a.ip,a.custodian,e.name,a.make,a.model,a.ast_s_no,a.os,a.msOffice from ast_master a inner join ast_pm p on a.astCode=p.astCode inner join ast_deptMaster d on d.deptCode=a.dept inner join ast_empMaster e on e.p_no=a.custodian where p.astCode='"+txt_astCode.Text.Trim()+"' and p.scheduledDate='"+txt_scheduledDate.Text+"'";
+            cmd.CommandText = "select a.amcParty,d.deptName,a.category,a.ip,a.custodian,e.name,a.make,a.model,a.ast_s_no,a.os,a.msOffice from ast_master a inner join ast_pm p on a.astCode=p.astCode inner join ast_deptMaster d on d.deptCode=a.dept inner join ast_empMaster e on e.p_no=a.custodian where p.astCode='" + txt_astCode.Text.Trim() + "' and p.scheduledDate='" + txt_scheduledDate.Text + "'";
             conn_asset.Open();
             OdbcDataReader dr = cmd.ExecuteReader();
-            while(dr.Read())
+            while (dr.Read())
             {
-                
-                
-                
-                    
-                    txt_category.Text = dr["category"].ToString(); ;
-                    txt_ip.Text = dr["ip"].ToString();
-                    txt_name.Text = dr["name"].ToString();
-                    txt_pno.Text = dr["custodian"].ToString();
-                    txt_make.Text = dr["make"].ToString();
-                    txt_model.Text = dr["model"].ToString();
-                    txt_office.Text = dr["msOffice"].ToString();
-                    txt_os.Text = dr["os"].ToString();
-                    txt_amcparty.Text = dr["amcParty"].ToString();
-                    txt_sno.Text = dr["ast_s_no"].ToString();
-                    txt_dept.Text = dr["deptName"].ToString();
-                    txt_prevDate.Text = Convert.ToDateTime(pDate).ToString("yyyy/MM/dd");
 
 
-                
 
-            
+
+                txt_category.Text = dr["category"].ToString(); ;
+                txt_ip.Text = dr["ip"].ToString();
+                txt_name.Text = dr["name"].ToString();
+                txt_pno.Text = dr["custodian"].ToString();
+                txt_make.Text = dr["make"].ToString();
+                txt_model.Text = dr["model"].ToString();
+                txt_office.Text = dr["msOffice"].ToString();
+                txt_os.Text = dr["os"].ToString();
+                txt_amcparty.Text = dr["amcParty"].ToString();
+                txt_sno.Text = dr["ast_s_no"].ToString();
+                txt_dept.Text = dr["deptName"].ToString();
+                txt_prevDate.Text = Convert.ToDateTime(pDate).ToString("yyyy/MM/dd");
+
+
+
+
+
             }
             conn_asset.Close();
         }
@@ -74,13 +74,11 @@ namespace assetManagement
         {
 
 
-
-
             if (txt_actDate.Text == null)
             {
                 txt_actDate.Text = "1900-01-01";
             }
-            
+
             string dvd = RadioButtonList0.SelectedValue;
             string mouse = RadioButtonList1.SelectedValue;
             string monitor = RadioButtonList2.SelectedValue;
@@ -97,15 +95,15 @@ namespace assetManagement
             string en = TextBox2.Text;
             string remark = TextBox4.Text;
             string actDate = Convert.ToDateTime(txt_actDate.Text).ToString("yyyy/MM/dd");
-            if(mail=="Y")
+            if (mail == "Y")
             {
-                txt_mail.Visible=true;
+                txt_mail.Visible = true;
                 OdbcCommand cmd = conn_asset.CreateCommand();
-                cmd.CommandText = "update ast_pm set compStat='D' ,dvd_check='" + dvd + "',mouse_check='" + mouse + "',monitor_check='" + monitor + "', keyboard_check='" + key + "', hdd_check='" + hdd + "', virus_check='" + vir + "',os_check='" + os + "',conn_check='" + conn + "',line='" + line + "', EtoN='" + en + "',ADmember='" + ad + "', powerOn='" + pon + "', post_check='" + postpm + "',engRemark='" + remark + "',mail_check='" + mail + "',mail_sw='"+txt_mail.Text+"', actualDate='" + actDate + "' where astCode='" + txt_astCode.Text + "' and scheduledDate='" + txt_scheduledDate.Text + "' ";
-            conn_asset.Open();
-            cmd.ExecuteNonQuery();
-            conn_asset.Close();
-                
+                cmd.CommandText = "update ast_pm set compStat='D' ,dvd_check='" + dvd + "',mouse_check='" + mouse + "',monitor_check='" + monitor + "', keyboard_check='" + key + "', hdd_check='" + hdd + "', virus_check='" + vir + "',os_check='" + os + "',conn_check='" + conn + "',line='" + line + "', EtoN='" + en + "',ADmember='" + ad + "', powerOn='" + pon + "', post_check='" + postpm + "',engRemark='" + remark + "',mail_check='" + mail + "',mail_sw='" + txt_mail.Text + "', actualDate='" + actDate + "' where astCode='" + txt_astCode.Text + "' and scheduledDate='" + txt_scheduledDate.Text + "' ";
+                conn_asset.Open();
+                cmd.ExecuteNonQuery();
+                conn_asset.Close();
+
             }
             else
             {
@@ -120,7 +118,7 @@ namespace assetManagement
             Response.Redirect("~/amc_pm.aspx");
 
 
-            
+
         }
     }
 }

@@ -22,24 +22,25 @@ namespace assetManagement
         {
             astCode = Session["astCode"].ToString();
             txt_astCode.Text = astCode;
-            schDate = Session["scheduleDate"].ToString();
+            schDate = Convert.ToDateTime(Session["scheduledDate"]).ToString("yyyy/MM/dd");
             DateTime scheduledDate = Convert.ToDateTime(schDate);
+            txt_scheduledDate.Text = schDate;
 
             OdbcCommand cmdq = conn_asset.CreateCommand();
-            cmdq.CommandText = "select actualDate from ast_pm where astCode='" + astCode + "' order by actDate desc";
+            cmdq.CommandText = "select actualDate from ast_pm where astCode='" + astCode + "' order by actualDate desc";
             conn_asset.Open();
             OdbcDataReader drq = cmdq.ExecuteReader();
             string pDate = "";
             while (drq.Read())
             {
-                pDate = drq["actDate"].ToString();
+                pDate = drq["actualDate"].ToString();
                 break;
             }
             conn_asset.Close();
 
 
             OdbcCommand cmd = conn_asset.CreateCommand();
-            cmd.CommandText = "select a.amcParty,d.deptName,a.category,a.custodian,e.name,a.make,a.model,a.ast_s_no from ast_master a inner join ast_pm p on a.astCode=p.astCode inner join ast_deptMaster d on d.deptCode=a.dept inner join ast_empMaster e on e.p_no=a.custodian where astCode='" + astCode + "' and scheduledDate='" + scheduledDate + "'";
+            cmd.CommandText = "select a.amcParty,d.deptName,a.category,a.custodian,e.name,a.make,a.model,a.ast_s_no from ast_master a inner join ast_pm p on a.astCode=p.astCode inner join ast_deptMaster d on d.deptCode=a.dept inner join ast_empMaster e on e.p_no=a.custodian where p.astCode='" + astCode + "' and p.scheduledDate='" + txt_scheduledDate.Text + "'";
             conn_asset.Open();
             OdbcDataReader dr = cmd.ExecuteReader();
             while (dr.Read())
@@ -47,7 +48,7 @@ namespace assetManagement
 
 
 
-                txt_scheduledDate.Text = schDate;
+               
                 txt_category.Text = dr["category"].ToString(); ;
 
                 txt_name.Text = dr["name"].ToString();
@@ -58,7 +59,7 @@ namespace assetManagement
                 txt_amcparty.Text = dr["amcParty"].ToString();
                 txt_sno.Text = dr["ast_s_no"].ToString();
                 txt_dept.Text = dr["deptName"].ToString();
-                txt_prevDate.Text = pDate;
+                txt_prevDate.Text = Convert.ToDateTime(pDate).ToString("yyyy/MM/dd");
 
 
 
@@ -70,10 +71,10 @@ namespace assetManagement
 
         protected void btn_sub_Click(object sender, EventArgs e)
         {
-            astCode = Session["astCode"].ToString();
-            txt_astCode.Text = astCode;
-            schDate = Session["scheduleDate"].ToString();
-            DateTime scheduledDate = Convert.ToDateTime(schDate);
+            if (txt_actDate.Text == null)
+            {
+                txt_actDate.Text = "1900-01-01";
+            }
 
 
 
@@ -85,14 +86,16 @@ namespace assetManagement
             string line = TextBox1.Text;
             string en = TextBox2.Text;
             string remark = TextBox4.Text;
-            string actDate = txt_actDate.Text;
+            string actDate = Convert.ToDateTime(txt_actDate.Text).ToString("yyyy/MM/dd");
 
 
             OdbcCommand cmd = conn_asset.CreateCommand();
-            cmd.CommandText = "update ast_pm set compStat='D', set line='" + line + "',set EtoN='" + en + "',post_check='" + postpm + "',set engRemark='" + remark + "',set actualDate='" + actDate + "',set conn_check='" + conn + "',set net_clean='" + clean + "',set socket_tight='"+skt+"' where astCode='" + astCode + "' and scheduledDate='" + scheduledDate + "' ";
+            cmd.CommandText = "update ast_pm set compStat='D', set line='" + line + "',EtoN='" + en + "',post_check='" + postpm + "',engRemark='" + remark + "',actualDate='" + actDate + "',conn_check='" + conn + "',net_clean='" + clean + "',socket_tight='"+skt+"' where astCode='" + astCode + "' and scheduledDate='" + txt_scheduledDate.Text + "' ";
             conn_asset.Open();
             cmd.ExecuteNonQuery();
             conn_asset.Close();
+
+            Response.Redirect("~/amc_pm.aspx");
         
         }
     }

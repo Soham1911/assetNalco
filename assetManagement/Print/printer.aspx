@@ -39,7 +39,7 @@
         <br />
         <font size="4em"><strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; PREVENTIVE MAINTENANCE OF EQUIPMENT:&nbsp;&nbsp;&nbsp;&nbsp; PRINTER</strong></font><div align="center">
 
-            <table>
+            <table border="1">
                 <tr>
                     <td />
                     <td class="auto-style1" />
@@ -52,7 +52,7 @@
                     <td class="auto-style1">
                         <asp:Label ID="txt_amcparty" runat="server" align="left" Enabled="false" />
                     </td>
-                    <td class="auto-style15" align="right">
+                    <td class="auto-style15">
                         <asp:Label ID="lbl_dept" runat="server" Text="Department" />
                     </td>
                     <td class="auto-style21">
@@ -158,7 +158,7 @@
     <p>
         <strong>PREVENTIVE MAINTENANCE ACTIVITIES</strong>
     </p>
-    <table align="center">
+    <table align="center"   border="1">
         <tr>
             <td class="auto-style4">Printer Cleaning</td>
             <td class="auto-style4">&nbsp;Shaft Oiling</td>
