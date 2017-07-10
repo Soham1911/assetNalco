@@ -230,17 +230,18 @@ namespace assetManagement
                     lbl_alreadyAllotted.Text += custodian;
                     lbl_alreadyAllotted.Visible = true;
                     OdbcCommand cmdg = conn_asset.CreateCommand();
-                    cmdg.CommandText = "select * from ast_empMaster where p_no = '" + custodian + "'";
+                    cmdg.CommandText = "select * from ast_master am join ast_locationMaster lm on am.location=lm.locationCode join ast_deptMaster dm on am.dept = dm.deptCode where astCode = '"+txt_astCode.Text.Trim().ToUpper()+"'";
                     conn_asset.Open();
                     OdbcDataReader drg = cmdg.ExecuteReader();
                     int flag = 0;
                     while (drg.Read())
                     {
                         lbl_oldName.Text += Convert.ToString(drg["name"]);
-                        lbl_oldDept.Text += Convert.ToString(drg["deptCode"]);
-                        lbl_oldLoc.Text += Convert.ToString(drg["location"]);
+                        lbl_oldDept.Text += Convert.ToString(drg["deptName"]);
+                        lbl_oldLoc.Text += Convert.ToString(drg["locationName"]);
                         lbl_oldContact.Text += Convert.ToString(drg["contact_no"]);
                         flag = 1;
+                        break;
                     }
                     if (flag == 0)
                     {
@@ -305,15 +306,15 @@ namespace assetManagement
         {
             lbl_error.Visible = false;
             OdbcCommand cmda = conn_asset.CreateCommand();
-            cmda.CommandText = "select * from ast_empMaster where p_no = '" + txt_custPNO.Text.Trim().ToUpper() + "'";
+            cmda.CommandText = "select * from ast_empMaster em join ast_deptMaster dm on em.deptcode = dm.deptCode join ast_locationMaster lm on lm.deptCode = dm.deptCode where p_no = '" + txt_custPNO.Text.Trim().ToUpper() + "'";
             conn_asset.Open();
             OdbcDataReader dr = cmda.ExecuteReader();
             int flag = 0;
             while (dr.Read())
             {
                 lbl_name.Text += Convert.ToString(dr["name"]);
-                lbl_dept.Text += Convert.ToString(dr["deptCode"]);
-                lbl_location.Text += Convert.ToString(dr["location"]);
+                lbl_dept.Text += Convert.ToString(dr["deptName"]);
+                lbl_location.Text += Convert.ToString(dr["locationName"]);
                 lbl_contact.Text += Convert.ToString(dr["contact_no"]);
                 flag = 1;
             }

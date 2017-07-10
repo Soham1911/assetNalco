@@ -12,7 +12,7 @@ using System.Net;
 
 namespace assetManagement
 {
-    public partial class subLoc1ation : System.Web.UI.Page
+    public partial class subLocation : System.Web.UI.Page
     {
         //create connection
         static string connStr_asset = ConfigurationManager.ConnectionStrings["asset"].ConnectionString;
@@ -33,21 +33,21 @@ namespace assetManagement
         private void BindData(string location)
         {
             OdbcCommand cmd = conn_asset.CreateCommand();
-            cmd.CommandText = "select * from ast_subLoc1Master where location = '"+location+"'";
+            cmd.CommandText = "select * from ast_subLocMaster where location = '"+location+"'";
             conn_asset.Open();
             OdbcDataReader dr = cmd.ExecuteReader();
 
             DataTable dt = new DataTable();
             DataRow newRow;
 
-            dt.Columns.Add(new System.Data.DataColumn("subLoc1Code", typeof(String)));
-            dt.Columns.Add(new System.Data.DataColumn("subLoc1Name", typeof(String)));
+            dt.Columns.Add(new System.Data.DataColumn("subLocCode", typeof(String)));
+            dt.Columns.Add(new System.Data.DataColumn("subLocName", typeof(String)));
 
             while (dr.Read())
             {
                 newRow = dt.NewRow();
-                newRow["subLoc1Code"] = Convert.ToString(dr["subLoc1Code"]);
-                newRow["subLoc1Name"] = Convert.ToString(dr["subLoc1Name"]);
+                newRow["subLocCode"] = Convert.ToString(dr["subLocCode"]);
+                newRow["subLocName"] = Convert.ToString(dr["subLocName"]);
                 dt.Rows.Add(newRow);
             }
 
@@ -93,13 +93,13 @@ namespace assetManagement
             btn_submit.Visible = false;
             lbl_addTitle.Visible = false;
             lbl_removeTitle.Visible = false;
-            lbl_subLoc1Code.Visible = false;
-            lbl_subLoc1Name.Visible = false;
-            lbl_subLoc1CodeError.Visible = false;
-            lbl_subLoc1NameError.Visible = false;
+            lbl_subLocCode.Visible = false;
+            lbl_subLocName.Visible = false;
+            lbl_subLocCodeError.Visible = false;
+            lbl_subLocNameError.Visible = false;
             lbl_error.Visible = false;
-            txt_subLoc1Name.Visible = false;
-            txt_subLoc1Code.Visible = false;
+            txt_subLocName.Visible = false;
+            txt_subLocCode.Visible = false;
         }
 
         public void btn_submit_disable()
@@ -117,43 +117,43 @@ namespace assetManagement
             btn_submit.ForeColor = System.Drawing.Color.Black;
         }
 
-        protected void txt_subLoc1Code_TextChanged(object sender, EventArgs e)
+        protected void txt_subLocCode_TextChanged(object sender, EventArgs e)
         {
             lbl_error.Visible = false;
             btn_submit_disable();
             OdbcCommand cmd = conn_asset.CreateCommand();
-            cmd.CommandText = "select * from ast_subLoc1Master where subLoc1Code = '" + txt_subLoc1Code.Text.Trim().ToUpper() + "'";
+            cmd.CommandText = "select * from ast_subLocMaster where subLocCode = '" + txt_subLocCode.Text.Trim().ToUpper() + "'";
             conn_asset.Open();
             OdbcDataReader dr = cmd.ExecuteReader();
             if (dr.Read())
             {
-                lbl_subLoc1CodeError.Visible = true;
+                lbl_subLocCodeError.Visible = true;
                 btn_submit_disable();
             }
             else
             {
-                lbl_subLoc1CodeError.Visible = false;
+                lbl_subLocCodeError.Visible = false;
                 btn_submit_enable();
             }
             conn_asset.Close();
         }
 
-        protected void txt_subLoc1Name_TextChanged(object sender, EventArgs e)
+        protected void txt_subLocName_TextChanged(object sender, EventArgs e)
         {
             lbl_error.Visible = false;
             btn_submit_disable();
             OdbcCommand cmd = conn_asset.CreateCommand();
-            cmd.CommandText = "select * from ast_subLoc1Master where subLoc1Name = '" + txt_subLoc1Name.Text.Trim().ToUpper() + "'";
+            cmd.CommandText = "select * from ast_subLocMaster where subLocName = '" + txt_subLocName.Text.Trim().ToUpper() + "'";
             conn_asset.Open();
             OdbcDataReader dr = cmd.ExecuteReader();
             if (dr.Read())
             {
-                lbl_subLoc1NameError.Visible = true;
+                lbl_subLocNameError.Visible = true;
                 btn_submit_disable();
             }
             else
             {
-                lbl_subLoc1NameError.Visible = false;
+                lbl_subLocNameError.Visible = false;
                 btn_submit_enable();
             }
             conn_asset.Close();
@@ -177,13 +177,13 @@ namespace assetManagement
             grid_display.Visible = false;
             btn_submit.Visible = false;
             lbl_addTitle.Visible = false;
-            lbl_subLoc1Code.Visible = false;
-            lbl_subLoc1Name.Visible = false;
-            lbl_subLoc1CodeError.Visible = false;
-            lbl_subLoc1NameError.Visible = false;
+            lbl_subLocCode.Visible = false;
+            lbl_subLocName.Visible = false;
+            lbl_subLocCodeError.Visible = false;
+            lbl_subLocNameError.Visible = false;
             lbl_error.Visible = false;
-            txt_subLoc1Name.Visible = false;
-            txt_subLoc1Code.Visible = false;
+            txt_subLocName.Visible = false;
+            txt_subLocCode.Visible = false;
         }
 
         protected void btn_submitRemove_Click(object sender, EventArgs e)
@@ -194,7 +194,7 @@ namespace assetManagement
                 if (chk.Checked == true)
                 {
                     OdbcCommand cmdb = conn_asset.CreateCommand();
-                    cmdb.CommandText = "delete from ast_subLoc1Master where subLoc1Name = '" + item.Cells[2].Text.Trim().ToUpper() + "'";
+                    cmdb.CommandText = "delete from ast_subLocMaster where subLocName = '" + item.Cells[2].Text.Trim().ToUpper() + "'";
                     conn_asset.Open();
                     int check;
                     check = cmdb.ExecuteNonQuery();
@@ -208,10 +208,10 @@ namespace assetManagement
         protected void btn_add_Click(object sender, EventArgs e)
         {
             lbl_addTitle.Visible = true;
-            lbl_subLoc1Code.Visible = true;
-            lbl_subLoc1Name.Visible = true;
-            txt_subLoc1Name.Visible = true;
-            txt_subLoc1Code.Visible = true;
+            lbl_subLocCode.Visible = true;
+            lbl_subLocName.Visible = true;
+            txt_subLocName.Visible = true;
+            txt_subLocCode.Visible = true;
             btn_submit.Visible = true;
             BindData(drp_sec.SelectedValue);
             if (flg == 1)
@@ -227,7 +227,7 @@ namespace assetManagement
         protected void btn_submit_Click(object sender, EventArgs e)
         {
             OdbcCommand cmd = conn_asset.CreateCommand();
-            cmd.CommandText = "insert into ast_subLoc1Master values('" + drp_sec.SelectedValue + "','" + txt_subLoc1Code.Text.Trim().ToUpper() + "','" + txt_subLoc1Name.Text.Trim().ToUpper() + "')";
+            cmd.CommandText = "insert into ast_subLocMaster values('" + drp_sec.SelectedValue + "','" + txt_subLocCode.Text.Trim().ToUpper() + "','" + txt_subLocName.Text.Trim().ToUpper() + "')";
             conn_asset.Open();
             int check = cmd.ExecuteNonQuery();
             conn_asset.Close();
@@ -237,8 +237,8 @@ namespace assetManagement
                 btn_submit_disable();
                 BindData(drp_sec.SelectedValue);
                 home_visible();
-                txt_subLoc1Code.Text = "";
-                txt_subLoc1Name.Text = "";
+                txt_subLocCode.Text = "";
+                txt_subLocName.Text = "";
             }
         }
     }

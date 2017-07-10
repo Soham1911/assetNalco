@@ -73,9 +73,9 @@
                                     <ItemTemplate>
                                         <asp:Label ID="lbl_status" runat="server" Visible="True" />
                                         <asp:DropDownList ID="callStat" runat="server">
-                                            <asp:ListItem Value="o">o</asp:ListItem>
+                                            <asp:ListItem Value="o" Text="o" />
                                             <asp:ListItem Value="d">d</asp:ListItem>
-                                            <asp:ListItem Value="c" Text="c" />
+                                            <asp:ListItem Value="c">c</asp:ListItem>
                                         </asp:DropDownList>
                                     </ItemTemplate>
                                 </asp:TemplateField>

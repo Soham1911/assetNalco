@@ -8,6 +8,7 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
     <div align="center">
+        <asp:ScriptManager runat="server" ></asp:ScriptManager>
         <div style="width: 60%;">
             <asp:Label ID="lbl_no_recs" runat="server" Font-Bold="true" ForeColor="Red" Font-Size="Medium"
                 Visible="false"
@@ -32,7 +33,13 @@
                             </asp:DropDownList>
                         </ItemTemplate>
                     </asp:TemplateField>
-
+                    <asp:TemplateField HeaderText="Date of Closing">
+                        <ItemTemplate>
+                            <asp:TextBox Width="100px" ID="txt_date" runat="server"></asp:TextBox>
+                            <asp:CalendarExtender ID="CalendarExtender1" runat="server"
+                                Enabled="True" TargetControlID="txt_date"></asp:CalendarExtender>
+                        </ItemTemplate>
+                    </asp:TemplateField>
                 </Columns>
 
                 <EditRowStyle HorizontalAlign="Center" BackColor="#999999"></EditRowStyle>

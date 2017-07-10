@@ -33,7 +33,7 @@
                                 <ItemStyle HorizontalAlign="Center"></ItemStyle>
                                 </asp:BoundField>
   
-                                <asp:BoundField DataField="category" HeaderText="Type of Asset"
+                                <asp:BoundField DataField="cat" HeaderText="Type of Asset"
                                     ItemStyle-HorizontalAlign="Center" SortExpression="type" HeaderStyle-HorizontalAlign="Center">
                                     <HeaderStyle HorizontalAlign="Center"></HeaderStyle>
 
@@ -45,7 +45,7 @@
 
                                 <ItemStyle HorizontalAlign="Center"></ItemStyle>
                                 </asp:BoundField>
-                                <asp:BoundField DataField="type" HeaderText="Problem Type"
+                                <asp:BoundField DataField="category" HeaderText="Problem Type"
                                     ItemStyle-HorizontalAlign="Center" SortExpression="desc" HeaderStyle-HorizontalAlign="Center">
                                     <HeaderStyle HorizontalAlign="Center"></HeaderStyle>
 
@@ -69,12 +69,7 @@
 
                                 <ItemStyle HorizontalAlign="Center"></ItemStyle>
                                 </asp:BoundField>
-                                <asp:BoundField DataField="userRemark" HeaderText="Remarks" 
-                                    ItemStyle-HorizontalAlign="Center" SortExpression="userRemark" HeaderStyle-HorizontalAlign="Center">
-                                    <HeaderStyle HorizontalAlign="Center"></HeaderStyle>
 
-                                <ItemStyle HorizontalAlign="Center"></ItemStyle>
-                                </asp:BoundField>
                                
                             </Columns>
                             <PagerStyle BackColor="#2461BF" ForeColor="White" HorizontalAlign="Center" />

@@ -161,8 +161,9 @@ namespace assetManagement
                 //string hostName = Dns.GetHostName(); // Retrive the Name of HOST
                 // Get the IP
                 //string myIP = Dns.GetHostByName(hostName).AddressList[0].ToString();
+                TextBox dt = (TextBox)item.FindControl("txt_date");
                 OdbcCommand cmd = conn_asset.CreateCommand();
-                cmd.CommandText = "update ast_call set attendedBy='" + attendedby + "' , callStat = '" + status.Trim() + "' where call_id = '" + call_id + "'";
+                cmd.CommandText = "update ast_call set attendedBy='" + attendedby + "' ,closingDate = '"+dt.Text+"' ,callStat = '" + status.Trim() + "' where call_id = '" + call_id + "'";
                 //cmd.CommandText = "update ast_call set allotedTo = '" + allotedto.Trim() + "' , callStat = '" + status.Trim() + "' , remarks = '" + remarks.Text.Trim() + "', closingIP = '" + myIP.Trim() + "',closedBy='" + p_no.Trim() + "',closingDate = '" + date + "' where call_id = '" + call_id + "'";
                 // cmd.CommandText = "update ast_call set remarks = '" + remarks.Text.Trim() + "' where call_id = '" + call_id + "'";
                 conn_asset.Open();

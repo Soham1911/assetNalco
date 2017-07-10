@@ -18,16 +18,20 @@ namespace assetManagement
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            //filling drp_amcParty
-            OdbcCommand cmda = conn_asset.CreateCommand();
-            cmda.CommandText = "select * from ast_vendorMaster";
-            OdbcDataAdapter da = new OdbcDataAdapter(cmda);
-            DataTable dt = new DataTable();
-            da.Fill(dt);
-            drp_amcParty.DataSource = dt;
-            drp_amcParty.DataValueField = "vendorCode";
-            drp_amcParty.DataTextField = "vendorName";
-            drp_amcParty.DataBind();
+            if(!IsPostBack)
+            {
+                //filling drp_amcParty
+                OdbcCommand cmda = conn_asset.CreateCommand();
+                cmda.CommandText = "select * from ast_vendorMaster";
+                OdbcDataAdapter da = new OdbcDataAdapter(cmda);
+                DataTable dt = new DataTable();
+                da.Fill(dt);
+                drp_amcParty.DataSource = dt;
+                drp_amcParty.DataValueField = "vendorCode";
+                drp_amcParty.DataTextField = "vendorName";
+                drp_amcParty.DataBind();
+            }
+            lbl_error.Text = "";
         }
 
         protected void btn_reg_Click(object sender, EventArgs e)
@@ -38,6 +42,20 @@ namespace assetManagement
             conn_asset.Open();
             check1 = cmd.ExecuteNonQuery();
             conn_asset.Close();
+            if(check1 == 1)
+            {
+                lbl_error.Text = "Added successfully";
+                lbl_error.ForeColor = System.Drawing.Color.Green;
+                lbl_error.Visible = true;
+                txt_fromDate.Text = "";
+                txt_toDate.Text = "";
+            }
+            else
+            {
+                lbl_error.Text = "Failed to add";
+                lbl_error.ForeColor = System.Drawing.Color.Red;
+                lbl_error.Visible = true;
+            }
         }
     }
 }
