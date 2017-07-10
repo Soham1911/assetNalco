@@ -37,6 +37,28 @@ namespace assetManagement
             }
 
             conn_asset.Close();
+<<<<<<< HEAD
+
+            OdbcCommand cmdf = conn_asset.CreateCommand();
+            if (chk == "SOFTWARE")
+                cmdf.CommandText = "select * from error_selection where (Type ='SOFTWARE' or Type = 'BOTH') ";
+            else
+                if( chk == "HARDWARE")
+                cmdf.CommandText = "select * from error_selection where (Type ='HARDWARE' or Type = 'BOTH') ";
+                else
+                    cmdf.CommandText = "select * from error_selection where (Type ='OTHER' or Type = 'BOTH') ";
+               
+            OdbcDataAdapter df = new OdbcDataAdapter(cmdf);
+            DataTable dt1 = new DataTable();
+            df.Fill(dt1);
+
+            Drp_2.DataSource = dt1;
+            Drp_2.DataValueField = "Problem";
+            Drp_2.DataTextField = "Problem";
+            Drp_2.DataBind();
+
+            Drp_2.Visible = true;
+=======
             
                 OdbcCommand cmdf = conn_asset.CreateCommand();
                 if(chk == "SOFTWARE")
@@ -54,6 +76,7 @@ namespace assetManagement
             
                 Drp_2.Visible = true;
                 
+>>>>>>> bd4e0da101a2d4a34eb05525dbed44639ff24e6b
         }
         protected void Page_Load(object sender, EventArgs e)
         {

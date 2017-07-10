@@ -48,8 +48,6 @@
                                     <asp:TextBox ID="txt_assetCode" runat="server" ToolTip="Enter Asset Code" Width="230px" Visible="false" AutoPostBack="true" OnTextChanged="txt_assetCode_TextChanged"></asp:TextBox>
                                 </td>
                                 <td align="right">
-                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="txt_po_no" ErrorMessage="*Enter PO No." ForeColor="Red"></asp:RequiredFieldValidator>
-                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="txt_assetCode" ErrorMessage="*Enter Asset Code" ForeColor="Red"></asp:RequiredFieldValidator>
                                 </td>
                             </tr>
 

@@ -165,18 +165,22 @@
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Images\SYSTEMS.jpg" />
+    <Content Include="Issue_Report.aspx" />
     <Content Include="packages.config" />
     <Content Include="Amc.Master" />
     <None Include="Scripts\jquery-1.8.2.intellisense.js" />
     <Content Include="pm_done.aspx" />
     <Content Include="pm_fin.aspx" />
+    <Content Include="PM_Month_Allot.aspx" />
     <Content Include="pm_notFin.aspx" />
     <Content Include="pm_rel.aspx" />
+    <Content Include="PM_Report.aspx" />
     <Content Include="Print\network.aspx" />
     <Content Include="Print\pc.aspx" />
     <Content Include="Print\printer.aspx" />
     <Content Include="Print\scanner.aspx" />
     <Content Include="Print\server.aspx" />
+    <Content Include="Receipt_Report.aspx" />
     <Content Include="rep_bback.aspx" />
     <Content Include="rep_assets.aspx" />
     <Content Include="Scripts\jquery-1.8.2.js" />
@@ -184,6 +188,9 @@
     <Content Include="Scripts\jquery-ui-1.8.24.js" />
     <Content Include="Scripts\jquery-ui-1.8.24.min.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="Spare_Consumables.aspx" />
+    <Content Include="Spare_Entry.aspx" />
+    <Content Include="Spare_Parts.aspx" />
     <Content Include="Status.aspx" />
     <Content Include="Sublocation.aspx" />
     <Content Include="Systems.aspx" />
@@ -463,6 +470,13 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Issue_Report.aspx.cs">
+      <DependentUpon>Issue_Report.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Issue_Report.aspx.designer.cs">
+      <DependentUpon>Issue_Report.aspx</DependentUpon>
+    </Compile>
     <Compile Include="pm_done.aspx.cs">
       <DependentUpon>pm_done.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -477,6 +491,13 @@
     <Compile Include="pm_fin.aspx.designer.cs">
       <DependentUpon>pm_fin.aspx</DependentUpon>
     </Compile>
+    <Compile Include="PM_Month_Allot.aspx.cs">
+      <DependentUpon>PM_Month_Allot.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PM_Month_Allot.aspx.designer.cs">
+      <DependentUpon>PM_Month_Allot.aspx</DependentUpon>
+    </Compile>
     <Compile Include="pm_notFin.aspx.cs">
       <DependentUpon>pm_notFin.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -490,6 +511,13 @@
     </Compile>
     <Compile Include="pm_rel.aspx.designer.cs">
       <DependentUpon>pm_rel.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PM_Report.aspx.cs">
+      <DependentUpon>PM_Report.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PM_Report.aspx.designer.cs">
+      <DependentUpon>PM_Report.aspx</DependentUpon>
     </Compile>
     <Compile Include="Print\network.aspx.cs">
       <DependentUpon>network.aspx</DependentUpon>
@@ -527,6 +555,13 @@
       <DependentUpon>server.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Receipt_Report.aspx.cs">
+      <DependentUpon>Receipt_Report.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Receipt_Report.aspx.designer.cs">
+      <DependentUpon>Receipt_Report.aspx</DependentUpon>
+    </Compile>
     <Compile Include="rep_bback.aspx.cs">
       <DependentUpon>rep_bback.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -554,6 +589,27 @@
     </Compile>
     <Compile Include="Site.Mobile.Master.designer.cs">
       <DependentUpon>Site.Mobile.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Spare_Consumables.aspx.cs">
+      <DependentUpon>Spare_Consumables.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Spare_Consumables.aspx.designer.cs">
+      <DependentUpon>Spare_Consumables.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Spare_Entry.aspx.cs">
+      <DependentUpon>Spare_Entry.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Spare_Entry.aspx.designer.cs">
+      <DependentUpon>Spare_Entry.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Spare_Parts.aspx.cs">
+      <DependentUpon>Spare_Parts.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Spare_Parts.aspx.designer.cs">
+      <DependentUpon>Spare_Parts.aspx</DependentUpon>
     </Compile>
     <Compile Include="Status.aspx.cs">
       <DependentUpon>Status.aspx</DependentUpon>

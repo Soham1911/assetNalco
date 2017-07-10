@@ -60,3 +60,34 @@ C:\Users\Soham Kadam\Desktop\assetManagement\assetManagement\bin\System.Net.Http
 C:\Users\Soham Kadam\Desktop\assetManagement\assetManagement\obj\Debug\assetManagement.dll
 C:\Users\Soham Kadam\Desktop\assetManagement\assetManagement\obj\Debug\assetManagement.pdb
 C:\Users\Soham Kadam\Desktop\assetManagement\assetManagement\obj\Debug\assetManagement.csprojResolveAssemblyReference.cache
+C:\Users\giris\Desktop\Boosting\assetNalco\assetManagement\bin\assetManagement.dll.config
+C:\Users\giris\Desktop\Boosting\assetNalco\assetManagement\bin\assetManagement.dll
+C:\Users\giris\Desktop\Boosting\assetNalco\assetManagement\bin\assetManagement.pdb
+C:\Users\giris\Desktop\Boosting\assetNalco\assetManagement\bin\AjaxControlToolkit.dll
+C:\Users\giris\Desktop\Boosting\assetNalco\assetManagement\bin\AspNet.ScriptManager.jQuery.dll
+C:\Users\giris\Desktop\Boosting\assetNalco\assetManagement\bin\AspNet.ScriptManager.jQuery.UI.Combined.dll
+C:\Users\giris\Desktop\Boosting\assetNalco\assetManagement\bin\DotNetOpenAuth.AspNet.dll
+C:\Users\giris\Desktop\Boosting\assetNalco\assetManagement\bin\DotNetOpenAuth.Core.dll
+C:\Users\giris\Desktop\Boosting\assetNalco\assetManagement\bin\DotNetOpenAuth.OAuth.Consumer.dll
+C:\Users\giris\Desktop\Boosting\assetNalco\assetManagement\bin\DotNetOpenAuth.OAuth.dll
+C:\Users\giris\Desktop\Boosting\assetNalco\assetManagement\bin\DotNetOpenAuth.OpenId.dll
+C:\Users\giris\Desktop\Boosting\assetNalco\assetManagement\bin\DotNetOpenAuth.OpenId.RelyingParty.dll
+C:\Users\giris\Desktop\Boosting\assetNalco\assetManagement\bin\EntityFramework.dll
+C:\Users\giris\Desktop\Boosting\assetNalco\assetManagement\bin\Microsoft.AspNet.FriendlyUrls.dll
+C:\Users\giris\Desktop\Boosting\assetNalco\assetManagement\bin\Microsoft.AspNet.Membership.OpenAuth.dll
+C:\Users\giris\Desktop\Boosting\assetNalco\assetManagement\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\giris\Desktop\Boosting\assetNalco\assetManagement\bin\System.Web.Providers.dll
+C:\Users\giris\Desktop\Boosting\assetNalco\assetManagement\bin\System.Net.Http.dll
+C:\Users\giris\Desktop\Boosting\assetNalco\assetManagement\bin\EntityFramework.xml
+C:\Users\giris\Desktop\Boosting\assetNalco\assetManagement\bin\DotNetOpenAuth.Core.xml
+C:\Users\giris\Desktop\Boosting\assetNalco\assetManagement\bin\DotNetOpenAuth.OAuth.xml
+C:\Users\giris\Desktop\Boosting\assetNalco\assetManagement\bin\DotNetOpenAuth.OAuth.Consumer.xml
+C:\Users\giris\Desktop\Boosting\assetNalco\assetManagement\bin\DotNetOpenAuth.OpenId.xml
+C:\Users\giris\Desktop\Boosting\assetNalco\assetManagement\bin\DotNetOpenAuth.OpenId.RelyingParty.xml
+C:\Users\giris\Desktop\Boosting\assetNalco\assetManagement\bin\DotNetOpenAuth.AspNet.xml
+C:\Users\giris\Desktop\Boosting\assetNalco\assetManagement\bin\Microsoft.AspNet.Membership.OpenAuth.xml
+C:\Users\giris\Desktop\Boosting\assetNalco\assetManagement\bin\Microsoft.AspNet.FriendlyUrls.xml
+C:\Users\giris\Desktop\Boosting\assetNalco\assetManagement\bin\System.Net.Http.xml
+C:\Users\giris\Desktop\Boosting\assetNalco\assetManagement\obj\Debug\assetManagement.csprojResolveAssemblyReference.cache
+C:\Users\giris\Desktop\Boosting\assetNalco\assetManagement\obj\Debug\assetManagement.dll
+C:\Users\giris\Desktop\Boosting\assetNalco\assetManagement\obj\Debug\assetManagement.pdb

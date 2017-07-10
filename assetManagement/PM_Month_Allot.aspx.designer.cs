@@ -10,7 +10,7 @@
 namespace assetManagement {
     
     
-    public partial class subLocation {
+    public partial class PM_Month_Allot {
         
         /// <summary>
         /// ScriptManager1 control.
@@ -31,148 +31,85 @@ namespace assetManagement {
         protected global::System.Web.UI.UpdatePanel UpdatePanel1;
         
         /// <summary>
-        /// drp_sec control.
+        /// Label control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList drp_sec;
+        protected global::System.Web.UI.WebControls.Label Label;
         
         /// <summary>
-        /// btn_add control.
+        /// lbl_underWarranty control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btn_add;
+        protected global::System.Web.UI.WebControls.Label lbl_underWarranty;
         
         /// <summary>
-        /// btn_remove control.
+        /// lbl_qrtr1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btn_remove;
+        protected global::System.Web.UI.WebControls.Label lbl_qrtr1;
         
         /// <summary>
-        /// lbl_addTitle control.
+        /// lbl_qrtr2 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbl_addTitle;
+        protected global::System.Web.UI.WebControls.Label lbl_qrtr2;
         
         /// <summary>
-        /// lbl_removeTitle control.
+        /// lbl_qrtr3 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbl_removeTitle;
+        protected global::System.Web.UI.WebControls.Label lbl_qrtr3;
         
         /// <summary>
-        /// lbl_subLocCode control.
+        /// lbl_astCode control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbl_subLocCode;
+        protected global::System.Web.UI.WebControls.Label lbl_astCode;
         
         /// <summary>
-        /// txt_subLocCode control.
+        /// txt_astCode control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txt_subLocCode;
+        protected global::System.Web.UI.WebControls.TextBox txt_astCode;
         
         /// <summary>
-        /// lbl_subLocCodeError control.
+        /// lbl_astCode1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbl_subLocCodeError;
+        protected global::System.Web.UI.WebControls.Label lbl_astCode1;
         
         /// <summary>
-        /// lbl_subLocName control.
+        /// Drp_1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbl_subLocName;
-        
-        /// <summary>
-        /// txt_subLocName control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txt_subLocName;
-        
-        /// <summary>
-        /// lbl_subLocNameError control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbl_subLocNameError;
-        
-        /// <summary>
-        /// btn_submit control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btn_submit;
-        
-        /// <summary>
-        /// lbl_gridTitle control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbl_gridTitle;
-        
-        /// <summary>
-        /// grid_display control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView grid_display;
-        
-        /// <summary>
-        /// grid_remove control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView grid_remove;
-        
-        /// <summary>
-        /// btn_submitRemove control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btn_submitRemove;
+        protected global::System.Web.UI.WebControls.DropDownList Drp_1;
         
         /// <summary>
         /// lbl_error control.
@@ -182,5 +119,14 @@ namespace assetManagement {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lbl_error;
+        
+        /// <summary>
+        /// btn_submit control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btn_submit;
     }
 }

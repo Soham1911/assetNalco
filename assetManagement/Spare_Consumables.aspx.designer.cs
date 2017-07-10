@@ -10,7 +10,7 @@
 namespace assetManagement {
     
     
-    public partial class AMC_Remove {
+    public partial class Spare_Consumables {
         
         /// <summary>
         /// ScriptManager1 control.
@@ -22,67 +22,31 @@ namespace assetManagement {
         protected global::System.Web.UI.ScriptManager ScriptManager1;
         
         /// <summary>
-        /// UpdatePanel1 control.
+        /// txt_astCode control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.UpdatePanel UpdatePanel1;
+        protected global::System.Web.UI.WebControls.TextBox txt_astCode;
         
         /// <summary>
-        /// drp_sel control.
+        /// RequiredFieldValidator1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList drp_sel;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator1;
         
         /// <summary>
-        /// lbl_po_no control.
+        /// lbl_astCode control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbl_po_no;
-        
-        /// <summary>
-        /// lbl_assetCode control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbl_assetCode;
-        
-        /// <summary>
-        /// txt_po_no control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txt_po_no;
-        
-        /// <summary>
-        /// txt_assetCode control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txt_assetCode;
-        
-        /// <summary>
-        /// lbl_invalid control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbl_invalid;
+        protected global::System.Web.UI.WebControls.Label lbl_astCode;
         
         /// <summary>
         /// img_p control.
@@ -94,85 +58,112 @@ namespace assetManagement {
         protected global::System.Web.UI.WebControls.Image img_p;
         
         /// <summary>
-        /// lbl_astpo control.
+        /// lbl_name control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbl_astpo;
+        protected global::System.Web.UI.WebControls.Label lbl_name;
         
         /// <summary>
-        /// lbl_custPNo control.
+        /// lbl_location control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbl_custPNo;
+        protected global::System.Web.UI.WebControls.Label lbl_location;
         
         /// <summary>
-        /// lbl_custName control.
+        /// lbl_subLoc control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbl_custName;
+        protected global::System.Web.UI.WebControls.Label lbl_subLoc;
         
         /// <summary>
-        /// lbl_poDate control.
+        /// lbl_model control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbl_poDate;
+        protected global::System.Web.UI.WebControls.Label lbl_model;
         
         /// <summary>
-        /// lbl_dept control.
+        /// lbl_desc control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbl_dept;
+        protected global::System.Web.UI.WebControls.Label lbl_desc;
         
         /// <summary>
-        /// lbl_no_recs control.
+        /// Drp_1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbl_no_recs;
+        protected global::System.Web.UI.WebControls.DropDownList Drp_1;
         
         /// <summary>
-        /// grid_display control.
+        /// Drp_2 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView grid_display;
+        protected global::System.Web.UI.WebControls.DropDownList Drp_2;
         
         /// <summary>
-        /// txt_amcEnd control.
+        /// TextBox1_FilteredTextBoxExtender control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txt_amcEnd;
+        protected global::AjaxControlToolkit.FilteredTextBoxExtender TextBox1_FilteredTextBoxExtender;
         
         /// <summary>
-        /// CalendarExtender7 control.
+        /// txt_quantity control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::AjaxControlToolkit.CalendarExtender CalendarExtender7;
+        protected global::System.Web.UI.WebControls.TextBox txt_quantity;
+        
+        /// <summary>
+        /// RequiredFieldValidator2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator2;
+        
+        /// <summary>
+        /// txt_installationDate control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txt_installationDate;
+        
+        /// <summary>
+        /// CalendarExtender2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::AjaxControlToolkit.CalendarExtender CalendarExtender2;
         
         /// <summary>
         /// RequiredFieldValidator3 control.
@@ -184,31 +175,13 @@ namespace assetManagement {
         protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator3;
         
         /// <summary>
-        /// TextBox1 control.
+        /// Drp_3 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox1;
-        
-        /// <summary>
-        /// CalendarExtender1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::AjaxControlToolkit.CalendarExtender CalendarExtender1;
-        
-        /// <summary>
-        /// RequiredFieldValidator4 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator4;
+        protected global::System.Web.UI.WebControls.DropDownList Drp_3;
         
         /// <summary>
         /// btn_reg control.
