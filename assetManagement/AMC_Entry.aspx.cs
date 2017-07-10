@@ -114,7 +114,7 @@ namespace assetManagement
                 conn_asset.Close();
             }
             
-            if(check1 == 1)
+            if(check1 >= 1)
             {
                 lbl_error.ForeColor = System.Drawing.Color.Green;
                 conn_asset.Close();
