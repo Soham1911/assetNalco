@@ -42,6 +42,7 @@ namespace assetManagement
             dt.Columns.Add(new System.Data.DataColumn("callStat", typeof(String)));
             dt.Columns.Add(new System.Data.DataColumn("openingDate", typeof(String)));
             dt.Columns.Add(new System.Data.DataColumn("closingDate", typeof(String)));
+            dt.Columns.Add(new System.Data.DataColumn("userRemark", typeof(String)));
 
             while (dr.Read())
             {
@@ -54,24 +55,9 @@ namespace assetManagement
                 newRow["callStat"] = Convert.ToString(dr["callStat"]);
                 newRow["openingDate"] = Convert.ToString(dr["openingDate"]);
                 newRow["closingDate"] = Convert.ToString(dr["closingDate"]);
+                newRow["userRemark"] = Convert.ToString(dr["userRemark"]);
                 dt.Rows.Add(newRow);
 
-            }
-
-            
-            OdbcCommand cmd1 = conn_asset.CreateCommand();
-            cmd1.CommandText = "select category from ast_master where custodian ='" + p_no + "'";
-            
-            
-            DataRow newRow1;
-            OdbcDataReader dr1 = cmd1.ExecuteReader();
-            dt.Columns.Add(new System.Data.DataColumn("cat", typeof(String)));
-
-            while (dr.Read())
-            {
-                newRow1 = dt.NewRow();
-                newRow1["cat"] = Convert.ToString(dr1["category"]);
-                dt.Rows.Add(newRow1);
             }
 
             if (dt.Rows.Count > 0)
