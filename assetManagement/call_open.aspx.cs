@@ -138,6 +138,7 @@ namespace assetManagement
                 //string hostName = Dns.GetHostName(); // Retrive the Name of HOST
                 // Get the IP
                 //string myIP = Dns.GetHostByName(hostName).AddressList[0].ToString();
+
                 OdbcCommand cmd = conn_asset.CreateCommand();
                 cmd.CommandText = "update ast_call set allotedTo = '" + allotedto.Trim() + "' where call_id = '" + call_id + "'";
                 //cmd.CommandText = "update ast_call set allotedTo = '" + allotedto.Trim() + "' , callStat = '" + status.Trim() + "' , remarks = '" + remarks.Text.Trim() + "', closingIP = '" + myIP.Trim() + "',closedBy='" + p_no.Trim() + "',closingDate = '" + date + "' where call_id = '" + call_id + "'";

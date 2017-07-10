@@ -58,7 +58,7 @@
                                 <asp:MenuItem NavigateUrl="~/allied_addUser.aspx" Text="Add User" />
                                 <asp:MenuItem NavigateUrl="~/allied_removeUser.aspx" Text="Remove User" />
                             </asp:MenuItem>
-                            <asp:MenuItem NavigateUrl="~/subLoc1ation.aspx" Text="Sub Location" />
+                            <asp:MenuItem NavigateUrl="~/subLocation.aspx" Text="Sub Location" />
                             <asp:MenuItem NavigateUrl="#" Text="Generate Report">
                                 <asp:MenuItem NavigateUrl="~/rep_assets.aspx" Text="Asset Report" />
                                 <asp:MenuItem NavigateUrl="~/rep_bback.aspx" Text="Breakdown Report" />

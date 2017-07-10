@@ -67,15 +67,15 @@ namespace assetManagement
 
                 //adding values to drp_subLoc1tion
                 OdbcCommand cmdb = conn_asset.CreateCommand();
-                cmdb.CommandText = "select * from ast_subLoc1Master where location = '" + drp_loc.SelectedValue + "'";
+                cmdb.CommandText = "select * from ast_subLocMaster where location = '" + drp_loc.SelectedValue + "'";
                 OdbcDataAdapter da11 = new OdbcDataAdapter(cmdb);
                 DataTable dt11 = new DataTable();
 
                 da11.Fill(dt11);
-                dt11.Columns.Add(new DataColumn("Title", System.Type.GetType("System.String"), "subLoc1Code + ' : ' + subLoc1Name"));
+                dt11.Columns.Add(new DataColumn("Title", System.Type.GetType("System.String"), "subLocCode + ' : ' + subLocName"));
 
                 drp_subLoc1.DataSource = dt11;
-                drp_subLoc1.DataValueField = "subLoc1Code";
+                drp_subLoc1.DataValueField = "subLocCode";
                 drp_subLoc1.DataTextField = "Title";
                 drp_subLoc1.DataBind();
             }
@@ -134,15 +134,15 @@ namespace assetManagement
         {
             //adding values to drp_subLoc1tion
             OdbcCommand cmd = conn_asset.CreateCommand();
-            cmd.CommandText = "select * from ast_subLoc1Master where location = '"+drp_loc.SelectedValue+"'";
+            cmd.CommandText = "select * from ast_subLocMaster where location = '"+drp_loc.SelectedValue+"'";
             OdbcDataAdapter da1 = new OdbcDataAdapter(cmd);
             DataTable dt1 = new DataTable();
 
             da1.Fill(dt1);
-            dt1.Columns.Add(new DataColumn("Title", System.Type.GetType("System.String"), "subLoc1Code + ' : ' + subLoc1Name"));
+            dt1.Columns.Add(new DataColumn("Title", System.Type.GetType("System.String"), "subLocCode + ' : ' + subLocName"));
 
             drp_subLoc1.DataSource = dt1;
-            drp_subLoc1.DataValueField = "subLoc1Code";
+            drp_subLoc1.DataValueField = "subLocCode";
             drp_subLoc1.DataTextField = "Title";
             drp_subLoc1.DataBind();
         }

@@ -18,7 +18,7 @@ namespace assetManagement
     {
         static string connStr_asset = ConfigurationManager.ConnectionStrings["asset"].ConnectionString;
         OdbcConnection conn_asset = new OdbcConnection(connStr_asset);
-        string p_no = "";
+        string p_no = "default";
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)

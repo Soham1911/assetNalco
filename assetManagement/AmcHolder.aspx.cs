@@ -90,8 +90,9 @@ namespace assetManagement
                 string hostName = Dns.GetHostName(); // Retrive the Name of HOST
                 // Get the IP
                 string myIP = Dns.GetHostByName(hostName).AddressList[0].ToString();
+                TextBox dt = (TextBox)item.FindControl("txt_date");
                 OdbcCommand cmd = conn_asset.CreateCommand();
-                cmd.CommandText = "update ast_call set callStat = '" + status +"' , droppingIP = '" + myIP.Trim() + "',droppedBy = '" + userID.Trim() + "' where call_id = '" + call_id + "'";
+                cmd.CommandText = "update ast_call set callStat = '" + status +"' , draftDate = '"+dt.Text+"', droppingIP = '" + myIP.Trim() + "',droppedBy = '" + userID.Trim() + "' where call_id = '" + call_id + "'";
                 conn_asset.Open();
                 dr1 = cmd.ExecuteNonQuery();
                 conn_asset.Close();

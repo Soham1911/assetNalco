@@ -18,16 +18,20 @@ namespace assetManagement
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            //filling drp_amcParty
-            OdbcCommand cmda = conn_asset.CreateCommand();
-            cmda.CommandText = "select * from ast_vendorMaster";
-            OdbcDataAdapter da = new OdbcDataAdapter(cmda);
-            DataTable dt = new DataTable();
-            da.Fill(dt);
-            drp_amcParty.DataSource = dt;
-            drp_amcParty.DataValueField = "vendorCode";
-            drp_amcParty.DataTextField = "vendorName";
-            drp_amcParty.DataBind();
+            if(!IsPostBack)
+            {
+                //filling drp_amcParty
+                OdbcCommand cmda = conn_asset.CreateCommand();
+                cmda.CommandText = "select * from ast_vendorMaster";
+                OdbcDataAdapter da = new OdbcDataAdapter(cmda);
+                DataTable dt = new DataTable();
+                da.Fill(dt);
+                drp_amcParty.DataSource = dt;
+                drp_amcParty.DataValueField = "vendorCode";
+                drp_amcParty.DataTextField = "vendorName";
+                drp_amcParty.DataBind();
+            }
+            
         }
 
         protected void btn_reg_Click(object sender, EventArgs e)

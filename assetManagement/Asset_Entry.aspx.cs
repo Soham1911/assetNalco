@@ -52,7 +52,7 @@ namespace assetManagement
             conn_asset.Close();
 
             lbl_astCode.Visible = false;
-            disableButton();
+            
 
              if (!Page.IsPostBack)
              {
@@ -95,6 +95,8 @@ namespace assetManagement
                  drp_vendor.DataValueField = "vendorCode";
                  drp_vendor.DataTextField = "vendorName";
                  drp_vendor.DataBind();
+
+                 disableButton();
              }
             
         }

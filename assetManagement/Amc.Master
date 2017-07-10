@@ -5,7 +5,7 @@
 <head runat="server">
     <meta charset="utf-8" />
     <title></title>
-    <link href="~/Content/Site.css" rel="stylesheet" /> 
+    <link href="~/Content/Site.css" rel="stylesheet" />
     <link href="favicon.ico" rel="shortcut icon" type="image/x-icon" />
     <asp:ContentPlaceHolder runat="server" ID="HeadContent" />
 </head>
@@ -18,18 +18,13 @@
                     </h1>
                 </div>
                 <div class="loginDisplay">
-                    <a href="Default.aspx" style="text-decoration:none">Logout</a>
+                    <a href="Default.aspx" style="text-decoration: none">Logout</a>
                 </div>
                 <div class="clear hideSkiplink">
                     <asp:Menu ID="NavigationMenu" runat="server" CssClass="menu" EnableViewState="false" IncludeStyleBlock="false" Orientation="Horizontal">
                         <Items>
-                            <asp:MenuItem NavigateUrl="~/amcholder.aspx" Text="Home">
-                                
-                                
-                            </asp:MenuItem>                       
-                      <asp:MenuItem NavigateUrl="~/amc_pm.aspx" text="Preventive Maintenance">
-
-                      </asp:MenuItem>
+                            <asp:MenuItem NavigateUrl="~/amcholder.aspx" Text="Call Management" />
+                            <asp:MenuItem NavigateUrl="~/amc_pm.aspx" Text="Preventive Maintenance"></asp:MenuItem>
                         </Items>
                     </asp:Menu>
                 </div>

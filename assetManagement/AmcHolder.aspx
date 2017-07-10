@@ -32,7 +32,13 @@
                             </asp:DropDownList>
                         </ItemTemplate>
                     </asp:TemplateField>
-
+                    <asp:TemplateField HeaderText="Date of Closing">
+                        <ItemTemplate>
+                            <asp:TextBox Width="100px" ID="txt_date" runat="server"></asp:TextBox>
+                            <asp:CalendarExtender ID="CalendarExtender1" runat="server"
+                                Enabled="True" Format="{0:yyyy/MM/dd}" TargetControlID="txt_date"></asp:CalendarExtender>
+                        </ItemTemplate>
+                    </asp:TemplateField>
                 </Columns>
 
                 <EditRowStyle HorizontalAlign="Center" BackColor="#999999"></EditRowStyle>
