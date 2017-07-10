@@ -24,7 +24,7 @@ namespace assetManagement
             {
                 string null_txt = null;
                 OdbcCommand cmda = conn_asset.CreateCommand();
-                cmda.CommandText = "select astCode, userDescription, call_id from ast_call where ( p_no ='" + p_no.Trim() + "' and userRemark is NULL)";
+                cmda.CommandText = "select astCode, userDescription, call_id from ast_call where ( p_no ='" + p_no.Trim() + "' and userRemark is NULL and callStat = 'C' )";
                 OdbcDataAdapter da = new OdbcDataAdapter(cmda);
                 DataTable dt = new DataTable();
 

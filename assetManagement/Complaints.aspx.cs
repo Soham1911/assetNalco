@@ -39,12 +39,12 @@ namespace assetManagement
 
             OdbcCommand cmdf = conn_asset.CreateCommand();
             if (chk == "SOFTWARE")
-                cmdf.CommandText = "select * from error_selection where (Type ='SOFTWARE' or Type = 'BOTH') and astType = '" + typeAsset.Trim() + "'";
+                cmdf.CommandText = "select * from error_selection where (Type ='SOFTWARE' or Type = 'BOTH') ";
             else
                 if( chk == "HARDWARE")
-                cmdf.CommandText = "select * from error_selection where (Type ='HARDWARE' or Type = 'BOTH') and astType = '" + typeAsset.Trim() + "'";
+                cmdf.CommandText = "select * from error_selection where (Type ='HARDWARE' or Type = 'BOTH') ";
                 else
-                    cmdf.CommandText = "select * from error_selection where (Type ='OTHER' or Type = 'BOTH') and astType = '" + typeAsset.Trim() + "'";
+                    cmdf.CommandText = "select * from error_selection where (Type ='OTHER' or Type = 'BOTH') ";
                
             OdbcDataAdapter df = new OdbcDataAdapter(cmdf);
             DataTable dt1 = new DataTable();

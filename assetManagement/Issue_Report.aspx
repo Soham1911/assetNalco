@@ -8,6 +8,38 @@
     <style type="text/css">
         .auto-style4 {
             width: 136px;
+            height: 77px;
+        }
+        .auto-style5 {
+            height: 29px;
+        }
+        .auto-style6 {
+            width: 136px;
+            height: 72px;
+        }
+        .auto-style7 {
+            height: 72px;
+        }
+        .auto-style8 {
+            width: 136px;
+            height: 36px;
+        }
+        .auto-style9 {
+            height: 36px;
+        }
+        .auto-style10 {
+            width: 136px;
+            height: 45px;
+        }
+        .auto-style11 {
+            height: 45px;
+        }
+        .auto-style12 {
+            width: 136px;
+            height: 43px;
+        }
+        .auto-style13 {
+            height: 43px;
         }
     </style>
 </asp:Content>
@@ -20,10 +52,10 @@
                 <ContentTemplate>
                     <fieldset>
                         <legend>NALCO Systems Spare Management</legend>
-                        <table style="height: 293px; width: 630px;">
+                        <table style="height: 246px; width: 632px;">
 
                             <tr>
-                                <td colspan="3">
+                                <td colspan="3" class="auto-style5">
 
                                     <asp:Label ID="Label" runat="server" Style="font-weight: 700; font-size: x-large" Text="Issue Report Generation"></asp:Label>
                                 </td>
@@ -31,10 +63,10 @@
 
                             
                             <tr>
-                                <td class="auto-style4">
+                                <td class="auto-style6">
                                     <asp:Label ID="Label1" runat="server" Text="Search By"></asp:Label>
                                 </td>
-                                <td colspan="2">
+                                <td colspan="2" class="auto-style7">
                                     <asp:RadioButtonList ID="rdbtn_type" AutoPostBack=" true" OnSelectedIndexChanged="typeChanged" runat="server" Width="271px" Height="16px" RepeatDirection="Horizontal">
                                         <asp:ListItem Value="1">By Asset Code</asp:ListItem>
                                         <asp:ListItem Value="2">By From - To Date</asp:ListItem>
@@ -42,13 +74,13 @@
                                     </asp:RadioButtonList>
                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server" ErrorMessage="Select Search Type" ControlToValidate="rdbtn_type"></asp:RequiredFieldValidator>
                                 </td>
-                                <td></td>
+                                <td class="auto-style7"></td>
                             </tr>
                             <tr>
-                                <td class="auto-style4">
+                                <td class="auto-style8">
                                     <asp:Label ID="lbl_astCode" runat="server" Text="Asset Code"></asp:Label>
                                 </td>
-                                <td colspan="2">
+                                <td colspan="2" class="auto-style9">
 
                                     <asp:TextBox ID="txt_astCode" runat="server" Height="18px" Width="300px"></asp:TextBox>
                                 </td>
@@ -56,16 +88,16 @@
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="txt_astCode" ErrorMessage="*Enter Asset Code " ForeColor="Red"></asp:RequiredFieldValidator>
 
                             <tr>
-                                <td class="auto-style4">
+                                <td class="auto-style10">
                                     <asp:Label ID="lbl_type" runat="server" Text="From - To Date"></asp:Label>
                                 </td>
-                                <td align="left">
+                                <td align="left" class="auto-style11">
                                     <asp:TextBox Width="200px" ID="txt_entryDate" runat="server" Height="20px"></asp:TextBox>
                                     <asp:CalendarExtender ID="CalendarExtender2" runat="server"
                                         Enabled="True" Format="yyyy/MM/dd" TargetControlID="txt_entryDate"></asp:CalendarExtender>
                                 </td>
 
-                                <td align="left">
+                                <td align="left" class="auto-style11">
                                     <asp:TextBox Width="200px" ID="txt_exitDate" runat="server" Height="20px" Style="margin-left: 43px"></asp:TextBox>
                                     <asp:CalendarExtender ID="CalendarExtender1" runat="server"
                                         Enabled="True" Format="yyyy/MM/dd" TargetControlID="txt_exitDate"></asp:CalendarExtender>
@@ -74,12 +106,12 @@
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="txt_entryDate" ErrorMessage="*Enter From Date   " ForeColor="Red"></asp:RequiredFieldValidator>
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ControlToValidate="txt_exitDate" ErrorMessage="*Enter To Date   " ForeColor="Red"></asp:RequiredFieldValidator>
                             <tr>
-                                <td class="auto-style4">
+                                <td class="auto-style12">
                                     <asp:Label ID="lbl_partno" runat="server" Text="Part Number"></asp:Label>
                                 </td>
-                                <td colspan="2">
+                                <td colspan="2" class="auto-style13">
 
-                                    <asp:DropDownList ID="Drp_1" runat="server" Height="16px" Width="307px">
+                                    <asp:DropDownList ID="Drp_1" runat="server" Height="52px" Width="307px">
                                         <asp:ListItem Value="0" Selected="False">-- pick one --</asp:ListItem>
                                     </asp:DropDownList>
                                 </td>
