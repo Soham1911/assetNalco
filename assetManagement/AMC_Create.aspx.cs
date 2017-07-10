@@ -33,7 +33,7 @@ namespace assetManagement
         protected void btn_reg_Click(object sender, EventArgs e)
         {
             OdbcCommand cmd = conn_asset.CreateCommand();
-            cmd.CommandText = "insert into ast_amcVendor values('" + drp_amcParty.SelectedValue + "' , '" + txt_fromDate.Text + "' , '" + txt_toDate.Text + "',  'Y'";
+            cmd.CommandText = "insert into ast_amcVendor values('" + drp_amcParty.SelectedValue + "' , '" + txt_fromDate.Text + "' , '" + txt_toDate.Text + "',  'Y')";
             int check1;
             conn_asset.Open();
             check1 = cmd.ExecuteNonQuery();

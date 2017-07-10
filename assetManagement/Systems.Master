@@ -44,7 +44,7 @@
                             </asp:MenuItem>
 
                             <asp:MenuItem NavigateUrl="#" Text="AMC">
-                                <asp:MenuItem NavigateUrl="~/amc_addUser.aspx" Text="Create AMC Party" />
+                                <asp:MenuItem NavigateUrl="~/amc_create.aspx" Text="Create AMC Party" />
                                 <asp:MenuItem NavigateUrl="~/amc_change.aspx" Text="Change AMC Party/Duration" />
                                 <asp:MenuItem NavigateUrl="~/amc_addUser.aspx" Text="Create User" />
                                 <asp:MenuItem NavigateUrl="~/amc_entry.aspx" Text="Add Asset To AMC" />
@@ -58,7 +58,7 @@
                                 <asp:MenuItem NavigateUrl="~/allied_addUser.aspx" Text="Add User" />
                                 <asp:MenuItem NavigateUrl="~/allied_removeUser.aspx" Text="Remove User" />
                             </asp:MenuItem>
-                            <asp:MenuItem NavigateUrl="~/sublocation.aspx" Text="Sub Location" />
+                            <asp:MenuItem NavigateUrl="~/subLoc1ation.aspx" Text="Sub Location" />
                             <asp:MenuItem NavigateUrl="#" Text="Generate Report">
                                 <asp:MenuItem NavigateUrl="~/rep_assets.aspx" Text="Asset Report" />
                                 <asp:MenuItem NavigateUrl="~/rep_bback.aspx" Text="Breakdown Report" />

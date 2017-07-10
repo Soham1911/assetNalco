@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Systems.Master" AutoEventWireup="true" CodeBehind="Sublocation.aspx.cs" Inherits="assetManagement.Sublocation" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Systems.Master" AutoEventWireup="true" CodeBehind="subLoc1ation.aspx.cs" Inherits="assetManagement.subLoc1ation" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
     <style type="text/css">
@@ -52,26 +52,26 @@
                             </tr>
                             <tr>
                                 <td align="right">
-                                    <asp:Label ID="lbl_subLocCode" runat="server" Text="Sub-Location Code : " Font-Bold="true" Font-Size="Small" Visible="false"></asp:Label>
+                                    <asp:Label ID="lbl_subLoc1Code" runat="server" Text="Sub-Location Code : " Font-Bold="true" Font-Size="Small" Visible="false"></asp:Label>
                                 </td>
                                 <td align="left">
-                                    <asp:TextBox Width="230px" ID="txt_subLocCode" runat="server" Visible="false" AutoPostBack="true" OnTextChanged="txt_subLocCode_TextChanged"></asp:TextBox>
+                                    <asp:TextBox Width="230px" ID="txt_subLoc1Code" runat="server" Visible="false" AutoPostBack="true" OnTextChanged="txt_subLoc1Code_TextChanged"></asp:TextBox>
                                 </td>
                                 <td>
-                                    <asp:Label ID="lbl_subLocCodeError" runat="server" Text="*Already Present" Font-Size="Small" Visible="false" ForeColor="Red"></asp:Label>
-<%--                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="txt_subLocCode" ErrorMessage="*Required" ForeColor="Red"></asp:RequiredFieldValidator>--%>
+                                    <asp:Label ID="lbl_subLoc1CodeError" runat="server" Text="*Already Present" Font-Size="Small" Visible="false" ForeColor="Red"></asp:Label>
+<%--                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="txt_subLoc1Code" ErrorMessage="*Required" ForeColor="Red"></asp:RequiredFieldValidator>--%>
                                 </td>
                             </tr>
                             <tr>
                                 <td align="right">
-                                    <asp:Label ID="lbl_subLocName" runat="server" Text="Sub-Location Name : " Font-Bold="true" Font-Size="Small" Visible="false"></asp:Label>
+                                    <asp:Label ID="lbl_subLoc1Name" runat="server" Text="Sub-Location Name : " Font-Bold="true" Font-Size="Small" Visible="false"></asp:Label>
                                 </td>
                                 <td align="left">
-                                    <asp:TextBox Width="230px" ID="txt_subLocName" runat="server" Visible="false" AutoPostBack="true" OnTextChanged="txt_subLocName_TextChanged"></asp:TextBox>
+                                    <asp:TextBox Width="230px" ID="txt_subLoc1Name" runat="server" Visible="false" AutoPostBack="true" OnTextChanged="txt_subLoc1Name_TextChanged"></asp:TextBox>
                                 </td>
                                 <td>
-                                    <asp:Label ID="lbl_subLocNameError" runat="server" Text="*Already Present" Font-Size="Small" Visible="false" ForeColor="Red"></asp:Label>
-<%--                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="txt_subLocName" ErrorMessage="*Required" ForeColor="Red"></asp:RequiredFieldValidator>--%>
+                                    <asp:Label ID="lbl_subLoc1NameError" runat="server" Text="*Already Present" Font-Size="Small" Visible="false" ForeColor="Red"></asp:Label>
+<%--                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="txt_subLoc1Name" ErrorMessage="*Required" ForeColor="Red"></asp:RequiredFieldValidator>--%>
                                 </td>
                             </tr>
                             <tr>
@@ -91,8 +91,8 @@
                                         ForeColor="#333333" GridLines="None" HorizontalAlign="Center" Width="230px">
                                         <AlternatingRowStyle BackColor="White" ForeColor="#284775" HorizontalAlign="Center" />
                                         <Columns>
-                                            <asp:BoundField DataField="subLocCode" HeaderText="Code" SortExpression="subLocCode" />
-                                            <asp:BoundField DataField="subLocName" HeaderText="Name" SortExpression="subLocName" />
+                                            <asp:BoundField DataField="subLoc1Code" HeaderText="Code" SortExpression="subLoc1Code" />
+                                            <asp:BoundField DataField="subLoc1Name" HeaderText="Name" SortExpression="subLoc1Name" />
                                         </Columns>
 
                                         <EditRowStyle HorizontalAlign="Center" BackColor="#999999"></EditRowStyle>
@@ -119,8 +119,8 @@
                                                     <asp:CheckBox ID="chk_select" runat="server"></asp:CheckBox>
                                                 </ItemTemplate>
                                             </asp:TemplateField>
-                                            <asp:BoundField DataField="subLocCode" HeaderText="Code" SortExpression="subLocCode" />
-                                            <asp:BoundField DataField="subLocName" HeaderText="Name" SortExpression="subLocName" />
+                                            <asp:BoundField DataField="subLoc1Code" HeaderText="Code" SortExpression="subLoc1Code" />
+                                            <asp:BoundField DataField="subLoc1Name" HeaderText="Name" SortExpression="subLoc1Name" />
                                         </Columns>
 
                                         <EditRowStyle HorizontalAlign="Center" BackColor="#999999"></EditRowStyle>

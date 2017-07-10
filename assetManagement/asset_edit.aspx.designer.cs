@@ -157,31 +157,31 @@ namespace assetManagement {
         protected global::System.Web.UI.WebControls.Label lbl_subLoc1;
         
         /// <summary>
-        /// drp_subLoc control.
+        /// drp_subLoc1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList drp_subLoc;
+        protected global::System.Web.UI.WebControls.DropDownList drp_subLoc1;
         
         /// <summary>
-        /// lbl_subLoc2 control.
+        /// lbl_subLoc12 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbl_subLoc2;
+        protected global::System.Web.UI.WebControls.Label lbl_subLoc12;
         
         /// <summary>
-        /// txt_subLoc2 control.
+        /// txt_subLoc12 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txt_subLoc2;
+        protected global::System.Web.UI.WebControls.TextBox txt_subLoc12;
         
         /// <summary>
         /// lbl_isuueDate control.

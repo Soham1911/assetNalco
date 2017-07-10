@@ -65,19 +65,19 @@ namespace assetManagement
                 drp_loc.DataTextField = "Title";
                 drp_loc.DataBind();
 
-                //adding values to drp_Subloction
+                //adding values to drp_subLoc1tion
                 OdbcCommand cmdb = conn_asset.CreateCommand();
-                cmdb.CommandText = "select * from ast_subLocMaster where location = '" + drp_loc.SelectedValue + "'";
+                cmdb.CommandText = "select * from ast_subLoc1Master where location = '" + drp_loc.SelectedValue + "'";
                 OdbcDataAdapter da11 = new OdbcDataAdapter(cmdb);
                 DataTable dt11 = new DataTable();
 
                 da11.Fill(dt11);
-                dt11.Columns.Add(new DataColumn("Title", System.Type.GetType("System.String"), "subLocCode + ' : ' + subLocName"));
+                dt11.Columns.Add(new DataColumn("Title", System.Type.GetType("System.String"), "subLoc1Code + ' : ' + subLoc1Name"));
 
-                drp_subLoc.DataSource = dt11;
-                drp_subLoc.DataValueField = "subLocCode";
-                drp_subLoc.DataTextField = "Title";
-                drp_subLoc.DataBind();
+                drp_subLoc1.DataSource = dt11;
+                drp_subLoc1.DataValueField = "subLoc1Code";
+                drp_subLoc1.DataTextField = "Title";
+                drp_subLoc1.DataBind();
             }
             
         }
@@ -85,8 +85,8 @@ namespace assetManagement
         protected void btn_reg_Click(object sender, EventArgs e)
         {
             OdbcCommand cmdf = conn_asset.CreateCommand();
-            //subLoc......
-            cmdf.CommandText = "insert into ast_alliedUserLogin values('" + drp_sec.SelectedValue + "','" + txt_uname.Text.Trim() + "','password','" + txt_name.Text.Trim().ToUpper() + "','" + drp_loc.SelectedValue + "','"+drp_subLoc.SelectedValue+"','" + txt_contact.Text.Trim().ToUpper() + "','" + txt_desc.Text.Trim().ToUpper() + "')";
+            //subLoc1......
+            cmdf.CommandText = "insert into ast_alliedUserLogin values('" + drp_sec.SelectedValue + "','" + txt_uname.Text.Trim() + "','password','" + txt_name.Text.Trim().ToUpper() + "','" + drp_loc.SelectedValue + "','"+drp_subLoc1.SelectedValue+"','" + txt_contact.Text.Trim().ToUpper() + "','" + txt_desc.Text.Trim().ToUpper() + "')";
             conn_asset.Open();
             int dr = cmdf.ExecuteNonQuery();
             conn_asset.Close();
@@ -132,19 +132,19 @@ namespace assetManagement
 
         protected void drp_loc_SelectedIndexChanged(object sender, EventArgs e)
         {
-            //adding values to drp_Subloction
+            //adding values to drp_subLoc1tion
             OdbcCommand cmd = conn_asset.CreateCommand();
-            cmd.CommandText = "select * from ast_subLocMaster where location = '"+drp_loc.SelectedValue+"'";
+            cmd.CommandText = "select * from ast_subLoc1Master where location = '"+drp_loc.SelectedValue+"'";
             OdbcDataAdapter da1 = new OdbcDataAdapter(cmd);
             DataTable dt1 = new DataTable();
 
             da1.Fill(dt1);
-            dt1.Columns.Add(new DataColumn("Title", System.Type.GetType("System.String"), "subLocCode + ' : ' + subLocName"));
+            dt1.Columns.Add(new DataColumn("Title", System.Type.GetType("System.String"), "subLoc1Code + ' : ' + subLoc1Name"));
 
-            drp_subLoc.DataSource = dt1;
-            drp_subLoc.DataValueField = "subLocCode";
-            drp_subLoc.DataTextField = "Title";
-            drp_subLoc.DataBind();
+            drp_subLoc1.DataSource = dt1;
+            drp_subLoc1.DataValueField = "subLoc1Code";
+            drp_subLoc1.DataTextField = "Title";
+            drp_subLoc1.DataBind();
         }
     }
 }

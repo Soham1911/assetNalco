@@ -10,7 +10,7 @@
 namespace assetManagement {
     
     
-    public partial class Sublocation {
+    public partial class subLoc1ation {
         
         /// <summary>
         /// ScriptManager1 control.
@@ -76,58 +76,58 @@ namespace assetManagement {
         protected global::System.Web.UI.WebControls.Label lbl_removeTitle;
         
         /// <summary>
-        /// lbl_subLocCode control.
+        /// lbl_subLoc1Code control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbl_subLocCode;
+        protected global::System.Web.UI.WebControls.Label lbl_subLoc1Code;
         
         /// <summary>
-        /// txt_subLocCode control.
+        /// txt_subLoc1Code control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txt_subLocCode;
+        protected global::System.Web.UI.WebControls.TextBox txt_subLoc1Code;
         
         /// <summary>
-        /// lbl_subLocCodeError control.
+        /// lbl_subLoc1CodeError control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbl_subLocCodeError;
+        protected global::System.Web.UI.WebControls.Label lbl_subLoc1CodeError;
         
         /// <summary>
-        /// lbl_subLocName control.
+        /// lbl_subLoc1Name control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbl_subLocName;
+        protected global::System.Web.UI.WebControls.Label lbl_subLoc1Name;
         
         /// <summary>
-        /// txt_subLocName control.
+        /// txt_subLoc1Name control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txt_subLocName;
+        protected global::System.Web.UI.WebControls.TextBox txt_subLoc1Name;
         
         /// <summary>
-        /// lbl_subLocNameError control.
+        /// lbl_subLoc1NameError control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbl_subLocNameError;
+        protected global::System.Web.UI.WebControls.Label lbl_subLoc1NameError;
         
         /// <summary>
         /// btn_submit control.

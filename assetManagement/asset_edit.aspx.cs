@@ -129,18 +129,18 @@ namespace assetManagement
         
         public void add_drp_loc()
         {
-            //adding values to drp_subLoc
+            //adding values to drp_subLoc1
 
             OdbcCommand cmde = conn_asset.CreateCommand();
-            cmde.CommandText = "select * from ast_subLocMaster where location = '" + txt_loc.Text.Trim().ToUpper() + "'";
+            cmde.CommandText = "select * from ast_subLoc1Master where location = '" + txt_loc.Text.Trim().ToUpper() + "'";
             OdbcDataAdapter da = new OdbcDataAdapter(cmde);
             DataTable dt = new DataTable();
 
             da.Fill(dt);
-            drp_subLoc.DataSource = dt;
-            drp_subLoc.DataValueField = "subLocCode";
-            drp_subLoc.DataTextField = "subLocName";
-            drp_subLoc.DataBind();
+            drp_subLoc1.DataSource = dt;
+            drp_subLoc1.DataValueField = "subLoc1Code";
+            drp_subLoc1.DataTextField = "subLoc1Name";
+            drp_subLoc1.DataBind();
         }
 
         protected void btn_reg_Click(object sender, EventArgs e)
@@ -171,7 +171,7 @@ namespace assetManagement
                 lbl_error.ForeColor = System.Drawing.Color.Red;
             }
 
-            cmd.CommandText = "update ast_master set description = '" + txt_desc.Text.Trim().ToUpper() + "' , make = '" + txt_make.Text.Trim().ToUpper() + "',model = '" + txt_model.Text.Trim().ToUpper() + "',part_no = '" + txt_part_no.Text.Trim().ToUpper() + "',ip = '" + txt_ip.Text.Trim() + "',location = '"+txt_loc.Text.Trim().ToUpper()+"',subLoc1 = '" + drp_subLoc.SelectedValue + "',subLoc2 = '" + txt_subLoc2.Text.Trim() + "',monitor_size = '" + txt_monSize.Text.Trim() + "',monitor_res = '" + drp_monRes.SelectedValue + "',sizeOfPaper = '" + txt_sizeOfPaper.Text.Trim().ToUpper() + "',speed = '" + txt_speed.Text.Trim().ToUpper() + "',os = '" + txt_os.Text.Trim().ToUpper() + "',service_pack = '" + txt_sp.Text.Trim().ToUpper() + "',processor = '" + processor + "',cla = '" + txt_cla.Text.Trim().ToUpper() + "',ram = '" + ram + "',hdd = '" + hdd + "',graphics = '" + graphics + "',keyboardMake = '" + txt_keyboardMake.Text.Trim().ToUpper() + "',keyboard_s_no = '" + txt_keyboard_s_no.Text.Trim().ToUpper() + "',mouseMake = '" + txt_mouseMake.Text.Trim().ToUpper() + "',mouse_s_no = '" + txt_mouse_s_no.Text.Trim().ToUpper() + "',ibmNotes = '" + txt_ibmNotes.Text.Trim().ToUpper() + "',msOffice = '" + drp_msOffice.SelectedValue + "',antiVirus = '" + rdbtn_antiVirus.SelectedValue + "',webcam = '" + rdbtn_webcam.SelectedValue + "',lanStat = '" + rdbtn_lanStat.SelectedValue + "',domain = '" + txt_domain.Text.Trim().ToUpper() + "',domainUser = '" + txt_domainUser.Text.Trim().ToUpper() + "',hostName = '" + txt_hostName.Text.Trim().ToUpper() + "',remarks = '" + txt_remarks.Text.Trim().ToUpper() + "'   where astCode = '" + txt_astCode.Text.Trim().ToUpper() + "'";
+            cmd.CommandText = "update ast_master set description = '" + txt_desc.Text.Trim().ToUpper() + "' , make = '" + txt_make.Text.Trim().ToUpper() + "',model = '" + txt_model.Text.Trim().ToUpper() + "',part_no = '" + txt_part_no.Text.Trim().ToUpper() + "',ip = '" + txt_ip.Text.Trim() + "',location = '"+txt_loc.Text.Trim().ToUpper()+"',subLoc1 = '" + drp_subLoc1.SelectedValue + "',subLoc12 = '" + txt_subLoc12.Text.Trim() + "',monitor_size = '" + txt_monSize.Text.Trim() + "',monitor_res = '" + drp_monRes.SelectedValue + "',sizeOfPaper = '" + txt_sizeOfPaper.Text.Trim().ToUpper() + "',speed = '" + txt_speed.Text.Trim().ToUpper() + "',os = '" + txt_os.Text.Trim().ToUpper() + "',service_pack = '" + txt_sp.Text.Trim().ToUpper() + "',processor = '" + processor + "',cla = '" + txt_cla.Text.Trim().ToUpper() + "',ram = '" + ram + "',hdd = '" + hdd + "',graphics = '" + graphics + "',keyboardMake = '" + txt_keyboardMake.Text.Trim().ToUpper() + "',keyboard_s_no = '" + txt_keyboard_s_no.Text.Trim().ToUpper() + "',mouseMake = '" + txt_mouseMake.Text.Trim().ToUpper() + "',mouse_s_no = '" + txt_mouse_s_no.Text.Trim().ToUpper() + "',ibmNotes = '" + txt_ibmNotes.Text.Trim().ToUpper() + "',msOffice = '" + drp_msOffice.SelectedValue + "',antiVirus = '" + rdbtn_antiVirus.SelectedValue + "',webcam = '" + rdbtn_webcam.SelectedValue + "',lanStat = '" + rdbtn_lanStat.SelectedValue + "',domain = '" + txt_domain.Text.Trim().ToUpper() + "',domainUser = '" + txt_domainUser.Text.Trim().ToUpper() + "',hostName = '" + txt_hostName.Text.Trim().ToUpper() + "',remarks = '" + txt_remarks.Text.Trim().ToUpper() + "'   where astCode = '" + txt_astCode.Text.Trim().ToUpper() + "'";
             int check1;
             conn_asset.Open();
             check1 = cmd.ExecuteNonQuery();

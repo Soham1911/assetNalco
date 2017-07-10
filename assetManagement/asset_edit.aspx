@@ -103,17 +103,17 @@
                                     <asp:Label ID="lbl_subLoc1" runat="server" Text="Sub-Location 1 :" Font-Size="small"></asp:Label>
                                 </td>
                                 <td align="left" class="auto-style1">
-                                    <asp:DropDownList ID="drp_subLoc" runat="server" Width="230px">
+                                    <asp:DropDownList ID="drp_subLoc1" runat="server" Width="230px">
                                         
                                     </asp:DropDownList>
                                </td>
                             </tr>
                             <tr>
                                 <td align="right">
-                                    <asp:Label ID="lbl_subLoc2" runat="server" Text="Sub-Location 2 :" Font-Size="small"></asp:Label>
+                                    <asp:Label ID="lbl_subLoc12" runat="server" Text="Sub-Location 2 :" Font-Size="small"></asp:Label>
                                 </td>
                                 <td align="left" class="auto-style1">
-                                    <asp:TextBox ID="txt_subLoc2" runat="server" ToolTip=" Sub-Location 2 " Width="230px"></asp:TextBox>
+                                    <asp:TextBox ID="txt_subLoc12" runat="server" ToolTip=" Sub-Location 2 " Width="230px"></asp:TextBox>
                                 </td>
                             </tr>
                             <tr>

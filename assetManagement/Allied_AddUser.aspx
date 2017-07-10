@@ -70,7 +70,7 @@
                                     <font size="2em" style="font-weight: 700">Sub Location :</font>
                                 </td>
                                 <td align="left">
-                                    <asp:DropDownList ID="drp_subLoc" runat="server" ToolTip="Select Sub Location" Width="230px" DataValueField="subLocCode" DataTextField="subLocName">
+                                    <asp:DropDownList ID="drp_subLoc1" runat="server" ToolTip="Select Sub Location" Width="230px" DataValueField="subLoc1Code" DataTextField="subLoc1Name">
                                     </asp:DropDownList>
                                 </td>
                                 

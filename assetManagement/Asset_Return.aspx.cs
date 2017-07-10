@@ -50,7 +50,7 @@ namespace assetManagement
             }
             conn_asset.Close();
             OdbcCommand cmdd = conn_asset.CreateCommand();
-            cmdd.CommandText = "update ast_master set dept='" + "SYSTEMS" + "', location='" + "SYSTEMS" + "', subLoc1='" + "SYSTEMS STORE" + "', subLoc2='" + "SYSTEMS STORE" + "',custodian='" + "SYSTEMS" + "',presentUser = 'SYSTEMS' issueDate = '"+txt_retDate.Text+"'  where astCode='" + txt_astCode.Text.Trim().ToUpper() + "'";
+            cmdd.CommandText = "update ast_master set dept='" + "SYSTEMS" + "', location='" + "SYSTEMS" + "', subLoc1='" + "SYSTEMS STORE" + "', subLoc12='" + "SYSTEMS STORE" + "',custodian='" + "SYSTEMS" + "',presentUser = 'SYSTEMS' issueDate = '"+txt_retDate.Text+"'  where astCode='" + txt_astCode.Text.Trim().ToUpper() + "'";
             conn_asset.Open();
             int dr4 = cmdd.ExecuteNonQuery();
             conn_asset.Close();

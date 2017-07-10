@@ -10,132 +10,96 @@
 namespace assetManagement {
     
     
-    public partial class Allied_AddUser {
+    public partial class rep__bback {
         
         /// <summary>
-        /// ScriptManager1 control.
+        /// lbl_1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.ScriptManager ScriptManager1;
+        protected global::System.Web.UI.WebControls.Label lbl_1;
         
         /// <summary>
-        /// UpdatePanel1 control.
+        /// drp_by control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.UpdatePanel UpdatePanel1;
+        protected global::System.Web.UI.WebControls.DropDownList drp_by;
         
         /// <summary>
-        /// drp_sec control.
+        /// lbl_2 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList drp_sec;
+        protected global::System.Web.UI.WebControls.Label lbl_2;
         
         /// <summary>
-        /// txt_uname control.
+        /// txt_val control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txt_uname;
+        protected global::System.Web.UI.WebControls.TextBox txt_val;
         
         /// <summary>
-        /// lbl_uname control.
+        /// btn_sub control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbl_uname;
+        protected global::System.Web.UI.WebControls.Button btn_sub;
         
         /// <summary>
-        /// RequiredFieldValidator1 control.
+        /// lbl_no_recs control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator1;
+        protected global::System.Web.UI.WebControls.Label lbl_no_recs;
         
         /// <summary>
-        /// txt_name control.
+        /// grid_astcode control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txt_name;
+        protected global::System.Web.UI.WebControls.GridView grid_astcode;
         
         /// <summary>
-        /// RequiredFieldValidator2 control.
+        /// grid_pno control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator2;
+        protected global::System.Web.UI.WebControls.GridView grid_pno;
         
         /// <summary>
-        /// drp_loc control.
+        /// grid_all control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList drp_loc;
+        protected global::System.Web.UI.WebControls.GridView grid_all;
         
         /// <summary>
-        /// drp_subLoc1 control.
+        /// btn_excel control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList drp_subLoc1;
-        
-        /// <summary>
-        /// txt_contact control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txt_contact;
-        
-        /// <summary>
-        /// txt_desc control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txt_desc;
-        
-        /// <summary>
-        /// btn_reg control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btn_reg;
-        
-        /// <summary>
-        /// lbl_error control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbl_error;
+        protected global::System.Web.UI.WebControls.Button btn_excel;
     }
 }

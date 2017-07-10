@@ -25,8 +25,11 @@
                         <Items>
                             <asp:MenuItem NavigateUrl="~/amcholder.aspx" Text="Home">
                                 
+                                
                             </asp:MenuItem>                       
-                      
+                      <asp:MenuItem NavigateUrl="~/amc_pm.aspx" text="Preventive Maintenance">
+
+                      </asp:MenuItem>
                         </Items>
                     </asp:Menu>
                 </div>

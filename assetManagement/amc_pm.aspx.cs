@@ -26,11 +26,34 @@ namespace assetManagement
             {
 
 
-                DateTime sDate = Convert.ToDateTime("2017-01-01");
-                DateTime eDate = Convert.ToDateTime("2019-12-31");
 
-                DateTime dqsDate = sDate;
-                DateTime dqeDate = sDate.AddMonths(3).AddDays(-1);
+                OdbcCommand cmd = conn_asset.CreateCommand();
+                cmd.CommandText = "select count(*),amcParty from ast_master where amcStat = 'Y' group by amcParty order by count(*) desc";
+                conn_asset.Open();
+                OdbcDataReader dr = cmd.ExecuteReader();
+                string amcMax = "default";
+                while (dr.Read())
+                {
+                    amcMax = dr["amcParty"].ToString();
+                    break;
+                }
+                conn_asset.Close();
+                DateTime stDate = Convert.ToDateTime("1900-01-01");
+                DateTime enDate = Convert.ToDateTime("1900-01-01");
+                OdbcCommand cmda = conn_asset.CreateCommand();
+                cmda.CommandText = "select amcStart,amcEnd from ast_master where amcParty = '" + amcMax + "'";
+                conn_asset.Open();
+                OdbcDataReader dr1 = cmda.ExecuteReader();
+                while (dr1.Read())
+                {
+                    stDate = Convert.ToDateTime(dr1["amcStart"]);
+                    enDate = Convert.ToDateTime(dr1["amcEnd"]);
+                    break;
+                }
+                conn_asset.Close();
+
+                DateTime dqsDate = stDate;
+                DateTime dqeDate = stDate.AddMonths(3).AddDays(-1);
                 drp_quart.Items.Insert(0, new ListItem("----Select Quarter----"));
                 drp_quart.Items[0].Selected = true;
                 drp_quart.Items[0].Attributes["disabled"] = "disabled";
@@ -164,13 +187,13 @@ namespace assetManagement
             OdbcCommand cmd = conn_asset.CreateCommand();
             if (mon == "1" || mon == "2" || mon == "3")
             {
-                
-                cmd.CommandText = "select p.astCode,p.scheduledDate,a.custodian,a.description,a.location,a.subLoc from ast_pm p inner join ast_master a on a.astCode=p.astCode where month='" + mon + "' and scheduledDate>='" + dsDate + "' and scheduledDate<='" + deDate + "' ";
+
+                cmd.CommandText = "select p.astCode,p.scheduledDate,a.custodian,a.description,a.location,a.subLoc1 from ast_pm p inner join ast_master a on a.astCode=p.astCode where month='" + mon + "' and scheduledDate>='" + dsDate.ToString("yyyy/MM/dd") + "' and scheduledDate<='" + deDate + "' ";
                 
             }
             else
             {
-                cmd.CommandText = "select p.astCode,p.scheduledDate,a.custodian,a.description,a.location,a.subLoc from ast_pm p inner join ast_master a on a.astCode=p.astCode where scheduledDate>='" + dsDate + "' and scheduledDate<='" + deDate + "' ";
+                cmd.CommandText = "select p.astCode,p.scheduledDate,a.custodian,a.description,a.location,a.subLoc1 from ast_pm p inner join ast_master a on a.astCode=p.astCode where scheduledDate>='" + dsDate.ToString("yyyy/MM/dd") + "' and scheduledDate<='" + deDate + "' ";
             }
             conn_asset.Open();
             cmd.CommandType = CommandType.Text;
@@ -180,12 +203,12 @@ namespace assetManagement
             DataRow newRow;
             OdbcDataReader dr = cmd.ExecuteReader();
 
-            dt.Columns.Add(new System.Data.DataColumn("astCode", typeof(Int32)));
+            dt.Columns.Add(new System.Data.DataColumn("astCode", typeof(String)));
             dt.Columns.Add(new System.Data.DataColumn("description", typeof(String)));
             dt.Columns.Add(new System.Data.DataColumn("scheduledDate", typeof(DateTime)));
             dt.Columns.Add(new System.Data.DataColumn("custodian", typeof(String)));
             dt.Columns.Add(new System.Data.DataColumn("location", typeof(String)));
-            dt.Columns.Add(new System.Data.DataColumn("subLoc", typeof(String)));
+            dt.Columns.Add(new System.Data.DataColumn("subLoc1", typeof(String)));
             
             while (dr.Read())
             {
@@ -195,7 +218,7 @@ namespace assetManagement
                 newRow["scheduledDate"] = Convert.ToDateTime(dr["scheduledDate"]);
                 newRow["custodian"] = Convert.ToString(dr["custodian"]);
                 newRow["location"] = Convert.ToString(dr["location"]);
-                newRow["subLoc"] = Convert.ToString(dr["subLoc"]);
+                newRow["subLoc1"] = Convert.ToString(dr["subLoc1"]);
 
                 dt.Rows.Add(newRow);
             }
@@ -215,39 +238,7 @@ namespace assetManagement
             conn_asset.Close();
 
              
-            foreach (GridViewRow item in grid_display.Rows)
-            {
-                string astCode = item.Cells[2].Text.ToString();
-                string sDate = item.Cells[4].Text.ToString();
-                DateTime dDate = Convert.ToDateTime(sDate);
-
-                
-                OdbcCommand cmda = conn_asset.CreateCommand();
-                cmda.CommandText = "select lockStat from ast_pm where astCode='" + astCode + "' and scheduledDate='"+ dDate+"'";
-                conn_asset.Open();
-                cmda.CommandType = CommandType.Text;
-                OdbcDataReader dra = cmda.ExecuteReader();
-                string lstat = "";
-                while(dra.Read())
-                {
-                    
-                     lstat = dra["lockStat"].ToString();
-                }
-                conn_asset.Close();
-                if(lstat.Equals("L"))
-                {
-                    Button btn_s = (Button)item.FindControl("btn_sel");
-                    btn_s.Enabled = false;
-                    btn_s.Text = "Locked";
-                    item.Enabled = false;
-                }
-                else
-                {
-                    Button btn_s = (Button)item.FindControl("btn_sel");
-                    btn_s.Enabled = true;
-
-                }
-            }
+            
         }
 
         
@@ -255,14 +246,17 @@ namespace assetManagement
         protected void btn_sel_Click(object sender, EventArgs e)
         {
             
+   
+            
             Button btn = (Button)sender;
 
             
             GridViewRow gr = (GridViewRow)btn.NamingContainer;
             
+
             Session["astCode"] = gr.Cells[2].Text.Trim();
             string acode = Session["astCode"].ToString();
-            Session["scheduledDate"] = gr.Cells[4].Text.Trim();
+            Session["scheduledDate"] = Convert.ToDateTime(gr.Cells[4].Text).ToString("yyyy/MM/dd");
             
             OdbcCommand cmdee = conn_asset.CreateCommand();
             cmdee.CommandText = "select category from ast_master where astCode='"+acode+"' ";

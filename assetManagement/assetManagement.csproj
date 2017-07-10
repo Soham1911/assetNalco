@@ -177,7 +177,7 @@
     <Content Include="Print\printer.aspx" />
     <Content Include="Print\scanner.aspx" />
     <Content Include="Print\server.aspx" />
-    <Content Include="rep_.bback.aspx" />
+    <Content Include="rep_bback.aspx" />
     <Content Include="rep_assets.aspx" />
     <Content Include="Scripts\jquery-1.8.2.js" />
     <Content Include="Scripts\jquery-1.8.2.min.js" />
@@ -527,12 +527,12 @@
       <DependentUpon>server.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="rep_.bback.aspx.cs">
-      <DependentUpon>rep_.bback.aspx</DependentUpon>
+    <Compile Include="rep_bback.aspx.cs">
+      <DependentUpon>rep_bback.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="rep_.bback.aspx.designer.cs">
-      <DependentUpon>rep_.bback.aspx</DependentUpon>
+    <Compile Include="rep_bback.aspx.designer.cs">
+      <DependentUpon>rep_bback.aspx</DependentUpon>
     </Compile>
     <Compile Include="rep_assets.aspx.cs">
       <DependentUpon>rep_assets.aspx</DependentUpon>

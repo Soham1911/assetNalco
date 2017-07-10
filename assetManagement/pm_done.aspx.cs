@@ -178,7 +178,7 @@ namespace assetManagement
             string mon = drp_mon.SelectedValue;
 
             OdbcCommand cmd = conn_asset.CreateCommand();
-            cmd.CommandText = "select p.astCode,p.scheduledDate,a.custodian,a.description,a.location,a.subLoc from ast_pm p inner join ast_master a on a.astCode=p.astCode where month='" + mon + "' and scheduledDate>='" + dsDate.ToString("yyyy/MM/dd") + "' and scheduledDate<='" + deDate.ToString("yyyy/MM/dd") + "' and lockStat='D'";
+            cmd.CommandText = "select p.astCode,p.scheduledDate,a.custodian,a.description,a.location,a.subLoc1 from ast_pm p inner join ast_master a on a.astCode=p.astCode where month='" + mon + "' and scheduledDate>='" + dsDate.ToString("yyyy/MM/dd") + "' and scheduledDate<='" + deDate.ToString("yyyy/MM/dd") + "' and lockStat='D'";
             conn_asset.Open();
             cmd.CommandType = CommandType.Text;
             DataTable dt = new DataTable();
@@ -192,7 +192,7 @@ namespace assetManagement
             dt.Columns.Add(new System.Data.DataColumn("scheduledDate", typeof(DateTime)));
             dt.Columns.Add(new System.Data.DataColumn("custodian", typeof(String)));
             dt.Columns.Add(new System.Data.DataColumn("location", typeof(String)));
-            dt.Columns.Add(new System.Data.DataColumn("subLoc", typeof(String)));
+            dt.Columns.Add(new System.Data.DataColumn("subLoc1", typeof(String)));
 
             while (dr.Read())
             {
@@ -202,7 +202,7 @@ namespace assetManagement
                 newRow["scheduledDate"] = Convert.ToDateTime(dr["scheduledDate"]);
                 newRow["custodian"] = Convert.ToString(dr["custodian"]);
                 newRow["location"] = Convert.ToString(dr["location"]);
-                newRow["subLoc"] = Convert.ToString(dr["subLoc"]);
+                newRow["subLoc1"] = Convert.ToString(dr["subLoc1"]);
 
                 dt.Rows.Add(newRow);
             }

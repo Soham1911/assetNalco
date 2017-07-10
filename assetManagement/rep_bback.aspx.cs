@@ -12,40 +12,25 @@ using System.IO;
 
 namespace assetManagement
 {
-    public partial class rep_assets : System.Web.UI.Page
+    public partial class rep__bback : System.Web.UI.Page
     {
         static string connStr_asset = ConfigurationManager.ConnectionStrings["asset"].ConnectionString;
         OdbcConnection conn_asset = new OdbcConnection(connStr_asset);
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!Page.IsPostBack)
-            {
-                //adding values to drp_type
 
-                OdbcCommand cmdb = conn_asset.CreateCommand();
-                cmdb.CommandText = "select * from ast_typeMaster";
-                OdbcDataAdapter da = new OdbcDataAdapter(cmdb);
-                DataTable dt = new DataTable();
-
-                da.Fill(dt);
-                dt.Columns.Add(new DataColumn("category1", System.Type.GetType("System.String"), "category + ' : ' + desc"));
-                drp_type.DataSource = dt;
-                drp_type.DataValueField = "category";
-                drp_type.DataTextField = "category1";
-                drp_type.DataBind();
-            }
         }
 
         private void BindData()
         {
             string by = drp_by.SelectedItem.Text;
             string val = txt_val.Text.Trim();
-            string drp_val = drp_type.SelectedValue;
+
             if (by == "Asset Code")
             {
 
                 OdbcCommand cmd = conn_asset.CreateCommand();
-                cmd.CommandText = "select custodian_p_no,fromDate,toDate from ast_cust_history where astCode='" + val + "' order by fromDate desc";
+                cmd.CommandText = "select p_no,openingDate,closingDate,userDescription,systemDescription,partRepaired from ast_call where astCode='" + val + "' order by openingDate desc";
                 conn_asset.Open();
                 cmd.CommandType = CommandType.Text;
                 DataTable dt = new DataTable();
@@ -53,9 +38,14 @@ namespace assetManagement
                 DataRow newRow;
                 OdbcDataReader dr = cmd.ExecuteReader();
 
-                dt.Columns.Add(new System.Data.DataColumn("custodian_p_no", typeof(String)));
-                dt.Columns.Add(new System.Data.DataColumn("fromDate", typeof(DateTime)));
-                dt.Columns.Add(new System.Data.DataColumn("toDate", typeof(String)));
+                
+                dt.Columns.Add(new System.Data.DataColumn("p_no", typeof(String)));
+                dt.Columns.Add(new System.Data.DataColumn("openingDate", typeof(DateTime)));
+                dt.Columns.Add(new System.Data.DataColumn("closingDate", typeof(DateTime)));
+                dt.Columns.Add(new System.Data.DataColumn("userDescription", typeof(String)));
+                dt.Columns.Add(new System.Data.DataColumn("systemDescription", typeof(String)));
+                dt.Columns.Add(new System.Data.DataColumn("partRepaired", typeof(String)));
+                
 
 
 
@@ -64,17 +54,20 @@ namespace assetManagement
                 {
 
                     newRow = dt.NewRow();
-                    newRow["custodian_p_no"] = Convert.ToString(dr["custodian_p_no"]);
-                    newRow["fromDate"] = Convert.ToDateTime(dr["fromDate"]);
-                    DateTime dat  = Convert.ToDateTime(dr["toDate"]);
-                    newRow["toDate"] = dat.ToString("yyyy/MM/dd");
+                    
+                    newRow["p_no"] = Convert.ToString(dr["p_no"]);
+                    newRow["openingDate"] = Convert.ToDateTime(dr["openingDate"]);
+                    newRow["closingDate"] = Convert.ToDateTime(dr["closingDate"]);
+                    newRow["userDescription"] = Convert.ToString(dr["userDescription"]);
+                    newRow["systemDescription"] = Convert.ToString(dr["systemDescription"]);
+                    newRow["partRepaired"] = Convert.ToString(dr["partRepaired"]);
                     dt.Rows.Add(newRow);
                 }
                 if (dt.Rows.Count > 0)
                 {
                     grid_astcode.Visible = true;
                     grid_pno.Visible = false;
-                    grid_type.Visible = false;
+                    grid_all.Visible = false;
                     grid_astcode.DataSource = dt;
                     grid_astcode.DataBind();
                     lbl_no_recs.Visible = false;
@@ -84,7 +77,7 @@ namespace assetManagement
                 {
                     grid_astcode.Visible = false;
                     grid_pno.Visible = false;
-                    grid_type.Visible = false;
+                    grid_all.Visible = false;
                     lbl_no_recs.Visible = true;
                 }
                 conn_asset.Close();
@@ -94,7 +87,7 @@ namespace assetManagement
             {
 
                 OdbcCommand cmd = conn_asset.CreateCommand();
-                cmd.CommandText = "select astCode,description,issueDate from ast_master where custodian='"+val+"' order by issueDate desc ";
+                cmd.CommandText = "select astCode,openingDate,closingDate,userDescription,systemDescription,partRepaired from ast_call where p_no='" + val + "' order by openingDate desc ";
                 conn_asset.Open();
                 cmd.CommandType = CommandType.Text;
                 DataTable dt = new DataTable();
@@ -102,9 +95,13 @@ namespace assetManagement
                 DataRow newRow;
                 OdbcDataReader dr = cmd.ExecuteReader();
 
+                
                 dt.Columns.Add(new System.Data.DataColumn("astCode", typeof(String)));
-                dt.Columns.Add(new System.Data.DataColumn("description", typeof(String)));
-                dt.Columns.Add(new System.Data.DataColumn("issueDate", typeof(DateTime)));
+                dt.Columns.Add(new System.Data.DataColumn("openingDate", typeof(DateTime)));
+                dt.Columns.Add(new System.Data.DataColumn("closingDate", typeof(DateTime)));
+                dt.Columns.Add(new System.Data.DataColumn("userDescription", typeof(String)));
+                dt.Columns.Add(new System.Data.DataColumn("systemDescription", typeof(String)));
+                dt.Columns.Add(new System.Data.DataColumn("partRepaired", typeof(String)));
 
 
 
@@ -114,15 +111,18 @@ namespace assetManagement
 
                     newRow = dt.NewRow();
                     newRow["astCode"] = Convert.ToString(dr["astCode"]);
-                    newRow["description"] = Convert.ToString(dr["description"]);
-                    newRow["issueDate"] = Convert.ToDateTime(dr["issueDate"]);
+                    newRow["openingDate"] = Convert.ToDateTime(dr["openingDate"]);
+                    newRow["closingDate"] = Convert.ToDateTime(dr["closingDate"]);
+                    newRow["userDescription"] = Convert.ToString(dr["userDescription"]);
+                    newRow["systemDescription"] = Convert.ToString(dr["systemDescription"]);
+                    newRow["partRepaired"] = Convert.ToString(dr["partRepaired"]);
                     dt.Rows.Add(newRow);
                 }
                 if (dt.Rows.Count > 0)
                 {
                     grid_pno.Visible = true;
                     grid_astcode.Visible = false;
-                    grid_type.Visible = false;
+                    grid_all.Visible = false;
                     grid_pno.DataSource = dt;
                     grid_pno.DataBind();
                     lbl_no_recs.Visible = false;
@@ -132,69 +132,18 @@ namespace assetManagement
                 {
                     grid_pno.Visible = false;
                     grid_astcode.Visible = false;
-                    grid_type.Visible = false;
+                    grid_all.Visible = false;
                     lbl_no_recs.Visible = true;
                 }
                 conn_asset.Close();
             }
             //****************************************
 
-            if (by == "Type")
-            {
-
-                OdbcCommand cmd = conn_asset.CreateCommand();
-                cmd.CommandText = "select astCode,description,custodian,issueDate from ast_master where category='"+drp_val+"' order by issueDate desc";
-                conn_asset.Open();
-                cmd.CommandType = CommandType.Text;
-                DataTable dt = new DataTable();
-
-                DataRow newRow;
-                OdbcDataReader dr = cmd.ExecuteReader();
-
-                dt.Columns.Add(new System.Data.DataColumn("astCode", typeof(String)));
-                dt.Columns.Add(new System.Data.DataColumn("description", typeof(String)));
-                dt.Columns.Add(new System.Data.DataColumn("custodian", typeof(String)));
-                dt.Columns.Add(new System.Data.DataColumn("issueDate", typeof(DateTime)));
-
-
-
-
-                while (dr.Read())
-                {
-
-                    newRow = dt.NewRow();
-                    newRow["astCode"] = Convert.ToString(dr["astCode"]);
-                    newRow["description"] = Convert.ToString(dr["description"]);
-                    newRow["custodian"] = Convert.ToString(dr["custodian"]);
-                    newRow["issueDate"] = Convert.ToDateTime(dr["issueDate"]);
-                    dt.Rows.Add(newRow);
-                }
-                if (dt.Rows.Count > 0)
-                {
-                    grid_type.Visible = true;
-                    grid_astcode.Visible = false;
-                    grid_pno.Visible = false;
-                    grid_type.DataSource = dt;
-                    grid_type.DataBind();
-                    lbl_no_recs.Visible = false;
-
-                }
-                else
-                {
-                    grid_pno.Visible = false;
-                    grid_astcode.Visible = false;
-                    grid_type.Visible = false;
-                    lbl_no_recs.Visible = true;
-                }
-                conn_asset.Close();
-            }
+           
 
             //*******************************
 
             
-
-            
-
         }
 
 
@@ -212,7 +161,7 @@ namespace assetManagement
         {
             //required to avoid the runtime error "  
             //Control 'GridView1' of type 'GridView' must be placed inside a form tag with runat=server."  
-        } 
+        }
         private void ExportGridToExcel()
         {
             Response.Clear();
@@ -220,7 +169,7 @@ namespace assetManagement
             Response.ClearContent();
             Response.ClearHeaders();
             Response.Charset = "";
-            
+
             string date = DateTime.Now.ToString("yyyy/MM/dd");
             string FileName = "Ast_Rec_" + date + ".xls";
             StringWriter strwritter = new StringWriter();
@@ -228,29 +177,23 @@ namespace assetManagement
             Response.Cache.SetCacheability(HttpCacheability.NoCache);
             Response.ContentType = "application/vnd.ms-excel";
             Response.AddHeader("Content-Disposition", "attachment;filename=" + FileName);
-            if (grid_pno.Visible == true)
+            if(grid_pno.Visible == true)
             {
                 grid_pno.GridLines = GridLines.Both;
                 grid_pno.HeaderStyle.Font.Bold = true;
                 grid_pno.RenderControl(htmltextwrtter);
             }
-            else if (grid_astcode.Visible == true)
+            else if(grid_astcode.Visible == true)
             {
                 grid_astcode.GridLines = GridLines.Both;
                 grid_astcode.HeaderStyle.Font.Bold = true;
                 grid_astcode.RenderControl(htmltextwrtter);
             }
-            else if (grid_all.Visible == true)
+            else if(grid_all.Visible == true)
             {
                 grid_all.GridLines = GridLines.Both;
                 grid_all.HeaderStyle.Font.Bold = true;
                 grid_all.RenderControl(htmltextwrtter);
-            }
-            else if (grid_type.Visible == true)
-            {
-                grid_type.GridLines = GridLines.Both;
-                grid_type.HeaderStyle.Font.Bold = true;
-                grid_type.RenderControl(htmltextwrtter);
             }
             
             Response.Write(strwritter.ToString());
@@ -260,24 +203,16 @@ namespace assetManagement
 
         protected void drp_by_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if(drp_by.SelectedValue=="type")
+            string by = drp_by.SelectedItem.Text;
+            if(by=="All Complaints")
             {
-                drp_type.Visible = true;
-                txt_val.Visible = false;
-
-            }
-
-            else if (drp_by.SelectedValue=="all")
-            {
-                drp_type.Visible = false;
                 lbl_2.Visible = false;
                 txt_val.Visible = false;
-                string by = drp_by.SelectedItem.Text;
-                if (by == "All Assets")
-                {
+
+                
 
                     OdbcCommand cmd = conn_asset.CreateCommand();
-                    cmd.CommandText = "select astCode,description,custodian,issueDate from ast_master order by issueDate desc";
+                    cmd.CommandText = "select p_no,astCode,openingDate,closingDate,userDescription,systemDescription,partRepaired from ast_call order by openingDate desc";
                     conn_asset.Open();
                     cmd.CommandType = CommandType.Text;
                     DataTable dt = new DataTable();
@@ -286,9 +221,12 @@ namespace assetManagement
                     OdbcDataReader dr = cmd.ExecuteReader();
 
                     dt.Columns.Add(new System.Data.DataColumn("astCode", typeof(String)));
-                    dt.Columns.Add(new System.Data.DataColumn("description", typeof(String)));
-                    dt.Columns.Add(new System.Data.DataColumn("custodian", typeof(String)));
-                    dt.Columns.Add(new System.Data.DataColumn("issueDate", typeof(DateTime)));
+                    dt.Columns.Add(new System.Data.DataColumn("p_no", typeof(String)));
+                    dt.Columns.Add(new System.Data.DataColumn("openingDate", typeof(DateTime)));
+                    dt.Columns.Add(new System.Data.DataColumn("closingDate", typeof(DateTime)));
+                    dt.Columns.Add(new System.Data.DataColumn("userDescription", typeof(String)));
+                    dt.Columns.Add(new System.Data.DataColumn("systemDescription", typeof(String)));
+                    dt.Columns.Add(new System.Data.DataColumn("partRepaired", typeof(String)));
 
 
 
@@ -297,19 +235,23 @@ namespace assetManagement
                     {
 
                         newRow = dt.NewRow();
+
                         newRow["astCode"] = Convert.ToString(dr["astCode"]);
-                        newRow["description"] = Convert.ToString(dr["description"]);
-                        newRow["custodian"] = Convert.ToString(dr["custodian"]);
-                        newRow["issueDate"] = Convert.ToDateTime(dr["issueDate"]);
+                        newRow["p_no"] = Convert.ToString(dr["p_no"]);
+                        newRow["openingDate"] = Convert.ToDateTime(dr["openingDate"]);
+                        newRow["closingDate"] = Convert.ToDateTime(dr["closingDate"]);
+                        newRow["userDescription"] = Convert.ToString(dr["userDescription"]);
+                        newRow["systemDescription"] = Convert.ToString(dr["systemDescription"]);
+                        newRow["partRepaired"] = Convert.ToString(dr["partRepaired"]);
                         dt.Rows.Add(newRow);
                     }
                     if (dt.Rows.Count > 0)
                     {
-                        grid_type.Visible = true;
+                        grid_all.Visible = true;
                         grid_astcode.Visible = false;
                         grid_pno.Visible = false;
-                        grid_type.DataSource = dt;
-                        grid_type.DataBind();
+                        grid_all.DataSource = dt;
+                        grid_all.DataBind();
                         lbl_no_recs.Visible = false;
 
                     }
@@ -317,20 +259,18 @@ namespace assetManagement
                     {
                         grid_pno.Visible = false;
                         grid_astcode.Visible = false;
-                        grid_type.Visible = false;
+                        grid_all.Visible = false;
                         lbl_no_recs.Visible = true;
                     }
                     conn_asset.Close();
                 }
-            }
-            else
-            {
-                drp_type.Visible = false;
-                txt_val.Visible = true;
-            }
 
 
+
+            
         }
+
+        
 
     }
 }

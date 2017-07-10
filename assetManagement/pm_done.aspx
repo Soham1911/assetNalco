@@ -143,7 +143,7 @@
                                     ItemStyle-HorizontalAlign="Left" SortExpression="Location" HeaderStyle-HorizontalAlign="Left">
                                     <HeaderStyle HorizontalAlign="Left"></HeaderStyle>
                                 </asp:BoundField>
-                                <asp:BoundField DataField="subLoc" HeaderText="Sub Location"
+                                <asp:BoundField DataField="subLoc1" HeaderText="Sub Location"
                                     ItemStyle-HorizontalAlign="Left" SortExpression="contact" HeaderStyle-HorizontalAlign="Left">
                                     <HeaderStyle HorizontalAlign="Left"></HeaderStyle>
                                 </asp:BoundField>
