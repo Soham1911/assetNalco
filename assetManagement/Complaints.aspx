@@ -37,7 +37,7 @@
                                     <asp:Label ID="lbl_type" runat="server" Text="Type"></asp:Label>
                                 </td>
                                 <td>
-                                    <asp:RadioButtonList ID="rdbtn_type" AutoPostBack=" true" OnSelectedIndexChanged="typeChanged" runat="server" Width="271px" Height="16px" RepeatDirection="Horizontal">
+                                    <asp:RadioButtonList ID="rdbtn_type" AutoPostBack=" true" OnSelectedIndexChanged="typechange" runat="server" Width="271px" Height="16px" RepeatDirection="Horizontal">
                                         <asp:ListItem Value="HARDWARE">Hardware</asp:ListItem>
                                         <asp:ListItem Value="SOFTWARE">Software</asp:ListItem>
                                         <asp:ListItem Value="OTHER">Other</asp:ListItem>

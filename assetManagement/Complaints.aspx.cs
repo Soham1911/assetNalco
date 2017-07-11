@@ -16,7 +16,7 @@ namespace assetManagement
         private static string connStr_asset = ConfigurationManager.ConnectionStrings["asset"].ConnectionString;
         private OdbcConnection conn_asset = new OdbcConnection(connStr_asset);
 
-        protected void typeChanged(object sender, EventArgs e)
+        protected void typechange(object sender, EventArgs e)
         {
             string chk = rdbtn_type.SelectedValue;
             string p_no;
