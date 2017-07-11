@@ -48,11 +48,7 @@
                                     <asp:Label ID="lbl_location" runat="server" Font-Size="Medium" Text="Location : " Visible="false" Style="font-size: small; font-weight: 700;" ForeColor="Black"></asp:Label>
                                 </td>
                             </tr>
-                            <tr>
-                                <td colspan="2"  style="text-align: left">
-                                    <asp:Label ID="lbl_subLoc" runat="server" Font-Size="Medium" Text="Sub Location : " Visible="false" Style="font-size: small; font-weight: 700;" ForeColor="Black"></asp:Label>
-                                </td>
-                            </tr>
+                            
                             <tr>
                                 <td colspan="2" style="text-align: left">
                                     <asp:Label ID="lbl_model" runat="server" Font-Size="Medium" Text="Model : " Visible="false" Style="font-size: small; font-weight: 700;" ForeColor="Black"></asp:Label>

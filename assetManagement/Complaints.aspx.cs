@@ -103,7 +103,7 @@ namespace assetManagement
             p_no = Session["user"].ToString();
             //checking for duplicate
             OdbcCommand cmdd = conn_asset.CreateCommand();
-            cmdd.CommandText = "select * from ast_call where astCode='" + astCode + "' and callStat = 'o' and openingDate = '" + date + "' ";
+            cmdd.CommandText = "select * from ast_call where astCode='" + astCode + "' and callStat = 'O' and openingDate = '" + date + "' ";
             conn_asset.Open();
             OdbcDataReader dr = cmdd.ExecuteReader();
             if (dr.Read())
@@ -144,9 +144,9 @@ namespace assetManagement
 
                 OdbcCommand cmdc = conn_asset.CreateCommand();
                 if(date1 > date)
-                    cmdc.CommandText = "insert into ast_call( p_no, astCode, category, userDescription, systemDescription, openingDate, type, callStat, openingIP, amcParty) values ( '" + p_no.Trim() + "', '" + astCode + "','" + typeAsset.Trim() + "', '" + txt_desc.Text.Trim() + "','" + Drp_2.SelectedValue + "' , '" + date + " ','" + type.Trim() + "','o', '" + myIP.Trim() + "', 'NONE') ";
+                    cmdc.CommandText = "insert into ast_call( p_no, astCode, category, userDescription, systemDescription, openingDate, type, callStat, openingIP, vendorCode) values ( '" + p_no.Trim() + "', '" + astCode + "','" + typeAsset.Trim() + "', '" + txt_desc.Text.Trim() + "','" + Drp_2.SelectedValue + "' , '" + date + " ','" + type.Trim() + "','O', '" + myIP.Trim() + "', 'NONE') ";
                 else
-                    cmdc.CommandText = "insert into ast_call( p_no, astCode, category, userDescription, systemDescription, openingDate, type, callStat, openingIP, amcParty) values ( '" + p_no.Trim() + "', '" + astCode + "','" + typeAsset.Trim() + "', '" + txt_desc.Text.Trim() + "','" + Drp_2.SelectedValue + "' , '" + date + " ','" + type.Trim() + "','o', '" + myIP.Trim() + "', '" + amcVendor.Trim() + "') ";
+                    cmdc.CommandText = "insert into ast_call( p_no, astCode, category, userDescription, systemDescription, openingDate, type, callStat, openingIP, vendorCode) values ( '" + p_no.Trim() + "', '" + astCode + "','" + typeAsset.Trim() + "', '" + txt_desc.Text.Trim() + "','" + Drp_2.SelectedValue + "' , '" + date + " ','" + type.Trim() + "','O', '" + myIP.Trim() + "', '" + amcVendor.Trim() + "') ";
                 
                 conn_asset.Open();
 

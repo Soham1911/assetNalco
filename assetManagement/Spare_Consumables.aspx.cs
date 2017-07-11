@@ -145,7 +145,7 @@ namespace assetManagement
                 lbl_name.Visible = false;
 
                 lbl_location.Visible = false;
-                lbl_subLoc.Visible = false;
+                
                 lbl_model.Visible = false;
                 lbl_desc.Visible = false;
 
@@ -181,7 +181,7 @@ namespace assetManagement
                     lbl_name.Text = Convert.ToString(dr2["name"]);
 
                     lbl_location.Text = Convert.ToString(dr2["location"]);
-                    lbl_subLoc.Text = Convert.ToString(dr2["subLoc"]);
+                    
 
                     if(flag==2)
                     flag = 1;
@@ -193,7 +193,7 @@ namespace assetManagement
                 {
                     lbl_name.Visible = true;
                     lbl_model.Visible = true;
-                    lbl_subLoc.Visible = true;
+                    
                     lbl_location.Visible = true;
                     lbl_desc.Visible = true;
                     lbl_astCode.Visible = false;
