@@ -120,6 +120,7 @@ namespace assetManagement
                     DataRow newRow;
                     OdbcDataReader dr = cmda.ExecuteReader();
                     dt.Columns.Add(new System.Data.DataColumn("quantity", typeof(Int32)));
+                    dt.Columns.Add(new System.Data.DataColumn("currentStock", typeof(Int32)));
                     dt.Columns.Add(new System.Data.DataColumn("type", typeof(Int32)));
                     dt.Columns.Add(new System.Data.DataColumn("make", typeof(String)));
                     dt.Columns.Add(new System.Data.DataColumn("model", typeof(String)));
@@ -131,6 +132,7 @@ namespace assetManagement
                     {
                         newRow = dt.NewRow();
                         newRow["quantity"] = Convert.ToInt32(dr["quantity"]);
+                        newRow["currentStock"] = Convert.ToInt32(dr["currentStock"]);
                         newRow["type"] = Convert.ToInt32(dr["type"]);
                         newRow["make"] = Convert.ToString(dr["make"]);
                         newRow["model"] = Convert.ToString(dr["model"]);
@@ -171,6 +173,7 @@ namespace assetManagement
                         DataRow newRow;
                         OdbcDataReader dr = cmda.ExecuteReader();
                         dt.Columns.Add(new System.Data.DataColumn("quantity", typeof(Int32)));
+                        dt.Columns.Add(new System.Data.DataColumn("currentStock", typeof(Int32)));
                         dt.Columns.Add(new System.Data.DataColumn("type", typeof(Int32)));
                         dt.Columns.Add(new System.Data.DataColumn("make", typeof(String)));
                         dt.Columns.Add(new System.Data.DataColumn("model", typeof(String)));
@@ -182,6 +185,7 @@ namespace assetManagement
                         {
                             newRow = dt.NewRow();
                             newRow["quantity"] = Convert.ToInt32(dr["quantity"]);
+                            newRow["currentStock"] = Convert.ToInt32(dr["currentStock"]);
                             newRow["type"] = Convert.ToInt32(dr["type"]);
                             newRow["make"] = Convert.ToString(dr["make"]);
                             newRow["model"] = Convert.ToString(dr["model"]);

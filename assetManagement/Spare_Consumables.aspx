@@ -35,7 +35,7 @@
                             </tr>
 
                             <tr>
-                                <td rowspan="5">
+                                <td rowspan="4">
                                     <asp:Image ID="img_p" runat="server"  Visible="false" Width="150px" />
                                 </td>
                                 <td colspan="2" style="text-align: left">

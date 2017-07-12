@@ -48,6 +48,7 @@
                                 <asp:MenuItem NavigateUrl="~/Spare_Consumables.aspx" Text="Spare Consumption" />
                                 <asp:MenuItem NavigateUrl="~/Issue_Report.aspx" Text="Issue Report" />
                                 <asp:MenuItem NavigateUrl="~/Receipt_Report.aspx" Text="Receipt Report" />
+                                <asp:MenuItem NavigateUrl="~/Spare_Stock_Report.aspx" Text="Spare Report" />
                             </asp:MenuItem>
                             
                             <asp:MenuItem NavigateUrl="#" Text="AMC">

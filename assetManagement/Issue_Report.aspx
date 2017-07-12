@@ -6,40 +6,40 @@
     TagPrefix="asp" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
     <style type="text/css">
-        .auto-style4 {
-            width: 136px;
-            height: 77px;
-        }
         .auto-style5 {
             height: 29px;
         }
-        .auto-style6 {
-            width: 136px;
-            height: 72px;
-        }
-        .auto-style7 {
-            height: 72px;
-        }
-        .auto-style8 {
-            width: 136px;
-            height: 36px;
-        }
-        .auto-style9 {
-            height: 36px;
-        }
-        .auto-style10 {
-            width: 136px;
-            height: 45px;
-        }
-        .auto-style11 {
-            height: 45px;
-        }
         .auto-style12 {
             width: 136px;
-            height: 43px;
+            height: 30px;
         }
         .auto-style13 {
-            height: 43px;
+            height: 30px;
+        }
+        .auto-style14 {
+            width: 136px;
+            height: 29px;
+        }
+        .auto-style16 {
+            width: 136px;
+            height: 2px;
+        }
+        .auto-style17 {
+            height: 2px;
+        }
+        .auto-style18 {
+            width: 136px;
+            height: 26px;
+        }
+        .auto-style19 {
+            height: 26px;
+        }
+        .auto-style20 {
+            width: 136px;
+            height: 24px;
+        }
+        .auto-style21 {
+            height: 24px;
         }
     </style>
 </asp:Content>
@@ -52,7 +52,7 @@
                 <ContentTemplate>
                     <fieldset>
                         <legend>NALCO Systems Spare Management</legend>
-                        <table style="height: 246px; width: 632px;">
+                        <table style="height: 178px; width: 622px;">
 
                             <tr>
                                 <td colspan="3" class="auto-style5">
@@ -63,10 +63,10 @@
 
                             
                             <tr>
-                                <td class="auto-style6">
+                                <td class="auto-style20">
                                     <asp:Label ID="Label1" runat="server" Text="Search By"></asp:Label>
                                 </td>
-                                <td colspan="2" class="auto-style7">
+                                <td colspan="2" class="auto-style21">
                                     <asp:RadioButtonList ID="rdbtn_type" AutoPostBack=" true" OnSelectedIndexChanged="typeChanged" runat="server" Width="271px" Height="16px" RepeatDirection="Horizontal">
                                         <asp:ListItem Value="1">By Asset Code</asp:ListItem>
                                         <asp:ListItem Value="2">By From - To Date</asp:ListItem>
@@ -74,13 +74,13 @@
                                     </asp:RadioButtonList>
                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server" ErrorMessage="Select Search Type" ControlToValidate="rdbtn_type"></asp:RequiredFieldValidator>
                                 </td>
-                                <td class="auto-style7"></td>
+                                <td class="auto-style21"></td>
                             </tr>
                             <tr>
-                                <td class="auto-style8">
+                                <td class="auto-style16">
                                     <asp:Label ID="lbl_astCode" runat="server" Text="Asset Code"></asp:Label>
                                 </td>
-                                <td colspan="2" class="auto-style9">
+                                <td colspan="2" class="auto-style17">
 
                                     <asp:TextBox ID="txt_astCode" runat="server" Height="18px" Width="300px"></asp:TextBox>
                                 </td>
@@ -88,16 +88,16 @@
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="txt_astCode" ErrorMessage="*Enter Asset Code " ForeColor="Red"></asp:RequiredFieldValidator>
 
                             <tr>
-                                <td class="auto-style10">
+                                <td class="auto-style18">
                                     <asp:Label ID="lbl_type" runat="server" Text="From - To Date"></asp:Label>
                                 </td>
-                                <td align="left" class="auto-style11">
+                                <td align="left" class="auto-style19">
                                     <asp:TextBox Width="200px" ID="txt_entryDate" runat="server" Height="20px"></asp:TextBox>
                                     <asp:CalendarExtender ID="CalendarExtender2" runat="server"
                                         Enabled="True" Format="yyyy/MM/dd" TargetControlID="txt_entryDate"></asp:CalendarExtender>
                                 </td>
 
-                                <td align="left" class="auto-style11">
+                                <td align="left" class="auto-style19">
                                     <asp:TextBox Width="200px" ID="txt_exitDate" runat="server" Height="20px" Style="margin-left: 43px"></asp:TextBox>
                                     <asp:CalendarExtender ID="CalendarExtender1" runat="server"
                                         Enabled="True" Format="yyyy/MM/dd" TargetControlID="txt_exitDate"></asp:CalendarExtender>
@@ -111,7 +111,7 @@
                                 </td>
                                 <td colspan="2" class="auto-style13">
 
-                                    <asp:DropDownList ID="Drp_1" runat="server" Height="52px" Width="307px">
+                                    <asp:DropDownList ID="Drp_1" runat="server" Height="22px" Width="307px">
                                         <asp:ListItem Value="0" Selected="False">-- pick one --</asp:ListItem>
                                     </asp:DropDownList>
                                 </td>

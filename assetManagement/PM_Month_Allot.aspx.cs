@@ -49,51 +49,56 @@ namespace assetManagement
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            DateTime date = DateTime.Now;
-            int count;
-            int i = 1;
+            if (!IsPostBack)
+            {
 
-            OdbcCommand cmdc = conn_asset.CreateCommand();
-            cmdc.CommandText = "select count(*) from ast_master where warrantyEnd < '" + date + "' ";
-            conn_asset.Open();
-            //OdbcDataReader dr1 = cmdc.ExecuteReader();
-            count = (int)cmdc.ExecuteScalar();
-            conn_asset.Close();
 
-            lbl_underWarranty.Text += Convert.ToString(count);
-            count = 0;
-            OdbcCommand cmdd = conn_asset.CreateCommand();
-            cmdd.CommandText = "select count(*) from ast_master where pm_no = '" + i + "'";
-            conn_asset.Open();
-           // OdbcDataReader dr2 = cmdd.ExecuteReader();
-            count = (int)cmdd.ExecuteScalar();
-            conn_asset.Close();
+                DateTime date = DateTime.Now;
+                int count;
+                int i = 1;
 
-            lbl_qrtr1.Text += Convert.ToString(count);
-            count = 0;
-            i = 2;
+                OdbcCommand cmdc = conn_asset.CreateCommand();
+                cmdc.CommandText = "select count(*) from ast_master where warrantyEnd < '" + date + "' ";
+                conn_asset.Open();
+                //OdbcDataReader dr1 = cmdc.ExecuteReader();
+                count = (int)cmdc.ExecuteScalar();
+                conn_asset.Close();
 
-            OdbcCommand cmde = conn_asset.CreateCommand();
-            cmde.CommandText = "select count(*) from ast_master where pm_no = '" + i + "'";
-            conn_asset.Open();
-           // OdbcDataReader dr3 = cmde.ExecuteReader();
-            count = (int)cmde.ExecuteScalar();
-            conn_asset.Close();
+                lbl_underWarranty.Text += Convert.ToString(count);
+                count = 0;
+                OdbcCommand cmdd = conn_asset.CreateCommand();
+                cmdd.CommandText = "select count(*) from ast_master where pm_no = '" + i + "'";
+                conn_asset.Open();
+                // OdbcDataReader dr2 = cmdd.ExecuteReader();
+                count = (int)cmdd.ExecuteScalar();
+                conn_asset.Close();
 
-            lbl_qrtr2.Text += Convert.ToString(count);
-            count = 0;
-            
-            i = 3;
+                lbl_qrtr1.Text += Convert.ToString(count);
+                count = 0;
+                i = 2;
 
-            OdbcCommand cmdf = conn_asset.CreateCommand();
-            cmdf.CommandText = "select count(*) from ast_master where pm_no = '" + i + "'";
-            conn_asset.Open();
-          //  OdbcDataReader dr4 = cmdf.ExecuteReader();
-            count = (int)cmdf.ExecuteScalar();
-            conn_asset.Close();
+                OdbcCommand cmde = conn_asset.CreateCommand();
+                cmde.CommandText = "select count(*) from ast_master where pm_no = '" + i + "'";
+                conn_asset.Open();
+                // OdbcDataReader dr3 = cmde.ExecuteReader();
+                count = (int)cmde.ExecuteScalar();
+                conn_asset.Close();
 
-            lbl_qrtr3.Text  += Convert.ToString(count);
-            count = 0;
+                lbl_qrtr2.Text += Convert.ToString(count);
+                count = 0;
+
+                i = 3;
+
+                OdbcCommand cmdf = conn_asset.CreateCommand();
+                cmdf.CommandText = "select count(*) from ast_master where pm_no = '" + i + "'";
+                conn_asset.Open();
+                //  OdbcDataReader dr4 = cmdf.ExecuteReader();
+                count = (int)cmdf.ExecuteScalar();
+                conn_asset.Close();
+
+                lbl_qrtr3.Text += Convert.ToString(count);
+                count = 0;
+            }
             
         }
 

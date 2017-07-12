@@ -31,7 +31,7 @@
                 <ContentTemplate>
                     <fieldset>
                         <legend>NALCO Systems Spare Management</legend>
-                          <table style="height: 189px; width: 630px;">
+                          <table style="height: 148px; width: 630px;">
                             
                              <tr>
                                 <td colspan="3" class="auto-style2">
@@ -153,6 +153,13 @@
                                 
                                 <asp:BoundField DataField="quantity" HeaderText="Quantity"
                                     ItemStyle-HorizontalAlign="Center" SortExpression="quantity" HeaderStyle-HorizontalAlign="Center">
+                                    <HeaderStyle HorizontalAlign="Center"></HeaderStyle>
+
+                                <ItemStyle HorizontalAlign="Center"></ItemStyle>
+                                </asp:BoundField>
+
+                                <asp:BoundField DataField="currentStock" HeaderText="Current Stock"
+                                    ItemStyle-HorizontalAlign="Center" SortExpression="currentStock" HeaderStyle-HorizontalAlign="Center">
                                     <HeaderStyle HorizontalAlign="Center"></HeaderStyle>
 
                                 <ItemStyle HorizontalAlign="Center"></ItemStyle>

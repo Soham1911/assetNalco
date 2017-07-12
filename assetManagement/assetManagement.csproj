@@ -191,6 +191,7 @@
     <Content Include="Spare_Consumables.aspx" />
     <Content Include="Spare_Entry.aspx" />
     <Content Include="Spare_Parts.aspx" />
+    <Content Include="Spare_Stock_Report.aspx" />
     <Content Include="Status.aspx" />
     <Content Include="Sublocation.aspx" />
     <Content Include="Systems.aspx" />
@@ -610,6 +611,13 @@
     </Compile>
     <Compile Include="Spare_Parts.aspx.designer.cs">
       <DependentUpon>Spare_Parts.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Spare_Stock_Report.aspx.cs">
+      <DependentUpon>Spare_Stock_Report.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Spare_Stock_Report.aspx.designer.cs">
+      <DependentUpon>Spare_Stock_Report.aspx</DependentUpon>
     </Compile>
     <Compile Include="Status.aspx.cs">
       <DependentUpon>Status.aspx</DependentUpon>
